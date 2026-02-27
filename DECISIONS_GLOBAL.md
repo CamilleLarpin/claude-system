@@ -52,3 +52,9 @@
 - **Rationale**: backup against machine loss, full history of system evolution, cross-machine portability; same reasoning as file-based storage — git-versionable is a feature; private to avoid exposing server URLs and project structure
 - **Date**: 2026-02-27
 - **Status**: active
+
+## [git] Default branch name
+- **Decision**: `main` as default branch for all repositories
+- **Rationale**: industry standard, avoids Git 3.0 warning, consistent across all projects
+- **Date**: 2026-02
+- **Status**: active

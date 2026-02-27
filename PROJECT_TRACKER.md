@@ -60,6 +60,15 @@
 - **Blocker**: scope not defined
 - **Next**: Define purpose and scope before building anything
 
+### project-init-skill
+- **Status**: 🔵 Building
+- **Stack**: Claude Code · bash · n8n · gh CLI · Notion
+- **Repo**: — (not yet created)
+- **n8n**: — (webhook workflow not yet built)
+- **Docs**: ~/projects/project-init-skill/.claude/
+- **Blocker**: n8n webhook workflow not built → blocks Notion integration
+- **Next**: Decide adapt existing n8n workflow vs. build new one
+
 ---
 
 ## Cross-Project Notes
