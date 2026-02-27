@@ -1,0 +1,18 @@
+# External plugins — fetched fresh, not versioned
+plugins/marketplaces/claude-plugins-official/
+
+# Claude Code internal state — do not version
+backups/
+cache/
+debug/
+file-history/
+history.jsonl
+ide/
+mcp-needs-auth-cache.json
+paste-cache/
+plans/
+projects/
+session-env/
+shell-snapshots/
+tasks/
+todos/
