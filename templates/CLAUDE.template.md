@@ -12,13 +12,13 @@
 - .claude/CONTEXT.md — current state, architecture, file structure
 - .claude/DECISIONS.md — active decisions only (resolved → DECISIONS_ARCHIVE.md)
 - .claude/LESSONS.md — project-specific mistakes registry, never delete entries
-- .claude/WORKFLOW.md — typical use cases, flows to build, process conventions
+- .claude/DESIGN.md — problem space, use cases, solution approach, non-goals
 - .claude/TODOS.md — active milestones and next steps
 
 ## Active Constraints
 - [hard rules that Claude must never violate, e.g. zero hallucination]
 - [language rules, e.g. UI copy in French]
-- [architectural constraints, e.g. no database — file-based only]
+- [architectural constraints, e.g. all data in English, no external API calls]
 
 ## Quick Reference
 - [key URLs, workflow IDs, credential pointers — no secrets]

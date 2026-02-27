@@ -11,8 +11,8 @@
 ## [category] Decision title
 - **Decision**: what was chosen
 - **Rationale**: why — include alternatives considered and why they were rejected
-- **Date**: YYYY-MM
-- **Status**: active | superseded by [title]
+- **Date**: YYYY-MM-DD
+- **Status**: active | superseded by [title] | archived
 ```
 
 ---

@@ -10,6 +10,7 @@ Claude maintains this file but never loads it.
 ├── DECISIONS_GLOBAL.md
 ├── DECISIONS_GLOBAL_ARCHIVE.md
 ├── LESSONS_GLOBAL.md
+├── PROJECT_TRACKER.md
 ├── README.md
 ├── templates/
 └── skills/
@@ -21,7 +22,7 @@ Claude maintains this file but never loads it.
 | CONTEXT_GLOBAL.md | Claude | On demand — new projects, architectural or cross-project decisions |
 | DECISIONS_GLOBAL.md | Claude | On demand — architectural or cross-project decisions |
 | LESSONS_GLOBAL.md | Claude | On demand — debugging, starting a build |
-| _PROJECT_TRACKER.md | Claude | On demand — cross-project relevance check |
+| PROJECT_TRACKER.md | Claude | On demand — cross-project relevance check |
 | skills/ | Claude | On demand — before any scoped task |
 | README.md | Human | Never auto-loaded |
 

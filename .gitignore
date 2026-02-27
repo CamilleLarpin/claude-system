@@ -1,5 +1,5 @@
-# External plugins — fetched fresh, not versioned
-plugins/marketplaces/claude-plugins-official/
+# Plugins — Claude Code managed, not user-authored
+plugins/
 
 # Claude Code internal state — do not version
 backups/

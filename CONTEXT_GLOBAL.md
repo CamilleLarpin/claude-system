@@ -32,5 +32,5 @@
 - Every project lives in `~/projects/<slug>/`
 - Every project has `.claude/`: CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
 - Every project CLAUDE.md imports `@~/.claude/CLAUDE.md`
-- Project registry: `~/projects/_PROJECT_TRACKER.md`
+- Project registry: `~/.claude/PROJECT_TRACKER.md`
 - Archived decisions → DECISIONS_GLOBAL_ARCHIVE.md. Never delete LESSONS entries.

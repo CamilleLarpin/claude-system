@@ -10,9 +10,10 @@
 ## Format
 ```
 ## [category] Short title
-- What happened / what was discovered
-- Why it matters
-- What to do instead
+> YYYY-MM-DD · source: [project or session]
+- what happened / what the trap is
+- why it matters
+- what to do instead
 ```
 
 ---
