@@ -4,7 +4,7 @@
 
 ## Project
 **Purpose**: [one sentence]
-**Status**: [testing / building / running / blocked]
+**Status**: [🟢 Running | 🟡 Testing | 🔵 Building | 🔴 Blocked | 🟠 Paused | ⚫ Scoping]
 **Repo**: [url]
 **Stack**: [comma-separated — be specific, e.g. n8n · Claude Sonnet · OpenAI API · Telegram]
 

@@ -1,81 +1,77 @@
 # Project Tracker — Camille Larpin
 
-**Last Updated**: 2026-02-26
+> Load when: assessing cross-project relevance or promotion candidates.
+> NOT HERE: project-specific implementation details (→ project .claude/).
+> Update when: creating a project; changing scope, stack, or status.
+
+**Last updated**: 2026-02-27
 
 ---
 
-## Active Projects
-
-### 1. Biography
-**Status**: 🟡 Testing with father (DDA)
-**Repo**: https://github.com/CamilleLarpin/biography
-**n8n**: https://n8n.helmcome.com (4 workflows active)
-**Docs**: ~/projects/biography/.claude/
-**Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · GitHub · Google Docs
-
-**Current blocker**: None
-**Next session**: Google Docs Service Account credential config → end-to-end test with DDA
-**Backlog**: Multi-biography support, Google Docs edit sync, PDF export
-
----
-
-### 2. Ghost (Personal Assistant)
-**Status**: 🟢 Running, memory bug fixed
-**Repo**: —
-**n8n**: https://n8n.helmcome.com (ID: EsMKQrNYifeGbraNshhDc)
-**Docs**: ~/projects/ghost/.claude/
-**Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · Notion
-
-**Current blocker**: None
-**Next session**: Fix photo resolution bug, review classification quality
-**Backlog**: Document/file input, /list command, edit/delete capability
+## Format
+```
+### [Project Name]
+- **Status**: [emoji status]
+- **Stack**: [n8n · Claude · etc. or TBD]
+- **Repo**: [url or —]
+- **n8n**: [workflow IDs or —]
+- **Docs**: [~/projects/<slug>/.claude/ or none]
+- **Blocker**: [description or none]
+- **Next**: [next milestone]
+```
 
 ---
 
-### 3. Family Content Manager
-**Status**: 🔵 In build
-**Repo**: —
-**n8n**: https://n8n.helmcome.com (IDs: OtWARZS3cBAwql1Z, YOi6nFrvr4RRFub1)
-**Docs**: None yet
-**Stack**: TBD
+## Projects
 
-**Current blocker**: Not documented
-**Next session**: Read workflows → bootstrap .claude/ docs
-**Backlog**: TBD
+### Ghost
+- **Status**: 🟢 Running
+- **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · Notion
+- **Repo**: —
+- **n8n**: EsMKQrNYifeGbraNshhDc
+- **Docs**: ~/projects/ghost/.claude/
+- **Blocker**: none
+- **Next**: Fix photo resolution bug, review classification quality
 
----
+### Biography
+- **Status**: 🟡 Testing
+- **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · GitHub · Google Docs
+- **Repo**: https://github.com/CamilleLarpin/biography
+- **n8n**: 4 workflows active
+- **Docs**: ~/projects/biography/.claude/
+- **Blocker**: none
+- **Next**: Google Docs Service Account credential config → end-to-end test with DDA
 
-### 4. AI Assistant Networking
-**Status**: ⚫ Starting up
-**Repo**: —
-**n8n**: https://n8n.helmcome.com
-**Docs**: None yet
-**Stack**: TBD
+### Family Content Manager
+- **Status**: 🔵 Building
+- **Stack**: TBD
+- **Repo**: —
+- **n8n**: OtWARZS3cBAwql1Z, YOi6nFrvr4RRFub1
+- **Docs**: none
+- **Blocker**: none
+- **Next**: Read workflows → bootstrap .claude/ docs
 
-**Current blocker**: Scope not yet defined
-**Next session**: Define purpose and scope before building anything
-**Backlog**: TBD
-
----
-
-## Backlog Projects
-- TBD — add as they clarify
-
----
-
-## Project Health Legend
-- 🟢 Running smoothly
-- 🟡 Testing / validation phase
-- 🔵 Active development
-- 🔴 Blocked
-- ⚫ Starting up / paused
+### AI Assistant Networking
+- **Status**: ⚫ Scoping
+- **Stack**: TBD
+- **Repo**: —
+- **n8n**: —
+- **Docs**: none
+- **Blocker**: scope not defined
+- **Next**: Define purpose and scope before building anything
 
 ---
 
 ## Cross-Project Notes
-- All projects share n8n instance at helmcome.com
-- Error alerting via shared [Alert] Error Notifier (ID: S3JtzMtNJlNl4SOQ)
-- Global Claude context: ~/.claude/CLAUDE.md
+- Shared n8n instance: https://n8n.helmcome.com
+- Shared error alerting: [Alert] Error Notifier (ID: S3JtzMtNJlNl4SOQ)
 
 ---
-*Update after every working session. Keep blockers honest.*
+
+## Status Legend
+- 🟢 Running — in production, working as intended
+- 🟡 Testing — built, validating with users
+- 🔵 Building — active development
+- 🔴 Blocked — can't progress, waiting on something external
+- 🟠 Paused — real project, deliberately on hold
+- ⚫ Scoping — new, purpose/scope not yet defined
