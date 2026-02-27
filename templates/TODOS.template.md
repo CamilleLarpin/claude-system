@@ -4,8 +4,6 @@
 > NOT HERE: decisions (→ DECISIONS.md), completed work (archive or delete when done), cross-project tasks.
 > This is a working scratchpad for Camille + Claude. Keep it current — stale todos are noise.
 
-<!-- future: exportable to task DB -->
-
 ---
 
 ## Now

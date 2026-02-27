@@ -31,8 +31,9 @@ Claude maintains this file but never loads it.
 |------|-------------|
 | CLAUDE.md | Behavior directives, process, or instructions change |
 | CONTEXT_GLOBAL.md | Philosophy, stack, architecture principles, or project system conventions change |
-| DECISIONS_GLOBAL.md | New cross-project decision made; prune at 200 lines → DECISIONS_GLOBAL_ARCHIVE.md |
-| LESSONS_GLOBAL.md | New lesson promoted; prune at 150 lines |
+| DECISIONS_GLOBAL.md | New cross-project decision made; archive at 100 lines → DECISIONS_GLOBAL_ARCHIVE.md |
+| LESSONS_GLOBAL.md | New lesson promoted; split into category files at 150 lines |
+| PROJECT_TRACKER.md | Creating a project; changing project scope, stack, or status |
 | templates/ | Any structural change to .claude/ file conventions |
 | skills/ | Domain added, removed, or boundary shifted |
 | README.md | High-level structure or system principles change |

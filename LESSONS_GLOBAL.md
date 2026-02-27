@@ -2,7 +2,7 @@
 
 > Load when: debugging or starting a build.
 > NOT HERE: cross-project decisions with rationale (→ DECISIONS_GLOBAL.md).
-> Prune at 150 lines — split by category if file exceeds 500 lines.
+> Split into category files at 150 lines.
 
 ---
 

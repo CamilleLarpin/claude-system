@@ -1,7 +1,8 @@
 # Decisions — [PROJECT NAME]
 
 > CONTAINS: active choices made during this project — what was chosen, alternatives considered, rationale.
-> NOT HERE: implementation steps, todos, bug reports, resolved decisions (→ DECISIONS_ARCHIVE.md).
+> NOT HERE: implementation steps, todos, bug reports, lessons (→ LESSONS.md), resolved decisions (→ DECISIONS_ARCHIVE.md).
+> Archive at 100 lines → DECISIONS_ARCHIVE.md.
 > When a decision applies beyond this project: flag with `→ PROMOTE: DECISIONS_GLOBAL.md — [reason]`
 
 ---

@@ -2,7 +2,7 @@
 
 > Load when: making an architectural or cross-project decision.
 > NOT HERE: project-specific decisions (→ project DECISIONS.md), lessons (→ LESSONS_GLOBAL.md).
-> Prune at 200 lines — archive to DECISIONS_GLOBAL_ARCHIVE.md.
+> Archive at 100 lines → DECISIONS_GLOBAL_ARCHIVE.md.
 
 ---
 
