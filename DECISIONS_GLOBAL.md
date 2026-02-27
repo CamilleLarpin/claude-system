@@ -46,3 +46,9 @@
 - **Rationale**: keeps commit messages consistent and tied to task context
 - **Date**: 2024-01-DD
 - **Status**: active
+
+## [conventions] ~/.claude/ versioned in private GitHub repo
+- **Decision**: `~/.claude/` tracked in private repo `claude-system` on GitHub
+- **Rationale**: backup against machine loss, full history of system evolution, cross-machine portability; same reasoning as file-based storage — git-versionable is a feature; private to avoid exposing server URLs and project structure
+- **Date**: 2026-02-27
+- **Status**: active
