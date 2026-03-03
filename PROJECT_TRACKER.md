@@ -27,7 +27,7 @@
 ### Ghost
 - **Status**: 🟢 Running
 - **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · Notion
-- **Repo**: —
+- **Repo**: https://github.com/CamilleLarpin/ghost
 - **n8n**: EsMKQrNYifeGbraNshhDc
 - **Docs**: ~/projects/ghost/.claude/
 - **Blocker**: none
