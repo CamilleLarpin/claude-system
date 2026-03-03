@@ -58,3 +58,9 @@
 - **Rationale**: industry standard, avoids Git 3.0 warning, consistent across all projects
 - **Date**: 2026-02
 - **Status**: active
+
+## [conventions] Load tier declarations in .claude/ file headers
+- **Decision**: every `.claude/` file declares its load tier (hot/warm/cool/cold) in its header block; tier reflects current project phase and is updated when status changes
+- **Rationale**: makes context load cost visible at the point of decision; prevents token bloat in frequently-loaded files; applies "no hidden assumptions" principle — tier is self-declared, not inferred; alternatives considered: global rule only (requires inference at read time), budgets by line count (no principled basis for numbers)
+- **Date**: 2026-03-03
+- **Status**: active

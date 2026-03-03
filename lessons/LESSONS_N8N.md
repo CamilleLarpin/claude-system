@@ -74,6 +74,18 @@ state[userId] = newValue;             // write
 - If the app has no bot user configured (only user token scopes), the bot can't join channels and the Events API won't fire
 - For once-a-week or infrequent events: polling via `conversations.history` + cron is simpler; user token with `channels:history` scope can read public channel history without joining
 
+## [n8n] Dot notation for partial param updates in updateNode
+> 2026-03-03 · source: ghost
+- `updates: {"parameters.jsCode": "..."}` patches a single field inside parameters without replacing the full object
+- contrast with `updates: {parameters: {...}}` which replaces entirely (see updateNode lesson above)
+- use dot notation when changing one field; use full object when restructuring params
+
+## [n8n] IF node isNotEmpty unreliable without explicit string coercion
+> 2026-03-03 · source: ghost
+- `isNotEmpty` on `={{ $json.field }}` can evaluate FALSE even when the value is a non-empty string
+- n8n evaluates the expression result before type-checking; non-coerced values can mismatch the expected type
+- wrap with `={{ String($json.field ?? '') }}` before `isNotEmpty` to guarantee a string at evaluation time
+
 ## [notion] 2000-char limit is per rich_text object, not per page
 > 2026-03-01 · source: ghost
 - Notion API rejects any single `rich_text` element exceeding 2000 characters — error: `body.children[0].paragraph.rich_text[0].text.content.length should be ≤ 2000`
