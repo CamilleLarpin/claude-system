@@ -27,6 +27,7 @@
 - **Design for failure**: define rollback, error and warning handling before building.
 - **Observability**: cost ceiling defined, effectiveness measurable, trigger defined for when to question the system.
 - **Reliability over autonomy**: prefer consistent, predictable behavior over powerful-but-fragile.
+- **Two-zone stack**: core is stable — change only when real pain justifies it; experiments are time-boxed and end in a binary verdict: promote to core or drop. No tools in limbo. Drivers: real pain solved, maintenance surface reduced.
 
 ## Project System
 - Every project lives in `~/projects/<slug>/`

@@ -30,7 +30,7 @@
 - **Status**: active
 
 ## [stack] Self-hosted n8n over cloud
-- **Decision**: n8n on Hetzner server via Docker
+- **Decision**: n8n on Hetzner server via Docker, scoped to HTTP/webhook/integration automation (connecting services, reacting to events, chaining API calls). Python-native pipeline orchestration is a separate category, not yet decided.
 - **Rationale**: credential control, no per-execution cost at scale, full workflow portability
 - **Date**: 2024-01-DD
 - **Status**: active
