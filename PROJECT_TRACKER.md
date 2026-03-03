@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-03
+**Last updated**: 2026-03-04
 
 ---
 
@@ -60,14 +60,14 @@
 - **Blocker**: none
 - **Next**: Read workflows → bootstrap .claude/ docs
 
-### AI Assistant Networking
-- **Status**: ⚫ Scoping
-- **Stack**: TBD
-- **Repo**: —
-- **n8n**: —
-- **Docs**: none
-- **Blocker**: scope not defined
-- **Next**: Define purpose and scope before building anything
+### AI Networking System
+- **Status**: 🔵 Building
+- **Stack**: n8n · Claude Sonnet · Notion API · Slack · Telegram · Google Workspace
+- **Repo**: https://github.com/CamilleLarpin/ai-networking-system
+- **n8n**: L9mXT4tovnOM2Xiz (Part A: Detect & Draft — built, pending test)
+- **Docs**: ~/projects/ai-networking-system/.claude/
+- **Blocker**: none
+- **Next**: Configure Part A (Slack user ID + Telegram chat ID + Slack Workflow Builder) → test → build Part B (Send on approval)
 
 ### project-init-skill
 - **Status**: 🔵 Building

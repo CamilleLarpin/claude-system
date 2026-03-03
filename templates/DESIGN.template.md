@@ -3,6 +3,7 @@
 > CONTAINS: problem space, use cases, user flows, solution approach, non-goals.
 > NOT HERE: implementation details (→ CONTEXT.md), active tasks (→ TODOS.md), tech decisions (→ DECISIONS.md).
 > Update when scope changes or a use case is validated/invalidated.
+> Load tier: warm — update to cold when project reaches Running/Maintenance
 
 ---
 

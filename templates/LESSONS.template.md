@@ -5,6 +5,7 @@
 > NEVER delete entries.
 > Split into category files at 150 lines.
 > When a lesson applies beyond this project: flag with `→ PROMOTE: LESSONS_GLOBAL.md — [reason]`
+> Load tier: cool
 
 ---
 

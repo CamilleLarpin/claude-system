@@ -1,5 +1,7 @@
 # [PROJECT NAME] — Claude Context
 
+> Load tier: hot
+
 @~/.claude/CLAUDE.md
 
 ## Project

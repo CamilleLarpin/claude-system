@@ -3,6 +3,7 @@
 > CONTAINS: active milestones, next actions, blocked items for this project.
 > NOT HERE: decisions (→ DECISIONS.md), completed work (archive or delete when done), cross-project tasks.
 > This is a working scratchpad for Camille + Claude. Keep it current — stale todos are noise.
+> Load tier: warm
 
 ---
 

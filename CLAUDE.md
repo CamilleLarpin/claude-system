@@ -13,6 +13,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - Security: read-only by default; no destructive bash without explicit confirmation; secrets in n8n credentials or .env only.
 - Avoid tunnel vision: when blocked or running in circles, step back — is this still the right approach?
 - Be consistent: never vary terminology or format unless the difference is intentional and explicit.
+- Context load: check a file's load tier before adding content — prefer retrieval for rarely-needed facts.
 
 ## Global Knowledge — load on demand
 - @~/.claude/CONTEXT_GLOBAL.md — what is true now: stack, architecture, philosophy (load when creating a new project or making an architectural or cross-project decision)
@@ -35,3 +36,4 @@ Run at the end of every session — no exceptions:
 3. Did ~/.claude/ structure or .claude/ conventions change? Update README.md and templates/.
 4. Did any file cross its threshold? Flag: `→ SPLIT: [file]` for lessons at 150 lines; `→ ARCHIVE: [file]` for decisions at 100 lines.
 5. Did philosophy, stack, architecture principles, or project system conventions change? Update CONTEXT_GLOBAL.md.
+6. Did project status change or did any file's load tier change? Update tier declarations.

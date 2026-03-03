@@ -3,6 +3,7 @@
 > CONTAINS: current state, architecture overview, file structure, key dependencies.
 > NOT HERE: decisions with rationale (→ DECISIONS.md), todos (→ TODOS.md), solution design (→ DESIGN.md).
 > Update this file when architecture changes or a milestone completes.
+> Load tier: warm
 
 ---
 

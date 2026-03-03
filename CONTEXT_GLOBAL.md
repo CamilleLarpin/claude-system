@@ -11,6 +11,7 @@
 - Add value first: no building without validated need.
 - Agility over lock-in: continuously question the stack, stay on top of tools and trends.
 - Low maintenance: every choice must minimize future maintenance burden — solo developer constraint.
+- No hidden assumptions: make the implicit explicit. If applying a rule requires inference, the rule is incomplete.
 
 ## Technical Stack
 - **Automation**: self-hosted n8n — https://n8n.helmcome.com
