@@ -9,7 +9,11 @@ Claude maintains this file but never loads it.
 ├── CONTEXT_GLOBAL.md
 ├── DECISIONS_GLOBAL.md
 ├── DECISIONS_GLOBAL_ARCHIVE.md
-├── LESSONS_GLOBAL.md
+├── LESSONS_GLOBAL.md          ← index only, points to lessons/
+├── lessons/                   ← category files (split at 150 lines each)
+│   ├── LESSONS_N8N.md
+│   ├── LESSONS_CLAUDE.md
+│   └── LESSONS_ARCHITECTURE.md
 ├── PROJECT_TRACKER.md
 ├── README.md
 ├── templates/
@@ -21,7 +25,7 @@ Claude maintains this file but never loads it.
 | CLAUDE.md | Claude | Every session |
 | CONTEXT_GLOBAL.md | Claude | On demand — new projects, architectural or cross-project decisions |
 | DECISIONS_GLOBAL.md | Claude | On demand — architectural or cross-project decisions |
-| LESSONS_GLOBAL.md | Claude | On demand — debugging, starting a build |
+| LESSONS_GLOBAL.md | Claude | On demand — debugging, starting a build (index → loads category file) |
 | PROJECT_TRACKER.md | Claude | On demand — cross-project relevance check |
 | skills/ | Claude | On demand — before any scoped task |
 | README.md | Human | Never auto-loaded |
@@ -32,7 +36,8 @@ Claude maintains this file but never loads it.
 | CLAUDE.md | Behavior directives, process, or instructions change |
 | CONTEXT_GLOBAL.md | Philosophy, stack, architecture principles, or project system conventions change |
 | DECISIONS_GLOBAL.md | New cross-project decision made; archive at 100 lines → DECISIONS_GLOBAL_ARCHIVE.md |
-| LESSONS_GLOBAL.md | New lesson promoted; split into category files at 150 lines |
+| LESSONS_GLOBAL.md | New lesson promoted (update index + add to correct category file in lessons/) |
+| lessons/ | Category file hits 150 lines → split; new category added |
 | PROJECT_TRACKER.md | Creating a project; changing project scope, stack, or status |
 | templates/ | Any structural change to .claude/ file conventions |
 | skills/ | Domain added, removed, or boundary shifted |
