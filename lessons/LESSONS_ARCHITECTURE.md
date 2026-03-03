@@ -33,3 +33,9 @@
 > unknown · source: unknown
 - Choosing write strategy ad-hoc leads to inconsistent behavior across workflows
 - Apply this decision tree: API charges per call? → batch. Data irreplaceable? → immediate. Latency user-facing? → batch. Rate limits tight? → batch.
+
+## [integrations] Telegram delivers the same webhook update multiple times simultaneously
+> 2026-03-03 · source: family-content-manager
+- Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
+- Sequential duplicate protection (checking if a file was already moved) doesn't help — all instances start before any finishes; causes MOVE race conditions and 423 Locked on concurrent file writes
+- True fix: deduplicate at the trigger level — store processed `message_id` values (e.g. in workflow static data) and skip execution if already seen; or make all operations fully idempotent

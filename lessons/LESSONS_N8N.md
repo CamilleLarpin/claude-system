@@ -80,11 +80,30 @@ state[userId] = newValue;             // write
 - contrast with `updates: {parameters: {...}}` which replaces entirely (see updateNode lesson above)
 - use dot notation when changing one field; use full object when restructuring params
 
-## [n8n] IF node isNotEmpty unreliable without explicit string coercion
+## [n8n] IF node isNotEmpty unreliable — use notEquals instead
+> 2026-03-03 · source: ghost (confirmed 2026-03-03)
+- `isNotEmpty` on an IF node can evaluate FALSE even when the value is a clearly non-empty string — confirmed with `project_hint: "Claude excellence"` routing to the false branch
+- `String()` coercion around the expression does NOT fix this; the bug persists at typeVersion ≤ 2.2
+- Fix: use operator `notEquals` with `rightValue: ""` instead of `isNotEmpty`; also upgrade typeVersion to 2.3
+- `={{ String($json.field ?? '') }}` + `notEquals ""` is the reliable pattern for non-empty string checks
+
+## [n8n] updateNode uses nodeId/nodeName, not id/name
 > 2026-03-03 · source: ghost
-- `isNotEmpty` on `={{ $json.field }}` can evaluate FALSE even when the value is a non-empty string
-- n8n evaluates the expression result before type-checking; non-coerced values can mismatch the expected type
-- wrap with `={{ String($json.field ?? '') }}` before `isNotEmpty` to guarantee a string at evaluation time
+- `n8n_update_partial_workflow` updateNode operations require `nodeId` (not `id`) or `nodeName` (not `name`) to reference the target node
+- passing `{type: "updateNode", id: "..."}` silently uses an empty name and fails with "Node not found for updateNode: ''"
+- always use `nodeId: "..."` or `nodeName: "..."` in updateNode operations
+
+## [n8n] n8n_update_partial_workflow adds internal settings fields that PUT API rejects
+> 2026-03-03 · source: family-content-manager
+- After adding/updating nodes via `n8n_update_partial_workflow`, the workflow's `settings` object gains internal fields (`callerPolicy`, `availableInMCP`, `timeSavedMode`, `binaryMode`) that n8n stores internally but the public API rejects on PUT → "request/body/settings must NOT have additional properties"
+- Any workflow that does GET → modify → PUT silently breaks after a partial update touches settings
+- In the Code node that prepares the PUT body, allowlist settings: `const ALLOWED = ['executionOrder','saveDataErrorExecution','saveDataSuccessExecution','saveManualExecutions','saveExecutionProgress','executionTimeout','timezone','errorWorkflow']; const cleanSettings = Object.fromEntries(Object.entries(full.settings ?? {}).filter(([k]) => ALLOWED.includes(k)));`
+
+## [n8n] MCP-created nodes get wrong credential when multiple exist
+> 2026-03-03 · source: family-content-manager
+- Nodes added via `n8n_update_partial_workflow` (addNode) are assigned the first available credential of the matching type — not necessarily the correct one
+- Fails silently with "Unknown error" at runtime; difficult to trace without checking credentials explicitly
+- After adding any node via MCP that requires a credential, open the canvas and verify the credential before testing
 
 ## [notion] 2000-char limit is per rich_text object, not per page
 > 2026-03-01 · source: ghost
