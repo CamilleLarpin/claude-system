@@ -5,7 +5,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 
 ## Behavior Directives
 - Default model: Sonnet. Escalate to Opus for architecture decisions or complex reasoning.
-- Git: English commit messages; `git pull --rebase` before push; Claude Code handles commits.
+- Git: English commit messages; `git pull --rebase` before push; Claude Code handles commits; after each validated step, propose to commit and push relevant `.claude/` (project) and `~/.claude/` changes before moving on.
 - Storage: file-based (JSON/MD).
 - File maintenance: never delete content — archive superseded decisions, split overlong lessons into category files.
 - Docs: succinct, rigorous, unambiguous — no accidental redundancy, archive resolved content.
@@ -31,6 +31,7 @@ Decisions: archive when superseded → DECISIONS_ARCHIVE.md. Lessons: never dele
 
 ## End-of-Session Checklist
 Run at the end of every session — no exceptions:
+0. Commit and push all dirty `.claude/` (project) and `~/.claude/` files before closing.
 1. Any lesson worth promoting? Flag: `→ PROMOTE: LESSONS_GLOBAL.md — [reason]`
 2. Any decision that applies beyond this project? Flag: `→ PROMOTE: DECISIONS_GLOBAL.md — [reason]`
 3. Did ~/.claude/ structure or .claude/ conventions change? Update README.md and templates/.
