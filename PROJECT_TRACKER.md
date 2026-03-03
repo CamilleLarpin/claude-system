@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-02-27
+**Last updated**: 2026-03-03
 
 ---
 
@@ -23,6 +23,15 @@
 ---
 
 ## Projects
+
+### Audio Intelligence Pipeline
+- **Status**: 🔵 Building
+- **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp
+- **Repo**: https://github.com/CamilleLarpin/audio-intelligence-pipeline
+- **n8n**: —
+- **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
+- **Blocker**: none
+- **Next**: Add --summarize flag to CLI (Phase 2)
 
 ### Ghost
 - **Status**: 🟢 Running
