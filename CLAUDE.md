@@ -32,14 +32,11 @@ Decisions: archive when superseded → DECISIONS_ARCHIVE.md. Lessons: never dele
 
 ## After each milestone
 0. Commit and push all dirty `.claude/` and `~/.claude/` files.
-1. Complexity check: did this milestone meaningfully increase complexity? If yes → flag `→ REFACTOR: [component] — [reason]`
-2. Update `.claude/` files (DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md) as needed.
-3. Run `/clear` before the next milestone — don't carry stale state forward.
-
-## End of session
-0. Any lesson worth promoting? → `PROMOTE: LESSONS_GLOBAL.md — [reason]`
-1. Any decision cross-project? → `PROMOTE: DECISIONS_GLOBAL.md — [reason]`
-2. Did `~/.claude/` structure or conventions change? Update README + templates.
-3. Did any file cross its threshold? → `SPLIT` or `ARCHIVE`
-4. Did philosophy/stack/architecture change? Update CONTEXT_GLOBAL.md.
-5. Did project status or load tier change? Update declarations.
+1. Update `.claude/` files (DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md) as needed.
+2. Any lesson worth promoting? → `PROMOTE: LESSONS_GLOBAL.md — [reason]`
+3. Any decision cross-project? → `PROMOTE: DECISIONS_GLOBAL.md — [reason]`
+4. Complexity check: did this milestone meaningfully increase complexity? If yes → flag `→ REFACTOR: [component] — [reason]`
+5. Did any file cross its threshold? → `SPLIT` or `ARCHIVE`
+6. Did philosophy/stack/architecture change? Update CONTEXT_GLOBAL.md.
+7. Did project status or load tier change? Update declarations.
+8. Run `/clear` — don't carry stale state into the next milestone.
