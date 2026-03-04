@@ -59,6 +59,12 @@
 - **Date**: 2026-02
 - **Status**: active
 
+## [conventions] Single post-milestone checklist ordered by signal strength
+- **Decision**: one checklist runs after each milestone (not split by session boundary); steps ordered by signal strength — promotions first (highest cognitive value), mechanical checks last
+- **Rationale**: splitting into milestone + session checklists created a coordination problem — promotions require live context, which is cleared before end-of-session; collapsing removes deferred state; ordering by signal strength prevents attention decay on high-value steps; alternatives considered: mandatory vs conditional split (adds complexity with no payoff for solo developer), separate end-of-session checklist (broken by /clear)
+- **Date**: 2026-03-04
+- **Status**: active
+
 ## [conventions] Load tier declarations in .claude/ file headers
 - **Decision**: every `.claude/` file declares its load tier (hot/warm/cool/cold) in its header block; tier reflects current project phase and is updated when status changes
 - **Rationale**: makes context load cost visible at the point of decision; prevents token bloat in frequently-loaded files; applies "no hidden assumptions" principle — tier is self-declared, not inferred; alternatives considered: global rule only (requires inference at read time), budgets by line count (no principled basis for numbers)
