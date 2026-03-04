@@ -105,6 +105,18 @@ state[userId] = newValue;             // write
 - Fails silently with "Unknown error" at runtime; difficult to trace without checking credentials explicitly
 - After adding any node via MCP that requires a credential, open the canvas and verify the credential before testing
 
+## [n8n] `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
+> 2026-03-04 · source: ghost (Format Response node)
+- `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"
+- the error is indistinguishable from a JS syntax error — no hint that it's an encoding issue; persists even after other expression fixes since those don't affect the `\n`
+- fix: use `String.fromCharCode(10)` in place of `'\n'` in n8n expressions — produces an actual newline without escape parsing
+
+## [n8n] Dot notation on array indices in updateNode creates new keys, does not patch array
+> 2026-03-04 · source: ghost (Format Response node)
+- `updates: {"parameters.assignments.assignments[0].value": "..."}` does NOT update the array element at index 0; it creates a new sibling key `assignments[0]` inside the object, leaving the original array untouched
+- the corrupted structure (both `assignments` array and `assignments[0]` key) causes further expression errors at execution time; hard to spot without reading raw node parameters
+- rule: dot notation works for scalar fields only; for array elements, always pass the full `parameters` object in the updateNode update
+
 ## [notion] 2000-char limit is per rich_text object, not per page
 > 2026-03-01 · source: ghost
 - Notion API rejects any single `rich_text` element exceeding 2000 characters — error: `body.children[0].paragraph.rich_text[0].text.content.length should be ≤ 2000`
