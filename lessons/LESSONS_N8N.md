@@ -18,10 +18,11 @@
 - Set ALL parameters explicitly; always run `validate_node({mode: 'full', profile: 'runtime'})` before deploying
 
 ## [n8n] Merge node defaults to Append, not Combine
-> unknown · source: unknown
+> unknown · source: unknown; corrected 2026-03-05 · source: ghost
 - Merge node default mode is Append — not Combine
 - Wrong mode silently drops or duplicates data across branches
-- For voice/text path merge: Mode=Combine, CombineBy=Position, IncludeUnpaired=true; use Position (not Matching Fields) when paths share no common fields
+- **Converging Switch pattern** (only one path fires per execution): Append is correct — it passes through whichever input arrives. Do NOT change to Combine; Combine waits for all connected inputs simultaneously and will hang the workflow when only one path fires.
+- **Concurrent paths pattern** (multiple paths fire in the same execution): Mode=Combine, CombineBy=Position, IncludeUnpaired=true; use Position (not Matching Fields) when paths share no common fields
 
 ## [n8n] Execute Workflow input configuration
 > unknown · source: unknown
