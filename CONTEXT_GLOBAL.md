@@ -6,7 +6,7 @@
 ---
 
 ## Philosophy
-- Prioritize comprehension over velocity.
+- Understand before building: know the system before adding to it. Speed is worthless if it compounds confusion.
 - Know why before how: understand the pain before designing the solution.
 - Add value first: no building without validated need.
 - Agility over lock-in: continuously question the stack, stay on top of tools and trends.
