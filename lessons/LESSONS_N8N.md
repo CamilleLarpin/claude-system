@@ -79,6 +79,7 @@ state[userId] = newValue;             // write
 - `updates: {"parameters.jsCode": "..."}` patches a single field inside parameters without replacing the full object
 - contrast with `updates: {parameters: {...}}` which replaces entirely (see updateNode lesson above)
 - use dot notation when changing one field; use full object when restructuring params
+- **caveat**: unreliable for complex nested objects (e.g. `parameters.conditions` on IF nodes) — n8n sanitization may silently revert the change; always verify with a GET after; for IF node conditions always use the full `parameters` object
 
 ## [n8n] IF node isNotEmpty unreliable — use notEquals instead
 > 2026-03-03 · source: ghost (confirmed 2026-03-03)
