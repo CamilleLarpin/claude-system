@@ -18,7 +18,9 @@
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), OpenAI API where needed
 - **Data**: BigQuery, dbt, GCP
 - **Storage**: file-based (JSON/MD)
-- **Infra**: Hetzner server, Docker containers (n8n, Nextcloud, MariaDB)
+- **Infra**: Hetzner server, Docker containers — two independent stacks:
+  - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
+  - `/opt/nextcloud/`: Nextcloud + its own MariaDB 10.11 instance (`nextcloud-db`)
 - **Version control**: Git
 
 ## Architecture Principles

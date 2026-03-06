@@ -4,7 +4,8 @@
       "Bash(for dir in ~/projects/ghost ~/projects/biography ~/projects/ai-networking-system ~/projects/audio-intelligence-pipeline ~/projects/project-init-skill; do\n  echo \"=== $\\(basename $dir\\) ===\"\n  git -C \"$dir\" log --oneline -10 2>/dev/null || echo \"\\(not a git repo or no commits\\)\"\n  echo \"\"\ndone)",
       "Bash(for dir in ~/projects/ghost ~/projects/biography ~/projects/ai-networking-system ~/projects/audio-intelligence-pipeline ~/projects/project-init-skill; do\n  echo \"=== $\\(basename $dir\\) ===\"\n  git -C \"$dir\" status --short 2>/dev/null || echo \"\\(not a git repo\\)\"\n  git -C \"$dir\" log --oneline --merges -5 2>/dev/null | grep -q \"Merge\" && echo \"Has merge commits\" || true\n  echo \"\"\ndone)",
       "Bash(git -C ~/projects/ghost log --oneline -3)",
-      "Bash(git -C ~/projects/ghost push && git -C ~/.claude push)"
+      "Bash(git -C ~/projects/ghost push && git -C ~/.claude push)",
+      "Bash(claude config list 2>&1)"
     ]
   }
 }
