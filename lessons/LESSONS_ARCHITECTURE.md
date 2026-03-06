@@ -34,6 +34,11 @@
 - Choosing write strategy ad-hoc leads to inconsistent behavior across workflows
 - Apply this decision tree: API charges per call? → batch. Data irreplaceable? → immediate. Latency user-facing? → batch. Rate limits tight? → batch.
 
+## [integrations] `load_dotenv()` does not override existing env vars — direnv takes precedence
+> 2026-03-06 · source: data-engineering-notes
+- If direnv is active and sets a var (e.g. `ANTHROPIC_API_KEY`) via `.envrc`, `load_dotenv()` silently skips it — shell env wins; `.env` looks correct but the wrong value is used at runtime
+- To let `.env` win: use `load_dotenv(override=True)`; to debug: `echo $VAR_NAME` before running the script
+
 ## [integrations] Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
