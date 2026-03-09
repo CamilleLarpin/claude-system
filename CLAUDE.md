@@ -4,17 +4,24 @@
 Solo developer, Mac. All code and docs in English. User-facing UI copy: language defined per project.
 
 ## Behavior Directives
-- Default model: Sonnet. Escalate to Opus for architecture decisions or complex reasoning.
-- Git: English commit messages; `git pull --rebase` before push; Claude Code handles commits; after each milestone, propose to commit and push relevant `.claude/` (project) and `~/.claude/` changes before moving on.
+
+### Defaults
+- Model: Sonnet. Escalate to Opus for architecture or complex reasoning.
+- Git: English commits; `git pull --rebase` before push; Claude Code handles commits; after each milestone, propose to commit and push `.claude/` and `~/.claude/` changes.
 - Storage: file-based (JSON/MD).
-- File maintenance: never delete content — archive superseded decisions, split overlong lessons into category files.
-- Docs: succinct, rigorous, unambiguous — no accidental redundancy, archive resolved content.
+- Security: read-only by default; no destructive bash without confirmation; secrets in n8n credentials or .env only.
+
+### Content & docs
+- File maintenance: never delete — archive superseded decisions, split overlong lessons.
+- Docs: succinct, rigorous, unambiguous — no redundancy, archive resolved content.
+- Context load: check load tier before adding — prefer retrieval for rarely-needed facts.
+- Consistency: never vary terminology or format unless intentional and explicit.
+
+### Build discipline
 - Iteration: Plan → clarify → validate → build one thing → test. Never build ahead of validation.
-- Security: read-only by default; no destructive bash without explicit confirmation; secrets in n8n credentials or .env only.
-- Avoid tunnel vision: when blocked or running in circles, step back — is this still the right approach?
-- Be consistent: never vary terminology or format unless the difference is intentional and explicit.
-- Context load: check a file's load tier before adding content — prefer retrieval for rarely-needed facts.
-- Transparency: when applying a principle to a decision, name it explicitly — state which rule is driving the choice.
+- Execution gate: STOP when the task has >2 steps or touches an external system. Output a numbered plan. Wait for explicit approval of that specific plan before proceeding.
+- Tunnel vision: when blocked or running in circles, step back — is this still the right approach?
+- Transparency: when applying a principle to a decision, name it explicitly.
 
 ## Global Knowledge — load on demand
 - @~/.claude/CONTEXT_GLOBAL.md — what is true now: stack, architecture, philosophy (load when creating a new project or making an architectural or cross-project decision)

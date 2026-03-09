@@ -27,3 +27,10 @@
 - Trying to infer a format by reading related files wastes round-trips and risks using the wrong reference
 - If a template or format standard exists, ask the user to confirm it before proceeding
 - When you need a template: stop, ask, then act
+
+## [claude-behavior] Execution gate — plan before any multi-step or external-system task
+> 2026-03-09 · source: biography (recurring failure)
+- Pattern: Claude jumps into execution on complex tasks the moment it has enough context to act — skipping the plan→validate step entirely
+- Impact: wasted work, irreversible actions taken, user loses trust; especially bad for n8n/GitHub/API tasks
+- Fix encoded in CLAUDE.md "Build discipline": STOP when task has >2 steps or touches an external system; output a numbered plan; wait for explicit approval of that specific plan before calling any tool
+- "Go ahead" or "do it" without a prior plan shown is NOT approval
