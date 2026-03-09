@@ -46,10 +46,10 @@
 - **Status**: 🟡 Testing
 - **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · GitHub · Google Docs
 - **Repo**: https://github.com/CamilleLarpin/biography
-- **n8n**: 4 workflows active
+- **n8n**: 4 workflows active (DDA) + 4 pending (MIC)
 - **Docs**: ~/projects/biography/.claude/
 - **Blocker**: none
-- **Next**: Google Docs Service Account credential config → end-to-end test with DDA
+- **Next**: Google Docs credential config → DDA end-to-end test; MIC rollout (duplicate workflows, add allowlists)
 
 ### Family Content Manager
 - **Status**: 🔵 Building
