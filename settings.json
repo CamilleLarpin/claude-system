@@ -1,11 +1,15 @@
 {
   "language": "english",
   "permissions": {
-    "defaultMode": "acceptEdits",
+    "defaultMode": "default",
     "deny": [
       "Bash(git commit*)",
       "Bash(git push*)"
     ]
   },
-  "showThinkingSummaries": true
+  "showThinkingSummaries": true,
+  "statusLine": {
+    "type": "command",
+    "command": "sh /Users/camillelarpin/.claude/statusline-command.sh"
+  }
 }
