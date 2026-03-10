@@ -119,6 +119,12 @@ state[userId] = newValue;             // write
 - the corrupted structure (both `assignments` array and `assignments[0]` key) causes further expression errors at execution time; hard to spot without reading raw node parameters
 - rule: dot notation works for scalar fields only; for array elements, always pass the full `parameters` object in the updateNode update
 
+## [telegram] Markdown mode strips underscores from stored message text — breaks data extraction from replies
+> 2026-03-09 · source: family-content-manager
+- Filename `2025-08-22_ConventionAuPair_MinistereInterieur_Schwebe-12mois.pdf` sent in a Telegram notification came back as `2025-08-22ConventionAuPairMinistereInterieurSchwebe-12mois.pdf` in `reply_to_message.text` — underscores gone. Correction path built the wrong WebDAV URL → 404.
+- Telegram Markdown mode interprets `_word_word_` as italic markers and removes underscores from the stored text. Any workflow that extracts data from `reply_to_message.text` will receive corrupted values if the sending node used Markdown parse_mode (or n8n defaulted to it).
+- Fix: set `parse_mode: HTML` on ALL Telegram send nodes — not just those in the correction flow. Confirmation and error messages also include filenames; an incomplete fix leaves silent corruption paths open.
+
 ## [notion] 2000-char limit is per rich_text object, not per page
 > 2026-03-01 · source: ghost
 - Notion API rejects any single `rich_text` element exceeding 2000 characters — error: `body.children[0].paragraph.rich_text[0].text.content.length should be ≤ 2000`
