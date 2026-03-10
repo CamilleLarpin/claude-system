@@ -82,3 +82,9 @@
 - **Rationale**: makes context load cost visible at the point of decision; prevents token bloat in frequently-loaded files; applies "no hidden assumptions" principle — tier is self-declared, not inferred; alternatives considered: global rule only (requires inference at read time), budgets by line count (no principled basis for numbers)
 - **Date**: 2026-03-03
 - **Status**: active
+
+## [ai-agents] User label as inclusion rule for archiving pipelines
+- **Decision**: when building an AI archiving pipeline, the human decides what's worth archiving (via a label, tag, or explicit action) — the AI only executes the filing logic, never the inclusion judgment
+- **Rationale**: "what's worth keeping" is a personal, context-dependent judgment that AI gets wrong at the margins; user labeling is zero-cost (one tap), eliminates false positives entirely, and keeps the pipeline simple and reliable; alternatives considered: AI decides based on content (too many edge cases, trust issues), explicit allowlist by sender/type (brittle, high maintenance)
+- **Date**: 2026-03-10
+- **Status**: active
