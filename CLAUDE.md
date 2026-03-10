@@ -7,7 +7,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 
 ### Defaults
 - Model: Sonnet. Escalate to Opus for architecture or complex reasoning.
-- Git: English commits; `git pull --rebase` before push; Claude Code handles commits; after each milestone, propose to commit and push `.claude/` and `~/.claude/` changes.
+- Git: English commits; `git pull --rebase` before push; Claude Code handles commits.
 - Storage: file-based (JSON/MD).
 - Security: read-only by default; no destructive bash without confirmation; secrets in n8n credentials or .env only.
 
@@ -37,13 +37,5 @@ Every project has in .claude/: CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, 
 All .claude/ files: project-specific only. Never duplicate global directives.
 Decisions: archive when superseded → DECISIONS_ARCHIVE.md. Lessons: never delete — split into category files at 150 lines.
 
-## After each milestone
-0. Commit and push all dirty `.claude/` and `~/.claude/` files.
-1. Update `.claude/` files (DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md) as needed.
-2. Any lesson worth promoting? → `PROMOTE: LESSONS_GLOBAL.md — [reason]`
-3. Any decision cross-project? → `PROMOTE: DECISIONS_GLOBAL.md — [reason]`
-4. Complexity check: did this milestone meaningfully increase complexity? If yes → flag `→ REFACTOR: [component] — [reason]`
-5. Did any file cross its threshold? → `SPLIT` or `ARCHIVE`
-6. Did philosophy/stack/architecture change? Update CONTEXT_GLOBAL.md.
-7. Did project status or load tier change? Update declarations.
-8. Run `/clear` — don't carry stale state into the next milestone.
+## End of session
+Run `/end-of-session` — then `/commit-push` — then `/clear`.
