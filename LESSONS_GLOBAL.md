@@ -16,12 +16,20 @@
 
 ## Format (for all category files)
 ```
-## [category] Short title
+## [category] · Rule|Guideline|Note · Short title
 > YYYY-MM-DD · source: [project or session]
 - what happened / what the trap is
 - why it matters
 - what to do instead
 ```
+
+## Types
+- **Rule**: must follow — violating it breaks things or causes silent failure
+- **Guideline**: should follow unless explicitly justified
+- **Note**: useful to know — no mandatory action
+
+## Promotion rule
+Promote to global only if Rule or Guideline — Notes stay in project files.
 
 ## Thresholds
 - Each category file splits at 150 lines → create a sub-file, e.g. `LESSONS_N8N_2.md`
