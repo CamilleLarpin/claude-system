@@ -71,6 +71,12 @@
 - **Date**: 2026-03-09
 - **Status**: active
 
+## [conventions] Rule/Guideline/Note type tags on all lesson entries
+- **Decision**: every lesson entry is tagged with a type in its header: `## [category] · Rule|Guideline|Note · Title`. Rule = must follow (violating breaks things); Guideline = should follow unless justified; Note = informational. Applies to global files and all project LESSONS.md files.
+- **Rationale**: gives Claude a signal to weight lessons correctly — a Rule must be applied unconditionally, a Guideline requires judgment, a Note is context. Promotion gate updated: only Rules and Guidelines are promoted to global; Notes stay in project files. Low-overhead (badge only, no new files or storage tiers).
+- **Date**: 2026-03-10
+- **Status**: active
+
 ## [conventions] Load tier declarations in .claude/ file headers
 - **Decision**: every `.claude/` file declares its load tier (hot/warm/cool/cold) in its header block; tier reflects current project phase and is updated when status changes
 - **Rationale**: makes context load cost visible at the point of decision; prevents token bloat in frequently-loaded files; applies "no hidden assumptions" principle — tier is self-declared, not inferred; alternatives considered: global rule only (requires inference at read time), budgets by line count (no principled basis for numbers)
