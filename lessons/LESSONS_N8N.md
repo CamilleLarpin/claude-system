@@ -125,8 +125,26 @@ state[userId] = newValue;             // write
 - Telegram Markdown mode interprets `_word_word_` as italic markers and removes underscores from the stored text. Any workflow that extracts data from `reply_to_message.text` will receive corrupted values if the sending node used Markdown parse_mode (or n8n defaulted to it).
 - Fix: set `parse_mode: HTML` on ALL Telegram send nodes — not just those in the correction flow. Confirmation and error messages also include filenames; an incomplete fix leaves silent corruption paths open.
 
+## [n8n] · Rule · n8n_update_partial_workflow — correct format for updateNode, addConnection, removeConnection
+> 2026-03-10 · source: family-content-manager
+- `updateNode` requires `updates: {...}` wrapper — `{type:"updateNode", nodeName:"X", parameters:{...}}` fails with "Missing required parameter 'updates'"; correct: `{type:"updateNode", nodeName:"X", updates:{"parameters.field": value}}`
+- `addConnection` and `removeConnection` require flat format — `source`/`target` at top level, NOT nested in a `connection: {}` object; nested silently resolves to `undefined` → "Source node not found: undefined"
+- IF node connections: always use `branch:"true"` / `branch:"false"` instead of `sourceIndex` — `sourceIndex:0` puts ALL connections on the TRUE branch regardless of intent
+
 ## [notion] · Rule · 2000-char limit is per rich_text object, not per page
 > 2026-03-01 · source: ghost
 - Notion API rejects any single `rich_text` element exceeding 2000 characters — error: `body.children[0].paragraph.rich_text[0].text.content.length should be ≤ 2000`
 - AI-generated descriptions easily exceed this
 - Workarounds: truncate at 1997 chars (simple), or split into multiple paragraph blocks via HTTP Request node (preserves content); the n8n Notion node cannot handle dynamic block arrays
+
+## [notion] · Rule · Notion DB ID must come from the DB's own URL, not a parent page
+> 2026-03-10 · source: project-init-skill
+- Copying a DB ID from a parent page or linked view gives the wrong ID → 404 on every API call
+- Correct ID is the 32-char hex in the DB's own URL: `notion.so/<workspace>/<id>?v=...`
+- Dashes are optional — the API accepts both formats
+
+## [notion] · Rule · Notion integration must be connected directly to each target DB
+> 2026-03-10 · source: project-init-skill
+- An integration used in n8n for one DB still returns 404 on a different DB in the same workspace
+- Notion requires explicit per-DB connection: open DB → `...` → Connections → add integration
+- Don't assume workspace-level or parent-page access grants visibility to all DBs
