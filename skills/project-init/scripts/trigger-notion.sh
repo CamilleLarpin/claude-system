@@ -1,44 +1,73 @@
 #!/bin/bash
-# trigger-notion.sh — calls n8n webhook to create Notion page + tracker entry
-# Usage: bash trigger-notion.sh <slug> <name> <type> <pain-point>
-# Requires: N8N_WEBHOOK_INIT env var set in ~/.claude/session-env or .env
+# trigger-notion.sh — creates a page in the Notion project tracker DB
+# Usage: bash trigger-notion.sh <slug> <name> <type> <stack> <pain-point>
+# Requires: NOTION_API_KEY + NOTION_PROJECT_DB_ID in ~/.claude/session-env
 
 set -e
 
 SLUG=$1
 NAME=$2
 TYPE=$3
-PAIN_POINT=$4
-WEBHOOK_URL="${N8N_WEBHOOK_INIT}"
+STACK=$4
+PAIN_POINT=$5
+
+# ── Load credentials ──────────────────────────────────────
+if [ -f "$HOME/.claude/credentials" ]; then
+  source "$HOME/.claude/credentials"
+fi
 
 # ── Guards ────────────────────────────────────────────────
-if [ -z "$WEBHOOK_URL" ]; then
-  echo "⚠️  N8N_WEBHOOK_INIT not set — skipping Notion creation"
-  echo "   Set it in ~/.claude/session-env and re-run this script manually"
+if [ -z "$NOTION_API_KEY" ] || [ -z "$NOTION_PROJECT_DB_ID" ]; then
+  echo "⚠️  NOTION_API_KEY or NOTION_PROJECT_DB_ID not set — skipping Notion creation"
+  echo "   Set both in ~/.claude/session-env and re-run manually:"
+  echo "   bash trigger-notion.sh \"$SLUG\" \"$NAME\" \"$TYPE\" \"$STACK\" \"$PAIN_POINT\""
   exit 0
 fi
 
 if [ -z "$SLUG" ] || [ -z "$NAME" ]; then
   echo "❌ Error: slug and name are required"
-  echo "Usage: bash trigger-notion.sh <slug> <name> <type> <pain-point>"
+  echo "Usage: bash trigger-notion.sh <slug> <name> <type> <stack> <pain-point>"
   exit 1
 fi
 
-# ── Call webhook ──────────────────────────────────────────
-echo "🔗 Creating Notion page for $NAME..."
+# ── Build payload ─────────────────────────────────────────
+COMMENT="Type: ${TYPE} | Stack: ${STACK} | Pain point: ${PAIN_POINT}"
 
-RESPONSE=$(curl -s -X POST "$WEBHOOK_URL" \
+PAYLOAD=$(cat <<EOF
+{
+  "parent": { "database_id": "${NOTION_PROJECT_DB_ID}" },
+  "properties": {
+    "Nom": {
+      "title": [{ "text": { "content": "${NAME}" } }]
+    },
+    "Active": {
+      "checkbox": true
+    },
+    "Comments": {
+      "rich_text": [{ "text": { "content": "${COMMENT}" } }]
+    }
+  }
+}
+EOF
+)
+
+# ── Call Notion API ───────────────────────────────────────
+echo "🔗 Creating Notion page for ${NAME}..."
+
+RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
+  -H "Authorization: Bearer ${NOTION_API_KEY}" \
+  -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
-  -d "{
-    \"slug\": \"$SLUG\",
-    \"name\": \"$NAME\",
-    \"type\": \"$TYPE\",
-    \"pain_point\": \"$PAIN_POINT\",
-    \"status\": \"planning\",
-    \"initiated_at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
-  }")
+  -d "$PAYLOAD")
 
-# ── Output ────────────────────────────────────────────────
-echo "✅ Notion webhook called"
-echo "Response: $RESPONSE"
-# Claude: extract notion_url from response and add to CLAUDE.md Quick Reference
+# ── Extract page URL ──────────────────────────────────────
+NOTION_URL=$(echo "$RESPONSE" | grep -o '"url":"[^"]*"' | head -1 | sed 's/"url":"//;s/"//')
+
+if [ -z "$NOTION_URL" ]; then
+  echo "❌ Notion API call failed. Response:"
+  echo "$RESPONSE"
+  exit 1
+fi
+
+echo "✅ Notion page created: $NOTION_URL"
+# Claude: add NOTION_URL to CLAUDE.md Quick Reference of the new project

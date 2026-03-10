@@ -9,7 +9,7 @@ description: This skill should be used when the user wants to initialize, create
 ## Pre-flight Checks
 Before starting, verify:
 1. `~/.claude/templates/` contains all template files
-2. `N8N_WEBHOOK_INIT` env var is set (for Notion/tracker creation)
+2. `NOTION_API_KEY` + `NOTION_PROJECT_DB_ID` are set in `~/.claude/credentials` (Notion creation will skip gracefully if missing — not a blocker)
 3. Git is available: `git --version`
 4. Target path `~/projects/<slug>/` does not already exist
 
@@ -66,14 +66,29 @@ Using intake answers, populate each file:
 
 ---
 
-## Step 4 — Notion + Tracker (run script)
+## Step 4 — Notion + Tracker
 
+**4a — Create Notion page (run script)**
 ```bash
 bash ~/.claude/skills/project-init/scripts/trigger-notion.sh \
-  "<slug>" "<project-name>" "<type>" "<pain-point>"
+  "<slug>" "<project-name>" "<type>" "<stack>" "<pain-point>"
 ```
+Returns Notion page URL — add it to the new project's CLAUDE.md Quick Reference.
 
-Returns Notion page URL — add it to CLAUDE.md Quick Reference.
+**4b — Update PROJECT_TRACKER.md**
+Append a new entry to `~/.claude/PROJECT_TRACKER.md` under `## Projects`, using the standard format:
+```
+### <Project Name>
+- **Status**: ⚫ Scoping
+- **Stack**: <stack>
+- **Repo**: — (not yet created)
+- **Notion**: <url from 4a, or — if script skipped>
+- **n8n**: —
+- **Docs**: ~/projects/<slug>/.claude/
+- **Blocker**: none
+- **Next**: <first action from TODOS.md > Now>
+```
+Also update `**Last updated**` date at the top of the file.
 
 ---
 
@@ -94,7 +109,8 @@ Confirm to Camille:
 - ✅ All .claude/ files populated (not empty)
 - ✅ CLAUDE.md imports @~/.claude/CLAUDE.md
 - ✅ Git initialized, first commit done
-- ✅ Notion page URL: [url]
+- ✅ Notion page URL: [url or "skipped — credentials not set"]
+- ✅ PROJECT_TRACKER.md updated
 - 📋 Suggested first action: [from TODOS.md > Now]
 
 ---
