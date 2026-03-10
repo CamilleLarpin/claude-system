@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-04
+**Last updated**: 2026-03-10
 
 ---
 
@@ -14,6 +14,7 @@
 - **Status**: [emoji status]
 - **Stack**: [n8n · Claude · etc. or TBD]
 - **Repo**: [url or —]
+- **Notion**: [url or —]
 - **n8n**: [workflow IDs or —]
 - **Docs**: [~/projects/<slug>/.claude/ or none]
 - **Blocker**: [description or none]
@@ -28,6 +29,7 @@
 - **Status**: 🔵 Building
 - **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp
 - **Repo**: https://github.com/CamilleLarpin/audio-intelligence-pipeline
+- **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
 - **Blocker**: none
@@ -37,6 +39,7 @@
 - **Status**: 🟢 Running
 - **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · Notion
 - **Repo**: https://github.com/CamilleLarpin/ghost
+- **Notion**: —
 - **n8n**: EsMKQrNYifeGbraNshhDc
 - **Docs**: ~/projects/ghost/.claude/
 - **Blocker**: none
@@ -46,6 +49,7 @@
 - **Status**: 🟡 Testing
 - **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · GitHub · Google Docs
 - **Repo**: https://github.com/CamilleLarpin/biography
+- **Notion**: —
 - **n8n**: 4 workflows active (DDA) + 4 pending (MIC)
 - **Docs**: ~/projects/biography/.claude/
 - **Blocker**: none
@@ -53,17 +57,27 @@
 
 ### Family Content Manager
 - **Status**: 🔵 Building
-- **Stack**: TBD
-- **Repo**: —
+- **Stack**: n8n · Claude Vision · Nextcloud · Telegram
+- **Repo**: https://github.com/CamilleLarpin/family_content_manager
 - **n8n**: OtWARZS3cBAwql1Z, YOi6nFrvr4RRFub1
-- **Docs**: none
+- **Docs**: ~/projects/family_content_manager/.claude/
 - **Blocker**: none
-- **Next**: Read workflows → bootstrap .claude/ docs
+- **Next**: Test budget kill switch → test with Joffrey → Phase 3 Gmail archiving
+
+### Gmail Inbox Cleanup
+- **Status**: ⚫ Scoping
+- **Stack**: Gmail API · n8n or Python (TBD) — rule-based, no LLM
+- **Repo**: —
+- **n8n**: —
+- **Docs**: —
+- **Blocker**: none
+- **Next**: Init project → define blitz rules (age, sender patterns, unsubscribe header)
 
 ### AI Networking System
 - **Status**: 🔵 Building
 - **Stack**: n8n · Claude Sonnet · Notion API · Slack · Telegram · Google Workspace
 - **Repo**: https://github.com/CamilleLarpin/ai-networking-system
+- **Notion**: —
 - **n8n**: L9mXT4tovnOM2Xiz (Part A: Detect & Draft — built, pending test)
 - **Docs**: ~/projects/ai-networking-system/.claude/
 - **Blocker**: none
@@ -71,12 +85,13 @@
 
 ### project-init-skill
 - **Status**: 🔵 Building
-- **Stack**: Claude Code · bash · n8n · gh CLI · Notion
+- **Stack**: Claude Code · bash · Notion API · gh CLI
 - **Repo**: — (not yet created)
-- **n8n**: — (webhook workflow not yet built)
+- **Notion**: —
+- **n8n**: —
 - **Docs**: ~/projects/project-init-skill/.claude/
-- **Blocker**: n8n webhook workflow not built → blocks Notion integration
-- **Next**: Decide adapt existing n8n workflow vs. build new one
+- **Blocker**: none
+- **Next**: Add gh repo create to init-structure.sh → test full end-to-end flow
 
 ---
 
