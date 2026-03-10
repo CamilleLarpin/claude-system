@@ -1,10 +1,7 @@
 {
   "language": "english",
   "permissions": {
-    "defaultMode": "default",
-    "deny": [
-      "Bash(git commit*)"
-    ]
+    "defaultMode": "default"
   },
   "showThinkingSummaries": true,
   "statusLine": {

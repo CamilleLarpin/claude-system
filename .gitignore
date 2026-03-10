@@ -19,5 +19,8 @@ todos/
 telemetry/
 image-cache/
 
+# Claude Code usage reports — generated, not user-authored
+usage-data/
+
 # Temporary lock files
 *.lock
