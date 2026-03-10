@@ -24,3 +24,6 @@ usage-data/
 
 # Temporary lock files
 *.lock
+
+# Local secrets — never commit
+credentials
