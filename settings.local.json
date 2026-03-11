@@ -57,7 +57,13 @@
       "Bash(git -C ~/.claude status && git -C ~/.claude diff --stat)",
       "Bash(git -C ~/.claude add DECISIONS_GLOBAL.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\ndocs: add lesson type tag convention to DECISIONS_GLOBAL\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git -C ~/.claude log --oneline -5)",
-      "Bash(git --version && ls ~/projects/test-hello 2>/dev/null && echo \"EXISTS\" || echo \"OK - does not exist\")"
+      "Bash(git --version && ls ~/projects/test-hello 2>/dev/null && echo \"EXISTS\" || echo \"OK - does not exist\")",
+      "Bash(git --version && ls ~/projects/test-hello 2>/dev/null && echo \"EXISTS\" || echo \"OK_NOT_EXISTS\")",
+      "Bash(bash ~/.claude/skills/project-init/scripts/init-structure.sh test-hello)",
+      "Bash(mkdir -p ~/projects/test-hello/.claude && cp ~/.claude/templates/CLAUDE.template.md ~/projects/test-hello/CLAUDE.md && cp ~/.claude/templates/CONTEXT.template.md ~/projects/test-hello/.claude/CONTEXT.md && cp ~/.claude/templates/DECISIONS.template.md ~/projects/test-hello/.claude/DECISIONS.md && cp ~/.claude/templates/LESSONS.template.md ~/projects/test-hello/.claude/LESSONS.md && cp ~/.claude/templates/DESIGN.template.md ~/projects/test-hello/.claude/DESIGN.md && cp ~/.claude/templates/TODOS.template.md ~/projects/test-hello/.claude/TODOS.md && echo \"✅ Structure created\")",
+      "Bash(cd ~/projects/finances-ezerpin && gh repo create \"CamilleLarpin/finances-ezerpin\" --private --source=. --remote=origin --push 2>&1)",
+      "Bash(git -C ~/.claude diff settings.local.json)",
+      "Bash(git -C ~/.claude add lessons/LESSONS_ARCHITECTURE.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\ndocs: promote bash interactive read rule to LESSONS_ARCHITECTURE\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
