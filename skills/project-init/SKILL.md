@@ -21,12 +21,10 @@ If any check fails: stop and tell Camille what is missing before proceeding.
 
 Ask Camille for:
 - **Project name** (used as folder slug — lowercase, hyphens, no spaces)
-- **Type**: `n8n-workflow` | `data-pipeline` | `web-app` | `tool` | `research`
-- **Stack**: comma-separated tools (be specific — e.g. n8n, Claude Sonnet, BigQuery)
-- **Pain point**: 1 sentence — what friction does this solve and for whom
-- **Scope**: what is explicitly IN; what is explicitly OUT (prevents scope creep from day 1)
+- **Stack ideas** *(optional — rough ideas, e.g. "maybe Python + Claude"; leave blank for TBD)*
+- **Notion URL** *(optional — leave blank to create a new page)*
 
-Do not proceed until all 5 are answered.
+Do not proceed until project name is given. Stack and Notion URL are optional.
 
 ---
 
@@ -57,23 +55,25 @@ And runs `git init` + initial empty commit.
 
 Using intake answers, populate each file:
 
-**CLAUDE.md**: fill Purpose, Status=planning, Stack, Current Focus from pain point
-**CONTEXT.md**: fill Current State (= "Project initialized. Nothing built yet."), leave Architecture for later
-**DESIGN.md**: fill Problem Space from pain point, Scope from intake, leave Use Cases to be defined
-**DECISIONS.md**: leave empty (no decisions yet — don't invent them)
-**LESSONS.md**: leave empty (no lessons yet)
-**TODOS.md**: Now = first concrete action to take based on scope
+**CLAUDE.md**: fill Stack from intake (or "TBD"), Status=⚫ Scoping, leave Purpose and Current Focus blank
+**CONTEXT.md**: fill Current State (= "Project initialized. Nothing built yet."), leave rest for later
+**DESIGN.md**: leave all sections as TBD — do not invent pain point or scope
+**DECISIONS.md**: leave empty
+**LESSONS.md**: leave empty
+**TODOS.md**: Now = "Define pain point and scope in DESIGN.md"
 
 ---
 
 ## Step 4 — Notion + Tracker
 
-**4a — Create Notion page (run script)**
+**4a — Notion page**
+- If Camille provided a Notion URL in intake: use it directly — skip the script.
+- If blank: run the script to create a new page:
 ```bash
 bash ~/.claude/skills/project-init/scripts/trigger-notion.sh \
-  "<slug>" "<project-name>" "<type>" "<stack>" "<pain-point>"
+  "<slug>" "<project-name>" "<stack-or-TBD>"
 ```
-Returns Notion page URL — add it to the new project's CLAUDE.md Quick Reference.
+Add the Notion URL (provided or generated) to the new project's CLAUDE.md Quick Reference.
 
 **4b — Update PROJECT_TRACKER.md**
 Append a new entry to `~/.claude/PROJECT_TRACKER.md` under `## Projects`, using the standard format:
