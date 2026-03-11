@@ -9,7 +9,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - Model: Sonnet. Escalate to Opus for architecture or complex reasoning.
 - Git: English commits; `git pull --rebase` before push; Claude Code handles commits.
 - Storage: file-based (JSON/MD).
-- Security: read-only by default; no destructive bash without confirmation; secrets in n8n credentials or .env only.
+- Security: read-only by default; no destructive bash without confirmation; secrets in n8n credentials or .env only; identify all public interfaces (bots, webhooks, APIs) and add access controls.
 
 ### Content & docs
 - File maintenance: never delete — archive superseded decisions, split overlong lessons.
