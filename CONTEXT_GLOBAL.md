@@ -38,3 +38,4 @@
 - Every project CLAUDE.md imports `@~/.claude/CLAUDE.md`
 - Project registry: `~/.claude/PROJECT_TRACKER.md`
 - Project decisions: archive when superseded → DECISIONS_ARCHIVE.md. Never delete LESSONS entries.
+- Archive done project: move entry to `## Archive` in PROJECT_TRACKER.md + folder to `~/projects/archived/<slug>/`
