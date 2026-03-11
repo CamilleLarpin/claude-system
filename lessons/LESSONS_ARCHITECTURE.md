@@ -39,6 +39,12 @@
 - If direnv is active and sets a var (e.g. `ANTHROPIC_API_KEY`) via `.envrc`, `load_dotenv()` silently skips it — shell env wins; `.env` looks correct but the wrong value is used at runtime
 - To let `.env` win: use `load_dotenv(override=True)`; to debug: `echo $VAR_NAME` before running the script
 
+## [bash] · Rule · Scripts called from Claude Code or CI must not use interactive `read` prompts
+> 2026-03-11 · source: project-init-skill
+- `read -p "..."` fails with exit code 1 when stdin has no TTY (Claude Code tool calls, CI pipelines, `bash script.sh` piped) — `set -e` then aborts the script silently
+- Anything after the `read` never runs; failures are hard to diagnose without knowing the TTY constraint
+- Accept all inputs as positional CLI arguments (`$1`, `$2`, etc.) with sensible defaults; reserve `read` for scripts explicitly documented as interactive-only
+
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
