@@ -78,10 +78,10 @@
 - **Stack**: n8n · Claude Sonnet · Notion API · Slack · Telegram · Google Workspace
 - **Repo**: https://github.com/CamilleLarpin/ai-networking-system
 - **Notion**: —
-- **n8n**: L9mXT4tovnOM2Xiz (Part A: Detect & Draft — built, pending test)
+- **n8n**: L9mXT4tovnOM2Xiz (Part A ✅), CW7WSVtKPFaczTiw (Part B — DM sends but from bot, not user profile)
 - **Docs**: ~/projects/ai-networking-system/.claude/
-- **Blocker**: none
-- **Next**: Configure Part A (Slack user ID + Telegram chat ID + Slack Workflow Builder) → test → build Part B (Send on approval)
+- **Blocker**: `chat.postMessage` sends as bot not as Camille — `as_user: true` ineffective with current token
+- **Next**: Debug token type (`auth.test`) → fix sender identity → set up Slack Workflow Builder → test on real RandomCoffee message
 
 ### Finances Ezerpin
 - **Status**: 🟠 Paused
