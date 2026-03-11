@@ -60,5 +60,17 @@ git init -q
 git add -A
 git commit -q -m "chore: scaffold — empty project structure"
 
+# ── GitHub repo ───────────────────────────────────────────
+read -r -p "🔒 GitHub repo visibility: public or private? [private] " VISIBILITY
+VISIBILITY=${VISIBILITY:-private}
+if [ "$VISIBILITY" != "public" ] && [ "$VISIBILITY" != "private" ]; then
+  echo "❌ Invalid visibility: $VISIBILITY (must be 'public' or 'private')"
+  exit 1
+fi
+
+echo "🐙 Creating GitHub repo CamilleLarpin/$SLUG ($VISIBILITY)..."
+gh repo create "CamilleLarpin/$SLUG" --"$VISIBILITY" --source=. --remote=origin --push -q
+
 echo "✅ Done: $PROJECT_DIR"
+echo "   GitHub: https://github.com/CamilleLarpin/$SLUG"
 echo "📋 Next: Claude fills content, then runs trigger-notion.sh"
