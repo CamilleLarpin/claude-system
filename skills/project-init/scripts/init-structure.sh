@@ -69,7 +69,7 @@ if [ "$VISIBILITY" != "public" ] && [ "$VISIBILITY" != "private" ]; then
 fi
 
 echo "🐙 Creating GitHub repo CamilleLarpin/$SLUG ($VISIBILITY)..."
-gh repo create "CamilleLarpin/$SLUG" --"$VISIBILITY" --source=. --remote=origin --push -q
+gh repo create "CamilleLarpin/$SLUG" --"$VISIBILITY" --source=. --remote=origin --push
 
 echo "✅ Done: $PROJECT_DIR"
 echo "   GitHub: https://github.com/CamilleLarpin/$SLUG"
