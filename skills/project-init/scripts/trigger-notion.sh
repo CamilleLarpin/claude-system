@@ -1,15 +1,13 @@
 #!/bin/bash
 # trigger-notion.sh — creates a page in the Notion project tracker DB
-# Usage: bash trigger-notion.sh <slug> <name> <type> <stack> <pain-point>
-# Requires: NOTION_API_KEY + NOTION_PROJECT_DB_ID in ~/.claude/session-env
+# Usage: bash trigger-notion.sh <slug> <name> <stack>
+# Requires: NOTION_API_KEY + NOTION_PROJECT_DB_ID in ~/.claude/credentials
 
 set -e
 
 SLUG=$1
 NAME=$2
-TYPE=$3
-STACK=$4
-PAIN_POINT=$5
+STACK=$3
 
 # ── Load credentials ──────────────────────────────────────
 if [ -f "$HOME/.claude/credentials" ]; then
@@ -19,19 +17,19 @@ fi
 # ── Guards ────────────────────────────────────────────────
 if [ -z "$NOTION_API_KEY" ] || [ -z "$NOTION_PROJECT_DB_ID" ]; then
   echo "⚠️  NOTION_API_KEY or NOTION_PROJECT_DB_ID not set — skipping Notion creation"
-  echo "   Set both in ~/.claude/session-env and re-run manually:"
-  echo "   bash trigger-notion.sh \"$SLUG\" \"$NAME\" \"$TYPE\" \"$STACK\" \"$PAIN_POINT\""
+  echo "   Set both in ~/.claude/credentials and re-run manually:"
+  echo "   bash trigger-notion.sh \"$SLUG\" \"$NAME\" \"$STACK\""
   exit 0
 fi
 
 if [ -z "$SLUG" ] || [ -z "$NAME" ]; then
   echo "❌ Error: slug and name are required"
-  echo "Usage: bash trigger-notion.sh <slug> <name> <type> <stack> <pain-point>"
+  echo "Usage: bash trigger-notion.sh <slug> <name> <stack>"
   exit 1
 fi
 
 # ── Build payload ─────────────────────────────────────────
-COMMENT="Type: ${TYPE} | Stack: ${STACK} | Pain point: ${PAIN_POINT}"
+COMMENT="${STACK:-TBD}"
 
 PAYLOAD=$(cat <<EOF
 {
