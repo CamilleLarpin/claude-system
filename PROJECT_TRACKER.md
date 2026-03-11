@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-10
+**Last updated**: 2026-03-11
 
 ---
 
@@ -83,6 +83,16 @@
 - **Blocker**: none
 - **Next**: Configure Part A (Slack user ID + Telegram chat ID + Slack Workflow Builder) → test → build Part B (Send on approval)
 
+### Finances Ezerpin
+- **Status**: ⚫ Scoping
+- **Stack**: Python · dlt · DuckDB · dbt-duckdb · Claude Haiku · nao (TBD) · Evidence.dev (fallback) · cron + Makefile
+- **Repo**: https://github.com/CamilleLarpin/finances-ezerpin
+- **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
+- **n8n**: —
+- **Docs**: ~/projects/finances-ezerpin/.claude/
+- **Blocker**: none
+- **Next**: Share Gsheet category screenshots (2024) → finalize dbt schema → resolve D7, D9
+
 ### project-init-skill
 - **Status**: 🔵 Building
 - **Stack**: Claude Code · bash · Notion API · gh CLI
@@ -108,3 +118,8 @@
 - 🔴 Blocked — can't progress, waiting on something external
 - 🟠 Paused — real project, deliberately on hold
 - ⚫ Scoping — new, purpose/scope not yet defined
+- ✅ Done — completed, no active development (see Archive section)
+
+---
+
+## Archive
