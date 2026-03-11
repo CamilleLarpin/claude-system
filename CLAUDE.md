@@ -35,7 +35,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 ## Project Files
 Every project has in .claude/: CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
 All .claude/ files: project-specific only. Never duplicate global directives.
-Decisions: archive when superseded → DECISIONS_ARCHIVE.md. Lessons: never delete — split into category files at 150 lines.
+Decisions: archive when superseded → DECISIONS_ARCHIVE.md. Lessons: split by load context at 150 lines — one file = one reason Claude loads it.
 
 ## End of session
 Run `/end-of-session` — then `/commit-push` — then `/clear`.

@@ -13,6 +13,7 @@
 - @~/.claude/lessons/LESSONS_CLAUDE.md — skills authoring, Claude behavior
 - @~/.claude/lessons/LESSONS_ARCHITECTURE.md — git, ai-agents, architecture, integrations
 
+
 ---
 
 ## Format (for all category files)
@@ -33,5 +34,5 @@
 Promote to global only if Rule or Guideline — Notes stay in project files.
 
 ## Thresholds
-- Each category file splits at 150 lines → create a sub-file, e.g. `LESSONS_N8N_2.md`
+- Each category file splits at 150 lines → split by load context, not by sequence. Name the new file to reflect when it's loaded (e.g. `LESSONS_N8N_CREDENTIALS.md`), never `LESSONS_N8N_2.md`.
 - Add new categories as needed — update this index when you do
