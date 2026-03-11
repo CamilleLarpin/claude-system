@@ -23,6 +23,7 @@ Ask Camille for:
 - **Project name** (used as folder slug — lowercase, hyphens, no spaces)
 - **Stack ideas** *(optional — rough ideas, e.g. "maybe Python + Claude"; leave blank for TBD)*
 - **Notion URL** *(optional — leave blank to create a new page)*
+- **GitHub visibility** *(optional — `public` or `private`; default: `private`)*
 
 Do not proceed until project name is given. Stack and Notion URL are optional.
 
@@ -31,7 +32,7 @@ Do not proceed until project name is given. Stack and Notion URL are optional.
 ## Step 2 — Structure (run script)
 
 ```bash
-bash ~/.claude/skills/project-init/scripts/init-structure.sh <project-slug>
+bash ~/.claude/skills/project-init/scripts/init-structure.sh <project-slug> <visibility>
 ```
 
 This creates:

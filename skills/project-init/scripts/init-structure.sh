@@ -1,7 +1,7 @@
 #!/bin/bash
 # init-structure.sh — creates project folder structure from templates
-# Usage: bash init-structure.sh <project-slug>
-# Example: bash init-structure.sh biography-agent
+# Usage: bash init-structure.sh <project-slug> [public|private]
+# Example: bash init-structure.sh biography-agent private
 
 set -e
 
@@ -61,8 +61,7 @@ git add -A
 git commit -q -m "chore: scaffold — empty project structure"
 
 # ── GitHub repo ───────────────────────────────────────────
-read -r -p "🔒 GitHub repo visibility: public or private? [private] " VISIBILITY
-VISIBILITY=${VISIBILITY:-private}
+VISIBILITY=${2:-private}
 if [ "$VISIBILITY" != "public" ] && [ "$VISIBILITY" != "private" ]; then
   echo "❌ Invalid visibility: $VISIBILITY (must be 'public' or 'private')"
   exit 1
