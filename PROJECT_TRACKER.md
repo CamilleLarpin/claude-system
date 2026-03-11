@@ -84,14 +84,14 @@
 - **Next**: Configure Part A (Slack user ID + Telegram chat ID + Slack Workflow Builder) → test → build Part B (Send on approval)
 
 ### Finances Ezerpin
-- **Status**: ⚫ Scoping
+- **Status**: 🟠 Paused
 - **Stack**: Python · dlt · DuckDB · dbt-duckdb · Claude Haiku · nao (TBD) · Evidence.dev (fallback) · cron + Makefile
 - **Repo**: https://github.com/CamilleLarpin/finances-ezerpin
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Blocker**: none
-- **Next**: Share Gsheet category screenshots (2024) → finalize dbt schema → resolve D7, D9
+- **Blocker**: waiting for Jo's feedback on UI/interface needs + category validation
+- **Next**: Resume once Jo responds → validate categories → export 2024 CSV history
 
 ### project-init-skill
 - **Status**: 🔵 Building
