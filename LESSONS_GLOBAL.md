@@ -9,6 +9,7 @@
 ## Category files
 
 - @~/.claude/lessons/LESSONS_N8N.md — n8n, Slack, Notion gotchas
+- @~/.claude/lessons/LESSONS_N8N_2.md — n8n, Telegram (continued)
 - @~/.claude/lessons/LESSONS_CLAUDE.md — skills authoring, Claude behavior
 - @~/.claude/lessons/LESSONS_ARCHITECTURE.md — git, ai-agents, architecture, integrations
 
