@@ -93,6 +93,16 @@
 - **Blocker**: waiting for Jo's feedback on UI/interface needs + category validation
 - **Next**: Resume once Jo responds → validate categories → export 2024 CSV history
 
+### claude-one-digest
+- **Status**: 🔵 Building
+- **Stack**: Python · Groq (llama-3.1-8b-instant / llama-3.3-70b-versatile)
+- **Repo**: https://github.com/CamilleLarpin/claude-one-digest
+- **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
+- **n8n**: —
+- **Docs**: ~/projects/claude-one-digest/.claude/
+- **Blocker**: none
+- **Next**: Build digest module — group sessions by project, call Groq API, render Markdown to stdout + data/digests/
+
 ### project-init-skill
 - **Status**: 🔵 Building
 - **Stack**: Claude Code · bash · Notion API · gh CLI
