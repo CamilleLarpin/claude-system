@@ -1,7 +1,7 @@
 # Lessons — architecture & integrations
 
 > Scope: git, ai-agents, system architecture, third-party integrations.
-> NEVER delete entries. Split into sub-files at 150 lines.
+> Split into sub-files at 150 lines.
 
 ---
 

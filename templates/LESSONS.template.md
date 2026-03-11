@@ -2,8 +2,7 @@
 
 > CONTAINS: mistakes made, patterns discovered, gotchas specific to this project.
 > NOT HERE: decisions with rationale (→ DECISIONS.md), general cross-project patterns (→ LESSONS_GLOBAL.md).
-> NEVER delete entries.
-> Split into category files at 150 lines.
+> Split by load context at 150 lines — one file = one reason Claude loads it.
 > When a lesson applies beyond this project: flag with `→ PROMOTE: LESSONS_GLOBAL.md — [reason]` (only if Rule or Guideline)
 > Load tier: cool
 

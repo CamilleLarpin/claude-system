@@ -1,7 +1,7 @@
 # Lessons — Claude & skills
 
 > Scope: Claude behavior, skills authoring, Claude Code usage.
-> NEVER delete entries. Split into sub-files at 150 lines.
+> Split into sub-files at 150 lines.
 
 ---
 

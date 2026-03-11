@@ -1,7 +1,7 @@
 # Lessons — n8n ecosystem (continued)
 
 > Scope: n8n, Slack, Notion gotchas.
-> NEVER delete entries. Split into sub-files at 150 lines.
+> Split into sub-files at 150 lines.
 > Continued from LESSONS_N8N.md.
 
 ---
