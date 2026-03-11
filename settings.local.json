@@ -63,7 +63,9 @@
       "Bash(mkdir -p ~/projects/test-hello/.claude && cp ~/.claude/templates/CLAUDE.template.md ~/projects/test-hello/CLAUDE.md && cp ~/.claude/templates/CONTEXT.template.md ~/projects/test-hello/.claude/CONTEXT.md && cp ~/.claude/templates/DECISIONS.template.md ~/projects/test-hello/.claude/DECISIONS.md && cp ~/.claude/templates/LESSONS.template.md ~/projects/test-hello/.claude/LESSONS.md && cp ~/.claude/templates/DESIGN.template.md ~/projects/test-hello/.claude/DESIGN.md && cp ~/.claude/templates/TODOS.template.md ~/projects/test-hello/.claude/TODOS.md && echo \"✅ Structure created\")",
       "Bash(cd ~/projects/finances-ezerpin && gh repo create \"CamilleLarpin/finances-ezerpin\" --private --source=. --remote=origin --push 2>&1)",
       "Bash(git -C ~/.claude diff settings.local.json)",
-      "Bash(git -C ~/.claude add lessons/LESSONS_ARCHITECTURE.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\ndocs: promote bash interactive read rule to LESSONS_ARCHITECTURE\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git -C ~/.claude add lessons/LESSONS_ARCHITECTURE.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\ndocs: promote bash interactive read rule to LESSONS_ARCHITECTURE\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C ~/.claude pull --rebase && git -C ~/.claude push && echo \"✅ ~/.claude pushed\")",
+      "Bash(git -C ~/.claude stash && git -C ~/.claude pull --rebase && git -C ~/.claude push && git -C ~/.claude stash pop && echo \"✅ ~/.claude pushed\")"
     ]
   }
 }
