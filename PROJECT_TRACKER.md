@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-11
+**Last updated**: 2026-03-12
 
 ---
 
@@ -27,13 +27,13 @@
 
 ### Audio Intelligence Pipeline
 - **Status**: 🔵 Building
-- **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp
+- **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp · MLflow
 - **Repo**: https://github.com/CamilleLarpin/audio-intelligence-pipeline
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
 - **Blocker**: none
-- **Next**: Add --summarize flag to CLI (Phase 2)
+- **Next**: Switch MLflow to SQLite backend → add judge.py (Phase 3b)
 
 ### Ghost
 - **Status**: 🟢 Running
@@ -103,16 +103,6 @@
 - **Blocker**: none
 - **Next**: Build digest module — group sessions by project, call Groq API, render Markdown to stdout + data/digests/
 
-### project-init-skill
-- **Status**: 🔵 Building
-- **Stack**: Claude Code · bash · Notion API · gh CLI
-- **Repo**: — (not yet created)
-- **Notion**: —
-- **n8n**: —
-- **Docs**: ~/projects/project-init-skill/.claude/
-- **Blocker**: none
-- **Next**: Add gh repo create to init-structure.sh → test full end-to-end flow
-
 ---
 
 ## Cross-Project Notes
@@ -133,3 +123,10 @@
 ---
 
 ## Archive
+
+### project-init-skill
+- **Status**: ✅ Done
+- **Stack**: Claude Code · bash · Notion API · gh CLI
+- **Repo**: —
+- **Docs**: ~/projects/archived/project-init-skill/.claude/
+- **Completed**: 2026-03-11 — skill fully built, TTY fix confirmed, end-to-end test passed
