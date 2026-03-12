@@ -8,8 +8,11 @@
 
 ## Category files
 
-- @~/.claude/lessons/LESSONS_N8N.md — n8n, Slack, Notion gotchas
-- @~/.claude/lessons/LESSONS_N8N_2.md — n8n, Telegram (continued)
+- @~/.claude/lessons/LESSONS_N8N_RUNTIME.md — n8n node behavior, expressions, runtime gotchas
+- @~/.claude/lessons/LESSONS_N8N_MCP.md — n8n-mcp tool usage: updateNode, addNode, addConnection
+- @~/.claude/lessons/LESSONS_SLACK.md — Slack integration
+- @~/.claude/lessons/LESSONS_TELEGRAM.md — Telegram integration
+- @~/.claude/lessons/LESSONS_NOTION.md — Notion integration
 - @~/.claude/lessons/LESSONS_CLAUDE.md — skills authoring, Claude behavior
 - @~/.claude/lessons/LESSONS_ARCHITECTURE.md — git, ai-agents, architecture, integrations
 
