@@ -28,14 +28,14 @@
 
 ### Audio Intelligence Pipeline
 - **Status**: 🔵 Building
-- **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp · MLflow
+- **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp · MLflow · Prefect
 - **Repo**: https://github.com/CamilleLarpin/audio-intelligence-pipeline
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
-- **Milestone**: Phase 3b — MLflow eval framework integration
+- **Milestone**: FastAPI MVP (needed tomorrow) → Phase 3b MLflow eval → Phase 3c Prefect
 - **Blocker**: none
-- **Next**: Refactor judge.py + mlflow_tracking.py to use mlflow.evaluate() + Judges registry; add --judge-model flag (Groq/llama-3.3-70b-versatile)
+- **Next**: Build FastAPI MVP — POST /summarize, API key auth, wire to analyze_transcript()
 
 ### Ghost
 - **Status**: 🟢 Running
