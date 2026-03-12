@@ -90,15 +90,15 @@
 - **Next**: Production test Monday (real RandomCoffee pairing) → Slack Workflow Builder trigger → P0 Notion CRM
 
 ### Finances Ezerpin
-- **Status**: 🟠 Paused
-- **Stack**: Python · dlt · DuckDB · dbt-duckdb · Claude Haiku · nao (TBD) · Evidence.dev (fallback) · cron + Makefile
+- **Status**: 🔵 Building
+- **Stack**: Python · dlt · DuckDB · dbt-duckdb · Claude Haiku · nao · Evidence.dev (fallback) · cron + Makefile
 - **Repo**: https://github.com/CamilleLarpin/finances-ezerpin
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Milestone**: —
-- **Blocker**: waiting for Jo's feedback on UI/interface needs + category validation
-- **Next**: Resume once Jo responds → validate categories → export 2024 CSV history
+- **Milestone**: Phase 0 — Foundation complete
+- **Blocker**: need Gsheet categories screenshot from Jo to finalize dim_categories schema
+- **Next**: Validate categories (Gsheet screenshot) → export 2024 CSVs → setup DuckDB + dbt-duckdb
 
 ### claude-one-digest
 - **Status**: 🔵 Building
