@@ -83,6 +83,12 @@
 - **Date**: 2026-03-03
 - **Status**: active
 
+## [ai-agents] Route evaluation tasks to cheap/fast models, generation to capable models
+- **Decision**: use Groq `llama-3.3-70b-versatile` (or equivalent) for structured evaluation tasks (judging, scoring, classification); reserve Claude Sonnet/Opus for generation tasks requiring long context or high output quality
+- **Rationale**: evaluation tasks are short, structured, run repeatedly — cost compounds; Llama 3.3 70B on Groq is fast, cheap, and reliable for JSON scoring; generation tasks (long-context summarization, biography) need Claude's context window and reasoning quality
+- **Date**: 2026-03-12
+- **Status**: active
+
 ## [ai-agents] User label as inclusion rule for archiving pipelines
 - **Decision**: when building an AI archiving pipeline, the human decides what's worth archiving (via a label, tag, or explicit action) — the AI only executes the filing logic, never the inclusion judgment
 - **Rationale**: "what's worth keeping" is a personal, context-dependent judgment that AI gets wrong at the margins; user labeling is zero-cost (one tap), eliminates false positives entirely, and keeps the pipeline simple and reliable; alternatives considered: AI decides based on content (too many edge cases, trust issues), explicit allowlist by sender/type (brittle, high maintenance)

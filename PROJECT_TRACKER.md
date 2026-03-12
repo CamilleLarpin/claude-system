@@ -33,9 +33,9 @@
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
-- **Milestone**: Phase 3b — LLM-as-a-judge scoring
+- **Milestone**: Phase 3b — MLflow eval framework integration
 - **Blocker**: none
-- **Next**: Switch MLflow to SQLite backend → add judge.py (Phase 3b)
+- **Next**: Refactor judge.py + mlflow_tracking.py to use mlflow.evaluate() + Judges registry; add --judge-model flag (Groq/llama-3.3-70b-versatile)
 
 ### Ghost
 - **Status**: 🟢 Running
