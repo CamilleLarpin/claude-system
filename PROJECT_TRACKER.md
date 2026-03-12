@@ -17,8 +17,9 @@
 - **Notion**: [url or —]
 - **n8n**: [workflow IDs or —]
 - **Docs**: [~/projects/<slug>/.claude/ or none]
+- **Milestone**: [current milestone being worked toward]
 - **Blocker**: [description or none]
-- **Next**: [next milestone]
+- **Next**: [immediate next action]
 ```
 
 ---
@@ -32,6 +33,7 @@
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
+- **Milestone**: Phase 3b — LLM-as-a-judge scoring
 - **Blocker**: none
 - **Next**: Switch MLflow to SQLite backend → add judge.py (Phase 3b)
 
@@ -42,6 +44,7 @@
 - **Notion**: —
 - **n8n**: EsMKQrNYifeGbraNshhDc
 - **Docs**: ~/projects/ghost/.claude/
+- **Milestone**: —
 - **Blocker**: none
 - **Next**: Fix photo resolution bug, review classification quality
 
@@ -52,6 +55,7 @@
 - **Notion**: —
 - **n8n**: 4 workflows active (DDA) + 4 pending (MIC)
 - **Docs**: ~/projects/biography/.claude/
+- **Milestone**: DDA end-to-end test — Google Docs credential + full flow validation
 - **Blocker**: none
 - **Next**: Google Docs credential config → DDA end-to-end test; MIC rollout (duplicate workflows, add allowlists)
 
@@ -61,6 +65,7 @@
 - **Repo**: https://github.com/CamilleLarpin/family_content_manager
 - **n8n**: OtWARZS3cBAwql1Z, YOi6nFrvr4RRFub1
 - **Docs**: ~/projects/family_content_manager/.claude/
+- **Milestone**: P1 Stability — validate budget kill switch → user test with Joffrey
 - **Blocker**: none
 - **Next**: Test budget kill switch → test with Joffrey → Phase 3 Gmail archiving
 
@@ -70,6 +75,7 @@
 - **Repo**: —
 - **n8n**: —
 - **Docs**: —
+- **Milestone**: —
 - **Blocker**: none
 - **Next**: Init project → define blitz rules (age, sender patterns, unsubscribe header)
 
@@ -80,6 +86,7 @@
 - **Notion**: —
 - **n8n**: L9mXT4tovnOM2Xiz (Part A ✅), CW7WSVtKPFaczTiw (Part B — DM sends but from bot, not user profile)
 - **Docs**: ~/projects/ai-networking-system/.claude/
+- **Milestone**: RandomCoffee flow live — fix sender identity → real end-to-end test
 - **Blocker**: `chat.postMessage` sends as bot not as Camille — `as_user: true` ineffective with current token
 - **Next**: Debug token type (`auth.test`) → fix sender identity → set up Slack Workflow Builder → test on real RandomCoffee message
 
@@ -90,6 +97,7 @@
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
+- **Milestone**: —
 - **Blocker**: waiting for Jo's feedback on UI/interface needs + category validation
 - **Next**: Resume once Jo responds → validate categories → export 2024 CSV history
 
@@ -100,6 +108,7 @@
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
+- **Milestone**: Build digest module — first working output to stdout
 - **Blocker**: none
 - **Next**: Build digest module — group sessions by project, call Groq API, render Markdown to stdout + data/digests/
 
