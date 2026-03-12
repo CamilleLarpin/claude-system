@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-12
+**Last updated**: 2026-03-12 (evening)
 
 ---
 
@@ -84,11 +84,10 @@
 - **Stack**: n8n · Claude Sonnet · Notion API · Slack · Telegram · Google Workspace
 - **Repo**: https://github.com/CamilleLarpin/ai-networking-system
 - **Notion**: —
-- **n8n**: L9mXT4tovnOM2Xiz (Part A ✅), CW7WSVtKPFaczTiw (Part B — DM sends but from bot, not user profile)
+- **n8n**: L9mXT4tovnOM2Xiz (Part A ✅), CW7WSVtKPFaczTiw (Part B ✅ — DM from Camille's personal profile confirmed)
 - **Docs**: ~/projects/ai-networking-system/.claude/
-- **Milestone**: RandomCoffee flow live — fix sender identity → real end-to-end test
-- **Blocker**: `chat.postMessage` sends as bot not as Camille — `as_user: true` ineffective with current token
-- **Next**: Debug token type (`auth.test`) → fix sender identity → set up Slack Workflow Builder → test on real RandomCoffee message
+- **Blocker**: none
+- **Next**: Production test Monday (real RandomCoffee pairing) → Slack Workflow Builder trigger → P0 Notion CRM
 
 ### Finances Ezerpin
 - **Status**: 🟠 Paused
