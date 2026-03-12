@@ -18,6 +18,6 @@ Work through each step in order. Perform the action, don't just list it.
 
 **6. Global context** — if philosophy, stack, or architecture changed, update `~/.claude/CONTEXT_GLOBAL.md`.
 
-**7. Status / load tier** — if project status or any file's load tier changed, update `~/.claude/PROJECT_TRACKER.md` and relevant file headers.
+**7. PROJECT_TRACKER.md** — for the project(s) worked on this session, update Status, Milestone, Next, Blocker if changed; update Load tier on any `.claude/` file header if changed.
 
 **8. Output** — one-line summary of what was updated. Then: "Run `/commit-push` → `/clear`."
