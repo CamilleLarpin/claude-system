@@ -33,9 +33,9 @@
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
-- **Milestone**: FastAPI MVP (needed tomorrow) → Phase 3b MLflow eval → Phase 3c Prefect
+- **Milestone**: Deploy on Hetzner → Phase 3b MLflow eval → Phase 3c Prefect
 - **Blocker**: none
-- **Next**: Build FastAPI MVP — POST /summarize, API key auth, wire to analyze_transcript()
+- **Next**: Resume Hetzner deployment — create .env on server, docker build, open firewall port
 
 ### Ghost
 - **Status**: 🟢 Running
@@ -102,14 +102,14 @@
 
 ### claude-one-digest
 - **Status**: 🔵 Building
-- **Stack**: Python · Groq (llama-3.1-8b-instant / llama-3.3-70b-versatile)
+- **Stack**: Python · Groq (llama-3.1-8b-instant)
 - **Repo**: https://github.com/CamilleLarpin/claude-one-digest
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
-- **Milestone**: Build digest module — first working output to stdout
+- **Milestone**: Prompt quality — evaluate digest output on real sessions
 - **Blocker**: none
-- **Next**: Build digest module — group sessions by project, call Groq API, render Markdown to stdout + data/digests/
+- **Next**: Run `--date 2026-03-11` to evaluate yesterday; compare 8b vs 70b quality when quota resets
 
 ---
 
