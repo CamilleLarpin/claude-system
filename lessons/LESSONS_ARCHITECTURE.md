@@ -45,6 +45,29 @@
 - Anything after the `read` never runs; failures are hard to diagnose without knowing the TTY constraint
 - Accept all inputs as positional CLI arguments (`$1`, `$2`, etc.) with sensible defaults; reserve `read` for scripts explicitly documented as interactive-only
 
+## [llm] · Rule · Groq free tier limits are per-model and separate — 70b exhausts fast
+> 2026-03-12 · source: claude-one-digest
+- `llama-3.3-70b-versatile`: 6000 TPM + 100k TPD — exhausted in one heavy dev session
+- `llama-3.1-8b-instant`: 6000 TPM + separate (larger) daily quota
+- Use 8b-instant as daily driver for any repeated task; reserve 70b for occasional spot-checks only
+
+## [llm] · Guideline · Chunk by character count, not word count, when targeting token limits
+> 2026-03-12 · source: claude-one-digest
+- Word count underestimates tokens by 1.3–1.5x; a 6000-word chunk easily exceeds a 6000-token limit
+- Prompt template overhead (~300 tokens) must also be budgeted
+- Use char-based chunking: `CHUNK_CHAR_LIMIT = 10_000` chars ≈ 2500 tokens — leaves headroom for prompt
+
+## [github] · Rule · Fine-grained PATs require explicit repository + Contents permission
+> 2026-03-12 · source: audio-intelligence-pipeline
+- `github_pat_` tokens return 403 on `git clone` unless the token explicitly grants access to that specific repo with Contents: Read-only
+- Classic `ghp_` tokens with `repo` scope work without per-repo config
+- After creating a fine-grained PAT: Settings → token → Edit → Repository access → select repo → Permissions → Contents: Read-only
+
+## [docker] · Rule · Use `--host 0.0.0.0` when running Uvicorn inside Docker
+> 2026-03-12 · source: audio-intelligence-pipeline
+- Default `--host 127.0.0.1` binds only inside the container — port mapping (`-p 8000:8000`) has no effect
+- Always set `--host 0.0.0.0` in the Dockerfile CMD for any containerised FastAPI/Uvicorn app
+
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
