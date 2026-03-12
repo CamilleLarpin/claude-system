@@ -28,6 +28,12 @@
 - If a template or format standard exists, ask the user to confirm it before proceeding
 - When you need a template: stop, ask, then act
 
+## [claude-api] · Rule · Strip ```json code fences before json.loads()
+> 2026-03-12 · source: audio-intelligence-pipeline
+- Claude wraps JSON in ` ```json ... ``` ` even when the prompt explicitly says "return ONLY a JSON object — no other text"; `json.loads()` then fails with `JSONDecodeError: Expecting value`
+- Silent in logs — the error points at `json.loads`, not at Claude's output format
+- Fix: always strip code fences before parsing: check `if raw.startswith("```")`, split on "```", strip the `json` language tag, then call `json.loads(raw.strip())`
+
 ## [claude-behavior] · Rule · Execution gate — plan before any multi-step or external-system task
 > 2026-03-09 · source: biography (recurring failure)
 - Pattern: Claude jumps into execution on complex tasks the moment it has enough context to act — skipping the plan→validate step entirely
