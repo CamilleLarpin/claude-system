@@ -11,7 +11,11 @@ Claude maintains this file but never loads it.
 ├── DECISIONS_GLOBAL_ARCHIVE.md
 ├── LESSONS_GLOBAL.md          ← index only, points to lessons/
 ├── lessons/                   ← category files (split at 150 lines each)
-│   ├── LESSONS_N8N.md
+│   ├── LESSONS_N8N_RUNTIME.md
+│   ├── LESSONS_N8N_MCP.md
+│   ├── LESSONS_SLACK.md
+│   ├── LESSONS_TELEGRAM.md
+│   ├── LESSONS_NOTION.md
 │   ├── LESSONS_CLAUDE.md
 │   └── LESSONS_ARCHITECTURE.md
 ├── PROJECT_TRACKER.md
