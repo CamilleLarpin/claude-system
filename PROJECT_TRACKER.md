@@ -71,14 +71,14 @@
 
 ### Gmail Inbox Cleanup
 - **Status**: ⚫ Scoping
-- **Stack**: Gmail API · Python · n8n or Gmail filters (TBD) · rule-based, no LLM
+- **Stack**: Gmail API · LLM classifier · OpenClaw or n8n (TBD) · Nextcloud (Phase 2)
 - **Repo**: https://github.com/CamilleLarpin/gmail-inbox-cleanup
 - **Notion**: https://www.notion.so/TBC-Inbox-cleaning-and-archival-assistant-2e3fef9576f180ff97fdfff26d92c986
 - **n8n**: —
 - **Docs**: ~/projects/gmail-inbox-cleanup/.claude/
-- **Milestone**: —
+- **Milestone**: Design aligned — stack decision + Gmail API setup next
 - **Blocker**: none
-- **Next**: Confirm Gmail API OAuth credentials in GCP → run Python audit script
+- **Next**: Evaluate OpenClaw vs n8n → set up Gmail API OAuth in GCP
 
 ### AI Networking System
 - **Status**: 🔵 Building
@@ -97,9 +97,9 @@
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Milestone**: Phase 0 — Foundation complete
-- **Blocker**: need Gsheet categories screenshot from Jo to finalize dim_categories schema
-- **Next**: Validate categories (Gsheet screenshot) → export 2024 CSVs → setup DuckDB + dbt-duckdb
+- **Milestone**: Phase 0 — DuckDB on Hetzner ✅; dbt-duckdb setup next
+- **Blocker**: categories blocked on Jo's Gsheet screenshot
+- **Next**: Setup dbt-duckdb → export 2024 CSVs → validate categories with Jo
 
 ### claude-one-digest
 - **Status**: 🔵 Building
@@ -108,9 +108,9 @@
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
-- **Milestone**: Build session recap generator — per-session gold-standard recaps from flagged queue
+- **Milestone**: Validate session recap quality against gold standard
 - **Blocker**: none
-- **Next**: Build `src/session_recap.py` → test against Mar 12 gold standard session
+- **Next**: Manual review of Mar 12 recap vs gold standard → resume daily/weekly rollup once validated
 
 ### Data Engineering Notes
 - **Status**: 🔵 Building

@@ -14,7 +14,7 @@
 - No hidden assumptions: make the implicit explicit. If applying a rule requires inference, the rule is incomplete.
 
 ## Technical Stack
-- **Automation**: self-hosted n8n — https://n8n.helmcome.com
+- **Automation**: self-hosted n8n — https://n8n.helmcome.com; **OpenClaw** under evaluation (local agent, native Gmail/Mac, Claude, messaging interface — experiment zone)
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), OpenAI API where needed
 - **Data**: BigQuery, dbt, GCP
 - **Storage**: file-based (JSON/MD)
