@@ -21,10 +21,9 @@
 - **Infra**: Hetzner server `n8n-server` (138.199.205.72), Docker 29.1.5 — independent stacks:
   - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
   - `/opt/nextcloud/`: Nextcloud + its own MariaDB 10.11 instance (`nextcloud-db`)
-  - `/opt/api/`: audio-intelligence-pipeline FastAPI (in progress)
-  - `/opt/mlflow/`: MLflow server (planned)
+  - `/opt/api/`: audio-intelligence-pipeline FastAPI (port 8000) + MLflow server (port 5000) — both running
   - **Reverse proxy**: nginx 1.18 on host (not Docker) — TLS termination for all domains; n8n.helmcome.com → 5678, cloud.helmcome.com → 8080
-  - **Hetzner Firewall**: `firewall-server` — inbound TCP: 22, 80, 443, 5678, 8080, 8000
+  - **Hetzner Firewall**: `firewall-server` — inbound TCP: 22, 80, 443, 5678, 8080, 8000, 5000 (IPv4+IPv6 restricted)
   - **SSH**: key-only auth (`~/.ssh/id_ed25519`), password auth disabled
 - **Version control**: Git
 

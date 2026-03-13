@@ -33,9 +33,9 @@
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
-- **Milestone**: Deploy on Hetzner → Phase 3b MLflow eval → Phase 3c Prefect
+- **Milestone**: Phase 3b MLflow eval refactor → Phase 3c Prefect
 - **Blocker**: none
-- **Next**: Resume Hetzner deployment — create .env on server, docker build, open firewall port
+- **Next**: Phase 3b — refactor judge.py to use mlflow.evaluate() + Judges registry
 
 ### Ghost
 - **Status**: 🟢 Running
@@ -102,14 +102,14 @@
 
 ### claude-one-digest
 - **Status**: 🔵 Building
-- **Stack**: Python · Groq (llama-3.1-8b-instant)
+- **Stack**: Python · Claude Haiku API
 - **Repo**: https://github.com/CamilleLarpin/claude-one-digest
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
-- **Milestone**: Review from scratch — use Mar 12 Docker/FastAPI session as gold standard for output design
+- **Milestone**: Build session recap generator — per-session gold-standard recaps from flagged queue
 - **Blocker**: none
-- **Next**: Read Mar 12 audio-intelligence-pipeline sessions → define ideal output format → redesign prompts from example
+- **Next**: Build `src/session_recap.py` → test against Mar 12 gold standard session
 
 ---
 
