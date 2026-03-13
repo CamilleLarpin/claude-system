@@ -103,6 +103,12 @@
 - All domain traffic (n8n.helmcome.com, cloud.helmcome.com) timed out immediately after firewall creation; services were running fine but unreachable
 - Always include TCP 80 and TCP 443 in any Hetzner Firewall rule set when the server runs a reverse proxy; direct port rules are for fallback/debug only
 
+## [bash] · Rule · Write all CLI commands for the user as single-line strings — no backslash continuations
+> 2026-03-13 · source: audio-intelligence-pipeline
+- Multi-line commands with `\` continuations break when pasted into zsh — each fragment is treated as a separate command: file paths get "permission denied", flags become "command not found"
+- Affects all commands (python, curl, git, etc.), not just long curl calls
+- Always write copy-paste commands as one unbroken line; if very long, note it in prose but do not split with `\`
+
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
