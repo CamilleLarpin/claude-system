@@ -109,6 +109,12 @@
 - Affects all commands (python, curl, git, etc.), not just long curl calls
 - Always write copy-paste commands as one unbroken line; if very long, note it in prose but do not split with `\`
 
+## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
+> 2026-03-13 · source: audio-intelligence-pipeline
+- `mlflow.evaluate()` + `make_metric` logs scores as flat metrics in regular runs — they do NOT appear in the GenAI Evaluation view, Judges tab, or linked to datasets
+- `@mlflow.genai.scorer` + `mlflow.genai.evaluate()` is the correct GenAI-native API in MLflow 3.x — scores appear in Evaluation runs, linked to datasets and prompt versions
+- The two APIs look similar but produce fundamentally different UI; using the wrong one means building the right logic in the wrong place
+
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
