@@ -100,3 +100,9 @@
 - **Rationale**: "what's worth keeping" is a personal, context-dependent judgment that AI gets wrong at the margins; user labeling is zero-cost (one tap), eliminates false positives entirely, and keeps the pipeline simple and reliable; alternatives considered: AI decides based on content (too many edge cases, trust issues), explicit allowlist by sender/type (brittle, high maintenance)
 - **Date**: 2026-03-10
 - **Status**: active
+
+## [conventions] BACKLOG.md as unified project pipeline and task registry
+- **Decision**: single `~/.claude/BACKLOG.md` replaces separate TODOS.md; holds all pre-active projects (with priority, status, why, stack hint, constraints) and cross-project tasks in two sections; promotes to PROJECT_TRACKER when active development starts
+- **Rationale**: TODOS.md and a separate backlog would split related load context with no payoff for a solo developer; one file handles both "what to build next" and "cross-project tasks" under one load trigger; format difference (projects vs tasks) is handled by two sections within the file; alternatives considered: keep separate files (splits load context unnecessarily), add backlog to PROJECT_TRACKER (bloats always-loaded active project registry)
+- **Date**: 2026-03-13
+- **Status**: active
