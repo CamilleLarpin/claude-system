@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-13 (evening) (evening)
+**Last updated**: 2026-03-13
 
 ---
 
@@ -71,13 +71,14 @@
 
 ### Gmail Inbox Cleanup
 - **Status**: ⚫ Scoping
-- **Stack**: Gmail API · n8n or Python (TBD) — rule-based, no LLM
-- **Repo**: —
+- **Stack**: Gmail API · Python · n8n or Gmail filters (TBD) · rule-based, no LLM
+- **Repo**: https://github.com/CamilleLarpin/gmail-inbox-cleanup
+- **Notion**: https://www.notion.so/TBC-Inbox-cleaning-and-archival-assistant-2e3fef9576f180ff97fdfff26d92c986
 - **n8n**: —
-- **Docs**: —
+- **Docs**: ~/projects/gmail-inbox-cleanup/.claude/
 - **Milestone**: —
 - **Blocker**: none
-- **Next**: Init project → define blitz rules (age, sender patterns, unsubscribe header)
+- **Next**: Confirm Gmail API OAuth credentials in GCP → run Python audit script
 
 ### AI Networking System
 - **Status**: 🔵 Building
@@ -111,6 +112,18 @@
 - **Blocker**: none
 - **Next**: Build `src/session_recap.py` → test against Mar 12 gold standard session
 
+### Data Engineering Notes
+- **Status**: 🔵 Building
+- **Stack**: Python · Claude API · Telegram · Docker · GCP
+- **Repo**: —
+- **Notion**: —
+- **n8n**: —
+- **Docs**: ~/projects/data-engineering-notes/.claude/
+- **Milestone**: GCP Compute Engine deploy
+- **Blocker**: none
+- **Next**: Deploy to GCP Compute Engine
+- **Notes**: Artefact bootcamp project (Feb 23 – Mar 27, 2026) — 3-layer learning system: capture → digest → master
+
 ---
 
 ## Cross-Project Notes
@@ -136,5 +149,5 @@
 - **Status**: ✅ Done
 - **Stack**: Claude Code · bash · Notion API · gh CLI
 - **Repo**: —
-- **Docs**: ~/projects/archived/project-init-skill/.claude/
+- **Docs**: ~/projects/.archived/project-init-skill/.claude/
 - **Completed**: 2026-03-11 — skill fully built, TTY fix confirmed, end-to-end test passed
