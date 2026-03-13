@@ -6,6 +6,14 @@
 
 ---
 
+## GitHub PAT Rotation
+
+- [ ] **Rotate GitHub PAT "server"** by 2027-03-13 — no expiration set, manual rotation yearly
+      Scope: fine-grained, all Hetzner repos. Stored in `.git/config` on server (plaintext).
+      Update in: `/opt/finances-ezerpin/.git/config`, `/opt/api/.git/config`
+
+---
+
 ## Server Security (n8n-server — 138.199.205.72)
 
 - [ ] Install UFW as second firewall layer
