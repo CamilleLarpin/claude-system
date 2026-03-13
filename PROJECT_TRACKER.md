@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-12 (evening)
+**Last updated**: 2026-03-13 (evening) (evening)
 
 ---
 
@@ -107,9 +107,9 @@
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
-- **Milestone**: Prompt quality — evaluate digest output on real sessions
+- **Milestone**: Review from scratch — use Mar 12 Docker/FastAPI session as gold standard for output design
 - **Blocker**: none
-- **Next**: Run `--date 2026-03-11` to evaluate yesterday; compare 8b vs 70b quality when quota resets
+- **Next**: Read Mar 12 audio-intelligence-pipeline sessions → define ideal output format → redesign prompts from example
 
 ---
 

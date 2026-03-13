@@ -28,6 +28,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - @~/.claude/DECISIONS_GLOBAL.md — what was chosen and why: cross-project decisions (load when making an architectural or cross-project decision)
 - @~/.claude/LESSONS_GLOBAL.md — what to avoid: hard-won patterns and mistakes (load when debugging or starting a build)
 - @~/.claude/PROJECT_TRACKER.md — project registry (load when assessing cross-project relevance or promotion candidates)
+- @~/.claude/TODOS.md — cross-project and infra tasks (load when looking for what to work on next, or when a cross-project task is identified)
 
 ## Skills — load on demand
 @~/.claude/skills/ — load relevant skill before starting any scoped task

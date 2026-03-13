@@ -65,7 +65,9 @@
       "Bash(git -C ~/.claude diff settings.local.json)",
       "Bash(git -C ~/.claude add lessons/LESSONS_ARCHITECTURE.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\ndocs: promote bash interactive read rule to LESSONS_ARCHITECTURE\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git -C ~/.claude pull --rebase && git -C ~/.claude push && echo \"✅ ~/.claude pushed\")",
-      "Bash(git -C ~/.claude stash && git -C ~/.claude pull --rebase && git -C ~/.claude push && git -C ~/.claude stash pop && echo \"✅ ~/.claude pushed\")"
+      "Bash(git -C ~/.claude stash && git -C ~/.claude pull --rebase && git -C ~/.claude push && git -C ~/.claude stash pop && echo \"✅ ~/.claude pushed\")",
+      "Bash(curl -sI http://cloud.helmcome.com | head -5)",
+      "Bash(curl -sI https://n8n.helmcome.com 2>&1 | head -10)"
     ]
   }
 }
