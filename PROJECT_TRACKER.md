@@ -124,6 +124,18 @@
 - **Next**: Deploy to GCP Compute Engine
 - **Notes**: Artefact bootcamp project (Feb 23 – Mar 27, 2026) — 3-layer learning system: capture → digest → master
 
+### Agent Politique
+- **Status**: ⚫ Scoping
+- **Stack**: Python · assemblee-nationale.fr API · PostgreSQL · FastAPI · Claude (theme classification TBD)
+- **Repo**: —
+- **Notion**: —
+- **n8n**: —
+- **Docs**: —
+- **Milestone**: Bootcamp certification project (Artefact, deadline ~2026-03-27)
+- **Blocker**: teacher validation of v1 scope (votes + KPIs only, no manifesto comparison)
+- **Next**: Confirm scope with teacher → explore AN API → initialize repo + .claude/
+- **Notes**: Evaluation in ~/.claude/report/BOOTCAMP_PROJECT_EVALUATION.md; secondary motivation: public tool for municipales (2026-03) + présidentielles (2027)
+
 ---
 
 ## Cross-Project Notes
