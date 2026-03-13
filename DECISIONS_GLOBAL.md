@@ -101,6 +101,18 @@
 - **Date**: 2026-03-10
 - **Status**: active
 
+## [ai-agents] Human approval gate for all irreversible AI actions
+- **Decision**: any AI pipeline that can delete, send, or permanently modify data must have a human approval step before execution — no exceptions regardless of classifier confidence
+- **Rationale**: irreversible actions have asymmetric cost — one false negative on an important document, sent message, or deleted record is worse than any inefficiency introduced by a review step; high confidence scores are not a substitute for human sign-off when the cost of error is high; applies to email deletion, file moves, message sending, record updates
+- **Date**: 2026-03-13
+- **Status**: active
+
+## [infra] One GitHub PAT per Hetzner server, not per project
+- **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
+- **Rationale**: per-project PATs create maintenance overhead (must update token each time a new repo is added); blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder; alternatives considered: deploy keys per repo (more setup, doesn't simplify multi-repo), classic `repo`-scoped token (works but broader scope than needed)
+- **Date**: 2026-03-13
+- **Status**: active
+
 ## [conventions] BACKLOG.md as unified project pipeline and task registry
 - **Decision**: single `~/.claude/BACKLOG.md` replaces separate TODOS.md; holds all pre-active projects (with priority, status, why, stack hint, constraints) and cross-project tasks in two sections; promotes to PROJECT_TRACKER when active development starts
 - **Rationale**: TODOS.md and a separate backlog would split related load context with no payoff for a solo developer; one file handles both "what to build next" and "cross-project tasks" under one load trigger; format difference (projects vs tasks) is handled by two sections within the file; alternatives considered: keep separate files (splits load context unnecessarily), add backlog to PROJECT_TRACKER (bloats always-loaded active project registry)
