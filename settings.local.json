@@ -77,7 +77,9 @@
       "Bash(git -C ~/.claude diff commands/end-of-session.md && git -C ~/.claude diff settings.local.json)",
       "Bash(git -C ~/.claude add README.md lessons/LESSONS_N8N.md lessons/LESSONS_N8N_2.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\ndocs: remove stale LESSONS_N8N stub files, fix README lessons tree\n\nDeleted LESSONS_N8N.md and LESSONS_N8N_2.md \\(superseded stubs containing\nonly a migration notice\\). Updated README.md lessons/ tree to reflect the\n7 current category files.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git -C ~/.claude add commands/end-of-session.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nfeat: add digest flag step to end-of-session checklist\n\nInserts step 3 \\(Digest flag\\) for flagging sessions worth adding to the\nclaude-one-digest knowledge queue. Renumbers subsequent steps.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git -C ~/.claude add settings.local.json CONTEXT_GLOBAL.md PROJECT_TRACKER.md && git -C ~/.claude status)"
+      "Bash(git -C ~/.claude add settings.local.json CONTEXT_GLOBAL.md PROJECT_TRACKER.md && git -C ~/.claude status)",
+      "Bash(git -C ~/.claude diff HEAD CONTEXT_GLOBAL.md PROJECT_TRACKER.md | head -5)",
+      "Bash(git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add session bash commands to settings allowlist\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git -C ~/.claude pull --rebase && git -C ~/.claude push)"
     ]
   }
 }
