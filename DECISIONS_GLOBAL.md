@@ -89,6 +89,12 @@
 - **Date**: 2026-03-12
 - **Status**: active
 
+## [security] Server security model — n8n-server
+- **Decision**: ports 80/443 open to all IPs; SSH key-only auth; app-level login as the real access gate
+- **Rationale**: 80/443 must be open for any browser to reach the services — IP restriction is impractical for a personal server accessed from multiple locations and devices; security relies on HTTPS encryption (nginx + Let's Encrypt) + app login screens (n8n, Nextcloud), not firewall IP filtering; SSH locked to key-only since password brute-force is automated and constant on any public VPS
+- **Date**: 2026-03-13
+- **Status**: active
+
 ## [ai-agents] User label as inclusion rule for archiving pipelines
 - **Decision**: when building an AI archiving pipeline, the human decides what's worth archiving (via a label, tag, or explicit action) — the AI only executes the filing logic, never the inclusion judgment
 - **Rationale**: "what's worth keeping" is a personal, context-dependent judgment that AI gets wrong at the margins; user labeling is zero-cost (one tap), eliminates false positives entirely, and keeps the pipeline simple and reliable; alternatives considered: AI decides based on content (too many edge cases, trust issues), explicit allowlist by sender/type (brittle, high maintenance)
