@@ -67,7 +67,11 @@
       "Bash(git -C ~/.claude pull --rebase && git -C ~/.claude push && echo \"✅ ~/.claude pushed\")",
       "Bash(git -C ~/.claude stash && git -C ~/.claude pull --rebase && git -C ~/.claude push && git -C ~/.claude stash pop && echo \"✅ ~/.claude pushed\")",
       "Bash(curl -sI http://cloud.helmcome.com | head -5)",
-      "Bash(curl -sI https://n8n.helmcome.com 2>&1 | head -10)"
+      "Bash(curl -sI https://n8n.helmcome.com 2>&1 | head -10)",
+      "Bash(git -C ~/.claude diff --name-only HEAD origin/main)",
+      "Bash(git -C ~/.claude diff DECISIONS_GLOBAL.md)",
+      "Bash(git -C ~/.claude diff HEAD DECISIONS_GLOBAL.md)",
+      "Bash(git -C ~/.claude add TODOS.md && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add GitHub PAT rotation reminder to global TODOs\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
