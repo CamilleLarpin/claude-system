@@ -33,9 +33,9 @@
 - **Notion**: —
 - **n8n**: —
 - **Docs**: ~/projects/audio-intelligence-pipeline/.claude/
-- **Milestone**: Phase 3b MLflow eval refactor → Phase 3c Prefect
+- **Milestone**: Phase 3b: migrate to MLflow GenAI primitives (Judges, Datasets, mlflow.genai.evaluate)
 - **Blocker**: none
-- **Next**: Phase 3b — refactor judge.py to use mlflow.evaluate() + Judges registry
+- **Next**: Register 4-axis scorer with @mlflow.genai.scorer → switch to mlflow.genai.create_dataset() → mlflow.genai.evaluate()
 
 ### Ghost
 - **Status**: 🟢 Running
