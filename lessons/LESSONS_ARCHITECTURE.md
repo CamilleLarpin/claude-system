@@ -51,6 +51,12 @@
 - `llama-3.1-8b-instant`: 6000 TPM + separate (larger) daily quota
 - Use 8b-instant as daily driver for any repeated task; reserve 70b for occasional spot-checks only
 
+## [git] · Rule · git diff hunks start mid-section — section header may not appear before changed lines
+> 2026-03-12 · source: claude-one-digest
+- `git diff` hunks start at the nearest context line before the change, not at the section header — if `### Project` is >3 lines above the change, it's outside the hunk and never seen by a line-by-line parser
+- Parsing changed lines by scanning for a preceding section header in the diff body silently produces empty results
+- Fix: build a line→section map from the full current file first, then use `@@` hunk offsets to resolve which section each change belongs to
+
 ## [llm] · Guideline · Chunk by character count, not word count, when targeting token limits
 > 2026-03-12 · source: claude-one-digest
 - Word count underestimates tokens by 1.3–1.5x; a 6000-word chunk easily exceeds a 6000-token limit
@@ -67,6 +73,35 @@
 > 2026-03-12 · source: audio-intelligence-pipeline
 - Default `--host 127.0.0.1` binds only inside the container — port mapping (`-p 8000:8000`) has no effect
 - Always set `--host 0.0.0.0` in the Dockerfile CMD for any containerised FastAPI/Uvicorn app
+
+## [llm] · Rule · Small models need `max_tokens` cap to prevent hallucination loops on list generation
+> 2026-03-13 · source: claude-one-digest
+- `llama-3.1-8b-instant` generating a flat concept list entered a repetition loop with no token cap — produces garbage output and can exhaust rate limits
+- Open-ended list tasks have no natural stopping signal for small models
+- Always set `max_tokens` on API calls for list generation tasks; 400 is sufficient for short concept extraction
+
+## [llm] · Guideline · LLM DROP/exclusion rules unreliable for small models — use Python post-filter
+> 2026-03-13 · source: claude-one-digest
+- `llama-3.1-8b-instant` ignored DROP rules in prompt instructions — single-word tokens, path strings, and questions survived after deduplication
+- Small models follow inclusion rules better than exclusion rules; negative filtering logic in prompts adds complexity they can't reliably execute
+- Move deterministic filtering to code (short entries, known noisy tokens, pattern matches); keep LLM prompt focused on the positive task
+
+## [prompt] · Rule · Missing `{content}` placeholder in prompt template causes silent empty-context failure
+> 2026-03-13 · source: claude-one-digest
+- Both EXTRACT_PROMPT and MERGE_PROMPT lost `{content}` after a manual edit — the LLM received no session data and responded as if nothing was provided; no error was raised
+- The pipeline runs successfully and produces output; the failure is invisible without reading the LLM response critically
+- Always verify `{content}` (or equivalent) is present in the template body AND in the `.format()` call; add an assertion if the prompt is edited often
+
+## [prompt] · Rule · Format examples with placeholder names cause the model to output them literally
+> 2026-03-13 · source: claude-one-digest
+- `Format:\n- ConceptName` caused the model to output `- ConceptName` as the first line of its response — it treats example text as a template to follow verbatim
+- Use real-looking example values in format instructions (e.g. `- Docker layer caching`), never abstract placeholder labels
+
+## [hetzner] · Rule · Hetzner Firewall must include ports 80 and 443 when nginx is present
+> 2026-03-13 · source: server-setup session
+- Opening only app ports (5678, 8080, 8000) blocks all domain-based access when nginx sits in front as a reverse proxy — nginx listens on 80/443, not the app ports
+- All domain traffic (n8n.helmcome.com, cloud.helmcome.com) timed out immediately after firewall creation; services were running fine but unreachable
+- Always include TCP 80 and TCP 443 in any Hetzner Firewall rule set when the server runs a reverse proxy; direct port rules are for fallback/debug only
 
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
