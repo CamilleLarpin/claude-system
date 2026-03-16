@@ -34,6 +34,11 @@
 - Silent in logs — the error points at `json.loads`, not at Claude's output format
 - Fix: always strip code fences before parsing: check `if raw.startswith("```")`, split on "```", strip the `json` language tag, then call `json.loads(raw.strip())`
 
+## [prompt] · Rule · LLM outputs reasoning after (none) unless explicitly forbidden
+> 2026-03-16 · source: claude-one-digest
+- Prompt said "If no X found, output: (none)" — model output `(none)\n\n**Reasoning:** ...` explaining its decision; downstream code checking `result == "(none)"` misses it; the reasoning block ends up in saved output
+- Fix in prompt: "output ONLY (none), no reasoning, no explanation"; fix in code: check `result.startswith("(none)")` not just equality
+
 ## [prompt] · Guideline · Strip trailing `(none)` from responses that use it as a fallback marker
 > 2026-03-13 · source: claude-one-digest
 - Prompt said "If no concepts, output: (none)" — Claude appended `(none)` at the end of a response that already contained valid content, treating it as a section terminator
