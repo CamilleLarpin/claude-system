@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-13
+**Last updated**: 2026-03-16
 
 ---
 
@@ -131,10 +131,10 @@
 - **Notion**: —
 - **n8n**: —
 - **Docs**: —
-- **Milestone**: Bootcamp certification project (Artefact, deadline ~2026-03-27)
+- **Milestone**: Bootcamp certification project (Artefact, deadline ~2026-03-27) — 2+ weeks available as of 2026-03-16
 - **Blocker**: teacher validation of v1 scope (votes + KPIs only, no manifesto comparison)
 - **Next**: Confirm scope with teacher → explore AN API → initialize repo + .claude/
-- **Notes**: Evaluation in ~/.claude/report/BOOTCAMP_PROJECT_EVALUATION.md; secondary motivation: public tool for municipales (2026-03) + présidentielles (2027)
+- **Notes**: Top bootcamp candidate (15/15). v1 KPIs: loyalty score (% votes aligned with parliamentary group) + participation rate per deputy. Manifesto comparison = comparing votes vs pre-election promises (PDF parsing) — out of scope for v1. Domain ramp-up needed (with Claude). Evaluation in ~/.claude/report/BOOTCAMP_PROJECT_EVALUATION.md; secondary motivation: public tool for municipales (2026-03) + présidentielles (2027)
 
 ---
 
