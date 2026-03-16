@@ -4,7 +4,7 @@
 > Active projects → PROJECT_TRACKER.md
 > Promote to PROJECT_TRACKER when starting active development.
 
-**Last updated**: 2026-03-13
+**Last updated**: 2026-03-16
 
 ---
 
@@ -29,15 +29,15 @@
 - **Why**: Digest video/podcast content by passing a link — transcribe + clean summary; build a hand-picked knowledge base over time
 - **Stack hint**: Python · Whisper · Claude · yt-dlp — extends audio-intelligence-pipeline
 - **Constraints**: depends on audio-intelligence-pipeline engine being stable
-- **Notes**: shares transcription engine with Meeting Note Taker; consider building together
+- **Notes**: Sources confirmed: YouTube + podcasts (Whisper pipeline) + Reddit/LinkedIn posts (text — separate pipeline, not audio). C4 gap: needs DB for knowledge base (transcripts, summaries, tags, source URL, date) — without it C4 = 🟡. Shares transcription engine with Meeting Note Taker; consider building together. Bootcamp score: ~12/15.
 
 ### Meeting Note Taker
 - **Priority**: This Month
-- **Status**: idea
-- **Why**: Personal use — transcribe meetings and produce clean structured notes
+- **Status**: scoping
+- **Why**: Transcribe meetings (Mac hardware recording) + capture vocal notes after face-to-face meetings → structured notes; several meetings/week = real recurring use case
 - **Stack hint**: Python · Whisper · Claude — extends audio-intelligence-pipeline
 - **Constraints**: —
-- **Notes**: shares engine with Media Content Manager
+- **Notes**: C1 confirmed: Mac hardware recording (audio/video file input). Linked to AI Networking System — vocal note per person met → structured summary → feed into networking CRM. Shares transcription engine with Media Content Manager. Bootcamp score: ~13/15.
 
 ### Lightweight Observability Layer for Context Performance
 - **Priority**: This Month
@@ -49,10 +49,10 @@
 
 ### Automate Finance Investments
 - **Priority**: Next Month
-- **Status**: idea
-- **Why**: Automate investment tracking and decision support
-- **Stack hint**: TBD
-- **Constraints**: —
+- **Status**: scoping
+- **Why**: Personal investment tracking (consolidated picture across accounts) + recommendation layer — like Finary but tailored; phase 1: track; phase 2: recommend where to invest
+- **Stack hint**: TBD — broker/bank API TBD
+- **Constraints**: No bank/broker API available → C1 (automated collection) fails bootcamp criterion; manual CSV export only. **Not suitable as a bootcamp project.** Build post-bootcamp as a personal tool; benchmark against Finary before investing build time (might just pay for Finary).
 - **Notes**: —
 
 ### Build Process to Follow News
