@@ -44,9 +44,9 @@
 - **Notion**: —
 - **n8n**: EsMKQrNYifeGbraNshhDc
 - **Docs**: ~/projects/ghost/.claude/
-- **Milestone**: —
+- **Milestone**: Phase 1 — extend Ghost with task management from Telegram (view, mark done, reprioritize)
 - **Blocker**: none
-- **Next**: Fix photo resolution bug, review classification quality
+- **Next**: Add Telegram bot access control (allowlist by chat_id) → start task management Phase 1
 
 ### Biography
 - **Status**: 🟡 Testing
