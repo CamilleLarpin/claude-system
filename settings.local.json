@@ -80,7 +80,9 @@
       "Bash(git -C ~/.claude add settings.local.json CONTEXT_GLOBAL.md PROJECT_TRACKER.md && git -C ~/.claude status)",
       "Bash(git -C ~/.claude diff HEAD CONTEXT_GLOBAL.md PROJECT_TRACKER.md | head -5)",
       "Bash(git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add session bash commands to settings allowlist\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git -C ~/.claude pull --rebase && git -C ~/.claude push)",
-      "Bash(git -C ~/.claude add settings.local.json && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add session bash commands to settings allowlist\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git -C ~/.claude pull --rebase && git -C ~/.claude push)"
+      "Bash(git -C ~/.claude add settings.local.json && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add session bash commands to settings allowlist\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git -C ~/.claude pull --rebase && git -C ~/.claude push)",
+      "Bash(brew list:*)",
+      "Bash(brew install:*)"
     ]
   }
 }

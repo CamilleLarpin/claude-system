@@ -16,7 +16,7 @@
 ## Technical Stack
 - **Automation**: self-hosted n8n — https://n8n.helmcome.com; **OpenClaw** under evaluation (local agent, native Gmail/Mac, Claude, messaging interface — experiment zone)
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), OpenAI API where needed
-- **Data**: BigQuery, dbt, GCP
+- **Data**: DuckDB · dbt · MariaDB (Nextcloud)
 - **Storage**: file-based (JSON/MD)
 - **Infra**: Hetzner server `n8n-server` (138.199.205.72), Docker 29.1.5 — independent stacks:
   - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
