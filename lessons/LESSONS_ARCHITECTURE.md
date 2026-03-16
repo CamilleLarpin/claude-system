@@ -115,6 +115,12 @@
 - `@mlflow.genai.scorer` + `mlflow.genai.evaluate()` is the correct GenAI-native API in MLflow 3.x — scores appear in Evaluation runs, linked to datasets and prompt versions
 - The two APIs look similar but produce fundamentally different UI; using the wrong one means building the right logic in the wrong place
 
+## [data-engineering] · Guideline · Source table naming — system/source first, not owner/entity first
+> 2026-03-16 · source: finances-ezerpin
+- When raw tables represent data from external systems (banks, APIs, SaaS tools), name them `<system>_<scope>` not `<owner>_<system>` — e.g. `boursorama_joint`, not `joint_boursorama`
+- The primary differentiator at the raw layer is the source system (it determines schema, pipeline, freshness) — ownership is an attribute inside the data, not a table name prefix
+- In a DB explorer, tables sort alphabetically — system-first groups related sources together (`boursorama_joint`, `boursorama_perso`); owner-first scatters them (`camille_boursorama`, `camille_revolut`, `joint_boursorama`)
+
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
