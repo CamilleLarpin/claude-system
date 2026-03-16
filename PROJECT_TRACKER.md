@@ -93,14 +93,14 @@
 
 ### Finances Ezerpin
 - **Status**: 🔵 Building
-- **Stack**: Python · dlt · DuckDB · dbt-duckdb · Claude Haiku · nao · Evidence.dev (fallback) · cron + Makefile
+- **Stack**: Python · dlt · DuckDB · dbt Fusion 2.x · Claude Haiku · nao · Evidence.dev (fallback) · cron + Makefile
 - **Repo**: https://github.com/CamilleLarpin/finances-ezerpin
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Milestone**: Phase 0 — complete ✅ (DuckDB, categories, seeds, Boursorama CSV in place); Phase 1 starts with dbt-duckdb setup
-- **Blocker**: none (Revolut CSV pending, not a blocker)
-- **Next**: Setup dbt-duckdb → write dlt pipeline for Boursorama CSV → stg_transactions model
+- **Milestone**: Phase 1 — dbt Steps 1–4 complete; Step 5 (stg_transactions) created, pending compile + review
+- **Blocker**: none
+- **Next**: `dbt compile` → review session files with Camille → Step 6 (stg_revenues ephemeral)
 
 ### claude-one-digest
 - **Status**: 🟢 Running
