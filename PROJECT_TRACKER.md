@@ -103,15 +103,15 @@
 - **Next**: Setup dbt-duckdb → export 2024 CSVs → validate categories with Jo
 
 ### claude-one-digest
-- **Status**: 🔵 Building
+- **Status**: 🟢 Running
 - **Stack**: Python · Claude Haiku API
 - **Repo**: https://github.com/CamilleLarpin/claude-one-digest
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
-- **Milestone**: Validate session recap quality against gold standard
+- **Milestone**: Pipeline complete and validated end-to-end
 - **Blocker**: none
-- **Next**: Manual review of Mar 12 recap vs gold standard → resume daily/weekly rollup once validated
+- **Next**: Filter `projects` pseudo-project from digest
 
 ### Data Engineering Notes
 - **Status**: 🔵 Building
