@@ -82,13 +82,14 @@
 
 ### AI Networking System
 - **Status**: 🔵 Building
-- **Stack**: n8n · Claude Sonnet · Notion API · Slack · Telegram · Google Workspace
+- **Stack**: n8n · Claude Sonnet · DuckDB · FastAPI · Slack · Telegram · Google Workspace
 - **Repo**: https://github.com/CamilleLarpin/ai-networking-system
 - **Notion**: —
-- **n8n**: L9mXT4tovnOM2Xiz (Part A ✅), CW7WSVtKPFaczTiw (Part B ✅ — DM from Camille's personal profile confirmed)
+- **n8n**: L9mXT4tovnOM2Xiz (Part A ✅ polling), CW7WSVtKPFaczTiw (Part B ✅)
 - **Docs**: ~/projects/ai-networking-system/.claude/
+- **Milestone**: P0 — DuckDB CRM setup (schema + FastAPI wrapper + backup + first contacts)
 - **Blocker**: none
-- **Next**: Production test Monday (real RandomCoffee pairing) → Slack Workflow Builder trigger → P0 Notion CRM
+- **Next**: Set up DuckDB on Hetzner → FastAPI CRM wrapper → nightly backup cron → enter first 10 contacts
 
 ### Finances Ezerpin
 - **Status**: 🔵 Building
