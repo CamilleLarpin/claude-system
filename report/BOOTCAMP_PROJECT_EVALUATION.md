@@ -1,6 +1,6 @@
 # Bootcamp Data Engineering — Project Evaluation
 > Artefact Bootcamp · Feb 23 – Mar 27, 2026
-> Last updated: 2026-03-13
+> Last updated: 2026-03-16
 
 ---
 
@@ -51,10 +51,10 @@
 | Project | C1 | C2 | C3 | C4 | C5 | Total | Notes |
 |---------|----|----|----|----|-----|-------|-------|
 | **Agent Politique** | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | **15/15** ⭐ | Official AN API, no scraping risk |
-| **Teal (Real Estate)** | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | **15/15** ⭐ | Use DVF dataset, not site scraping |
-| Automate Finance Investments | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | 🟡 2 | **14/15** | Yahoo Finance / broker API |
-| Meeting Note Taker | 🟡 2 | ✅ 3 | 🟡 2 | ✅ 3 | 🟡 2 | **12/15** | C1 depends on audio source |
-| Media Content Manager | ✅ 3 | 🟡 2 | 🟡 2 | 🟡 2 | 🟡 2 | **11/15** | Full new build |
+| **Teal (Real Estate)** | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | ✅ 3 | **15/15** ⭐ | Public tool, personal use ~10 months out; DVF dataset, mainly new territory |
+| Meeting Note Taker | ✅ 3 | ✅ 3 | ✅ 3 | 🟡 2 | 🟡 2 | **13/15** | Mac hardware recording confirmed; C4 needs DB definition (transcripts + contact metadata); linked to AI Networking System |
+| Media Content Manager | ✅ 3 | 🟡 2 | 🟡 2 | 🟡 2 | 🟡 2 | **12/15** | Sources: YouTube/podcasts (Whisper) + Reddit/LinkedIn (text — separate pipeline); C4 gap: needs DB for knowledge base (transcripts, summaries, tags, source URL, date) |
+| ~~Automate Finance Investments~~ | ❌ 0 | ✅ 3 | ✅ 3 | ✅ 3 | 🟡 2 | **~~11/15~~** | ❌ **Not suitable** — no bank/broker API; C1 = manual CSV export; fails automated collection criterion; build as personal tool post-bootcamp |
 | Observability Layer | ❓ | 🟡 2 | ✅ 3 | 🟡 2 | 🟡 2 | **?** | C1 depends on data source (see open questions) |
 | Build Process to Follow News | ✅ 3 | 🟡 2 | ✅ 3 | ❌ 0 | ❌ 0 | **8/15** | C4/C5 missing |
 | Context tools (x3) | 🟡 2 | 🟡 2 | 🟡 2 | 🟡 2 | 🔶 1 | **9/15** | Too niche for jury |
@@ -69,11 +69,12 @@
 | Project | Question | Impact |
 |---------|----------|--------|
 | Observability Layer | Raw data source: instrumented code logs vs Anthropic billing export vs both? | Determines C1 score |
-| Finance Investments | Personal portfolio or general tool? Broker with API? | Determines C1 richness |
+| ~~Finance Investments~~ | ~~Personal portfolio or general tool? Broker with API?~~ | ✅ Answered: personal tool, no API → **not suitable for bootcamp** |
 | Meal Prep | Meal planning tool or course creation tool? | Determines if viable |
-| Meeting Note Taker | Local audio files or Zoom/Google Meet API pull? | C1 score |
+| ~~Meeting Note Taker~~ | ~~Local audio files or Zoom/Google Meet API pull?~~ | ✅ Answered: Mac hardware recording + vocal notes post-meeting → C1 = ✅ |
 | LLM Lessons Repo | User submissions only or pull from GitHub/HN/SO? | C1 score |
 | Agent Politique | Vote theme classification: keyword rules vs Claude API? | C2 complexity |
+| Agent Politique | Teacher validation of v1 scope (votes + KPIs only, no manifesto comparison)? | Go/no-go on bootcamp target |
 
 ---
 
@@ -145,6 +146,21 @@ Out of scope (v2, post-bootcamp):
 | AN vote data specifically | High quality — primary source, official legal record, structured XML |
 | Main challenge | Theme classification — votes have titles but no predefined taxonomy |
 | Mitigation | Build a taxonomy (10-15 themes) and classify by keyword first; upgrade to Claude API in v2 |
+
+---
+
+## Current Top 5 Ranking (updated 2026-03-16)
+
+| Rank | Project | Score | Key risk |
+|---|---|---|---|
+| 1 | **Agent Politique** | 15/15 ⭐ | Domain ramp-up + teacher validation pending |
+| 2 | **Teal** | 15/15 ⭐ | New territory (DVF), time |
+| 3 | **Meeting Note Taker** | ~13/15 | C4 DB definition needed |
+| 4 | **Finances Ezerpin** | 12/15 | FastAPI only remaining — lowest risk |
+| 5 | **Media Content Manager** | ~12/15 | C4 DB gap + Reddit/LinkedIn scope adds complexity |
+
+**Dropped:** Automate Finance Investments — no bank/broker API, C1 fails certification criterion.
+**Time available:** 2+ weeks as of 2026-03-16.
 
 ---
 
