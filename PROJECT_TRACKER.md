@@ -78,7 +78,7 @@
 - **Docs**: ~/projects/gmail-inbox-cleanup/.claude/
 - **Milestone**: Phase 0 — rule-based blitz (urgent: storage full)
 - **Blocker**: none
-- **Next**: Gmail API OAuth in GCP → audit script → rule set → batch delete
+- **Next**: Resume OAuth consent screen at Scopes step (add `gmail.modify`) → create Desktop App credentials → download `credentials.json`
 
 ### AI Networking System
 - **Status**: 🔵 Building

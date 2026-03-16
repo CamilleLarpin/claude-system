@@ -6,6 +6,14 @@
 
 **Last updated**: 2026-03-16
 
+### Password Manager Setup
+- **Priority**: This Month
+- **Status**: ready-to-start
+- **Why**: SSH key for Hetzner server only backed up on Mac — if Mac dies, server access is lost permanently. Password manager (Bitwarden) stores the key encrypted, recoverable from any device.
+- **Stack hint**: Bitwarden (free, open-source)
+- **Constraints**: Do before loading real financial data on Hetzner
+- **Notes**: Back up `~/.ssh/id_ed25519` as secure note. Also use as opportunity to consolidate all passwords/secrets into one vault.
+
 ---
 
 ## Format
