@@ -1,8 +1,8 @@
 ---
-description: Daily status — day of week, active projects, blockers, what to work on
+description: Daily overview — day of week, active projects, blockers, what to work on
 ---
 
-# /status — Daily Status
+# /overview — Daily Overview
 
 ### 1. Establish date
 
