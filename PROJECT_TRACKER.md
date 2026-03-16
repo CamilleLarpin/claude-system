@@ -70,15 +70,15 @@
 - **Next**: Test budget kill switch → test with Joffrey → Phase 3 Gmail archiving
 
 ### Gmail Inbox Cleanup
-- **Status**: ⚫ Scoping
-- **Stack**: Gmail API · LLM classifier · OpenClaw or n8n (TBD) · Nextcloud (Phase 2)
+- **Status**: 🔵 Building
+- **Stack**: Gmail API · Python (Phase 0) · n8n Hetzner · Claude API Sonnet (Phase 2 drafting only)
 - **Repo**: https://github.com/CamilleLarpin/gmail-inbox-cleanup
 - **Notion**: https://www.notion.so/TBC-Inbox-cleaning-and-archival-assistant-2e3fef9576f180ff97fdfff26d92c986
 - **n8n**: —
 - **Docs**: ~/projects/gmail-inbox-cleanup/.claude/
-- **Milestone**: Design aligned — stack decision + Gmail API setup next
+- **Milestone**: Phase 0 — rule-based blitz (urgent: storage full)
 - **Blocker**: none
-- **Next**: Evaluate OpenClaw vs n8n → set up Gmail API OAuth in GCP
+- **Next**: Gmail API OAuth in GCP → audit script → rule set → batch delete
 
 ### AI Networking System
 - **Status**: 🔵 Building
@@ -98,9 +98,9 @@
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Milestone**: Phase 0 — DuckDB on Hetzner ✅; dbt-duckdb setup next
-- **Blocker**: categories blocked on Jo's Gsheet screenshot
-- **Next**: Setup dbt-duckdb → export 2024 CSVs → validate categories with Jo
+- **Milestone**: Phase 0 — complete ✅ (DuckDB, categories, seeds, Boursorama CSV in place); Phase 1 starts with dbt-duckdb setup
+- **Blocker**: none (Revolut CSV pending, not a blocker)
+- **Next**: Setup dbt-duckdb → write dlt pipeline for Boursorama CSV → stg_transactions model
 
 ### claude-one-digest
 - **Status**: 🟢 Running
