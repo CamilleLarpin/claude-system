@@ -81,3 +81,11 @@
 - Putting task procedures (e.g. end-of-session ritual, commit flow) in CLAUDE.md loads them on every session even when unused
 - Skills load only when invoked — zero token cost otherwise
 - Move any repeatable, triggered procedure out of CLAUDE.md into a skill file; keep CLAUDE.md for always-applicable rules and constraints only
+
+## [claude-code] · Rule · /compact skill generates a prompt — it does NOT compact context
+> 2026-03-17 · source: finances-ezerpin session
+- A skill named `compact` in `~/.claude/commands/` only outputs preservation instructions as text — it does not trigger Claude Code's built-in context compaction
+- User runs the prompt as a message → nothing compacts; context stays full; session continues degraded
+- Correct usage: type `/compact [preservation instructions]` directly in the CLI input bar — this triggers the actual built-in compaction
+- If context is too loaded to compact usefully: `/end-of-session` → `/commit-push` → `/clear` is the clean alternative
+- The `compact` skill should be deleted or replaced with a note pointing to the correct built-in command
