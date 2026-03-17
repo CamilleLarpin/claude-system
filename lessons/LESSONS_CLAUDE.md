@@ -51,3 +51,33 @@
 - Impact: wasted work, irreversible actions taken, user loses trust; especially bad for n8n/GitHub/API tasks
 - Fix encoded in CLAUDE.md "Build discipline": STOP when task has >2 steps or touches an external system; output a numbered plan; wait for explicit approval of that specific plan before calling any tool
 - "Go ahead" or "do it" without a prior plan shown is NOT approval
+
+## [claude-code] · Rule · MCP token cost — evaluate footprint before adopting
+> 2026-03-17 · source: CLAUDE_CODE_COURSE_ANALYSIS.md
+- A single poorly written MCP can consume 20%+ of the context window before you send the first message — this compounds across all sessions that load it
+- Easy to miss: the MCP appears to "work" while silently degrading every subsequent call
+- Before adopting any MCP in a Claude Code session: check its token footprint; prefer skills (load on demand) over MCPs (always loaded) for anything not used every session
+
+## [claude-code] · Guideline · Primacy/recency bias — front-load and back-load critical rules in CLAUDE.md
+> 2026-03-17 · source: CLAUDE_CODE_COURSE_ANALYSIS.md
+- Claude weights the first and last sections of any prompt more than the middle
+- Critical must-never-do rules and security constraints buried mid-file get less weight at runtime
+- Put the most important rules at the top of CLAUDE.md and repeat or summarise the hardest constraints at the bottom
+
+## [claude-code] · Guideline · /compact with explicit preservation instructions
+> 2026-03-17 · source: CLAUDE_CODE_COURSE_ANALYSIS.md
+- Default `/compact` produces a generic summary — it may lose decisions, current task state, or key constraints
+- Losing context mid-build causes Claude to revisit resolved decisions or miss active constraints
+- Use `/compact` with explicit instructions: e.g. "keep all decisions made this session, current task state, and active constraints; compress everything else"
+
+## [claude-code] · Guideline · CLAUDE.md pruning — treat as technical debt, not append-only
+> 2026-03-17 · source: CLAUDE_CODE_COURSE_ANALYSIS.md
+- CLAUDE.md accumulates stale, redundant, or over-precise rules over time — each one adds token cost on every load
+- Distinction: LESSONS files are append-only (never delete hard-won patterns); CLAUDE.md is the live ruleset and should be pruned when rules no longer apply
+- Periodically review CLAUDE.md for stale rules; archive superseded ones; do not let it grow unbounded
+
+## [claude-code] · Guideline · Rules in CLAUDE.md, repeatable tasks as skills
+> 2026-03-17 · source: CLAUDE_CODE_COURSE_ANALYSIS.md
+- Putting task procedures (e.g. end-of-session ritual, commit flow) in CLAUDE.md loads them on every session even when unused
+- Skills load only when invoked — zero token cost otherwise
+- Move any repeatable, triggered procedure out of CLAUDE.md into a skill file; keep CLAUDE.md for always-applicable rules and constraints only
