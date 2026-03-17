@@ -2,8 +2,12 @@
 description: Compact context while preserving session decisions, task state, and active constraints
 ---
 
-Run `/compact` with these instructions:
+**This skill does NOT compact context** — it only generates preservation instructions.
 
-"Preserve: all decisions made this session, current task state, active constraints, any file paths or IDs referenced in the current task. Compress everything else."
+To actually compact, type this directly in the CLI input bar (replacing `[...]` with what to preserve):
 
-> Note: CLAUDE.md is re-injected from disk after compaction — global rules are never lost. What compaction can lose is session-specific content (decisions, task progress, open questions). This command ensures those are kept.
+```
+/compact Keep: all decisions made this session, current task state, active constraints, active file paths. Compress everything else.
+```
+
+> Note: `/compact` is a Claude Code built-in command. Skills in `~/.claude/commands/` cannot trigger it. The instructions above must be typed as a slash command directly — not sent as a message to Claude.
