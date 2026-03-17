@@ -109,9 +109,9 @@
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
 - **n8n**: —
 - **Docs**: ~/projects/claude-one-digest/.claude/
-- **Milestone**: Pipeline complete and validated end-to-end
+- **Milestone**: Pipeline running with auto-digest for key projects
 - **Blocker**: none
-- **Next**: Filter `projects` pseudo-project from digest
+- **Next**: Retroactive tagging — flag past sessions not tagged at the time
 
 ### Data Engineering Notes
 - **Status**: 🔵 Building
