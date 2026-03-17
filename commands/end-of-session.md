@@ -14,7 +14,15 @@ Work through each step in order. Perform the action, don't just list it.
 
 **4. Complexity check** — if this milestone meaningfully increased complexity, output: `→ REFACTOR: [component] — [reason]`
 
-**5. Threshold check** — if any `.claude/` file crossed its threshold (LESSONS: 150 lines, DECISIONS: 100 lines), output: `SPLIT` or `ARCHIVE — [file] — [reason]`
+**5. Threshold check** — check all files below against their thresholds; output `SPLIT` or `ARCHIVE — [file] — [reason]` for any that crossed:
+- Project `.claude/LESSONS.md`: 150 lines → split by load context
+- Project `.claude/DECISIONS.md`: 100 lines → archive superseded entries
+- `~/.claude/lessons/LESSONS_*.md` files: 150 lines → split by load context
+- `~/.claude/DECISIONS_GLOBAL.md`: 100 lines → archive to DECISIONS_GLOBAL_ARCHIVE.md
+- `~/.claude/CLAUDE.md`: 80 lines → prune stale/redundant rules (never delete lessons, prune rules)
+- `~/.claude/CONTEXT_GLOBAL.md`: 80 lines → prune or move rarely-needed facts to cold files
+- `~/.claude/PROJECT_TRACKER.md`: 200 lines → move done projects to Archive section
+- `~/.claude/BACKLOG.md`: 200 lines → remove completed tasks, archive done projects
 
 **6. Global context** — if philosophy, stack, or architecture changed, update `~/.claude/CONTEXT_GLOBAL.md`.
 
