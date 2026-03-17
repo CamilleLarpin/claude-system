@@ -8,6 +8,24 @@
 
 <!-- Archived decisions below — oldest at top, newest at bottom -->
 
+## [stack] Claude Sonnet as default model
+- **Decision**: Sonnet for standard tasks; Opus for architecture or complex multi-step reasoning
+- **Rationale**: cost/quality balance; Opus reserved for decisions with long-lasting consequences
+- **Date**: 2024-01-DD
+- **Archived**: 2026-03-17 — stable, foundational, no value in keeping hot
+
+## [stack] Self-hosted n8n over cloud
+- **Decision**: n8n on Hetzner server via Docker, scoped to HTTP/webhook/integration automation
+- **Rationale**: credential control, no per-execution cost at scale, full workflow portability
+- **Date**: 2024-01-DD
+- **Archived**: 2026-03-17 — stable, foundational, no value in keeping hot
+
+## [conventions] ~/.claude/ versioned in private GitHub repo
+- **Decision**: `~/.claude/` tracked in private repo `claude-system` on GitHub
+- **Rationale**: backup against machine loss, full history of system evolution, cross-machine portability
+- **Date**: 2026-02-27
+- **Archived**: 2026-03-17 — stable, foundational, no value in keeping hot
+
 ## [stack] File-based storage as default
 - **Decision**: JSON/MD files as default storage — no exceptions without explicit re-evaluation
 - **Rationale**: zero infra overhead, git-versionable, natively readable by LLMs without connectors or query layers; unconditional default removes a recurring decision that has no current justification to revisit

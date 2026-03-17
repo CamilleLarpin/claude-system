@@ -17,24 +17,6 @@
 
 ---
 
-## [stack] Claude Sonnet as default model
-- **Decision**: Sonnet for standard tasks; Opus for architecture or complex multi-step reasoning
-- **Rationale**: cost/quality balance; Opus reserved for decisions with long-lasting consequences
-- **Date**: 2024-01-DD
-- **Status**: active
-
-## [stack] Self-hosted n8n over cloud
-- **Decision**: n8n on Hetzner server via Docker, scoped to HTTP/webhook/integration automation (connecting services, reacting to events, chaining API calls). Python-native pipeline orchestration is a separate category, not yet decided.
-- **Rationale**: credential control, no per-execution cost at scale, full workflow portability
-- **Date**: 2024-01-DD
-- **Status**: active
-
-## [conventions] ~/.claude/ versioned in private GitHub repo
-- **Decision**: `~/.claude/` tracked in private repo `claude-system` on GitHub
-- **Rationale**: backup against machine loss, full history of system evolution, cross-machine portability; same reasoning as file-based storage — git-versionable is a feature; private to avoid exposing server URLs and project structure
-- **Date**: 2026-02-27
-- **Status**: active
-
 ## [conventions] Single post-milestone checklist ordered by signal strength
 - **Decision**: one checklist runs after each milestone (not split by session boundary); steps ordered by signal strength — promotions first (highest cognitive value), mechanical checks last
 - **Rationale**: splitting into milestone + session checklists created a coordination problem — promotions require live context, which is cleared before end-of-session; collapsing removes deferred state; ordering by signal strength prevents attention decay on high-value steps; alternatives considered: mandatory vs conditional split (adds complexity with no payoff for solo developer), separate end-of-session checklist (broken by /clear)
@@ -87,6 +69,12 @@
 - **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
 - **Rationale**: per-project PATs create maintenance overhead (must update token each time a new repo is added); blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder; alternatives considered: deploy keys per repo (more setup, doesn't simplify multi-repo), classic `repo`-scoped token (works but broader scope than needed)
 - **Date**: 2026-03-13
+- **Status**: active
+
+## [conventions] Global context files always load alongside their project counterparts
+- **Decision**: `DECISIONS_GLOBAL.md` loads alongside project `DECISIONS.md` (not only on architectural decisions); `LESSONS_GLOBAL.md` index loads alongside project `LESSONS.md` + relevant category files for current task domain. Both triggers preserved: alongside project files AND on their original standalone triggers (architectural decision / debugging).
+- **Rationale**: DECISIONS_GLOBAL applies to all projects by definition — there is no case where a project DECISIONS.md is loaded without DECISIONS_GLOBAL being relevant. Same logic for LESSONS_GLOBAL. The original "on-demand" trigger was too narrow and created silent drift where Claude checked one without the other. Both conditions kept so the rule also covers sessions with no project context.
+- **Date**: 2026-03-17
 - **Status**: active
 
 ## [conventions] BACKLOG.md as unified project pipeline and task registry
