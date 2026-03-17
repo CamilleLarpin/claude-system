@@ -1,0 +1,1021 @@
+==========================================================================================
+CHILDCARE FINANCING DECISION — NET COST COMPARISON
+TAEG 3.3% | Frais achat/revente 7.5% | Au pair 6 200€/an
+SC2 Solo 12 798€/an | SC3b Relais partiel 11 680€/an | SC3 Relais complet 8 560€/an
+Net cost = total spend − total recovered.  Lower = better.  Negative = you made money.
+==========================================================================================
+
+──────────────────────────────────────────────────────────────────────────────────────────
+ HORIZON 3 ANS
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Apport 10,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +882€    -10,579€   +40,330€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +882€    -10,579€   +42,051€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +882€    -10,579€   +44,632€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +980€    -11,754€   +42,589€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +980€    -11,754€   +44,482€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +980€    -11,754€   +47,322€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —      +1,077€    -12,930€   +44,849€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —      +1,077€    -12,930€   +46,914€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —      +1,077€    -12,930€   +50,012€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +882€     -8,229€ immo: +14,680€
+    → + SC2 Solo                                                                                  +53,074€
+    → + SC3b Relais partiel                                                                       +49,720€
+    → + SC3 Relais complet                                                                        +40,360€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +882€     -3,429€ immo: +280€
+    → + SC2 Solo                                                                                  +38,674€
+    → + SC3b Relais partiel                                                                       +35,320€
+    → + SC3 Relais complet                                                                        +25,960€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +882€     -8,229€ immo: +16,401€
+    → + SC2 Solo                                                                                  +54,795€
+    → + SC3b Relais partiel                                                                       +51,441€
+    → + SC3 Relais complet                                                                        +42,081€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +882€     -3,429€ immo: +2,001€
+    → + SC2 Solo                                                                                  +40,395€
+    → + SC3b Relais partiel                                                                       +37,041€
+    → + SC3 Relais complet                                                                        +27,681€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +882€     -8,229€ immo: +18,982€
+    → + SC2 Solo                                                                                  +57,376€
+    → + SC3b Relais partiel                                                                       +54,022€
+    → + SC3 Relais complet                                                                        +44,662€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +882€     -3,429€ immo: +4,582€
+    → + SC2 Solo                                                                                  +42,976€
+    → + SC3b Relais partiel                                                                       +39,622€
+    → + SC3 Relais complet                                                                        +30,262€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +980€     -9,404€ immo: +16,939€
+    → + SC2 Solo                                                                                  +55,333€
+    → + SC3b Relais partiel                                                                       +51,979€
+    → + SC3 Relais complet                                                                        +42,619€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +980€     -4,604€ immo: +2,539€
+    → + SC2 Solo                                                                                  +40,933€
+    → + SC3b Relais partiel                                                                       +37,579€
+    → + SC3 Relais complet                                                                        +28,219€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +980€     -9,404€ immo: +18,832€
+    → + SC2 Solo                                                                                  +57,226€
+    → + SC3b Relais partiel                                                                       +53,872€
+    → + SC3 Relais complet                                                                        +44,512€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +980€     -4,604€ immo: +4,432€
+    → + SC2 Solo                                                                                  +42,826€
+    → + SC3b Relais partiel                                                                       +39,472€
+    → + SC3 Relais complet                                                                        +30,112€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +980€     -9,404€ immo: +21,672€
+    → + SC2 Solo                                                                                  +60,066€
+    → + SC3b Relais partiel                                                                       +56,712€
+    → + SC3 Relais complet                                                                        +47,352€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +980€     -4,604€ immo: +7,272€
+    → + SC2 Solo                                                                                  +45,666€
+    → + SC3b Relais partiel                                                                       +42,312€
+    → + SC3 Relais complet                                                                        +32,952€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m   +1,077€    -10,580€ immo: +19,199€
+    → + SC2 Solo                                                                                  +57,593€
+    → + SC3b Relais partiel                                                                       +54,239€
+    → + SC3 Relais complet                                                                        +44,879€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m   +1,077€     -5,780€ immo: +4,799€
+    → + SC2 Solo                                                                                  +43,193€
+    → + SC3b Relais partiel                                                                       +39,839€
+    → + SC3 Relais complet                                                                        +30,479€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m   +1,077€    -10,580€ immo: +21,264€
+    → + SC2 Solo                                                                                  +59,658€
+    → + SC3b Relais partiel                                                                       +56,304€
+    → + SC3 Relais complet                                                                        +46,944€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m   +1,077€     -5,780€ immo: +6,864€
+    → + SC2 Solo                                                                                  +45,258€
+    → + SC3b Relais partiel                                                                       +41,904€
+    → + SC3 Relais complet                                                                        +32,544€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m   +1,077€    -10,580€ immo: +24,362€
+    → + SC2 Solo                                                                                  +62,756€
+    → + SC3b Relais partiel                                                                       +59,402€
+    → + SC3 Relais complet                                                                        +50,042€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m   +1,077€     -5,780€ immo: +9,962€
+    → + SC2 Solo                                                                                  +48,356€
+    → + SC3b Relais partiel                                                                       +45,002€
+    → + SC3 Relais complet                                                                        +35,642€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +37,860€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +37,751€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +34,506€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +34,397€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +25,146€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +25,037€
+
+  Apport 30,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +686€     -8,228€   +38,602€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +686€     -8,228€   +40,323€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +686€     -8,228€   +42,904€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +784€     -9,403€   +40,861€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +784€     -9,403€   +42,754€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +784€     -9,403€   +45,594€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —        +882€    -10,579€   +43,121€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —        +882€    -10,579€   +45,186€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —        +882€    -10,579€   +48,283€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +686€     -5,878€ immo: +12,952€
+    → + SC2 Solo                                                                                  +51,346€
+    → + SC3b Relais partiel                                                                       +47,992€
+    → + SC3 Relais complet                                                                        +38,632€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +686€     -1,078€ immo: -1,448€
+    → + SC2 Solo                                                                                  +36,946€
+    → + SC3b Relais partiel                                                                       +33,592€
+    → + SC3 Relais complet                                                                        +24,232€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +686€     -5,878€ immo: +14,673€
+    → + SC2 Solo                                                                                  +53,067€
+    → + SC3b Relais partiel                                                                       +49,713€
+    → + SC3 Relais complet                                                                        +40,353€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +686€     -1,078€ immo: +273€
+    → + SC2 Solo                                                                                  +38,667€
+    → + SC3b Relais partiel                                                                       +35,313€
+    → + SC3 Relais complet                                                                        +25,953€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +686€     -5,878€ immo: +17,254€
+    → + SC2 Solo                                                                                  +55,648€
+    → + SC3b Relais partiel                                                                       +52,294€
+    → + SC3 Relais complet                                                                        +42,934€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +686€     -1,078€ immo: +2,854€
+    → + SC2 Solo                                                                                  +41,248€
+    → + SC3b Relais partiel                                                                       +37,894€
+    → + SC3 Relais complet                                                                        +28,534€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +784€     -7,053€ immo: +15,211€
+    → + SC2 Solo                                                                                  +53,605€
+    → + SC3b Relais partiel                                                                       +50,251€
+    → + SC3 Relais complet                                                                        +40,891€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +784€     -2,253€ immo: +811€
+    → + SC2 Solo                                                                                  +39,205€
+    → + SC3b Relais partiel                                                                       +35,851€
+    → + SC3 Relais complet                                                                        +26,491€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +784€     -7,053€ immo: +17,104€
+    → + SC2 Solo                                                                                  +55,498€
+    → + SC3b Relais partiel                                                                       +52,144€
+    → + SC3 Relais complet                                                                        +42,784€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +784€     -2,253€ immo: +2,704€
+    → + SC2 Solo                                                                                  +41,098€
+    → + SC3b Relais partiel                                                                       +37,744€
+    → + SC3 Relais complet                                                                        +28,384€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +784€     -7,053€ immo: +19,944€
+    → + SC2 Solo                                                                                  +58,338€
+    → + SC3b Relais partiel                                                                       +54,984€
+    → + SC3 Relais complet                                                                        +45,624€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +784€     -2,253€ immo: +5,544€
+    → + SC2 Solo                                                                                  +43,938€
+    → + SC3b Relais partiel                                                                       +40,584€
+    → + SC3 Relais complet                                                                        +31,224€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m     +882€     -8,229€ immo: +17,471€
+    → + SC2 Solo                                                                                  +55,865€
+    → + SC3b Relais partiel                                                                       +52,511€
+    → + SC3 Relais complet                                                                        +43,151€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m     +882€     -3,429€ immo: +3,071€
+    → + SC2 Solo                                                                                  +41,465€
+    → + SC3b Relais partiel                                                                       +38,111€
+    → + SC3 Relais complet                                                                        +28,751€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m     +882€     -8,229€ immo: +19,536€
+    → + SC2 Solo                                                                                  +57,930€
+    → + SC3b Relais partiel                                                                       +54,576€
+    → + SC3 Relais complet                                                                        +45,216€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m     +882€     -3,429€ immo: +5,136€
+    → + SC2 Solo                                                                                  +43,530€
+    → + SC3b Relais partiel                                                                       +40,176€
+    → + SC3 Relais complet                                                                        +30,816€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m     +882€     -8,229€ immo: +22,633€
+    → + SC2 Solo                                                                                  +61,027€
+    → + SC3b Relais partiel                                                                       +57,673€
+    → + SC3 Relais complet                                                                        +48,313€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m     +882€     -3,429€ immo: +8,233€
+    → + SC2 Solo                                                                                  +46,627€
+    → + SC3b Relais partiel                                                                       +43,273€
+    → + SC3 Relais complet                                                                        +33,913€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +36,791€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +36,464€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +33,437€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +33,110€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +24,077€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +23,750€
+
+  Apport 50,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +490€     -5,877€   +36,874€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +490€     -5,877€   +38,595€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +490€     -5,877€   +41,176€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +588€     -7,053€   +39,133€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +588€     -7,053€   +41,026€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +588€     -7,053€   +43,866€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —        +686€     -8,228€   +41,393€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —        +686€     -8,228€   +43,458€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —        +686€     -8,228€   +46,555€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +490€     -3,527€ immo: +11,224€
+    → + SC2 Solo                                                                                  +49,618€
+    → + SC3b Relais partiel                                                                       +46,264€
+    → + SC3 Relais complet                                                                        +36,904€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +490€     +1,273€ immo: -3,176€
+    → + SC2 Solo                                                                                  +35,218€
+    → + SC3b Relais partiel                                                                       +31,864€
+    → + SC3 Relais complet                                                                        +22,504€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +490€     -3,527€ immo: +12,945€
+    → + SC2 Solo                                                                                  +51,339€
+    → + SC3b Relais partiel                                                                       +47,985€
+    → + SC3 Relais complet                                                                        +38,625€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +490€     +1,273€ immo: -1,455€
+    → + SC2 Solo                                                                                  +36,939€
+    → + SC3b Relais partiel                                                                       +33,585€
+    → + SC3 Relais complet                                                                        +24,225€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +490€     -3,527€ immo: +15,526€
+    → + SC2 Solo                                                                                  +53,920€
+    → + SC3b Relais partiel                                                                       +50,566€
+    → + SC3 Relais complet                                                                        +41,206€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +490€     +1,273€ immo: +1,126€
+    → + SC2 Solo                                                                                  +39,520€
+    → + SC3b Relais partiel                                                                       +36,166€
+    → + SC3 Relais complet                                                                        +26,806€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +588€     -4,703€ immo: +13,483€
+    → + SC2 Solo                                                                                  +51,877€
+    → + SC3b Relais partiel                                                                       +48,523€
+    → + SC3 Relais complet                                                                        +39,163€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +588€        +97€ immo: -917€
+    → + SC2 Solo                                                                                  +37,477€
+    → + SC3b Relais partiel                                                                       +34,123€
+    → + SC3 Relais complet                                                                        +24,763€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +588€     -4,703€ immo: +15,376€
+    → + SC2 Solo                                                                                  +53,770€
+    → + SC3b Relais partiel                                                                       +50,416€
+    → + SC3 Relais complet                                                                        +41,056€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +588€        +97€ immo: +976€
+    → + SC2 Solo                                                                                  +39,370€
+    → + SC3b Relais partiel                                                                       +36,016€
+    → + SC3 Relais complet                                                                        +26,656€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +588€     -4,703€ immo: +18,216€
+    → + SC2 Solo                                                                                  +56,610€
+    → + SC3b Relais partiel                                                                       +53,256€
+    → + SC3 Relais complet                                                                        +43,896€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +588€        +97€ immo: +3,816€
+    → + SC2 Solo                                                                                  +42,210€
+    → + SC3b Relais partiel                                                                       +38,856€
+    → + SC3 Relais complet                                                                        +29,496€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m     +686€     -5,878€ immo: +15,743€
+    → + SC2 Solo                                                                                  +54,137€
+    → + SC3b Relais partiel                                                                       +50,783€
+    → + SC3 Relais complet                                                                        +41,423€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m     +686€     -1,078€ immo: +1,343€
+    → + SC2 Solo                                                                                  +39,737€
+    → + SC3b Relais partiel                                                                       +36,383€
+    → + SC3 Relais complet                                                                        +27,023€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m     +686€     -5,878€ immo: +17,808€
+    → + SC2 Solo                                                                                  +56,202€
+    → + SC3b Relais partiel                                                                       +52,848€
+    → + SC3 Relais complet                                                                        +43,488€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m     +686€     -1,078€ immo: +3,408€
+    → + SC2 Solo                                                                                  +41,802€
+    → + SC3b Relais partiel                                                                       +38,448€
+    → + SC3 Relais complet                                                                        +29,088€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m     +686€     -5,878€ immo: +20,905€
+    → + SC2 Solo                                                                                  +59,299€
+    → + SC3b Relais partiel                                                                       +55,945€
+    → + SC3 Relais complet                                                                        +46,585€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m     +686€     -1,078€ immo: +6,505€
+    → + SC2 Solo                                                                                  +44,899€
+    → + SC3b Relais partiel                                                                       +41,545€
+    → + SC3 Relais complet                                                                        +32,185€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +35,723€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +35,177€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +32,369€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +31,823€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +23,009€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +22,463€
+
+──────────────────────────────────────────────────────────────────────────────────────────
+ HORIZON 5 ANS
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Apport 10,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +882€    -10,579€   +56,546€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +882€    -10,579€   +58,267€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +882€    -10,579€   +60,849€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +980€    -11,754€   +59,230€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +980€    -11,754€   +61,123€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +980€    -11,754€   +63,962€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —      +1,077€    -12,930€   +61,913€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —      +1,077€    -12,930€   +63,978€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —      +1,077€    -12,930€   +67,076€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +882€     -8,229€ immo: +13,796€
+    → + SC2 Solo                                                                                  +77,786€
+    → + SC3b Relais partiel                                                                       +72,196€
+    → + SC3 Relais complet                                                                        +56,596€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +882€     -3,429€ immo: -10,204€
+    → + SC2 Solo                                                                                  +53,786€
+    → + SC3b Relais partiel                                                                       +48,196€
+    → + SC3 Relais complet                                                                        +32,596€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +882€     -8,229€ immo: +15,517€
+    → + SC2 Solo                                                                                  +79,507€
+    → + SC3b Relais partiel                                                                       +73,917€
+    → + SC3 Relais complet                                                                        +58,317€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +882€     -3,429€ immo: -8,483€
+    → + SC2 Solo                                                                                  +55,507€
+    → + SC3b Relais partiel                                                                       +49,917€
+    → + SC3 Relais complet                                                                        +34,317€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +882€     -8,229€ immo: +18,099€
+    → + SC2 Solo                                                                                  +82,089€
+    → + SC3b Relais partiel                                                                       +76,499€
+    → + SC3 Relais complet                                                                        +60,899€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +882€     -3,429€ immo: -5,901€
+    → + SC2 Solo                                                                                  +58,089€
+    → + SC3b Relais partiel                                                                       +52,499€
+    → + SC3 Relais complet                                                                        +36,899€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +980€     -9,404€ immo: +16,480€
+    → + SC2 Solo                                                                                  +80,470€
+    → + SC3b Relais partiel                                                                       +74,880€
+    → + SC3 Relais complet                                                                        +59,280€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +980€     -4,604€ immo: -7,520€
+    → + SC2 Solo                                                                                  +56,470€
+    → + SC3b Relais partiel                                                                       +50,880€
+    → + SC3 Relais complet                                                                        +35,280€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +980€     -9,404€ immo: +18,373€
+    → + SC2 Solo                                                                                  +82,363€
+    → + SC3b Relais partiel                                                                       +76,773€
+    → + SC3 Relais complet                                                                        +61,173€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +980€     -4,604€ immo: -5,627€
+    → + SC2 Solo                                                                                  +58,363€
+    → + SC3b Relais partiel                                                                       +52,773€
+    → + SC3 Relais complet                                                                        +37,173€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +980€     -9,404€ immo: +21,212€
+    → + SC2 Solo                                                                                  +85,202€
+    → + SC3b Relais partiel                                                                       +79,612€
+    → + SC3 Relais complet                                                                        +64,012€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +980€     -4,604€ immo: -2,788€
+    → + SC2 Solo                                                                                  +61,202€
+    → + SC3b Relais partiel                                                                       +55,612€
+    → + SC3 Relais complet                                                                        +40,012€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m   +1,077€    -10,580€ immo: +19,163€
+    → + SC2 Solo                                                                                  +83,153€
+    → + SC3b Relais partiel                                                                       +77,563€
+    → + SC3 Relais complet                                                                        +61,963€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m   +1,077€     -5,780€ immo: -4,837€
+    → + SC2 Solo                                                                                  +59,153€
+    → + SC3b Relais partiel                                                                       +53,563€
+    → + SC3 Relais complet                                                                        +37,963€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m   +1,077€    -10,580€ immo: +21,228€
+    → + SC2 Solo                                                                                  +85,218€
+    → + SC3b Relais partiel                                                                       +79,628€
+    → + SC3 Relais complet                                                                        +64,028€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m   +1,077€     -5,780€ immo: -2,772€
+    → + SC2 Solo                                                                                  +61,218€
+    → + SC3b Relais partiel                                                                       +55,628€
+    → + SC3 Relais complet                                                                        +40,028€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m   +1,077€    -10,580€ immo: +24,326€
+    → + SC2 Solo                                                                                  +88,316€
+    → + SC3b Relais partiel                                                                       +82,726€
+    → + SC3 Relais complet                                                                        +67,126€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m   +1,077€     -5,780€ immo: +326€
+    → + SC2 Solo                                                                                  +64,316€
+    → + SC3b Relais partiel                                                                       +58,726€
+    → + SC3 Relais complet                                                                        +43,126€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +63,084€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +62,895€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +57,494€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +57,305€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +41,894€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +41,705€
+
+  Apport 30,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +686€     -8,228€   +53,970€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +686€     -8,228€   +55,691€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +686€     -8,228€   +58,273€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +784€     -9,403€   +56,654€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +784€     -9,403€   +58,547€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +784€     -9,403€   +61,386€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —        +882€    -10,579€   +59,337€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —        +882€    -10,579€   +61,402€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —        +882€    -10,579€   +64,500€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +686€     -5,878€ immo: +11,220€
+    → + SC2 Solo                                                                                  +75,210€
+    → + SC3b Relais partiel                                                                       +69,620€
+    → + SC3 Relais complet                                                                        +54,020€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +686€     -1,078€ immo: -12,780€
+    → + SC2 Solo                                                                                  +51,210€
+    → + SC3b Relais partiel                                                                       +45,620€
+    → + SC3 Relais complet                                                                        +30,020€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +686€     -5,878€ immo: +12,941€
+    → + SC2 Solo                                                                                  +76,931€
+    → + SC3b Relais partiel                                                                       +71,341€
+    → + SC3 Relais complet                                                                        +55,741€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +686€     -1,078€ immo: -11,059€
+    → + SC2 Solo                                                                                  +52,931€
+    → + SC3b Relais partiel                                                                       +47,341€
+    → + SC3 Relais complet                                                                        +31,741€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +686€     -5,878€ immo: +15,523€
+    → + SC2 Solo                                                                                  +79,513€
+    → + SC3b Relais partiel                                                                       +73,923€
+    → + SC3 Relais complet                                                                        +58,323€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +686€     -1,078€ immo: -8,477€
+    → + SC2 Solo                                                                                  +55,513€
+    → + SC3b Relais partiel                                                                       +49,923€
+    → + SC3 Relais complet                                                                        +34,323€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +784€     -7,053€ immo: +13,904€
+    → + SC2 Solo                                                                                  +77,894€
+    → + SC3b Relais partiel                                                                       +72,304€
+    → + SC3 Relais complet                                                                        +56,704€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +784€     -2,253€ immo: -10,096€
+    → + SC2 Solo                                                                                  +53,894€
+    → + SC3b Relais partiel                                                                       +48,304€
+    → + SC3 Relais complet                                                                        +32,704€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +784€     -7,053€ immo: +15,797€
+    → + SC2 Solo                                                                                  +79,787€
+    → + SC3b Relais partiel                                                                       +74,197€
+    → + SC3 Relais complet                                                                        +58,597€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +784€     -2,253€ immo: -8,203€
+    → + SC2 Solo                                                                                  +55,787€
+    → + SC3b Relais partiel                                                                       +50,197€
+    → + SC3 Relais complet                                                                        +34,597€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +784€     -7,053€ immo: +18,636€
+    → + SC2 Solo                                                                                  +82,626€
+    → + SC3b Relais partiel                                                                       +77,036€
+    → + SC3 Relais complet                                                                        +61,436€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +784€     -2,253€ immo: -5,364€
+    → + SC2 Solo                                                                                  +58,626€
+    → + SC3b Relais partiel                                                                       +53,036€
+    → + SC3 Relais complet                                                                        +37,436€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m     +882€     -8,229€ immo: +16,587€
+    → + SC2 Solo                                                                                  +80,577€
+    → + SC3b Relais partiel                                                                       +74,987€
+    → + SC3 Relais complet                                                                        +59,387€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m     +882€     -3,429€ immo: -7,413€
+    → + SC2 Solo                                                                                  +56,577€
+    → + SC3b Relais partiel                                                                       +50,987€
+    → + SC3 Relais complet                                                                        +35,387€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m     +882€     -8,229€ immo: +18,652€
+    → + SC2 Solo                                                                                  +82,642€
+    → + SC3b Relais partiel                                                                       +77,052€
+    → + SC3 Relais complet                                                                        +61,452€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m     +882€     -3,429€ immo: -5,348€
+    → + SC2 Solo                                                                                  +58,642€
+    → + SC3b Relais partiel                                                                       +53,052€
+    → + SC3 Relais complet                                                                        +37,452€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m     +882€     -8,229€ immo: +21,750€
+    → + SC2 Solo                                                                                  +85,740€
+    → + SC3b Relais partiel                                                                       +80,150€
+    → + SC3 Relais complet                                                                        +64,550€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m     +882€     -3,429€ immo: -2,250€
+    → + SC2 Solo                                                                                  +61,740€
+    → + SC3b Relais partiel                                                                       +56,150€
+    → + SC3 Relais complet                                                                        +40,550€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +61,272€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +60,705€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +55,682€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +55,115€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +40,082€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +39,515€
+
+  Apport 50,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +490€     -5,877€   +51,394€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +490€     -5,877€   +53,115€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +490€     -5,877€   +55,696€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +588€     -7,053€   +54,077€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +588€     -7,053€   +55,971€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +588€     -7,053€   +58,810€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —        +686€     -8,228€   +56,761€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —        +686€     -8,228€   +58,826€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —        +686€     -8,228€   +61,924€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +490€     -3,527€ immo: +8,644€
+    → + SC2 Solo                                                                                  +72,634€
+    → + SC3b Relais partiel                                                                       +67,044€
+    → + SC3 Relais complet                                                                        +51,444€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +490€     +1,273€ immo: -15,356€
+    → + SC2 Solo                                                                                  +48,634€
+    → + SC3b Relais partiel                                                                       +43,044€
+    → + SC3 Relais complet                                                                        +27,444€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +490€     -3,527€ immo: +10,365€
+    → + SC2 Solo                                                                                  +74,355€
+    → + SC3b Relais partiel                                                                       +68,765€
+    → + SC3 Relais complet                                                                        +53,165€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +490€     +1,273€ immo: -13,635€
+    → + SC2 Solo                                                                                  +50,355€
+    → + SC3b Relais partiel                                                                       +44,765€
+    → + SC3 Relais complet                                                                        +29,165€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +490€     -3,527€ immo: +12,946€
+    → + SC2 Solo                                                                                  +76,936€
+    → + SC3b Relais partiel                                                                       +71,346€
+    → + SC3 Relais complet                                                                        +55,746€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +490€     +1,273€ immo: -11,054€
+    → + SC2 Solo                                                                                  +52,936€
+    → + SC3b Relais partiel                                                                       +47,346€
+    → + SC3 Relais complet                                                                        +31,746€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +588€     -4,703€ immo: +11,327€
+    → + SC2 Solo                                                                                  +75,317€
+    → + SC3b Relais partiel                                                                       +69,727€
+    → + SC3 Relais complet                                                                        +54,127€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +588€        +97€ immo: -12,673€
+    → + SC2 Solo                                                                                  +51,317€
+    → + SC3b Relais partiel                                                                       +45,727€
+    → + SC3 Relais complet                                                                        +30,127€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +588€     -4,703€ immo: +13,221€
+    → + SC2 Solo                                                                                  +77,211€
+    → + SC3b Relais partiel                                                                       +71,621€
+    → + SC3 Relais complet                                                                        +56,021€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +588€        +97€ immo: -10,779€
+    → + SC2 Solo                                                                                  +53,211€
+    → + SC3b Relais partiel                                                                       +47,621€
+    → + SC3 Relais complet                                                                        +32,021€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +588€     -4,703€ immo: +16,060€
+    → + SC2 Solo                                                                                  +80,050€
+    → + SC3b Relais partiel                                                                       +74,460€
+    → + SC3 Relais complet                                                                        +58,860€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +588€        +97€ immo: -7,940€
+    → + SC2 Solo                                                                                  +56,050€
+    → + SC3b Relais partiel                                                                       +50,460€
+    → + SC3 Relais complet                                                                        +34,860€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m     +686€     -5,878€ immo: +14,011€
+    → + SC2 Solo                                                                                  +78,001€
+    → + SC3b Relais partiel                                                                       +72,411€
+    → + SC3 Relais complet                                                                        +56,811€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m     +686€     -1,078€ immo: -9,989€
+    → + SC2 Solo                                                                                  +54,001€
+    → + SC3b Relais partiel                                                                       +48,411€
+    → + SC3 Relais complet                                                                        +32,811€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m     +686€     -5,878€ immo: +16,076€
+    → + SC2 Solo                                                                                  +80,066€
+    → + SC3b Relais partiel                                                                       +74,476€
+    → + SC3 Relais complet                                                                        +58,876€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m     +686€     -1,078€ immo: -7,924€
+    → + SC2 Solo                                                                                  +56,066€
+    → + SC3b Relais partiel                                                                       +50,476€
+    → + SC3 Relais complet                                                                        +34,876€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m     +686€     -5,878€ immo: +19,174€
+    → + SC2 Solo                                                                                  +83,164€
+    → + SC3b Relais partiel                                                                       +77,574€
+    → + SC3 Relais complet                                                                        +61,974€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m     +686€     -1,078€ immo: -4,826€
+    → + SC2 Solo                                                                                  +59,164€
+    → + SC3b Relais partiel                                                                       +53,574€
+    → + SC3 Relais complet                                                                        +37,974€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +59,459€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +58,515€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +53,869€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +52,925€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +38,269€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +37,325€
+
+──────────────────────────────────────────────────────────────────────────────────────────
+ HORIZON 7 ANS
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Apport 10,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +882€    -10,579€   +71,582€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +882€    -10,579€   +73,302€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +882€    -10,579€   +75,884€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +980€    -11,754€   +74,558€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +980€    -11,754€   +76,451€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +980€    -11,754€   +79,290€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —      +1,077€    -12,930€   +77,534€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —      +1,077€    -12,930€   +79,599€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —      +1,077€    -12,930€   +82,697€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +882€     -8,229€ immo: +11,732€
+    → + SC2 Solo                                                                                 +101,318€
+    → + SC3b Relais partiel                                                                       +93,492€
+    → + SC3 Relais complet                                                                        +71,652€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +882€     -3,429€ immo: -21,868€
+    → + SC2 Solo                                                                                  +67,718€
+    → + SC3b Relais partiel                                                                       +59,892€
+    → + SC3 Relais complet                                                                        +38,052€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +882€     -8,229€ immo: +13,452€
+    → + SC2 Solo                                                                                 +103,038€
+    → + SC3b Relais partiel                                                                       +95,212€
+    → + SC3 Relais complet                                                                        +73,372€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +882€     -3,429€ immo: -20,148€
+    → + SC2 Solo                                                                                  +69,438€
+    → + SC3b Relais partiel                                                                       +61,612€
+    → + SC3 Relais complet                                                                        +39,772€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +882€     -8,229€ immo: +16,034€
+    → + SC2 Solo                                                                                 +105,620€
+    → + SC3b Relais partiel                                                                       +97,794€
+    → + SC3 Relais complet                                                                        +75,954€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +882€     -3,429€ immo: -17,566€
+    → + SC2 Solo                                                                                  +72,020€
+    → + SC3b Relais partiel                                                                       +64,194€
+    → + SC3 Relais complet                                                                        +42,354€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +980€     -9,404€ immo: +14,708€
+    → + SC2 Solo                                                                                 +104,294€
+    → + SC3b Relais partiel                                                                       +96,468€
+    → + SC3 Relais complet                                                                        +74,628€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +980€     -4,604€ immo: -18,892€
+    → + SC2 Solo                                                                                  +70,694€
+    → + SC3b Relais partiel                                                                       +62,868€
+    → + SC3 Relais complet                                                                        +41,028€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +980€     -9,404€ immo: +16,601€
+    → + SC2 Solo                                                                                 +106,187€
+    → + SC3b Relais partiel                                                                       +98,361€
+    → + SC3 Relais complet                                                                        +76,521€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +980€     -4,604€ immo: -16,999€
+    → + SC2 Solo                                                                                  +72,587€
+    → + SC3b Relais partiel                                                                       +64,761€
+    → + SC3 Relais complet                                                                        +42,921€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +980€     -9,404€ immo: +19,440€
+    → + SC2 Solo                                                                                 +109,026€
+    → + SC3b Relais partiel                                                                      +101,200€
+    → + SC3 Relais complet                                                                        +79,360€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +980€     -4,604€ immo: -14,160€
+    → + SC2 Solo                                                                                  +75,426€
+    → + SC3b Relais partiel                                                                       +67,600€
+    → + SC3 Relais complet                                                                        +45,760€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m   +1,077€    -10,580€ immo: +17,684€
+    → + SC2 Solo                                                                                 +107,270€
+    → + SC3b Relais partiel                                                                       +99,444€
+    → + SC3 Relais complet                                                                        +77,604€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m   +1,077€     -5,780€ immo: -15,916€
+    → + SC2 Solo                                                                                  +73,670€
+    → + SC3b Relais partiel                                                                       +65,844€
+    → + SC3 Relais complet                                                                        +44,004€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m   +1,077€    -10,580€ immo: +19,749€
+    → + SC2 Solo                                                                                 +109,335€
+    → + SC3b Relais partiel                                                                      +101,509€
+    → + SC3 Relais complet                                                                        +79,669€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m   +1,077€     -5,780€ immo: -13,851€
+    → + SC2 Solo                                                                                  +75,735€
+    → + SC3b Relais partiel                                                                       +67,909€
+    → + SC3 Relais complet                                                                        +46,069€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m   +1,077€    -10,580€ immo: +22,847€
+    → + SC2 Solo                                                                                 +112,433€
+    → + SC3b Relais partiel                                                                      +104,607€
+    → + SC3 Relais complet                                                                        +82,767€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m   +1,077€     -5,780€ immo: -10,753€
+    → + SC2 Solo                                                                                  +78,833€
+    → + SC3b Relais partiel                                                                       +71,007€
+    → + SC3 Relais complet                                                                        +49,167€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +88,295€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +88,020€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +80,469€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +80,194€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +58,629€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +58,354€
+
+  Apport 30,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +686€     -8,228€   +68,420€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +686€     -8,228€   +70,141€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +686€     -8,228€   +72,722€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +784€     -9,403€   +71,396€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +784€     -9,403€   +73,289€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +784€     -9,403€   +76,129€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —        +882€    -10,579€   +74,372€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —        +882€    -10,579€   +76,437€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —        +882€    -10,579€   +79,535€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +686€     -5,878€ immo: +8,570€
+    → + SC2 Solo                                                                                  +98,156€
+    → + SC3b Relais partiel                                                                       +90,330€
+    → + SC3 Relais complet                                                                        +68,490€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +686€     -1,078€ immo: -25,030€
+    → + SC2 Solo                                                                                  +64,556€
+    → + SC3b Relais partiel                                                                       +56,730€
+    → + SC3 Relais complet                                                                        +34,890€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +686€     -5,878€ immo: +10,291€
+    → + SC2 Solo                                                                                  +99,877€
+    → + SC3b Relais partiel                                                                       +92,051€
+    → + SC3 Relais complet                                                                        +70,211€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +686€     -1,078€ immo: -23,309€
+    → + SC2 Solo                                                                                  +66,277€
+    → + SC3b Relais partiel                                                                       +58,451€
+    → + SC3 Relais complet                                                                        +36,611€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +686€     -5,878€ immo: +12,872€
+    → + SC2 Solo                                                                                 +102,458€
+    → + SC3b Relais partiel                                                                       +94,632€
+    → + SC3 Relais complet                                                                        +72,792€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +686€     -1,078€ immo: -20,728€
+    → + SC2 Solo                                                                                  +68,858€
+    → + SC3b Relais partiel                                                                       +61,032€
+    → + SC3 Relais complet                                                                        +39,192€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +784€     -7,053€ immo: +11,546€
+    → + SC2 Solo                                                                                 +101,132€
+    → + SC3b Relais partiel                                                                       +93,306€
+    → + SC3 Relais complet                                                                        +71,466€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +784€     -2,253€ immo: -22,054€
+    → + SC2 Solo                                                                                  +67,532€
+    → + SC3b Relais partiel                                                                       +59,706€
+    → + SC3 Relais complet                                                                        +37,866€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +784€     -7,053€ immo: +13,439€
+    → + SC2 Solo                                                                                 +103,025€
+    → + SC3b Relais partiel                                                                       +95,199€
+    → + SC3 Relais complet                                                                        +73,359€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +784€     -2,253€ immo: -20,161€
+    → + SC2 Solo                                                                                  +69,425€
+    → + SC3b Relais partiel                                                                       +61,599€
+    → + SC3 Relais complet                                                                        +39,759€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +784€     -7,053€ immo: +16,279€
+    → + SC2 Solo                                                                                 +105,865€
+    → + SC3b Relais partiel                                                                       +98,039€
+    → + SC3 Relais complet                                                                        +76,199€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +784€     -2,253€ immo: -17,321€
+    → + SC2 Solo                                                                                  +72,265€
+    → + SC3b Relais partiel                                                                       +64,439€
+    → + SC3 Relais complet                                                                        +42,599€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m     +882€     -8,229€ immo: +14,522€
+    → + SC2 Solo                                                                                 +104,108€
+    → + SC3b Relais partiel                                                                       +96,282€
+    → + SC3 Relais complet                                                                        +74,442€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m     +882€     -3,429€ immo: -19,078€
+    → + SC2 Solo                                                                                  +70,508€
+    → + SC3b Relais partiel                                                                       +62,682€
+    → + SC3 Relais complet                                                                        +40,842€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m     +882€     -8,229€ immo: +16,587€
+    → + SC2 Solo                                                                                 +106,173€
+    → + SC3b Relais partiel                                                                       +98,347€
+    → + SC3 Relais complet                                                                        +76,507€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m     +882€     -3,429€ immo: -17,013€
+    → + SC2 Solo                                                                                  +72,573€
+    → + SC3b Relais partiel                                                                       +64,747€
+    → + SC3 Relais complet                                                                        +42,907€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m     +882€     -8,229€ immo: +19,685€
+    → + SC2 Solo                                                                                 +109,271€
+    → + SC3b Relais partiel                                                                      +101,445€
+    → + SC3 Relais complet                                                                        +79,605€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m     +882€     -3,429€ immo: -13,915€
+    → + SC2 Solo                                                                                  +75,671€
+    → + SC3b Relais partiel                                                                       +67,845€
+    → + SC3 Relais complet                                                                        +46,005€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +85,712€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +84,888€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +77,886€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +77,062€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +56,046€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +55,222€
+
+  Apport 50,000€
+  Scenario                               Prix      Durée  Revente   Loyer  Mensual. Cashflow/an   COÛT NET
+  ────────────────────────────────────── ──────── ────── ──────── ─────── ───────── ─────────── ──────────
+  SC1 au pair (best duree 10ans)         100k€      10a  100%        —        +490€     -5,877€   +65,258€
+  SC1 au pair (best duree 10ans)         100k€      10a  98%        —        +490€     -5,877€   +66,979€
+  SC1 au pair (best duree 10ans)         100k€      10a  95%        —        +490€     -5,877€   +69,560€
+  SC1 au pair (best duree 10ans)         110k€      10a  100%        —        +588€     -7,053€   +68,234€
+  SC1 au pair (best duree 10ans)         110k€      10a  98%        —        +588€     -7,053€   +70,127€
+  SC1 au pair (best duree 10ans)         110k€      10a  95%        —        +588€     -7,053€   +72,967€
+  SC1 au pair (best duree 10ans)         120k€      10a  100%        —        +686€     -8,228€   +71,210€
+  SC1 au pair (best duree 10ans)         120k€      10a  98%        —        +686€     -8,228€   +73,276€
+  SC1 au pair (best duree 10ans)         120k€      10a  95%        —        +686€     -8,228€   +76,373€
+  SC1 location 600€/m (best 10ans)       100k€      10a  100%    600€/m     +490€     -3,527€ immo: +5,408€
+    → + SC2 Solo                                                                                  +94,994€
+    → + SC3b Relais partiel                                                                       +87,168€
+    → + SC3 Relais complet                                                                        +65,328€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  100%   1000€/m     +490€     +1,273€ immo: -28,192€
+    → + SC2 Solo                                                                                  +61,394€
+    → + SC3b Relais partiel                                                                       +53,568€
+    → + SC3 Relais complet                                                                        +31,728€
+  SC1 location 600€/m (best 10ans)       100k€      10a  98%    600€/m     +490€     -3,527€ immo: +7,129€
+    → + SC2 Solo                                                                                  +96,715€
+    → + SC3b Relais partiel                                                                       +88,889€
+    → + SC3 Relais complet                                                                        +67,049€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  98%   1000€/m     +490€     +1,273€ immo: -26,471€
+    → + SC2 Solo                                                                                  +63,115€
+    → + SC3b Relais partiel                                                                       +55,289€
+    → + SC3 Relais complet                                                                        +33,449€
+  SC1 location 600€/m (best 10ans)       100k€      10a  95%    600€/m     +490€     -3,527€ immo: +9,710€
+    → + SC2 Solo                                                                                  +99,296€
+    → + SC3b Relais partiel                                                                       +91,470€
+    → + SC3 Relais complet                                                                        +69,630€
+  SC1 location 1000€/m (best 10ans)      100k€      10a  95%   1000€/m     +490€     +1,273€ immo: -23,890€
+    → + SC2 Solo                                                                                  +65,696€
+    → + SC3b Relais partiel                                                                       +57,870€
+    → + SC3 Relais complet                                                                        +36,030€
+  SC1 location 600€/m (best 10ans)       110k€      10a  100%    600€/m     +588€     -4,703€ immo: +8,384€
+    → + SC2 Solo                                                                                  +97,970€
+    → + SC3b Relais partiel                                                                       +90,144€
+    → + SC3 Relais complet                                                                        +68,304€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  100%   1000€/m     +588€        +97€ immo: -25,216€
+    → + SC2 Solo                                                                                  +64,370€
+    → + SC3b Relais partiel                                                                       +56,544€
+    → + SC3 Relais complet                                                                        +34,704€
+  SC1 location 600€/m (best 10ans)       110k€      10a  98%    600€/m     +588€     -4,703€ immo: +10,277€
+    → + SC2 Solo                                                                                  +99,863€
+    → + SC3b Relais partiel                                                                       +92,037€
+    → + SC3 Relais complet                                                                        +70,197€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  98%   1000€/m     +588€        +97€ immo: -23,323€
+    → + SC2 Solo                                                                                  +66,263€
+    → + SC3b Relais partiel                                                                       +58,437€
+    → + SC3 Relais complet                                                                        +36,597€
+  SC1 location 600€/m (best 10ans)       110k€      10a  95%    600€/m     +588€     -4,703€ immo: +13,117€
+    → + SC2 Solo                                                                                 +102,703€
+    → + SC3b Relais partiel                                                                       +94,877€
+    → + SC3 Relais complet                                                                        +73,037€
+  SC1 location 1000€/m (best 10ans)      110k€      10a  95%   1000€/m     +588€        +97€ immo: -20,483€
+    → + SC2 Solo                                                                                  +69,103€
+    → + SC3b Relais partiel                                                                       +61,277€
+    → + SC3 Relais complet                                                                        +39,437€
+  SC1 location 600€/m (best 10ans)       120k€      10a  100%    600€/m     +686€     -5,878€ immo: +11,360€
+    → + SC2 Solo                                                                                 +100,946€
+    → + SC3b Relais partiel                                                                       +93,120€
+    → + SC3 Relais complet                                                                        +71,280€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  100%   1000€/m     +686€     -1,078€ immo: -22,240€
+    → + SC2 Solo                                                                                  +67,346€
+    → + SC3b Relais partiel                                                                       +59,520€
+    → + SC3 Relais complet                                                                        +37,680€
+  SC1 location 600€/m (best 10ans)       120k€      10a  98%    600€/m     +686€     -5,878€ immo: +13,426€
+    → + SC2 Solo                                                                                 +103,012€
+    → + SC3b Relais partiel                                                                       +95,186€
+    → + SC3 Relais complet                                                                        +73,346€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  98%   1000€/m     +686€     -1,078€ immo: -20,174€
+    → + SC2 Solo                                                                                  +69,412€
+    → + SC3b Relais partiel                                                                       +61,586€
+    → + SC3 Relais complet                                                                        +39,746€
+  SC1 location 600€/m (best 10ans)       120k€      10a  95%    600€/m     +686€     -5,878€ immo: +16,523€
+    → + SC2 Solo                                                                                 +106,109€
+    → + SC3b Relais partiel                                                                       +98,283€
+    → + SC3 Relais complet                                                                        +76,443€
+  SC1 location 1000€/m (best 10ans)      120k€      10a  95%   1000€/m     +686€     -1,078€ immo: -17,077€
+    → + SC2 Solo                                                                                  +72,509€
+    → + SC3b Relais partiel                                                                       +64,683€
+    → + SC3 Relais complet                                                                        +42,843€
+  SC2 Solo 21.5h/sem 2.5%_brut                                                                    +83,130€
+  SC2 Solo 21.5h/sem 3.0%_brut                                                                    +81,756€
+  SC3b Relais partiel 19h/sem 2.5%_brut                                                           +75,304€
+  SC3b Relais partiel 19h/sem 3.0%_brut                                                           +73,930€
+  SC3 Relais complet 13h/sem 2.5%_brut                                                            +53,464€
+  SC3 Relais complet 13h/sem 3.0%_brut                                                            +52,090€
+
+==========================================================================================
+TRANSITION SCENARIO: AU PAIR 2 ANS → PURE INVESTMENT (no babysitter costs after Y2)
+Phase 1 (Y0–Y2): au pair in apartment — 12,400€ childcare, mortgage running, no rental income
+Phase 2 (Y2–H): two paths compared:
+  PATH SELL  → sell at Y2, place proceeds at 2.5% or 3% net until H
+  PATH RENT  → rent apartment at 600€ or 1000€/mois until H, then sell
+Net cost = total permanently spent.  Lower = better.  Negative = you made money overall.
+==========================================================================================
+
+──────────────────────────────────────────────────────────────────────────────────────────
+ Apport 10,000€
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  100k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +31,802€   +31,597€   +31,174€   +30,737€
+  SELL → place 3.0%_brut                       +31,802€   +31,556€   +31,046€   +30,515€
+  RENT 600€/m → sell at H                        n/a      +31,780€   +30,896€   +28,832€
+  RENT 1000€/m → sell at H                       n/a      +26,980€   +16,496€    +4,832€
+
+  100k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +33,523€   +33,348€   +32,987€   +32,614€
+  SELL → place 3.0%_brut                       +33,523€   +33,313€   +32,878€   +32,425€
+  RENT 600€/m → sell at H                        n/a      +33,501€   +32,617€   +30,552€
+  RENT 1000€/m → sell at H                       n/a      +28,701€   +18,217€    +6,552€
+
+  110k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +33,803€   +33,591€   +33,156€   +32,706€
+  SELL → place 3.0%_brut                       +33,803€   +33,549€   +33,024€   +32,478€
+  RENT 600€/m → sell at H                        n/a      +34,039€   +33,580€   +31,808€
+  RENT 1000€/m → sell at H                       n/a      +29,239€   +19,180€    +7,808€
+
+  110k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +35,696€   +35,517€   +35,151€   +34,771€
+  SELL → place 3.0%_brut                       +35,696€   +35,482€   +35,039€   +34,578€
+  RENT 600€/m → sell at H                        n/a      +35,932€   +35,473€   +33,701€
+  RENT 1000€/m → sell at H                       n/a      +31,132€   +21,073€    +9,701€
+
+  120k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +35,804€   +35,586€   +35,139€   +34,675€
+  SELL → place 3.0%_brut                       +35,804€   +35,542€   +35,003€   +34,440€
+  RENT 600€/m → sell at H                        n/a      +36,299€   +36,263€   +34,784€
+  RENT 1000€/m → sell at H                       n/a      +31,499€   +21,863€   +10,784€
+
+  120k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +37,869€   +37,687€   +37,314€   +36,928€
+  SELL → place 3.0%_brut                       +37,869€   +37,651€   +37,201€   +36,731€
+  RENT 600€/m → sell at H                        n/a      +38,364€   +38,328€   +36,849€
+  RENT 1000€/m → sell at H                       n/a      +33,564€   +23,928€   +12,849€
+
+──────────────────────────────────────────────────────────────────────────────────────────
+ Apport 30,000€
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  100k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +30,592€   +30,097€   +29,082€   +28,030€
+  SELL → place 3.0%_brut                       +30,592€   +29,998€   +28,773€   +27,496€
+  RENT 600€/m → sell at H                        n/a      +30,052€   +28,320€   +25,670€
+  RENT 1000€/m → sell at H                       n/a      +25,252€   +13,920€    +1,670€
+
+  100k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +32,312€   +31,848€   +30,894€   +29,907€
+  SELL → place 3.0%_brut                       +32,312€   +31,755€   +30,605€   +29,406€
+  RENT 600€/m → sell at H                        n/a      +31,773€   +30,041€   +27,391€
+  RENT 1000€/m → sell at H                       n/a      +26,973€   +15,641€    +3,391€
+
+  110k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +32,592€   +32,092€   +31,064€   +29,999€
+  SELL → place 3.0%_brut                       +32,592€   +31,991€   +30,751€   +29,459€
+  RENT 600€/m → sell at H                        n/a      +32,311€   +31,004€   +28,646€
+  RENT 1000€/m → sell at H                       n/a      +27,511€   +16,604€    +4,646€
+
+  110k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +34,485€   +34,018€   +33,058€   +32,064€
+  SELL → place 3.0%_brut                       +34,485€   +33,924€   +32,766€   +31,559€
+  RENT 600€/m → sell at H                        n/a      +34,204€   +32,897€   +30,539€
+  RENT 1000€/m → sell at H                       n/a      +29,404€   +18,497€    +6,539€
+
+  120k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +34,593€   +34,086€   +33,046€   +31,968€
+  SELL → place 3.0%_brut                       +34,593€   +33,985€   +32,730€   +31,421€
+  RENT 600€/m → sell at H                        n/a      +34,571€   +33,687€   +31,622€
+  RENT 1000€/m → sell at H                       n/a      +29,771€   +19,287€    +7,622€
+
+  120k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +36,658€   +36,187€   +35,221€   +34,221€
+  SELL → place 3.0%_brut                       +36,658€   +36,093€   +34,928€   +33,713€
+  RENT 600€/m → sell at H                        n/a      +36,636€   +35,752€   +33,687€
+  RENT 1000€/m → sell at H                       n/a      +31,836€   +21,352€    +9,687€
+
+──────────────────────────────────────────────────────────────────────────────────────────
+ Apport 50,000€
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  100k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +29,381€   +28,597€   +26,989€   +25,323€
+  SELL → place 3.0%_brut                       +29,381€   +28,440€   +26,500€   +24,478€
+  RENT 600€/m → sell at H                        n/a      +28,324€   +25,744€   +22,508€
+  RENT 1000€/m → sell at H                       n/a      +23,524€   +11,344€    -1,492€
+
+  100k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +31,102€   +30,348€   +28,802€   +27,200€
+  SELL → place 3.0%_brut                       +31,102€   +30,197€   +28,332€   +26,387€
+  RENT 600€/m → sell at H                        n/a      +30,045€   +27,465€   +24,229€
+  RENT 1000€/m → sell at H                       n/a      +25,245€   +13,065€      +229€
+
+  110k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +31,381€   +30,592€   +28,971€   +27,292€
+  SELL → place 3.0%_brut                       +31,381€   +30,434€   +28,479€   +26,440€
+  RENT 600€/m → sell at H                        n/a      +30,583€   +28,427€   +25,484€
+  RENT 1000€/m → sell at H                       n/a      +25,783€   +14,027€    +1,484€
+
+  110k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +33,274€   +32,518€   +30,965€   +29,357€
+  SELL → place 3.0%_brut                       +33,274€   +32,367€   +30,493€   +28,541€
+  RENT 600€/m → sell at H                        n/a      +32,476€   +30,321€   +27,377€
+  RENT 1000€/m → sell at H                       n/a      +27,676€   +15,921€    +3,377€
+
+  120k€ apt | Revente 100% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +33,382€   +32,586€   +30,953€   +29,262€
+  SELL → place 3.0%_brut                       +33,382€   +32,427€   +30,457€   +28,403€
+  RENT 600€/m → sell at H                        n/a      +32,843€   +31,111€   +28,460€
+  RENT 1000€/m → sell at H                       n/a      +28,043€   +16,711€    +4,460€
+
+  120k€ apt | Revente 98% | best loan duration shown
+  Path                                              H=2        H=3        H=5        H=7
+  ────────────────────────────────────────── ────────── ────────── ────────── ──────────
+  SELL → place 2.5%_brut                       +35,447€   +34,688€   +33,128€   +31,514€
+  SELL → place 3.0%_brut                       +35,447€   +34,536€   +32,655€   +30,694€
+  RENT 600€/m → sell at H                        n/a      +34,908€   +33,176€   +30,526€
+  RENT 1000€/m → sell at H                       n/a      +30,108€   +18,776€    +6,526€
+
+  NOTE: H=2 = sell right after au pair ends (no phase 2)
+        H=3 = 1 year of investment phase after au pair
+        H=5 = 3 years | H=7 = 5 years
+        All paths include the 12,400€ au pair cost in Y1–Y2
+
+==========================================================================================
+KEY READING GUIDE
+──────────────────────────────────────────────────────────────────────────────────────────
+SC1 au pair     → net cost already includes childcare (au pair living in apt)
+SC1 location    → 'immo:' is the pure investment P&L (you still need to pay a babysitter)
+                → '+ SC2/SC3b/SC3' = total cost if you switch to that babysitter setup
+SC2 Solo        → 1 babysitter covers everything (21.5h/week) — 12,798€/year
+SC3b Relais pt  → primary can't do Wed 11:30; secondary covers full Wednesday — 11,680€/year
+SC3 Relais comp → primary covers Wed 11:30; secondary evenings only — 8,560€/year
+
+Revente factor  → 1.00 = sell at same price | 0.98 = -2% | 0.95 = -5%
+Cashflow/an     → annual mortgage − rental income (negative = you receive money net)
+==========================================================================================
