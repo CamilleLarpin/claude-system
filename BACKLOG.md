@@ -4,7 +4,7 @@
 > Active projects → PROJECT_TRACKER.md
 > Promote to PROJECT_TRACKER when starting active development.
 
-**Last updated**: 2026-03-16
+**Last updated**: 2026-03-17
 
 ### Password Manager Setup
 - **Priority**: This Month
@@ -152,3 +152,14 @@
 - [ ] Clean Python and Tool Library Management Structure
 - [ ] Launch automation to sync Notion and md files
 - [ ] Enable Remote Development Management Through Telegram Integration
+
+### Claude Setup (from course analysis 2026-03-17 — ref: ~/.claude/reports/CLAUDE_CODE_COURSE_ANALYSIS.md)
+- [ ] **Configure hooks in settings.json** — auto-fired scripts before/after tool calls; use `/update-config` skill. **Why**: quality enforcement now relies entirely on Claude's behavioral compliance; one missing step or bad format has no automated catch.
+- [ ] **Create `.claude/agents/` pattern** — sub-agent spec format (researcher, reviewer, QA) as `.md` files; add to project-init scaffold. **Why**: multi-step tasks run as one monolithic agent with full context — slower, more expensive, more error-prone than specialized sub-agents with scoped tools.
+- [ ] **Document `/init` usage for inherited repos** — narrow scope: only for opening existing repos you didn't create; document as a step in onboarding onto unfamiliar codebases (not new project creation — that's already covered by project-init skill). **Why**: opening an unfamiliar repo without it means slower ramp-up and more assumptions.
+- [ ] **Add `CLAUDE.local.md` to project conventions** — gitignored per-workspace override for sensitive/machine-specific config; document in CLAUDE.md and project-init. **Why**: sensitive or machine-specific settings currently have no documented home — they either pollute committed files or get lost at /clear.
+- [ ] **Document MCP→Skill promotion rule** — try MCP first (fast setup), convert to skill (token-efficient) once validated; add as a decision entry. **Why**: MCPs adopted for convenience stay permanently, adding context cost to every session whether used or not; no current trigger to retire them.
+- [ ] **Document reviewer sub-agent pattern** — zero-context sub-agent as quality gate; define when to invoke vs inline review. **Why**: Claude reviews its own output with full context bias — it looks for what it expected to write, not what's actually wrong; a zero-context reviewer catches what the author misses.
+- [ ] **Document git worktrees pattern** — parallel Claude instances on separate branches; document usage and guardrails. **Why**: currently forced to work on one task at a time; switching tasks kills active context with no recovery.
+- [ ] **Audit total loaded context cost** — run `/context` on a fresh session with all hot files loaded; prune if over ~500-line equivalent. **Why**: no visibility into how much context the setup itself consumes before a single task message is sent.
+- [x] **Set up Claude Code status line** — ✅ done: `ctx:%` + in/out token counts configured via `statusLine` in settings.json
