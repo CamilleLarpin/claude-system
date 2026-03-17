@@ -77,6 +77,12 @@
 - **Date**: 2026-03-17
 - **Status**: active
 
+## [data] Semantic layer YAML written for LLMs, not humans
+- **Decision**: in any project combining dbt + NL interface (nao, Omni, etc.), treat schema.yml column descriptions and model descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
+- **Rationale**: NL interfaces (nao, LLM query layers) consume the semantic layer at query time — vague or ambiguous descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this; source: Photoroom (Juliette Duizabo) — validated at scale (3-person data team, 100+ employees)
+- **Date**: 2026-03-17
+- **Status**: active
+
 ## [conventions] BACKLOG.md as unified project pipeline and task registry
 - **Decision**: single `~/.claude/BACKLOG.md` replaces separate TODOS.md; holds all pre-active projects (with priority, status, why, stack hint, constraints) and cross-project tasks in two sections; promotes to PROJECT_TRACKER when active development starts
 - **Rationale**: TODOS.md and a separate backlog would split related load context with no payoff for a solo developer; one file handles both "what to build next" and "cross-project tasks" under one load trigger; format difference (projects vs tasks) is handled by two sections within the file; alternatives considered: keep separate files (splits load context unnecessarily), add backlog to PROJECT_TRACKER (bloats always-loaded active project registry)
