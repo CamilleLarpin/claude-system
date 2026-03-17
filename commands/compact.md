@@ -1,13 +1,13 @@
 ---
-description: Compact context while preserving session decisions, task state, and active constraints
+description: Show the correct /compact command with preservation instructions — does NOT compact itself
 ---
 
-**This skill does NOT compact context** — it only generates preservation instructions.
-
-To actually compact, type this directly in the CLI input bar (replacing `[...]` with what to preserve):
+**This skill does NOT compact context.** Type this directly in the CLI input bar:
 
 ```
 /compact Keep: all decisions made this session, current task state, active constraints, active file paths. Compress everything else.
 ```
 
-> Note: `/compact` is a Claude Code built-in command. Skills in `~/.claude/commands/` cannot trigger it. The instructions above must be typed as a slash command directly — not sent as a message to Claude.
+`/compact` is a Claude Code built-in slash command — it must be typed in the input bar, not sent as a message.
+
+If context is too loaded to compact usefully: `/end-of-session` → `/commit-push` → `/clear`
