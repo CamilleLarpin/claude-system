@@ -126,3 +126,19 @@
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
 - Sequential duplicate protection (checking if a file was already moved) doesn't help — all instances start before any finishes; causes MOVE race conditions and 423 Locked on concurrent file writes
 - True fix: deduplicate at the trigger level — store processed `message_id` values (e.g. in workflow static data) and skip execution if already seen; or make all operations fully idempotent
+
+## [shell] · Guideline · Ghostty has no OSC title blocking — use a background reset loop
+> 2026-03-17 · source: dotfiles session
+- Ghostty has no config option to block OSC title escape sequences (OSC 0/2) from running apps; `shell-integration-features = title` and app-sent OSC compete last-in-wins — apps like Claude Code always win
+- No `ignore-osc-title`, `title-priority`, or equivalent option exists in Ghostty config reference
+- Workaround: wrap the command in zsh to spawn a background loop that resets the title every 0.3s; kill the loop on exit:
+  ```zsh
+  cmd() {
+    local title="${PWD##*/}"
+    ( while true; do printf '\033]0;%s\007' "$title"; sleep 0.3; done ) &
+    local _pid=$!
+    command cmd "$@"
+    kill $_pid 2>/dev/null; wait $_pid 2>/dev/null
+    printf '\033]0;%s\007' "${PWD##*/}"
+  }
+  ```
