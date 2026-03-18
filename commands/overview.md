@@ -10,9 +10,9 @@ description: Daily overview — day of week, active projects by priority, blocke
 date "+%A %Y-%m-%d"
 ```
 
-### 2. Load project tracker
+### 2. Load files
 
-Read `~/.claude/PROJECT_TRACKER.md`.
+Read `~/.claude/PROJECT_TRACKER.md` and `~/.claude/BACKLOG.md`.
 
 ### 3. Output
 
@@ -32,9 +32,10 @@ Read `~/.claude/PROJECT_TRACKER.md`.
 ```
 
 Rules:
-- Group by Priority: Now → Next → Later. Omit a section entirely if empty.
-- **Someday projects are hidden** — not shown unless user asks.
-- Within each priority group: Blocked (🔴) first, then Building, Testing, Running, Paused, Scoping
+- Group by Priority: Now → Next. Later, Someday hidden — not shown unless user asks.
+- Omit a section entirely if empty.
+- Within each priority group: projects first (Blocked 🔴 first, then Building/Testing/Running/Paused/Scoping), then tasks
+- Tasks shown as: `· [description]`
 - Keep each project to 2–3 lines max — no stack details
 - Omit ⚠️ Blocker line if blocker is "none"
 - If no blockers exist anywhere, omit all ⚠️ lines
