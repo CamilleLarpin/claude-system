@@ -14,7 +14,8 @@
 - @~/.claude/lessons/LESSONS_TELEGRAM.md — Telegram integration
 - @~/.claude/lessons/LESSONS_NOTION.md — Notion integration
 - @~/.claude/lessons/LESSONS_CLAUDE.md — skills authoring, Claude behavior
-- @~/.claude/lessons/LESSONS_ARCHITECTURE.md — git, ai-agents, architecture, integrations
+- @~/.claude/lessons/LESSONS_ARCHITECTURE.md — git, ai-agents, architecture, integrations, data-engineering
+- @~/.claude/lessons/LESSONS_DLT.md — dlt pipeline behavior, column normalization, schema
 
 
 ---

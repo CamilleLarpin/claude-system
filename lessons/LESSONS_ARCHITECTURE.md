@@ -127,6 +127,13 @@
 - Sequential duplicate protection (checking if a file was already moved) doesn't help — all instances start before any finishes; causes MOVE race conditions and 423 Locked on concurrent file writes
 - True fix: deduplicate at the trigger level — store processed `message_id` values (e.g. in workflow static data) and skip execution if already seen; or make all operations fully idempotent
 
+## [data-engineering] · Rule · French bank amounts use space as thousands separator
+> 2026-03-17 · source: finances-ezerpin
+- French bank CSV exports (Boursorama, Crédit Mutuel) use space (or `\u00a0`) as thousands separator: `-1 179.63`, `-1 875,00`
+- `float(value.replace(",", "."))` fails with `ValueError` on these — silent until a transaction > 999€ appears
+- Fix: `value.strip().replace("\u00a0", "").replace(" ", "").replace(",", ".")` before `float()`
+- Always test amount parser on values > 999 when integrating any French bank data source
+
 ## [shell] · Guideline · Ghostty has no OSC title blocking — use a background reset loop
 > 2026-03-17 · source: dotfiles session
 - Ghostty has no config option to block OSC title escape sequences (OSC 0/2) from running apps; `shell-integration-features = title` and app-sent OSC compete last-in-wins — apps like Claude Code always win
@@ -142,3 +149,9 @@
     printf '\033]0;%s\007' "${PWD##*/}"
   }
   ```
+
+## [shell] · Rule · Ghostty `working-directory = home` does not override OSC 7 from shell integration
+> 2026-03-18 · source: dotfiles session
+- `working-directory = home` is set in Ghostty config, but new windows (`Cmd+N`) still open in the last active project directory — Ghostty's shell integration sends OSC 7 (current working directory) to the terminal, and new windows inherit that value, overriding the config setting
+- The config setting alone is insufficient when `shell-integration = zsh` is active
+- Fix: add `cd ~` at the end of `~/.zshrc` — every new shell always starts in `~/` regardless of what Ghostty inherits via OSC 7
