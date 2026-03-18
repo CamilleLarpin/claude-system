@@ -71,6 +71,12 @@
 - **Date**: 2026-03-18
 - **Status**: active
 
+## [backlog] Done tasks archived to TASKS_DONE.md, not kept in BACKLOG.md
+- **Decision**: completed tasks are moved to `~/.claude/TASKS_DONE.md` and removed from BACKLOG.md entirely — not kept as `[x]` entries
+- **Rationale**: done tasks in BACKLOG.md consume tokens on every load for zero value; a separate file is never loaded unless explicitly needed, same principle as project Archive
+- **Date**: 2026-03-18
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
