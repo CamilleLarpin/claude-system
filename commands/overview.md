@@ -1,5 +1,5 @@
 ---
-description: Daily overview — day of week, active projects, blockers, what to work on
+description: Daily overview — day of week, active projects by priority, blockers
 ---
 
 # /overview — Daily Overview
@@ -19,15 +19,22 @@ Read `~/.claude/PROJECT_TRACKER.md`.
 ```
 📅 [Day], [Date]
 
-## Active Projects
-[For each project with any status — show all]
-
+## Now
 **[Project Name]** · [status emoji]
 → [Milestone field]
-⚠️ Blocker: [Blocker field — omit line if "none"]
+⚠️ Blocker: [Blocker field]
+
+## Next
+...
+
+## Later
+...
 ```
 
 Rules:
-- List projects in this order: 🔴 Blocked first, then 🔵 Building, then 🟡 Testing, then 🟢 Running, then 🟠 Paused, then ⚫ Scoping
-- Keep each project to 2–3 lines max — no extra context, no stack details
-- If no blockers exist across all projects, omit the ⚠️ lines entirely
+- Group by Priority: Now → Next → Later. Omit a section entirely if empty.
+- **Someday projects are hidden** — not shown unless user asks.
+- Within each priority group: Blocked (🔴) first, then Building, Testing, Running, Paused, Scoping
+- Keep each project to 2–3 lines max — no stack details
+- Omit ⚠️ Blocker line if blocker is "none"
+- If no blockers exist anywhere, omit all ⚠️ lines
