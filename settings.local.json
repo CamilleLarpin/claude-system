@@ -84,7 +84,8 @@
       "Bash(brew list:*)",
       "Bash(brew install:*)",
       "Bash(git --version)",
-      "Bash(bash ~/.claude/skills/project-init/scripts/init-structure.sh openclaw-setup private)"
+      "Bash(bash ~/.claude/skills/project-init/scripts/init-structure.sh openclaw-setup private)",
+      "Bash(git:*)"
     ]
   }
 }
