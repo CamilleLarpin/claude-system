@@ -98,9 +98,9 @@
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Milestone**: Phase 1 — dbt Steps 1–9 + 17 complete; validation run pending (dlt load → dbt run → compare vs Gsheet)
+- **Milestone**: First result — rules-based categorization → fix fct_repartition_couple → CSV export
 - **Blocker**: none
-- **Next**: `pip install dlt[duckdb] && python pipelines/load_boursorama.py data/raw/2025/export-operations-16-03-2026_13-25-33.csv` → `cd dbt && dbt seed && dbt run` → Validation A + B
+- **Next**: Build rules-based categorization (source_category → dim_categories); add category/sub_category to stg_transactions
 
 ### claude-one-digest
 - **Status**: 🟢 Running
