@@ -35,7 +35,7 @@ Rules:
 - Group by Priority: Now → Next. Later, Someday hidden — not shown unless user asks.
 - Omit a section entirely if empty.
 - Within each priority group: projects first (Blocked 🔴 first, then Building/Testing/Running/Paused/Scoping), then tasks
-- Tasks shown as: `· [description]`
+- Tasks shown as: `· [description]` — only `- [ ]` tasks; skip `- [x]` (done)
 - Keep each project to 2–3 lines max — no stack details
 - Omit ⚠️ Blocker line if blocker is "none"
 - If no blockers exist anywhere, omit all ⚠️ lines
