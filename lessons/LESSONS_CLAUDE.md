@@ -64,6 +64,12 @@
 - Critical must-never-do rules and security constraints buried mid-file get less weight at runtime
 - Put the most important rules at the top of CLAUDE.md and repeat or summarise the hardest constraints at the bottom
 
+## [claude-code] · Rule · Previous session context lives in ~/.claude/projects/<slug>/*.jsonl
+> 2026-03-18 · source: gmail-inbox-cleanup session
+- Each Claude Code conversation is stored as a JSONL file in `~/.claude/projects/<slug>/` — one file per session, named by UUID
+- When the user says "we discussed this yesterday" or "look at the previous conversation", do NOT say the context is unavailable — check `~/.claude/projects/<slug>/` sorted by modification time, read the most recent relevant file, extract text blocks from assistant/user messages
+- The slug matches the project path with `/` replaced by `-`, e.g. `/Users/camillelarpin/projects/gmail-inbox-cleanup` → `-Users-camillelarpin-projects-gmail-inbox-cleanup`
+
 ## [claude-code] · Guideline · /compact with explicit preservation instructions
 > 2026-03-17 · source: CLAUDE_CODE_COURSE_ANALYSIS.md
 - Default `/compact` produces a generic summary — it may lose decisions, current task state, or key constraints
@@ -89,3 +95,9 @@
 - Correct usage: type `/compact [preservation instructions]` directly in the CLI input bar — this triggers the actual built-in compaction
 - If context is too loaded to compact usefully: `/end-of-session` → `/commit-push` → `/clear` is the clean alternative
 - The `compact` skill should be deleted or replaced with a note pointing to the correct built-in command
+
+## [claude-code] · Guideline · MCP→Skill promotion rule — try MCP first, convert once validated
+> 2026-03-18 · source: prioritization session
+- MCPs are fast to set up but always-loaded (token cost on every session); skills load only on invocation (zero cost otherwise)
+- Pattern: adopt as MCP first to validate the tool is worth using; once confirmed useful and stable, convert to a skill for long-term token efficiency
+- Do NOT start with a skill if you're unsure whether you'll use the tool — MCP lets you evaluate with minimal investment

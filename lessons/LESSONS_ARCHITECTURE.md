@@ -1,7 +1,8 @@
 # Lessons — architecture & integrations
 
-> Scope: git, ai-agents, system architecture, third-party integrations.
-> Split into sub-files at 150 lines.
+> Scope: git, ai-agents, system architecture, third-party integrations, infra, bash, shell.
+> Load when: building/debugging infra, systems work, third-party integrations.
+> LLM/prompt/evaluation lessons → LESSONS_LLM.md
 
 ---
 
@@ -45,23 +46,11 @@
 - Anything after the `read` never runs; failures are hard to diagnose without knowing the TTY constraint
 - Accept all inputs as positional CLI arguments (`$1`, `$2`, etc.) with sensible defaults; reserve `read` for scripts explicitly documented as interactive-only
 
-## [llm] · Rule · Groq free tier limits are per-model and separate — 70b exhausts fast
-> 2026-03-12 · source: claude-one-digest
-- `llama-3.3-70b-versatile`: 6000 TPM + 100k TPD — exhausted in one heavy dev session
-- `llama-3.1-8b-instant`: 6000 TPM + separate (larger) daily quota
-- Use 8b-instant as daily driver for any repeated task; reserve 70b for occasional spot-checks only
-
 ## [git] · Rule · git diff hunks start mid-section — section header may not appear before changed lines
 > 2026-03-12 · source: claude-one-digest
 - `git diff` hunks start at the nearest context line before the change, not at the section header — if `### Project` is >3 lines above the change, it's outside the hunk and never seen by a line-by-line parser
 - Parsing changed lines by scanning for a preceding section header in the diff body silently produces empty results
 - Fix: build a line→section map from the full current file first, then use `@@` hunk offsets to resolve which section each change belongs to
-
-## [llm] · Guideline · Chunk by character count, not word count, when targeting token limits
-> 2026-03-12 · source: claude-one-digest
-- Word count underestimates tokens by 1.3–1.5x; a 6000-word chunk easily exceeds a 6000-token limit
-- Prompt template overhead (~300 tokens) must also be budgeted
-- Use char-based chunking: `CHUNK_CHAR_LIMIT = 10_000` chars ≈ 2500 tokens — leaves headroom for prompt
 
 ## [github] · Rule · Fine-grained PATs require explicit repository + Contents permission
 > 2026-03-12 · source: audio-intelligence-pipeline
@@ -74,29 +63,6 @@
 - Default `--host 127.0.0.1` binds only inside the container — port mapping (`-p 8000:8000`) has no effect
 - Always set `--host 0.0.0.0` in the Dockerfile CMD for any containerised FastAPI/Uvicorn app
 
-## [llm] · Rule · Small models need `max_tokens` cap to prevent hallucination loops on list generation
-> 2026-03-13 · source: claude-one-digest
-- `llama-3.1-8b-instant` generating a flat concept list entered a repetition loop with no token cap — produces garbage output and can exhaust rate limits
-- Open-ended list tasks have no natural stopping signal for small models
-- Always set `max_tokens` on API calls for list generation tasks; 400 is sufficient for short concept extraction
-
-## [llm] · Guideline · LLM DROP/exclusion rules unreliable for small models — use Python post-filter
-> 2026-03-13 · source: claude-one-digest
-- `llama-3.1-8b-instant` ignored DROP rules in prompt instructions — single-word tokens, path strings, and questions survived after deduplication
-- Small models follow inclusion rules better than exclusion rules; negative filtering logic in prompts adds complexity they can't reliably execute
-- Move deterministic filtering to code (short entries, known noisy tokens, pattern matches); keep LLM prompt focused on the positive task
-
-## [prompt] · Rule · Missing `{content}` placeholder in prompt template causes silent empty-context failure
-> 2026-03-13 · source: claude-one-digest
-- Both EXTRACT_PROMPT and MERGE_PROMPT lost `{content}` after a manual edit — the LLM received no session data and responded as if nothing was provided; no error was raised
-- The pipeline runs successfully and produces output; the failure is invisible without reading the LLM response critically
-- Always verify `{content}` (or equivalent) is present in the template body AND in the `.format()` call; add an assertion if the prompt is edited often
-
-## [prompt] · Rule · Format examples with placeholder names cause the model to output them literally
-> 2026-03-13 · source: claude-one-digest
-- `Format:\n- ConceptName` caused the model to output `- ConceptName` as the first line of its response — it treats example text as a template to follow verbatim
-- Use real-looking example values in format instructions (e.g. `- Docker layer caching`), never abstract placeholder labels
-
 ## [hetzner] · Rule · Hetzner Firewall must include ports 80 and 443 when nginx is present
 > 2026-03-13 · source: server-setup session
 - Opening only app ports (5678, 8080, 8000) blocks all domain-based access when nginx sits in front as a reverse proxy — nginx listens on 80/443, not the app ports
@@ -108,12 +74,6 @@
 - Multi-line commands with `\` continuations break when pasted into zsh — each fragment is treated as a separate command: file paths get "permission denied", flags become "command not found"
 - Affects all commands (python, curl, git, etc.), not just long curl calls
 - Always write copy-paste commands as one unbroken line; if very long, note it in prose but do not split with `\`
-
-## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
-> 2026-03-13 · source: audio-intelligence-pipeline
-- `mlflow.evaluate()` + `make_metric` logs scores as flat metrics in regular runs — they do NOT appear in the GenAI Evaluation view, Judges tab, or linked to datasets
-- `@mlflow.genai.scorer` + `mlflow.genai.evaluate()` is the correct GenAI-native API in MLflow 3.x — scores appear in Evaluation runs, linked to datasets and prompt versions
-- The two APIs look similar but produce fundamentally different UI; using the wrong one means building the right logic in the wrong place
 
 ## [data-engineering] · Guideline · Source table naming — system/source first, not owner/entity first
 > 2026-03-16 · source: finances-ezerpin
@@ -155,3 +115,9 @@
 - `working-directory = home` is set in Ghostty config, but new windows (`Cmd+N`) still open in the last active project directory — Ghostty's shell integration sends OSC 7 (current working directory) to the terminal, and new windows inherit that value, overriding the config setting
 - The config setting alone is insufficient when `shell-integration = zsh` is active
 - Fix: add `cd ~` at the end of `~/.zshrc` — every new shell always starts in `~/` regardless of what Ghostty inherits via OSC 7
+
+## [integrations] · Rule · Read tool documentation before proposing config key names
+> 2026-03-18 · source: openclaw-setup
+- Proposing OpenClaw config keys from memory led to two consecutive wrong guesses (`heartbeat: {enabled: false}`, `channels.telegram.allowedUsers`) — both rejected; required reading docs to fix
+- Wrong keys fail silently, cause boot failure, or get stripped by doctor — hard to trace without knowing the root cause
+- Pattern applies to any tool with a config schema (OpenClaw, n8n nodes, etc.): always `cat tool/docs/relevant.md` before proposing a config key; never guess
