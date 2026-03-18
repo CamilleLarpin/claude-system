@@ -65,6 +65,12 @@
 - **Date**: 2026-03-13
 - **Status**: active
 
+## [conventions] Priority vocabulary — Now / Next / Later / Someday
+- **Decision**: all projects and tasks in PROJECT_TRACKER and BACKLOG use a shared 4-level priority vocabulary: Now (active attention), Next (starts when a slot opens), Later (important, not urgent), Someday (nice-to-have, no commitment). Each entry carries an inline priority log (max 2 entries, oldest dropped when a third is added): `  - YYYY-MM-DD [Old] → [New]: [reason]`. /overview shows Now + Next only; Later and Someday hidden by default.
+- **Rationale**: time-based vocabulary (This Month/This Quarter) conflates planning with importance; unified vocabulary across both files enables direct comparison between active (TRACKER) and pre-active (BACKLOG) items; priority log provides lightweight history without a separate file; /overview limited to Now + Next keeps daily view actionable
+- **Date**: 2026-03-18
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
