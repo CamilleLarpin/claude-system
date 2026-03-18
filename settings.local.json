@@ -82,7 +82,9 @@
       "Bash(git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add session bash commands to settings allowlist\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git -C ~/.claude pull --rebase && git -C ~/.claude push)",
       "Bash(git -C ~/.claude add settings.local.json && git -C ~/.claude commit -m \"$\\(cat <<'EOF'\nchore: add session bash commands to settings allowlist\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\" && git -C ~/.claude pull --rebase && git -C ~/.claude push)",
       "Bash(brew list:*)",
-      "Bash(brew install:*)"
+      "Bash(brew install:*)",
+      "Bash(git --version)",
+      "Bash(bash ~/.claude/skills/project-init/scripts/init-structure.sh openclaw-setup private)"
     ]
   }
 }
