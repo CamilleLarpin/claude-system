@@ -26,7 +26,8 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 
 ## Global Knowledge — load on demand
 - @~/.claude/CONTEXT_GLOBAL.md — what is true now: stack, architecture, philosophy (load when creating a new project or making an architectural or cross-project decision)
-- @~/.claude/DECISIONS_GLOBAL.md — what was chosen and why: cross-project decisions (load alongside project DECISIONS.md; load when making an architectural or cross-project decision)
+- @~/.claude/DECISIONS_GLOBAL.md — cross-project decisions (index → load relevant category)
+  · load when: starting a build · touching server/infra · backlog or project-setup work · architectural decision
 - @~/.claude/LESSONS_GLOBAL.md — what to avoid: hard-won patterns and mistakes (load the index alongside project LESSONS.md + relevant category files for current task domain; load when debugging or starting a build)
 - @~/.claude/PROJECT_TRACKER.md — project registry (load when assessing cross-project relevance or promotion candidates)
 - @~/.claude/BACKLOG.md — project pipeline and tasks (load when selecting or prioritizing projects, or when a cross-project task or stack decision arises)
@@ -35,9 +36,8 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 @~/.claude/skills/ — load relevant skill before starting any scoped task
 
 ## Project Files
-Every project has in .claude/: CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
-All .claude/ files: project-specific only. Never duplicate global directives.
-Decisions: archive when superseded → DECISIONS_ARCHIVE.md. Lessons: split by load context at 150 lines — one file = one reason Claude loads it.
+Every project: `.claude/` with CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
+Project-specific only — never duplicate global directives.
 
 ## End of session
-Run `/end-of-session` — then `/commit-push` — then `/clear`.
+Suggest `/end-of-session` after milestones, significant decisions, or long sessions.

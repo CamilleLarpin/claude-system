@@ -1,96 +1,15 @@
 # Global Decisions — Camille Larpin
 
-> Load when: making an architectural or cross-project decision.
-> NOT HERE: project-specific decisions (→ project DECISIONS.md), lessons (→ LESSONS_GLOBAL.md).
-> Archive at 100 lines → DECISIONS_GLOBAL_ARCHIVE.md.
+> Index only — read this first, then load the relevant category file.
+> NOT HERE: project-specific decisions (→ project DECISIONS.md).
 
 ---
 
-## Format
-```
-## [category] Decision title
-- **Decision**: what was chosen
-- **Rationale**: why — include alternatives considered
-- **Date**: YYYY-MM-DD
-- **Status**: active | superseded by [title] | archived
-```
+## Conventions — commands, backlog, project setup, session rituals
+→ @~/.claude/decisions/DECISIONS_CONVENTIONS.md
 
----
+## Build — starting a build, AI agent design, data modeling
+→ @~/.claude/decisions/DECISIONS_BUILD.md
 
-## [conventions] Single post-milestone checklist ordered by signal strength
-- **Decision**: one checklist runs after each milestone (not split by session boundary); steps ordered by signal strength — promotions first (highest cognitive value), mechanical checks last
-- **Rationale**: splitting into milestone + session checklists created a coordination problem — promotions require live context, which is cleared before end-of-session; collapsing removes deferred state; ordering by signal strength prevents attention decay on high-value steps; alternatives considered: mandatory vs conditional split (adds complexity with no payoff for solo developer), separate end-of-session checklist (broken by /clear)
-- **Date**: 2026-03-04
-- **Status**: active
-
-## [conventions] Session ritual commands over CLAUDE.md prose
-- **Decision**: user-triggered rituals (`/start`, `/end-of-session`, `/commit-push`) live in `~/.claude/commands/` as dedicated command files, not in CLAUDE.md
-- **Rationale**: keeps CLAUDE.md lean (always-loaded context); command files are only loaded on invocation; user owns the trigger — Claude doesn't remind or propose; conventions for authoring commands documented in `~/.claude/commands/CONVENTIONS.md`
-- **Date**: 2026-03-09
-- **Status**: active
-
-## [conventions] Rule/Guideline/Note type tags on all lesson entries
-- **Decision**: every lesson entry is tagged with a type in its header: `## [category] · Rule|Guideline|Note · Title`. Rule = must follow (violating breaks things); Guideline = should follow unless justified; Note = informational. Applies to global files and all project LESSONS.md files.
-- **Rationale**: gives Claude a signal to weight lessons correctly — a Rule must be applied unconditionally, a Guideline requires judgment, a Note is context. Promotion gate updated: only Rules and Guidelines are promoted to global; Notes stay in project files. Low-overhead (badge only, no new files or storage tiers).
-- **Date**: 2026-03-10
-- **Status**: active
-
-## [conventions] Load tier declarations in .claude/ file headers
-- **Decision**: every `.claude/` file declares its load tier (hot/warm/cool/cold) in its header block; tier reflects current project phase and is updated when status changes
-- **Rationale**: makes context load cost visible at the point of decision; prevents token bloat in frequently-loaded files; applies "no hidden assumptions" principle — tier is self-declared, not inferred; alternatives considered: global rule only (requires inference at read time), budgets by line count (no principled basis for numbers)
-- **Date**: 2026-03-03
-- **Status**: active
-
-## [ai-agents] Route evaluation tasks to cheap/fast models, generation to capable models
-- **Decision**: use Groq `llama-3.3-70b-versatile` (or equivalent) for structured evaluation tasks (judging, scoring, classification); reserve Claude Sonnet/Opus for generation tasks requiring long context or high output quality
-- **Rationale**: evaluation tasks are short, structured, run repeatedly — cost compounds; Llama 3.3 70B on Groq is fast, cheap, and reliable for JSON scoring; generation tasks (long-context summarization, biography) need Claude's context window and reasoning quality
-- **Date**: 2026-03-12
-- **Status**: active
-
-## [security] Server security model — n8n-server
-- **Decision**: ports 80/443 open to all IPs; SSH key-only auth; app-level login as the real access gate
-- **Rationale**: 80/443 must be open for any browser to reach the services — IP restriction is impractical for a personal server accessed from multiple locations and devices; security relies on HTTPS encryption (nginx + Let's Encrypt) + app login screens (n8n, Nextcloud), not firewall IP filtering; SSH locked to key-only since password brute-force is automated and constant on any public VPS
-- **Date**: 2026-03-13
-- **Status**: active
-
-## [ai-agents] User label as inclusion rule for archiving pipelines
-- **Decision**: when building an AI archiving pipeline, the human decides what's worth archiving (via a label, tag, or explicit action) — the AI only executes the filing logic, never the inclusion judgment
-- **Rationale**: "what's worth keeping" is a personal, context-dependent judgment that AI gets wrong at the margins; user labeling is zero-cost (one tap), eliminates false positives entirely, and keeps the pipeline simple and reliable; alternatives considered: AI decides based on content (too many edge cases, trust issues), explicit allowlist by sender/type (brittle, high maintenance)
-- **Date**: 2026-03-10
-- **Status**: active
-
-## [ai-agents] Human approval gate for all irreversible AI actions
-- **Decision**: any AI pipeline that can delete, send, or permanently modify data must have a human approval step before execution — no exceptions regardless of classifier confidence
-- **Rationale**: irreversible actions have asymmetric cost — one false negative on an important document, sent message, or deleted record is worse than any inefficiency introduced by a review step; high confidence scores are not a substitute for human sign-off when the cost of error is high; applies to email deletion, file moves, message sending, record updates
-- **Date**: 2026-03-13
-- **Status**: active
-
-## [infra] One GitHub PAT per Hetzner server, not per project
-- **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
-- **Rationale**: per-project PATs create maintenance overhead (must update token each time a new repo is added); blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder; alternatives considered: deploy keys per repo (more setup, doesn't simplify multi-repo), classic `repo`-scoped token (works but broader scope than needed)
-- **Date**: 2026-03-13
-- **Status**: active
-
-## [conventions] Global context files always load alongside their project counterparts
-- **Decision**: `DECISIONS_GLOBAL.md` loads alongside project `DECISIONS.md` (not only on architectural decisions); `LESSONS_GLOBAL.md` index loads alongside project `LESSONS.md` + relevant category files for current task domain. Both triggers preserved: alongside project files AND on their original standalone triggers (architectural decision / debugging).
-- **Rationale**: DECISIONS_GLOBAL applies to all projects by definition — there is no case where a project DECISIONS.md is loaded without DECISIONS_GLOBAL being relevant. Same logic for LESSONS_GLOBAL. The original "on-demand" trigger was too narrow and created silent drift where Claude checked one without the other. Both conditions kept so the rule also covers sessions with no project context.
-- **Date**: 2026-03-17
-- **Status**: active
-
-## [conventions] Project vs task distinction
-- **Decision**: a **task** completes in one session, has a binary outcome (done/not done), needs no context to resume, and has no repo. A **project** is multi-session, has phases, accumulates decisions, and needs `.claude/` context to pick back up. The full project setup (repo, `.claude/` templates) is the downstream consequence of being multi-session — not the definition itself. Secondary signals for project: needs a repo; has a "Next" that changes over time; someone else would need context to continue it mid-way.
-- **Rationale**: without a clear rule, the boundary drifts — tasks get over-engineered into projects (wasted setup) or projects get under-documented (lost context). The one-session rule is the clearest practical gate.
-- **Date**: 2026-03-18
-- **Status**: active
-
-## [data] Semantic layer YAML written for LLMs, not humans
-- **Decision**: in any project combining dbt + NL interface (nao, Omni, etc.), treat schema.yml column descriptions and model descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
-- **Rationale**: NL interfaces (nao, LLM query layers) consume the semantic layer at query time — vague or ambiguous descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this; source: Photoroom (Juliette Duizabo) — validated at scale (3-person data team, 100+ employees)
-- **Date**: 2026-03-17
-- **Status**: active
-
-## [conventions] BACKLOG.md as unified project pipeline and task registry
-- **Decision**: single `~/.claude/BACKLOG.md` replaces separate TODOS.md; holds all pre-active projects (with priority, status, why, stack hint, constraints) and cross-project tasks in two sections; promotes to PROJECT_TRACKER when active development starts
-- **Rationale**: TODOS.md and a separate backlog would split related load context with no payoff for a solo developer; one file handles both "what to build next" and "cross-project tasks" under one load trigger; format difference (projects vs tasks) is handled by two sections within the file; alternatives considered: keep separate files (splits load context unnecessarily), add backlog to PROJECT_TRACKER (bloats always-loaded active project registry)
-- **Date**: 2026-03-13
-- **Status**: active
+## Infra — touching server, credentials, deployment
+→ @~/.claude/decisions/DECISIONS_INFRA.md

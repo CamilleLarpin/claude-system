@@ -145,8 +145,9 @@
 - **Notes**: Consolidates "Agent Politique" (bootcamp scope, removed from TRACKER). v1 KPIs: loyalty score (% votes aligned with parliamentary group) + participation rate per deputy. Bootcamp candidate (15/15). Broader manifesto comparison (PDF parsing) = out of scope for v1. Domain ramp-up needed.
 
 ### Context Engineering Setup
-- **Priority**: Someday
+- **Priority**: Next
   - 2026-03-18 Unprioritized → Someday: merged from 4 separate ideas into one project
+  - 2026-03-18 Someday → Next: raised — directly relevant to daily Claude work; want to start soon
 - **Status**: idea
 - **Why**: Understand and optimize Claude setup over time — version the context, identify conversation patterns, detect ambiguities, measure token cost
 - **Stack hint**: Claude
