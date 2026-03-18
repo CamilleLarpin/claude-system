@@ -96,6 +96,12 @@
 - If context is too loaded to compact usefully: `/end-of-session` → `/commit-push` → `/clear` is the clean alternative
 - The `compact` skill should be deleted or replaced with a note pointing to the correct built-in command
 
+## [skills] · Rule · Commands must @-reference shared rules, never embed them inline
+> 2026-03-18 · source: prioritize session
+- Inline philosophy blocks in commands (`/prioritize`, `/add-to-backlog`) duplicated the same rules in two places — one update missed the other, causing drift within the same session
+- The correct pattern: extract shared rules to a single file (e.g. `DECISIONS_CONVENTIONS.md`) and `@`-reference it from every command that needs it; commands stay thin, truth stays in one place
+- Applies to any rule, philosophy, or convention referenced by more than one command or skill
+
 ## [claude-code] · Guideline · MCP→Skill promotion rule — try MCP first, convert once validated
 > 2026-03-18 · source: prioritization session
 - MCPs are fast to set up but always-loaded (token cost on every session); skills load only on invocation (zero cost otherwise)
