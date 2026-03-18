@@ -77,6 +77,12 @@
 - **Date**: 2026-03-17
 - **Status**: active
 
+## [conventions] Project vs task distinction
+- **Decision**: a **task** completes in one session, has a binary outcome (done/not done), needs no context to resume, and has no repo. A **project** is multi-session, has phases, accumulates decisions, and needs `.claude/` context to pick back up. The full project setup (repo, `.claude/` templates) is the downstream consequence of being multi-session — not the definition itself. Secondary signals for project: needs a repo; has a "Next" that changes over time; someone else would need context to continue it mid-way.
+- **Rationale**: without a clear rule, the boundary drifts — tasks get over-engineered into projects (wasted setup) or projects get under-documented (lost context). The one-session rule is the clearest practical gate.
+- **Date**: 2026-03-18
+- **Status**: active
+
 ## [data] Semantic layer YAML written for LLMs, not humans
 - **Decision**: in any project combining dbt + NL interface (nao, Omni, etc.), treat schema.yml column descriptions and model descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
 - **Rationale**: NL interfaces (nao, LLM query layers) consume the semantic layer at query time — vague or ambiguous descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this; source: Photoroom (Juliette Duizabo) — validated at scale (3-person data team, 100+ employees)
