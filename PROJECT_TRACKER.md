@@ -4,7 +4,7 @@
 > NOT HERE: project-specific implementation details (→ project .claude/).
 > Update when: creating a project; changing scope, stack, or status.
 
-**Last updated**: 2026-03-16
+**Last updated**: 2026-03-18 (session 2)
 
 ---
 
@@ -12,6 +12,8 @@
 ```
 ### [Project Name]
 - **Status**: [emoji status]
+- **Priority**: Now | Next | Later | Someday
+  - YYYY-MM-DD [Old] → [New]: [reason] (max 2 entries — drop oldest when adding a third)
 - **Stack**: [n8n · Claude · etc. or TBD]
 - **Repo**: [url or —]
 - **Notion**: [url or —]
@@ -26,8 +28,23 @@
 
 ## Projects
 
+### OpenClaw Setup
+- **Status**: 🔵 Building
+- **Priority**: Next
+  - 2026-03-18 TBD → Next: under active evaluation; next experiment slot
+- **Stack**: OpenClaw · Claude Sonnet 4.6 · Telegram (@Crab_140_bot)
+- **Repo**: https://github.com/CamilleLarpin/openclaw-setup
+- **Notion**: https://www.notion.so/Test-and-Validate-Open-claw-Functionality-317fef9576f18162b96fd6131e8c4aa9
+- **n8n**: —
+- **Docs**: ~/projects/openclaw-setup/.claude/
+- **Milestone**: P1 Stability — restart gateway, enable exec write, set up daily habit tracker
+- **Blocker**: none
+- **Next**: `openclaw gateway --help` → find restart command → restart to apply exec config
+
 ### Audio Intelligence Pipeline
 - **Status**: 🔵 Building
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active build — MLflow GenAI migration in progress
 - **Stack**: Python 3.13 · OpenAI Whisper · Claude Sonnet · yt-dlp · MLflow · Prefect
 - **Repo**: https://github.com/CamilleLarpin/audio-intelligence-pipeline
 - **Notion**: —
@@ -39,6 +56,8 @@
 
 ### Ghost
 - **Status**: 🟢 Running
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active — extending with task management from Telegram
 - **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · Notion
 - **Repo**: https://github.com/CamilleLarpin/ghost
 - **Notion**: —
@@ -49,39 +68,47 @@
 - **Next**: Add Telegram bot access control (allowlist by chat_id) → start task management Phase 1
 
 ### Biography
-- **Status**: 🟡 Testing
+- **Status**: 🔴 Blocked
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active testing phase; blocked on external feedback
 - **Stack**: n8n · Claude Sonnet · OpenAI API · Telegram · GitHub · Google Docs
 - **Repo**: https://github.com/CamilleLarpin/biography
 - **Notion**: —
 - **n8n**: 4 workflows active (DDA) + 4 pending (MIC)
 - **Docs**: ~/projects/biography/.claude/
 - **Milestone**: DDA end-to-end test — Google Docs credential + full flow validation
-- **Blocker**: none
+- **Blocker**: pending father's and MIC user feedback
 - **Next**: Google Docs credential config → DDA end-to-end test; MIC rollout (duplicate workflows, add allowlists)
 
 ### Family Content Manager
-- **Status**: 🔵 Building
+- **Status**: 🔴 Blocked
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active; blocked on user feedback from Joffrey
 - **Stack**: n8n · Claude Vision · Nextcloud · Telegram
 - **Repo**: https://github.com/CamilleLarpin/family_content_manager
 - **n8n**: OtWARZS3cBAwql1Z, YOi6nFrvr4RRFub1
 - **Docs**: ~/projects/family_content_manager/.claude/
 - **Milestone**: P1 Stability — validate budget kill switch → user test with Joffrey
-- **Blocker**: none
+- **Blocker**: pending Joffrey's user feedback
 - **Next**: Test budget kill switch → test with Joffrey → Phase 3 Gmail archiving
 
 ### Gmail Inbox Cleanup
 - **Status**: 🔵 Building
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active rule-based blitz in progress
 - **Stack**: Gmail API · Python (Phase 0) · n8n Hetzner · Claude API Sonnet (Phase 2 drafting only)
 - **Repo**: https://github.com/CamilleLarpin/gmail-inbox-cleanup
 - **Notion**: https://www.notion.so/TBC-Inbox-cleaning-and-archival-assistant-2e3fef9576f180ff97fdfff26d92c986
 - **n8n**: —
 - **Docs**: ~/projects/gmail-inbox-cleanup/.claude/
-- **Milestone**: Phase 0 — rule-based blitz (urgent: storage full)
+- **Milestone**: Phase 0 — rule-based blitz in progress (5,844 trashed so far)
 - **Blocker**: none
-- **Next**: Resume OAuth consent screen at Scopes step (add `gmail.modify`) → create Desktop App credentials → download `credentials.json`
+- **Next**: Run CATEGORY_PROMOTIONS + CATEGORY_SOCIAL rules → review remaining inbox → define next wave
 
 ### AI Networking System
 - **Status**: 🔵 Building
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active — DuckDB CRM setup pending
 - **Stack**: n8n · Claude Sonnet · DuckDB · FastAPI · Slack · Telegram · Google Workspace
 - **Repo**: https://github.com/CamilleLarpin/ai-networking-system
 - **Notion**: —
@@ -93,6 +120,8 @@
 
 ### Finances Ezerpin
 - **Status**: 🔵 Building
+- **Priority**: Now
+  - 2026-03-18 TBD → Now: active — first result milestone in progress
 - **Stack**: Python · dlt · DuckDB · dbt Fusion 2.x · Claude Haiku · nao · Evidence.dev (fallback) · cron + Makefile
 - **Repo**: https://github.com/CamilleLarpin/finances-ezerpin
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
@@ -104,6 +133,8 @@
 
 ### claude-one-digest
 - **Status**: 🟢 Running
+- **Priority**: Someday
+  - 2026-03-18 TBD → Someday: running autonomously; no active development planned
 - **Stack**: Python · Claude Haiku API
 - **Repo**: https://github.com/CamilleLarpin/claude-one-digest
 - **Notion**: https://www.notion.so/Track-Conversations-for-Learning-Insights-320fef9576f1818389e5faf472504c42
@@ -114,7 +145,9 @@
 - **Next**: Retroactive tagging — flag past sessions not tagged at the time
 
 ### Data Engineering Notes
-- **Status**: 🔵 Building
+- **Status**: 🟠 Paused
+- **Priority**: Someday
+  - 2026-03-18 TBD → Someday: bootcamp artefact; deprioritized post-bootcamp
 - **Stack**: Python · Claude API · Telegram · Docker · GCP
 - **Repo**: —
 - **Notion**: —
@@ -124,18 +157,6 @@
 - **Blocker**: none
 - **Next**: Deploy to GCP Compute Engine
 - **Notes**: Artefact bootcamp project (Feb 23 – Mar 27, 2026) — 3-layer learning system: capture → digest → master
-
-### Agent Politique
-- **Status**: ⚫ Scoping
-- **Stack**: Python · assemblee-nationale.fr API · PostgreSQL · FastAPI · Claude (theme classification TBD)
-- **Repo**: —
-- **Notion**: —
-- **n8n**: —
-- **Docs**: —
-- **Milestone**: Bootcamp certification project (Artefact, deadline ~2026-03-27) — 2+ weeks available as of 2026-03-16
-- **Blocker**: teacher validation of v1 scope (votes + KPIs only, no manifesto comparison)
-- **Next**: Confirm scope with teacher → explore AN API → initialize repo + .claude/
-- **Notes**: Top bootcamp candidate (15/15). v1 KPIs: loyalty score (% votes aligned with parliamentary group) + participation rate per deputy. Manifesto comparison = comparing votes vs pre-election promises (PDF parsing) — out of scope for v1. Domain ramp-up needed (with Claude). Evaluation in ~/.claude/report/BOOTCAMP_PROJECT_EVALUATION.md; secondary motivation: public tool for municipales (2026-03) + présidentielles (2027)
 
 ---
 
@@ -153,6 +174,12 @@
 - 🟠 Paused — real project, deliberately on hold
 - ⚫ Scoping — new, purpose/scope not yet defined
 - ✅ Done — completed, no active development (see Archive section)
+
+## Priority Legend
+- **Now** — getting active attention
+- **Next** — high priority, starts when a slot opens
+- **Later** — important but not urgent
+- **Someday** — nice-to-have, no commitment
 
 ---
 
