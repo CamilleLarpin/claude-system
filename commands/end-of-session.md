@@ -10,7 +10,10 @@ Work through each step in order. Perform the action, don't just list it.
 
 **2. Promote lessons** — if any lesson applies beyond this project, add it to the correct `~/.claude/lessons/LESSONS_*.md` and output: `PROMOTE: LESSONS_GLOBAL.md — [reason]`
 
-**3. Promote decisions** — if any decision applies cross-project, add it to `~/.claude/DECISIONS_GLOBAL.md` and output: `PROMOTE: DECISIONS_GLOBAL.md — [reason]`
+**3. Promote decisions** — if any decision applies cross-project, add it to the relevant category file and output: `PROMOTE: DECISIONS_[CATEGORY].md — [reason]`
+- conventions/process/backlog → `~/.claude/decisions/DECISIONS_CONVENTIONS.md`
+- build/AI agents/data → `~/.claude/decisions/DECISIONS_BUILD.md`
+- server/credentials/deployment → `~/.claude/decisions/DECISIONS_INFRA.md`
 
 **4. Complexity check** — if this milestone meaningfully increased complexity, output: `→ REFACTOR: [component] — [reason]`
 
@@ -18,7 +21,7 @@ Work through each step in order. Perform the action, don't just list it.
 - Project `.claude/LESSONS.md`: 150 lines → split by load context
 - Project `.claude/DECISIONS.md`: 100 lines → archive superseded entries
 - `~/.claude/lessons/LESSONS_*.md` files: 150 lines → split by load context
-- `~/.claude/DECISIONS_GLOBAL.md`: 100 lines → archive to DECISIONS_GLOBAL_ARCHIVE.md
+- `~/.claude/decisions/DECISIONS_*.md` files: 100 lines each → archive superseded entries to `DECISIONS_[CATEGORY]_ARCHIVE.md`
 - `~/.claude/CLAUDE.md`: 80 lines → prune stale/redundant rules (never delete lessons, prune rules)
 - `~/.claude/CONTEXT_GLOBAL.md`: 80 lines → prune or move rarely-needed facts to cold files
 - `~/.claude/PROJECT_TRACKER.md`: 200 lines → move done projects to Archive section
