@@ -1,8 +1,9 @@
 # Todos — [PROJECT NAME]
 
 > CONTAINS: active milestones, next actions, blocked items for this project.
-> NOT HERE: decisions (→ DECISIONS.md), completed work (archive or delete when done), cross-project tasks.
+> NOT HERE: decisions (→ DECISIONS.md), cross-project tasks.
 > This is a working scratchpad for Camille + Claude. Keep it current — stale todos are noise.
+> Done items: move to `## Done` at the bottom immediately when checked off — do not leave [x] items in active sections.
 > Load tier: warm
 
 ---

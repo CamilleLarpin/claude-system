@@ -20,7 +20,7 @@ Read `~/.claude/PROJECT_TRACKER.md`.
 📅 [Day], [Date]
 
 ## Active Projects
-[For each project with status 🔵 🟡 🔴 — skip 🟢 Running, 🟠 Paused, ⚫ Scoping]
+[For each project with any status — show all]
 
 **[Project Name]** · [status emoji]
 → [Milestone field]
@@ -28,6 +28,6 @@ Read `~/.claude/PROJECT_TRACKER.md`.
 ```
 
 Rules:
-- List projects in this order: 🔴 Blocked first, then 🔵 Building, then 🟡 Testing
+- List projects in this order: 🔴 Blocked first, then 🔵 Building, then 🟡 Testing, then 🟢 Running, then 🟠 Paused, then ⚫ Scoping
 - Keep each project to 2–3 lines max — no extra context, no stack details
 - If no blockers exist across all projects, omit the ⚠️ lines entirely
