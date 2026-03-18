@@ -35,6 +35,12 @@
 - **Date**: 2026-03-13
 - **Status**: active
 
+## [ai-agents] Category-first classifier: LLM proposes categories, human assigns actions
+- **Decision**: for LLM classification pipelines, have LLM output fine-grained categories only; human reviews ~30-50 categories and assigns TRASH/ARCHIVE/REVIEW in a rules file; action is deterministic from that map
+- **Rationale**: LLM-assigned actions are hard to audit and override in bulk; reviewing 30-50 categories is far faster than reviewing thousands of individual items; easy to adjust rules without re-running LLM; separates the classification problem (LLM is good at this) from the action problem (human judgment)
+- **Date**: 2026-03-18
+- **Status**: active
+
 ## [data] Semantic layer YAML written for LLMs, not humans
 - **Decision**: in any project combining dbt + NL interface, treat schema.yml column descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
 - **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this

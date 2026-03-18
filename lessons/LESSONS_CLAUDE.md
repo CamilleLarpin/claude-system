@@ -107,3 +107,9 @@
 - MCPs are fast to set up but always-loaded (token cost on every session); skills load only on invocation (zero cost otherwise)
 - Pattern: adopt as MCP first to validate the tool is worth using; once confirmed useful and stable, convert to a skill for long-term token efficiency
 - Do NOT start with a skill if you're unsure whether you'll use the tool — MCP lets you evaluate with minimal investment
+
+## [llm] · Rule · Python .format() breaks on prompt strings containing literal braces
+> 2026-03-18 · source: gmail-inbox-cleanup
+- Prompt strings with JSON examples like `{"key": "value"}` cause `KeyError` when passed to `.format()` — Python interprets `{key}` as a format placeholder
+- Silent until runtime; error message points at the key name, not the brace
+- Fix: escape literal braces by doubling them `{{"key": "value"}}`, or use a different substitution method (e.g. `prompt.replace("{emails_json}", value)`)

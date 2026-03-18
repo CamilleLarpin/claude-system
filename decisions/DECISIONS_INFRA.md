@@ -23,6 +23,12 @@
 - **Date**: 2026-03-13
 - **Status**: active
 
+## [infra] One API key per project for cost tracking
+- **Decision**: each project gets its own Anthropic (and Groq) API key so costs are trackable per project in the provider dashboard
+- **Rationale**: shared keys make it impossible to attribute spend; per-project keys give a direct cost signal per project with zero extra tooling; negligible overhead (key creation is free and instant)
+- **Date**: 2026-03-18
+- **Status**: active
+
 ## [infra] One GitHub PAT per Hetzner server, not per project
 - **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
 - **Rationale**: per-project PATs create maintenance overhead; blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder
