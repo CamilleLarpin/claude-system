@@ -116,6 +116,19 @@
 - The config setting alone is insufficient when `shell-integration = zsh` is active
 - Fix: add `cd ~` at the end of `~/.zshrc` — every new shell always starts in `~/` regardless of what Ghostty inherits via OSC 7
 
+## [data-engineering] · Guideline · LLM beats sklearn for transaction categorization under ~5k rows/month
+> 2026-03-18 · source: finances-ezerpin
+- At ~750 transactions/month, Claude Haiku costs ~$0.04/month — sklearn adds training pipeline, model artifacts, and retraining overhead for no cost saving
+- sklearn also has a cold-start problem: zero-shot on new categories; LLM handles them immediately
+- LLM improves via few-shot examples from stored corrections (no retraining); sklearn requires explicit retraining cycle
+- Reassess if volume exceeds ~5k transactions/month (cost becomes non-trivial)
+
+## [data-engineering] · Note · dbt Fusion → dbt Core migration is a binary swap only
+> 2026-03-18 · source: finances-ezerpin
+- dbt Fusion installs as a standalone binary (not pip) — `pip uninstall dbt-fusion` finds nothing; remove with `rm ~/.local/bin/dbt`
+- All SQL models, YAML, tests, seeds, macros are 100% compatible — no file changes needed
+- Fusion's `arguments:` syntax for tests is Fusion-specific; Core 1.x uses standard dbt syntax
+
 ## [integrations] · Rule · Read tool documentation before proposing config key names
 > 2026-03-18 · source: openclaw-setup
 - Proposing OpenClaw config keys from memory led to two consecutive wrong guesses (`heartbeat: {enabled: false}`, `channels.telegram.allowedUsers`) — both rejected; required reading docs to fix

@@ -101,9 +101,9 @@
 - **Notion**: https://www.notion.so/TBC-Inbox-cleaning-and-archival-assistant-2e3fef9576f180ff97fdfff26d92c986
 - **n8n**: —
 - **Docs**: ~/projects/gmail-inbox-cleanup/.claude/
-- **Milestone**: Phase 0 — rule-based blitz in progress (5,844 trashed so far)
+- **Milestone**: Phase 0 Wave 2 — LLM classifier pipeline built; 1000-email sample categorised (43 categories); enriched report generated
 - **Blocker**: none
-- **Next**: Run CATEGORY_PROMOTIONS + CATEGORY_SOCIAL rules → review remaining inbox → define next wave
+- **Next**: Review category_report.txt → assign TRASH/ARCHIVE/REVIEW per category → move hard rules to config.json → run full 35k classify → apply
 
 ### AI Networking System
 - **Status**: 🔵 Building
@@ -122,14 +122,14 @@
 - **Status**: 🔵 Building
 - **Priority**: Now
   - 2026-03-18 TBD → Now: active — first result milestone in progress
-- **Stack**: Python · dlt · DuckDB · dbt Fusion 2.x · Claude Haiku · nao · Evidence.dev (fallback) · cron + Makefile
+- **Stack**: Python · dlt · DuckDB · dbt Core 1.11.7 · Claude Haiku · nao · Evidence.dev (fallback) · cron + Makefile
 - **Repo**: https://github.com/CamilleLarpin/finances-ezerpin
 - **Notion**: https://www.notion.so/Build-finance-family-tools-for-2026-2aafef9576f180eb931fd6f8e96106b3
 - **n8n**: —
 - **Docs**: ~/projects/finances-ezerpin/.claude/
-- **Milestone**: First result — rules-based categorization → fix fct_repartition_couple → CSV export
+- **Milestone**: M2 — Clean categorization (Claude Haiku + few-shot from corrections → confidence threshold → Telegram review)
 - **Blocker**: none
-- **Next**: Build rules-based categorization (source_category → dim_categories); add category/sub_category to stg_transactions
+- **Next**: Build `pipelines/categorize.py` — Claude Haiku categorization + `pipelines/validate_2024.py` — calibrate confidence threshold
 
 ### claude-one-digest
 - **Status**: 🟢 Running
