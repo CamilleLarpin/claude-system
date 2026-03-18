@@ -168,11 +168,10 @@
 - [ ] Clean Python and Tool Library Management — audit install locations: project-scoped tools local, shared tools global; avoid environment pollution · `Later`
 
 ### Claude Setup
-- [ ] Update add-to-backlog skill — already done (2026-03-18): added mandatory "why" + dependencies fields · `Next` ✅ done in session
 - [ ] Create `.claude/agents/` pattern — define sub-agent spec format as `.md` files (role, when to invoke, what it checks); add empty `agents/` folder to project-init scaffold · `Next`
 - [ ] Document reviewer sub-agent pattern — zero-context sub-agent as quality gate: reads only changed files, checks correctness/security/over-engineering without bias from implementation reasoning · `Next`
 - [ ] Document git worktrees pattern — run parallel Claude instances on separate branches (no branch-switching needed; e.g. one builds, one reviews) · `Next`
 - [ ] Configure hooks in settings.json — auto-fired scripts before/after Claude tool calls (e.g. lint after edit, test after code change, Telegram ping on session end); use `/update-config` skill · `Next`
 - [ ] Audit total loaded context cost — measure hot file token footprint in a fresh session; prune if over ~500-line equivalent · `Later` ⚠️ depends on: Configure hooks (for ongoing automated monitoring; one-time manual audit can be done without hooks)
 - [ ] Add `CLAUDE.local.md` to project conventions — gitignored per-workspace override for machine-specific config (local paths, personal test IDs); add to project-init scaffold · `Someday` (solo dev on single machine — low urgency)
-- [x] Set up Claude Code status line — ✅ done: `ctx:%` + in/out token counts configured via `statusLine` in settings.json
+
