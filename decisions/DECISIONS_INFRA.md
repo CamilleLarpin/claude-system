@@ -29,6 +29,13 @@
 - **Date**: 2026-03-18
 - **Status**: active
 
+## [infra] ~/.claude/ split into public + private git repos
+- **Decision**: `~/.claude/` is a public git repo (Claude setup: CLAUDE.md, skills, lessons, decisions, commands). Project tracking files live in `~/.claude/projects-tracking/` which is a separate private git repo (PROJECT_TRACKER.md, BACKLOG.md, TASKS_DONE.md).
+- **Rationale**: Claude setup is reusable and shareable; project tracking contains personal project names, priorities, and task details that should stay private. Nested git repos work cleanly — git stops at `.git` boundaries, so the public repo cannot see inside `projects-tracking/`. No gitignore hacks needed.
+- **Implementation**: `~/.claude/projects-tracking/` → `github.com/CamilleLarpin/projects-tracking` (private). All path references updated from `~/.claude/X.md` → `~/.claude/projects-tracking/X.md`.
+- **Date**: 2026-03-19
+- **Status**: active
+
 ## [infra] One GitHub PAT per Hetzner server, not per project
 - **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
 - **Rationale**: per-project PATs create maintenance overhead; blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder

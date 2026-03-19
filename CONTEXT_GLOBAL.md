@@ -17,7 +17,7 @@
 - **Automation**: self-hosted n8n — https://n8n.helmcome.com; **OpenClaw** under evaluation (local agent, native Gmail/Mac, Claude, messaging interface — experiment zone)
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), OpenAI API where needed
 - **Data**: DuckDB · dbt · MariaDB (Nextcloud)
-- **Storage**: file-based (JSON/MD)
+- **Storage**: file-based (JSON/MD). **Git is the source of truth** for all project tracking (`~/.claude/projects-tracking/`, project `TODOS.md`). Notion is a temporary capture entry point only — being phased out as a primary view.
 - **Infra**: Hetzner server `n8n-server` (138.199.205.72), Docker 29.1.5 — independent stacks:
   - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
   - `/opt/nextcloud/`: Nextcloud + its own MariaDB 10.11 instance (`nextcloud-db`)

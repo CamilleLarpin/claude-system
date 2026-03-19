@@ -77,6 +77,12 @@
 - **Date**: 2026-03-18
 - **Status**: active
 
+## [conventions] `@path` in CLAUDE.md auto-loads — use plain paths for on-demand files
+- **Decision**: use plain paths (`` `~/.claude/file.md` ``) in CLAUDE.md and index files (LESSONS_GLOBAL, DECISIONS_GLOBAL) for files that should load on demand. Reserve `@path` only for files that must always be loaded (e.g. project CLAUDE.md → `@~/.claude/CLAUDE.md`).
+- **Rationale**: `@path` syntax in Claude Code auto-includes the file immediately — it does not mean "available if needed". Using `@` in index files cascaded into loading all 9 lesson files and 3 decision files on every command, regardless of relevance. Plain paths let Claude read them via Read tool when actually needed.
+- **Date**: 2026-03-19
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
