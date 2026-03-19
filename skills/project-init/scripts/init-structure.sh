@@ -30,6 +30,7 @@ fi
 # ── Create structure ──────────────────────────────────────
 echo "📁 Creating $PROJECT_DIR..."
 mkdir -p "$PROJECT_DIR/.claude"
+mkdir -p "$PROJECT_DIR/.claude/agents"
 
 # Copy templates
 cp "$TEMPLATES_DIR/CLAUDE.template.md"     "$PROJECT_DIR/CLAUDE.md"

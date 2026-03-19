@@ -39,6 +39,7 @@ This creates:
 ```
 ~/projects/<slug>/
   .claude/
+    agents/        ← empty; add project-specific agents here
     CONTEXT.md
     DECISIONS.md
     LESSONS.md
