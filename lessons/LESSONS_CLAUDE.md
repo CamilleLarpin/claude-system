@@ -120,6 +120,12 @@
 - Root cause: the exercise prompt listed Traefik as an option; plausible-sounding assumption was stated as verified fact
 - Before writing any claim about running infrastructure into a decision: require `docker ps`, `systemctl status`, or equivalent evidence. "Likely", "probably", and "already" are red flags — replace with "please verify with X command"
 
+## [claude-code] · Guideline · Agents vs commands — choose by bias and context isolation
+> 2026-03-19 · source: claude-setup session (agents pattern)
+- Commands run inside the current conversation — they see full history and are biased by prior reasoning; good for interactive workflows, multi-turn tasks, things that need conversation state
+- Agents run as isolated sub-processes with blank context — no history, no bias; good for quality gates (e.g. code reviewer must not see implementation reasoning), parallel tasks, checks that should be objective
+- The reviewer agent exists at `~/.claude/agents/reviewer.md` — invoke by asking Claude to "use the reviewer agent"; it defaults to `git diff HEAD`, accepts file list override
+
 ## [llm] · Rule · Python .format() breaks on prompt strings containing literal braces
 > 2026-03-18 · source: gmail-inbox-cleanup
 - Prompt strings with JSON examples like `{"key": "value"}` cause `KeyError` when passed to `.format()` — Python interprets `{key}` as a format placeholder
