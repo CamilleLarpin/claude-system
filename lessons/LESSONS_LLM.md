@@ -39,6 +39,18 @@
 - `Format:\n- ConceptName` caused the model to output `- ConceptName` as the first line of its response — it treats example text as a template to follow verbatim
 - Use real-looking example values in format instructions (e.g. `- Docker layer caching`), never abstract placeholder labels
 
+## [llm-pipeline] · Rule · Insert few-shot corrections before the full classification run, not after
+> 2026-03-19 · source: finances-ezerpin
+- `labeled_corrections` is injected into every prompt at run time — waiting until after the full run means the run itself misses the signal
+- Safe corrections (specific label, unambiguous merchant) should go in as soon as they're identified during sample review
+- Unsafe: multi-purpose platform examples (e.g. Yoojo used for both childcare and home services) — adding one service type as an example biases ALL future transactions from that platform
+
+## [llm-pipeline] · Rule · DELETE + re-run pattern: never re-classify already-correct predictions
+> 2026-03-19 · source: finances-ezerpin
+- `load_unclassified()` should LEFT JOIN on the predictions table and skip rows already classified — only deleted rows get re-processed
+- Corrections = DELETE wrong predictions + re-run; pay only for the corrections, not the full dataset
+- Running a large --sample before the full run means paying twice (sample calls + full run calls) — skip to full run once the prompt is stable
+
 ## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
 > 2026-03-13 · source: audio-intelligence-pipeline
 - `mlflow.evaluate()` + `make_metric` logs scores as flat metrics in regular runs — they do NOT appear in the GenAI Evaluation view, Judges tab, or linked to datasets
