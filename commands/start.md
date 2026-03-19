@@ -16,7 +16,7 @@ Detect from `pwd`. If not inside `~/projects/<slug>/`, ask: "Which project are w
 
 ### 3. Load context
 
-- `~/.claude/PROJECT_TRACKER.md`
+- `~/.claude/projects-tracking/PROJECT_TRACKER.md`
 - `.claude/CONTEXT.md`
 - `.claude/TODOS.md`
 

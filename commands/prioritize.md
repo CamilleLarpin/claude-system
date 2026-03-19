@@ -7,7 +7,7 @@ description: Review and prioritize all projects and tasks across PROJECT_TRACKER
 @~/.claude/decisions/DECISIONS_CONVENTIONS.md
 
 ### 1. Load files
-Read `~/.claude/PROJECT_TRACKER.md` and `~/.claude/BACKLOG.md`.
+Read `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`.
 
 ### 2. Display current state
 Show all projects and tasks grouped by priority. Format:
@@ -48,4 +48,4 @@ Continue until user says done or confirms no more changes.
 Ask: "Any Someday items that no longer resonate? Drop them now or they'll stay forever."
 
 ### 7. Write files
-Update `~/.claude/PROJECT_TRACKER.md` and `~/.claude/BACKLOG.md`. Update `**Last updated**` date in both.
+Update `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`. Update `**Last updated**` date in both.

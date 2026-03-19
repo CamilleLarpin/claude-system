@@ -29,8 +29,8 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - @~/.claude/DECISIONS_GLOBAL.md — cross-project decisions (index → load relevant category)
   · load when: starting a build · touching server/infra · backlog or project-setup work · architectural decision
 - @~/.claude/LESSONS_GLOBAL.md — what to avoid: hard-won patterns and mistakes (load the index alongside project LESSONS.md + relevant category files for current task domain; load when debugging or starting a build)
-- @~/.claude/PROJECT_TRACKER.md — project registry (load when assessing cross-project relevance or promotion candidates)
-- @~/.claude/BACKLOG.md — project pipeline and tasks (load when selecting or prioritizing projects, or when a cross-project task or stack decision arises)
+- @~/.claude/projects-tracking/PROJECT_TRACKER.md — project registry (load when assessing cross-project relevance or promotion candidates)
+- @~/.claude/projects-tracking/BACKLOG.md — project pipeline and tasks (load when selecting or prioritizing projects, or when a cross-project task or stack decision arises)
 
 ## Skills — load on demand
 @~/.claude/skills/ — load relevant skill before starting any scoped task

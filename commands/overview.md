@@ -12,7 +12,7 @@ date "+%A %Y-%m-%d"
 
 ### 2. Load files
 
-Read `~/.claude/PROJECT_TRACKER.md` and `~/.claude/BACKLOG.md`.
+Read `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`.
 
 ### 3. Output
 

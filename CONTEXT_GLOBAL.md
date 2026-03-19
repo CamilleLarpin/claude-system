@@ -40,6 +40,6 @@
 - Every project lives in `~/projects/<slug>/`
 - Every project has `.claude/`: CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
 - Every project CLAUDE.md imports `@~/.claude/CLAUDE.md`
-- Project registry: `~/.claude/PROJECT_TRACKER.md`
+- Project registry: `~/.claude/projects-tracking/PROJECT_TRACKER.md`
 - Project decisions: archive when superseded → DECISIONS_ARCHIVE.md. Never delete LESSONS entries.
 - Archive done project: move entry to `## Archive` in PROJECT_TRACKER.md + folder to `~/projects/archived/<slug>/`

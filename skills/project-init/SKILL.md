@@ -77,7 +77,7 @@ bash ~/.claude/skills/project-init/scripts/trigger-notion.sh \
 Add the Notion URL (provided or generated) to the new project's CLAUDE.md Quick Reference.
 
 **4b — Update PROJECT_TRACKER.md**
-Append a new entry to `~/.claude/PROJECT_TRACKER.md` under `## Projects`, using the standard format:
+Append a new entry to `~/.claude/projects-tracking/PROJECT_TRACKER.md` under `## Projects`, using the standard format:
 ```
 ### <Project Name>
 - **Status**: ⚫ Scoping

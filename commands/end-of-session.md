@@ -24,11 +24,11 @@ Work through each step in order. Perform the action, don't just list it.
 - `~/.claude/decisions/DECISIONS_*.md` files: 100 lines each → archive superseded entries to `DECISIONS_[CATEGORY]_ARCHIVE.md`
 - `~/.claude/CLAUDE.md`: 80 lines → prune stale/redundant rules (never delete lessons, prune rules)
 - `~/.claude/CONTEXT_GLOBAL.md`: 80 lines → prune or move rarely-needed facts to cold files
-- `~/.claude/PROJECT_TRACKER.md`: 200 lines → move done projects to Archive section
-- `~/.claude/BACKLOG.md`: 200 lines → remove completed tasks, archive done projects
+- `~/.claude/projects-tracking/PROJECT_TRACKER.md`: 200 lines → move done projects to Archive section
+- `~/.claude/projects-tracking/BACKLOG.md`: 200 lines → remove completed tasks, archive done projects
 
 **6. Global context** — if philosophy, stack, or architecture changed, update `~/.claude/CONTEXT_GLOBAL.md`.
 
-**7. PROJECT_TRACKER.md** — for the project(s) worked on this session, update Status, Milestone, Next, Blocker if changed; update Load tier on any `.claude/` file header if changed.
+**7. PROJECT_TRACKER.md** — for the project(s) worked on this session, update Status, Milestone, Next, Blocker if changed in `~/.claude/projects-tracking/PROJECT_TRACKER.md`; update Load tier on any `.claude/` file header if changed.
 
 **9. Output** — one-line summary of what was updated. Then: "Run `/commit-push` → `/clear`."

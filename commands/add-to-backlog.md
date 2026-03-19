@@ -15,7 +15,7 @@ description: Add a new project or task to the backlog
 6. Dependencies (optional — what must be done first?)
 7. Notes (optional)
 
-Append to `## Projects` in `~/.claude/BACKLOG.md` using the format from the file header. Add a priority log entry: `  - YYYY-MM-DD → [Priority]: [reason given]`
+Append to `## Projects` in `~/.claude/projects-tracking/BACKLOG.md` using the format from the file header. Add a priority log entry: `  - YYYY-MM-DD → [Priority]: [reason given]`
 
 ### 2b. If task — ask in sequence:
 1. Category (Infrastructure / Tools & Maintenance / Claude Setup / Other)
@@ -24,7 +24,7 @@ Append to `## Projects` in `~/.claude/BACKLOG.md` using the format from the file
 4. Priority (Now / Next / Later / Someday)
 5. Dependencies (optional — note inline if this task requires another to be done first)
 
-Append `- [ ] [Description] — [why] · \`[Priority]\`` to the correct category under `## Tasks`. If the category doesn't exist, create it.
+Append `- [ ] [Description] — [why] · \`[Priority]\`` to the correct category under `## Tasks` in `~/.claude/projects-tracking/BACKLOG.md`. If the category doesn't exist, create it.
 
 ### 3. Confirm
-Show the added entry. Update `**Last updated**` date in BACKLOG.md.
+Show the added entry. Update `**Last updated**` date in `~/.claude/projects-tracking/BACKLOG.md`.
