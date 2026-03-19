@@ -10,26 +10,35 @@ description: Review and prioritize all projects and tasks across PROJECT_TRACKER
 Read `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`.
 
 ### 2. Display current state
-Show all projects and tasks grouped by priority. Format:
+Show all projects and tasks in 4 blocks: Now, Next, Later, Someday.
 
+Within each block:
+- Projects first, **bold**, with the reason they're at this priority (from the latest priority log entry, or the project's current milestone/why)
+- Blocked projects stay in Now with ⚠️ inline — do NOT move them to a separate section
+- Tasks at the end of the block, *italic*, with a short pain point (why the task matters)
+
+Format:
 ```
 ## Now
-**[Name]** · [TRACKER|BACKLOG] · [one-line milestone or why]
+
+**[Project Name]** — [why it's here / what's driving it]
+**[Project Name]** ⚠️ — [why it's here], blocked on [what]
+
+*[Task name] — [pain point it solves]*
 
 ## Next
-...
+
+**[Project Name]** — [why it's here]
+
+*[Task name] — [pain point it solves]*
 
 ## Later
+
 ...
 
 ## Someday
+
 ...
-
-## Blocked
-**[Name]** · ⚠️ [blocker]
-
-## TBD
-**[Name]** · [source]
 ```
 
 ### 3. Ask

@@ -1,6 +1,12 @@
 # Plugins — Claude Code managed, not user-authored
 plugins/
 
+# Private tracking repo — separate git repo, not part of this public repo
+projects-tracking/
+
+# macOS metadata
+.DS_Store
+
 # Claude Code internal state — do not version
 backups/
 cache/

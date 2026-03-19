@@ -83,6 +83,12 @@
 - **Date**: 2026-03-19
 - **Status**: active
 
+## [conventions] /prioritize display format — 4 blocks, projects + tasks differentiated
+- **Decision**: `/prioritize` displays in 4 blocks (Now/Next/Later/Someday); within each block: projects bold with the reason they're at that priority; tasks italic at the end with the pain point they solve; blocked projects stay in their priority block with ⚠️ inline — no separate Blocked section
+- **Rationale**: separating blocked into its own section hid priority; mixing tasks and projects with equal weight obscured what matters; showing "why" next to each item makes prioritization decisions auditable at a glance
+- **Date**: 2026-03-19
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
