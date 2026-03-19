@@ -24,13 +24,12 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - Tunnel vision: when blocked or running in circles, step back — is this still the right approach?
 - Transparency: when applying a principle to a decision, name it explicitly.
 
-## Global Knowledge — load on demand
-- @~/.claude/CONTEXT_GLOBAL.md — what is true now: stack, architecture, philosophy (load when creating a new project or making an architectural or cross-project decision)
-- @~/.claude/DECISIONS_GLOBAL.md — cross-project decisions (index → load relevant category)
-  · load when: starting a build · touching server/infra · backlog or project-setup work · architectural decision
-- @~/.claude/LESSONS_GLOBAL.md — what to avoid: hard-won patterns and mistakes (load the index alongside project LESSONS.md + relevant category files for current task domain; load when debugging or starting a build)
-- @~/.claude/projects-tracking/PROJECT_TRACKER.md — project registry (load when assessing cross-project relevance or promotion candidates)
-- @~/.claude/projects-tracking/BACKLOG.md — project pipeline and tasks (load when selecting or prioritizing projects, or when a cross-project task or stack decision arises)
+## Global Knowledge — load on demand (read file when trigger applies, do not auto-load)
+- `~/.claude/CONTEXT_GLOBAL.md` — what is true now: stack, architecture, philosophy · load when: creating a new project or making an architectural or cross-project decision
+- `~/.claude/DECISIONS_GLOBAL.md` — cross-project decisions index · load when: starting a build · touching server/infra · backlog or project-setup work · architectural decision
+- `~/.claude/LESSONS_GLOBAL.md` — lessons index · load alongside project LESSONS.md + relevant category files · load when: debugging or starting a build
+- `~/.claude/projects-tracking/PROJECT_TRACKER.md` — project registry · load when: assessing cross-project relevance or promotion candidates
+- `~/.claude/projects-tracking/BACKLOG.md` — project pipeline and tasks · load when: selecting or prioritizing projects or when a cross-project task or stack decision arises
 
 ## Skills — load on demand
 @~/.claude/skills/ — load relevant skill before starting any scoped task
