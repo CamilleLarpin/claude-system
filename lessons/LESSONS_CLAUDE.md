@@ -102,6 +102,12 @@
 - The correct pattern: extract shared rules to a single file (e.g. `DECISIONS_CONVENTIONS.md`) and `@`-reference it from every command that needs it; commands stay thin, truth stays in one place
 - Applies to any rule, philosophy, or convention referenced by more than one command or skill
 
+## [skills] · Rule · Multi-step skills must be conversational — one step, one question, then wait
+> 2026-03-19 · source: ai-networking-system (/align skill)
+- Running all steps of a structured skill in a single message produces a wall of analysis the user didn't co-build — goes in the wrong direction without checkpoints
+- User said "way too much in a row" and "you go in the wrong direction by yourself"
+- For any skill structured as a sequence of steps: end each step with ONE question, stop, and wait for the user's response before proceeding. The user builds the output with you. Add an explicit "How this works" block at the top of the skill: "This is a conversation, not a report. Each step ends with a question. Wait for the user's response before moving to the next step. Never run multiple steps in one message."
+
 ## [claude-code] · Guideline · MCP→Skill promotion rule — try MCP first, convert once validated
 > 2026-03-18 · source: prioritization session
 - MCPs are fast to set up but always-loaded (token cost on every session); skills load only on invocation (zero cost otherwise)
