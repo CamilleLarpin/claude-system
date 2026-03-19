@@ -36,10 +36,11 @@
 - **Date**: 2026-03-19
 - **Status**: active
 
-## [infra] Services called by n8n from another container — Docker Compose + reverse proxy required
-- **Decision**: any service that n8n calls over HTTP must be deployed via Docker Compose (named volume for data persistence + Traefik reverse proxy for HTTPS). TDD (pytest) before implementation to lock the API contract before n8n depends on it.
-- **Rationale**: n8n runs in its own Docker container — it cannot access another service via direct file or library call; HTTP is the only interface. Ad-hoc `docker run` with raw port exposure is fragile and insecure. Traefik already proxies all services on Hetzner — extending it is zero-overhead. Named volume prevents data loss on container restart. TDD ensures the contract is stable before wiring n8n to it.
-- **Date**: 2026-03-19
+## [infra] Services called by n8n from another container — Docker Compose + nginx required
+- **Decision**: any service that n8n calls over HTTP must be deployed via Docker Compose (named volume for data persistence + nginx server block for HTTPS). Port bound to 127.0.0.1 only — nginx is the sole external entry point. TDD (pytest) before implementation to lock the API contract before n8n depends on it.
+- **Rationale**: n8n runs in its own Docker container — HTTP is the only interface. nginx 1.18 runs on the Hetzner host (not in Docker) and handles TLS for all services — adding a server block is zero-overhead. Raw port exposure is fragile and insecure. Named volume prevents data loss. TDD ensures stable contract before wiring.
+- **Note**: Traefik was incorrectly stated as "already running" in the original version of this decision — it is not. nginx is the actual reverse proxy on this server. Always verify with `docker ps` + `systemctl status nginx` before writing infra facts to decisions.
+- **Date**: 2026-03-19 (corrected 2026-03-19)
 - **Status**: active
 
 ## [infra] One GitHub PAT per Hetzner server, not per project

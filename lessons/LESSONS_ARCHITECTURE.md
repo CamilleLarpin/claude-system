@@ -129,6 +129,11 @@
 - All SQL models, YAML, tests, seeds, macros are 100% compatible — no file changes needed
 - Fusion's `arguments:` syntax for tests is Fusion-specific; Core 1.x uses standard dbt syntax
 
+## [duckdb] · Rule · `UPDATE ... RETURNING *` conflicts with primary key in DuckDB
+> 2026-03-19 · source: ai-networking-system
+- `UPDATE table SET x=? WHERE id=? RETURNING *` throws `ConstraintException: Duplicate key ... violates primary key constraint` — DuckDB's RETURNING implementation re-evaluates the PK constraint after update
+- Fix: split into two statements: `UPDATE ... SET ... WHERE id=?` then `SELECT * ... WHERE id=?`
+
 ## [integrations] · Rule · Read tool documentation before proposing config key names
 > 2026-03-18 · source: openclaw-setup
 - Proposing OpenClaw config keys from memory led to two consecutive wrong guesses (`heartbeat: {enabled: false}`, `channels.telegram.allowedUsers`) — both rejected; required reading docs to fix

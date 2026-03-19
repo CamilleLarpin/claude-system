@@ -114,6 +114,12 @@
 - Pattern: adopt as MCP first to validate the tool is worth using; once confirmed useful and stable, convert to a skill for long-term token efficiency
 - Do NOT start with a skill if you're unsure whether you'll use the tool — MCP lets you evaluate with minimal investment
 
+## [claude-behavior] · Rule · Never state infrastructure facts as truth without verification
+> 2026-03-19 · source: ai-networking-system
+- Said "Traefik already runs on your Hetzner stack (n8n uses it)" — stated as fact; written into DECISIONS_INFRA.md; persisted across sessions. Traefik was not running at all.
+- Root cause: the exercise prompt listed Traefik as an option; plausible-sounding assumption was stated as verified fact
+- Before writing any claim about running infrastructure into a decision: require `docker ps`, `systemctl status`, or equivalent evidence. "Likely", "probably", and "already" are red flags — replace with "please verify with X command"
+
 ## [llm] · Rule · Python .format() breaks on prompt strings containing literal braces
 > 2026-03-18 · source: gmail-inbox-cleanup
 - Prompt strings with JSON examples like `{"key": "value"}` cause `KeyError` when passed to `.format()` — Python interprets `{key}` as a format placeholder
