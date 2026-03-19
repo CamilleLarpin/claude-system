@@ -34,6 +34,9 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 ## Skills — load on demand
 `~/.claude/skills/` — load relevant skill before starting any scoped task
 
+## Agents
+`~/.claude/agents/` — global sub-agents (bias-free quality gates, parallel tasks). Per-project: `.claude/agents/`. Invoke via paired slash command (e.g. `/review`), not by subagent_type name. See `~/.claude/agents/README.md` for format and available agents.
+
 ## Project Files
 Every project: `.claude/` with CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
 Project-specific only — never duplicate global directives.
