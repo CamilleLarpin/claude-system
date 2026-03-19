@@ -89,6 +89,12 @@
 - **Date**: 2026-03-19
 - **Status**: active
 
+## [conventions] Agent files — ~/.claude/agents/ global, .claude/agents/ per-project
+- **Decision**: global sub-agents (project-agnostic quality gates and utilities) live in `~/.claude/agents/`; project-specific agents live in `.claude/agents/`; all new projects scaffold an empty `.claude/agents/` folder via project-init
+- **Rationale**: global location makes quality gates (e.g. reviewer) available across all projects without duplication; per-project folder enables domain-specific agents without polluting the global space; project-init scaffolding ensures the pattern is adopted consistently
+- **Date**: 2026-03-19
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
