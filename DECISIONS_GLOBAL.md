@@ -6,10 +6,10 @@
 ---
 
 ## Conventions — commands, backlog, project setup, session rituals
-→ @~/.claude/decisions/DECISIONS_CONVENTIONS.md
+→ `~/.claude/decisions/DECISIONS_CONVENTIONS.md`
 
 ## Build — starting a build, AI agent design, data modeling
-→ @~/.claude/decisions/DECISIONS_BUILD.md
+→ `~/.claude/decisions/DECISIONS_BUILD.md`
 
 ## Infra — touching server, credentials, deployment
-→ @~/.claude/decisions/DECISIONS_INFRA.md
+→ `~/.claude/decisions/DECISIONS_INFRA.md`

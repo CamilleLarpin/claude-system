@@ -32,7 +32,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - `~/.claude/projects-tracking/BACKLOG.md` — project pipeline and tasks · load when: selecting or prioritizing projects or when a cross-project task or stack decision arises
 
 ## Skills — load on demand
-@~/.claude/skills/ — load relevant skill before starting any scoped task
+`~/.claude/skills/` — load relevant skill before starting any scoped task
 
 ## Project Files
 Every project: `.claude/` with CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md

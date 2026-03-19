@@ -8,15 +8,15 @@
 
 ## Category files
 
-- @~/.claude/lessons/LESSONS_N8N_RUNTIME.md — n8n node behavior, expressions, runtime gotchas
-- @~/.claude/lessons/LESSONS_N8N_MCP.md — n8n-mcp tool usage: updateNode, addNode, addConnection
-- @~/.claude/lessons/LESSONS_SLACK.md — Slack integration
-- @~/.claude/lessons/LESSONS_TELEGRAM.md — Telegram integration
-- @~/.claude/lessons/LESSONS_NOTION.md — Notion integration
-- @~/.claude/lessons/LESSONS_CLAUDE.md — skills authoring, Claude behavior
-- @~/.claude/lessons/LESSONS_ARCHITECTURE.md — git, ai-agents, architecture, integrations, infra, bash, shell, data-engineering
-- @~/.claude/lessons/LESSONS_LLM.md — LLM APIs, prompting, model behavior, evaluation (mlflow, Groq, token limits)
-- @~/.claude/lessons/LESSONS_DLT.md — dlt pipeline behavior, column normalization, schema
+- `~/.claude/lessons/LESSONS_N8N_RUNTIME.md` — n8n node behavior, expressions, runtime gotchas
+- `~/.claude/lessons/LESSONS_N8N_MCP.md` — n8n-mcp tool usage: updateNode, addNode, addConnection
+- `~/.claude/lessons/LESSONS_SLACK.md` — Slack integration
+- `~/.claude/lessons/LESSONS_TELEGRAM.md` — Telegram integration
+- `~/.claude/lessons/LESSONS_NOTION.md` — Notion integration
+- `~/.claude/lessons/LESSONS_CLAUDE.md` — skills authoring, Claude behavior
+- `~/.claude/lessons/LESSONS_ARCHITECTURE.md` — git, ai-agents, architecture, integrations, infra, bash, shell, data-engineering
+- `~/.claude/lessons/LESSONS_LLM.md` — LLM APIs, prompting, model behavior, evaluation (mlflow, Groq, token limits)
+- `~/.claude/lessons/LESSONS_DLT.md` — dlt pipeline behavior, column normalization, schema
 
 
 ---
