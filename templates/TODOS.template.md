@@ -17,5 +17,8 @@
 ## Blocked
 - [ ] [blocked item] — **blocked by**: [what/who]
 
+## Inbox
+> Captured via Ghost — review and promote to the right section.
+
 ## Done (recent — clear periodically)
 - [x] [completed item]

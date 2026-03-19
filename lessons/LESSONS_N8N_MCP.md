@@ -46,3 +46,11 @@
 - `updateNode` requires `updates: {...}` wrapper — `{type:"updateNode", nodeName:"X", parameters:{...}}` fails with "Missing required parameter 'updates'"; correct: `{type:"updateNode", nodeName:"X", updates:{"parameters.field": value}}`
 - `addConnection` and `removeConnection` require flat format — `source`/`target` at top level, NOT nested in a `connection: {}` object; nested silently resolves to `undefined` → "Source node not found: undefined"
 - IF node connections: always use `branch:"true"` / `branch:"false"` instead of `sourceIndex` — `sourceIndex:0` puts ALL connections on the TRUE branch regardless of intent
+- Switch node connections: always use `case: N` (integer) instead of `sourceIndex` — `case:0` first output, `case:1` second, etc.; omitting puts all on case 0
+
+## [workflow-build] · Rule · Build n8n workflows incrementally — 3–5 ops per call, validate, then next
+> 2026-03-19 · source: ghost (Gap A build session)
+- Attempting 30+ operations in one call leads to hours of pre-computation, JSON escaping bugs, and wasted tokens — even if the logic is correct, one escaping mistake fails everything
+- Correct pattern: add one logical step at a time (e.g. addNode + its 2 connections = 3 ops), confirm 200 OK, then proceed
+- Each call is fast (50–200ms); iterating 10× beats one monolithic call that fails
+- Start with the simplest node (no complex code/params) to validate the connection pattern, then add richer nodes
