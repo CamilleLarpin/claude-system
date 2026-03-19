@@ -72,10 +72,12 @@ Based on the user's response to Step 4, recommend one sequence. Apply these filt
 
 Present as phases:
 ```
-Phase N — [Theme: what changes for the user]
+Phase N — [What the user can do or see after this phase that they couldn't before]
   [milestone]
   [milestone]  ⚠️ Depends on: [X]
 ```
+
+Phase names must describe **added value for the user** — not technical themes or internal milestones. A good name passes this test: "After this phase, I can [X]" where X is something concrete and meaningful to the user. Bad: "Data layer complete." Good: "Get to 1st draft monthly report."
 
 State which option from Step 4 you're recommending and why.
 
