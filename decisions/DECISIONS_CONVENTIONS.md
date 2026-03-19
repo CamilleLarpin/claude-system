@@ -89,9 +89,9 @@
 - **Date**: 2026-03-19
 - **Status**: active
 
-## [conventions] Agent files — ~/.claude/agents/ global, .claude/agents/ per-project
-- **Decision**: global sub-agents (project-agnostic quality gates and utilities) live in `~/.claude/agents/`; project-specific agents live in `.claude/agents/`; all new projects scaffold an empty `.claude/agents/` folder via project-init
-- **Rationale**: global location makes quality gates (e.g. reviewer) available across all projects without duplication; per-project folder enables domain-specific agents without polluting the global space; project-init scaffolding ensures the pattern is adopted consistently
+## [conventions] Agent files — ~/.claude/agents/ global, .claude/agents/ per-project; invoked via paired slash command
+- **Decision**: global agents live in `~/.claude/agents/`, project agents in `.claude/agents/`; all new projects scaffold an empty `.claude/agents/` via project-init. Custom agents are NOT registered as subagent_type — invoke via a paired `~/.claude/commands/<name>.md` slash command that spawns a general-purpose agent with the agent's prompt embedded.
+- **Rationale**: subagent_type only accepts built-in types (tested 2026-03-19 — "Agent type not found"); slash command pattern is reliable and one-step; agent `.md` file = source of truth for instructions, command file = invocation layer
 - **Date**: 2026-03-19
 - **Status**: active
 
