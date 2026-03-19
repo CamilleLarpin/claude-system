@@ -26,6 +26,10 @@
   - **Hetzner Firewall**: `firewall-server` — inbound TCP: 22, 80, 443, 5678, 8080, 8000, 5000 (IPv4+IPv6 restricted)
   - **SSH**: key-only auth (`~/.ssh/id_ed25519`), password auth disabled
 - **Version control**: Git
+- **Shared infrastructure across projects**:
+  - n8n instance: https://n8n.helmcome.com — used by all automation projects
+  - Shared error alerting: [Alert] Error Notifier workflow (n8n ID: S3JtzMtNJlNl4SOQ)
+  - Nextcloud (cloud.helmcome.com): shared document storage — `family-content-manager` (photo filing) + `gmail-inbox-cleanup` Phase 2 (email document routing)
 
 ## Architecture Principles
 - **Modularity**: small, composable units over monoliths. Each component owns one responsibility.

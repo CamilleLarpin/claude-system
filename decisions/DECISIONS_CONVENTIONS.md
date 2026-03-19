@@ -95,6 +95,14 @@
 - **Date**: 2026-03-19
 - **Status**: active
 
+## [conventions] Cross-project relationship types — blocking dependency vs shared infrastructure
+- **Decision**: two distinct relationship types, documented in different places:
+  - **Blocking dependency** (`⚠️ Blocked by: [project] — [what]` / `⚡ Unblocks: [project] — [what]`): lives in TODOS.md of *both* projects (blocked: which phase is waiting; blocking: which task unblocks another project) + PROJECT_TRACKER.md on both projects (`Blocker:` on the blocked project's entry, `⚡ Unblocks:` note on the blocking project's entry — prioritization signal).
+  - **Shared infrastructure/tool**: lives in `CONTEXT_GLOBAL.md` only — not in PROJECT_TRACKER, not in individual project CONTEXT.md. Shared infra is an architectural fact about the stack, not a project coordination concern.
+- **Rationale**: blocking dependencies affect whether a project can proceed and how to prioritize it — relevant on both sides. Shared infrastructure doesn't affect project execution or priority — it belongs in the global stack description, not duplicated across project files.
+- **Date**: 2026-03-19
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
