@@ -27,3 +27,4 @@ usage-data/
 
 # Local secrets — never commit
 credentials
+sessions/
