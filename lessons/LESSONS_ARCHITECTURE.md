@@ -53,10 +53,12 @@
 - Fix: build a line→section map from the full current file first, then use `@@` hunk offsets to resolve which section each change belongs to
 
 ## [github] · Rule · Fine-grained PATs require explicit repository + Contents permission
-> 2026-03-12 · source: audio-intelligence-pipeline
-- `github_pat_` tokens return 403 on `git clone` unless the token explicitly grants access to that specific repo with Contents: Read-only
-- Classic `ghp_` tokens with `repo` scope work without per-repo config
-- After creating a fine-grained PAT: Settings → token → Edit → Repository access → select repo → Permissions → Contents: Read-only
+> 2026-03-12 · source: audio-intelligence-pipeline; updated 2026-03-19: ghost
+- `github_pat_` tokens return 403/404 unless the token explicitly grants access to the specific repo(s) with the right Contents permission
+- **For read** (git clone, GET file): Contents: Read-only — default "Public repositories" causes 404 on private repos
+- **For write** (PUT file via API from n8n): Contents: Read and Write — classic `ghp_` PAT with `repo` scope may still return 403 "Restricts updates to workflow files" on private repos (possible account-level ruleset timeout); fine-grained PAT is more reliable
+- Setup: Settings → token → Edit → Repository access → select repo(s) → Permissions → Contents → Read and Write
+- Create one dedicated PAT per project/integration to isolate permissions and avoid breaking shared credentials
 
 ## [docker] · Rule · Use `--host 0.0.0.0` when running Uvicorn inside Docker
 > 2026-03-12 · source: audio-intelligence-pipeline
