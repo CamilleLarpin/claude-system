@@ -1,6 +1,6 @@
 # Decisions — Conventions
 
-> Load when: commands, backlog work, project setup, session rituals.
+> Load when: commands · backlog work · project setup · session rituals.
 > NOT HERE: build decisions (→ DECISIONS_BUILD.md), infra decisions (→ DECISIONS_INFRA.md).
 > Archive at 100 lines → DECISIONS_CONVENTIONS_ARCHIVE.md
 
@@ -17,52 +17,10 @@
 
 ---
 
-## [conventions] DECISIONS_GLOBAL split into index + category files by load context
-- **Decision**: DECISIONS_GLOBAL.md is an index only; actual decisions live in category files split by load context: DECISIONS_CONVENTIONS.md (commands, backlog, project setup), DECISIONS_BUILD.md (build, AI agents, data), DECISIONS_INFRA.md (server, credentials, deployment)
-- **Rationale**: single file caused full-registry load every time any decision was needed; split by load context (not topic) means each command/task loads only the relevant slice; mirrors the proven LESSONS_GLOBAL pattern; DECISIONS_GLOBAL index stays tiny and cheap to load
-- **Date**: 2026-03-18
-- **Status**: active
-
-## [conventions] Single post-milestone checklist ordered by signal strength
-- **Decision**: one checklist runs after each milestone (not split by session boundary); steps ordered by signal strength — promotions first (highest cognitive value), mechanical checks last
-- **Rationale**: splitting into milestone + session checklists created a coordination problem — promotions require live context, which is cleared before end-of-session; collapsing removes deferred state; ordering by signal strength prevents attention decay on high-value steps
-- **Date**: 2026-03-04
-- **Status**: active
-
-## [conventions] Session ritual commands over CLAUDE.md prose
-- **Decision**: user-triggered rituals (`/start`, `/end-of-session`, `/commit-push`) live in `~/.claude/commands/` as dedicated command files, not in CLAUDE.md
-- **Rationale**: keeps CLAUDE.md lean (always-loaded context); command files are only loaded on invocation; user owns the trigger — Claude doesn't remind or propose; conventions for authoring commands documented in `~/.claude/commands/CONVENTIONS.md`
-- **Date**: 2026-03-09
-- **Status**: active
-
-## [conventions] Rule/Guideline/Note type tags on all lesson entries
-- **Decision**: every lesson entry is tagged with a type in its header: `## [category] · Rule|Guideline|Note · Title`. Rule = must follow (violating breaks things); Guideline = should follow unless justified; Note = informational. Applies to global files and all project LESSONS.md files.
-- **Rationale**: gives Claude a signal to weight lessons correctly — a Rule must be applied unconditionally, a Guideline requires judgment, a Note is context. Promotion gate updated: only Rules and Guidelines are promoted to global; Notes stay in project files.
-- **Date**: 2026-03-10
-- **Status**: active
-
-## [conventions] Load tier declarations in .claude/ file headers
-- **Decision**: every `.claude/` file declares its load tier (hot/warm/cool/cold) in its header block; tier reflects current project phase and is updated when status changes
-- **Rationale**: makes context load cost visible at the point of decision; prevents token bloat in frequently-loaded files; applies "no hidden assumptions" principle — tier is self-declared, not inferred
-- **Date**: 2026-03-03
-- **Status**: active
-
-## [conventions] Global context files always load alongside their project counterparts
-- **Decision**: `DECISIONS_GLOBAL.md` loads alongside project `DECISIONS.md`; `LESSONS_GLOBAL.md` index loads alongside project `LESSONS.md` + relevant category files for current task domain. Both triggers preserved: alongside project files AND on their original standalone triggers.
-- **Rationale**: DECISIONS_GLOBAL applies to all projects by definition — there is no case where a project DECISIONS.md is loaded without DECISIONS_GLOBAL being relevant. Same logic for LESSONS_GLOBAL.
-- **Date**: 2026-03-17
-- **Status**: active
-
 ## [conventions] Project vs task distinction
 - **Decision**: a **task** completes in one session, has a binary outcome (done/not done), needs no context to resume, and has no repo. A **project** is multi-session, has phases, accumulates decisions, and needs `.claude/` context to pick back up.
 - **Rationale**: without a clear rule, the boundary drifts — tasks get over-engineered into projects (wasted setup) or projects get under-documented (lost context). The one-session rule is the clearest practical gate.
 - **Date**: 2026-03-18
-- **Status**: active
-
-## [conventions] BACKLOG.md as unified project pipeline and task registry
-- **Decision**: single `~/.claude/BACKLOG.md` holds all pre-active projects and cross-project tasks in two sections; promotes to PROJECT_TRACKER when active development starts
-- **Rationale**: TODOS.md and a separate backlog would split related load context with no payoff for a solo developer; one file handles both concerns under one load trigger
-- **Date**: 2026-03-13
 - **Status**: active
 
 ## [conventions] Priority vocabulary — Now / Next / Later / Someday
@@ -72,7 +30,7 @@
 - **Status**: active
 
 ## [backlog] Done tasks archived to TASKS_DONE.md, not kept in BACKLOG.md
-- **Decision**: completed tasks are moved to `~/.claude/TASKS_DONE.md` and removed from BACKLOG.md entirely — not kept as `[x]` entries
+- **Decision**: completed tasks are moved to `~/.claude/projects-tracking/TASKS_DONE.md` and removed from BACKLOG.md entirely — not kept as `[x]` entries
 - **Rationale**: done tasks in BACKLOG.md consume tokens on every load for zero value; a separate file is never loaded unless explicitly needed, same principle as project Archive
 - **Date**: 2026-03-18
 - **Status**: active
@@ -101,6 +59,42 @@
   - **Shared infrastructure/tool**: lives in `CONTEXT_GLOBAL.md` only — not in PROJECT_TRACKER, not in individual project CONTEXT.md. Shared infra is an architectural fact about the stack, not a project coordination concern.
 - **Rationale**: blocking dependencies affect whether a project can proceed and how to prioritize it — relevant on both sides. Shared infrastructure doesn't affect project execution or priority — it belongs in the global stack description, not duplicated across project files.
 - **Date**: 2026-03-19
+- **Status**: active
+
+## [conventions] Experimental Stack section in CONTEXT_GLOBAL — separate from Technical Stack
+- **Decision**: CONTEXT_GLOBAL.md has two stack sections: `## Technical Stack` (stable, changes only when real pain justifies it) and `## Experimental Stack` (tools under time-boxed evaluation — binary verdict: promote to Technical Stack or drop)
+- **Rationale**: mixing stable and experimental tools in one list obscured which tools were committed vs. under evaluation; separation makes the two-zone stack principle concrete and visible; current experimental: OpenClaw, MLflow
+- **Date**: 2026-03-20
+- **Status**: active
+
+## [conventions] Writing convention — punctuation as semantic operators in setup files
+- **Decision**: every `.claude/` setup file follows a fixed punctuation convention: `—` (em-dash) = structural separator (label → content); `·` = inline list items; `→` = sequence or pointer; `;` = two independent conditions in one bullet; `-` = compound words only. No trailing period on bullets. Capital first word per bullet; lowercase after `—` or `·`.
+- **Rationale**: inconsistent punctuation forces re-parsing on every read; semantic chars carry logic without token cost; consistent format is faster to parse and reduces ambiguity; full reference in `skills/review-setup/SKILL.md`
+- **Date**: 2026-03-20
+- **Status**: active
+
+## [conventions] CONTEXT_GLOBAL load trigger — planning/deciding, not every session
+- **Decision**: CONTEXT_GLOBAL.md loads when: planning · deciding · starting new work. Not on every session start. "Starting new work" = no approved plan to execute yet.
+- **Rationale**: "starting a session" = auto-load, violates on-demand principle; real failure mode (decisions without stack knowledge) is covered by "planning · deciding"; executing an approved plan does not need CONTEXT_GLOBAL
+- **Date**: 2026-03-20
+- **Status**: active
+
+## [conventions] PROJECT_TRACKER vs BACKLOG — distinct load triggers
+- **Decision**: PROJECT_TRACKER loads when: active project status · cross-project dependency. BACKLOG loads when: new project idea · next project selection · cross-project dependency. Both load for cross-project dependency.
+- **Rationale**: both had identical triggers ("assessing cross-project relevance") — unclear when to load one vs the other; TRACKER = active projects, BACKLOG = future/candidate projects; distinct contexts
+- **Date**: 2026-03-20
+- **Status**: active
+
+## [conventions] Commands section in CLAUDE.md — slash command → skill/agent mapping
+- **Decision**: CLAUDE.md has a Commands section documenting the pattern: `/command` → Skill tool → `skills/<name>/SKILL.md` or `agents/<name>.md`
+- **Rationale**: three "on demand" mechanisms (context reading, skill invocation, agent invocation) were conflated; Commands section makes the distinction explicit and answers "what is a command vs a skill vs a file to load"
+- **Date**: 2026-03-20
+- **Status**: active
+
+## [conventions] File split/rename discipline — update callers, no index-of-indexes
+- **Decision**: before renaming or splitting any file: grep for its name across `~/.claude/`; update all `@`-references and plain-path references in commands and skills. When splitting a file: update callers to point to the new files directly — never leave a thin index at the old path as a redirect.
+- **Rationale**: `@`-references break silently on rename (no error, missing context at runtime); an index-of-indexes adds an indirection layer with no load-tier benefit and makes the dependency harder to trace
+- **Date**: 2026-03-20
 - **Status**: active
 
 ## [backlog] Backlog management philosophy

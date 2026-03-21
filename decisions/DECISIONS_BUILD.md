@@ -1,6 +1,6 @@
 # Decisions — Build
 
-> Load when: starting a build, AI agent design, data modeling.
+> Load when: starting a build · AI agent design · data modeling.
 > NOT HERE: conventions (→ DECISIONS_CONVENTIONS.md), infra (→ DECISIONS_INFRA.md).
 > Archive at 100 lines → DECISIONS_BUILD_ARCHIVE.md
 

@@ -1,6 +1,6 @@
 # Decisions — Infrastructure
 
-> Load when: touching server, credentials, deployment.
+> Load when: touching server · credentials · deployment.
 > NOT HERE: conventions (→ DECISIONS_CONVENTIONS.md), build (→ DECISIONS_BUILD.md).
 > Archive at 100 lines → DECISIONS_INFRA_ARCHIVE.md
 
