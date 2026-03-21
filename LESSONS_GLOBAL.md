@@ -1,6 +1,6 @@
 # Global Lessons Library
 
-> Load when: alongside project LESSONS.md + relevant category files for current task domain; when debugging or starting a build.
+> Load when: alongside project LESSONS.md + only relevant category files · when debugging or starting a build.
 > This file is the index — load the relevant category file for the actual lessons.
 > NOT HERE: cross-project decisions with rationale (→ DECISIONS_GLOBAL.md).
 

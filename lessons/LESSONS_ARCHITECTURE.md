@@ -1,7 +1,7 @@
 # Lessons — architecture & integrations
 
 > Scope: git, ai-agents, system architecture, third-party integrations, infra, bash, shell.
-> Load when: building/debugging infra, systems work, third-party integrations.
+> Load when: building or debugging infra · systems work · third-party integrations.
 > LLM/prompt/evaluation lessons → LESSONS_LLM.md
 
 ---

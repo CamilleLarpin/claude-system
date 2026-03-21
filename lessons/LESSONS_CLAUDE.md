@@ -1,5 +1,6 @@
 # Lessons — Claude & skills
 
+> Load when: authoring skills or commands · debugging Claude behavior · reviewing setup.
 > Scope: Claude behavior, skills authoring, Claude Code usage.
 > Split into sub-files at 150 lines.
 
@@ -131,6 +132,24 @@
 - Commands run inside the current conversation — they see full history and are biased by prior reasoning; good for interactive workflows, multi-turn tasks, things that need conversation state
 - Agents run as isolated sub-processes with blank context — no history, no bias; good for quality gates (e.g. code reviewer must not see implementation reasoning), parallel tasks, checks that should be objective
 - Invoke via paired slash command (e.g. `/review`) — not by asking Claude to "use the reviewer agent" (that tries subagent_type which fails for custom agents)
+
+## [claude-setup] · Rule · Punctuation in setup files is semantic — follow writing convention
+> 2026-03-20 · source: ~/.claude/ review session
+- Inconsistent punctuation (mixing `—`, `;`, `,`, `·`) forces re-parsing and creates ambiguity; in setup files every character should carry a defined role
+- Convention: `—` = structural separator (label → content); `·` = inline list items; `→` = sequence or pointer; `;` = two independent conditions in one bullet; `-` = compound words only; no trailing `.` on bullets; capital first word per bullet, lowercase after `—` or `·`
+- Full reference in `~/.claude/skills/review-setup/SKILL.md` > Writing Convention
+
+## [skills] · Rule · `@`-referenced files are hard dependencies — break silently on rename
+> 2026-03-20 · source: ~/.claude/ review session
+- Commands using `@~/.claude/some-file.md` auto-load that file; if the file is renamed or split, the reference silently stops working — no error, just missing context
+- Trap is invisible: the command still runs, it just doesn't load the file it needs
+- Before renaming or splitting any file: `grep -r "<filename>" ~/.claude/` to find all callers; update them first. When splitting: update callers to the new paths directly — no index-of-indexes
+
+## [skills] · Guideline · Downloaded SKILL.md files may be massively overweight
+> 2026-03-20 · source: ~/.claude/ review session
+- Open-source skills embed Summary, Best Practices Do/Don't, Related Skills, and Quick Reference Checklist sections directly in SKILL.md — these load in full on every invocation regardless of whether they're needed
+- These sections are retrieval-tier content at the wrong load tier; they restate what's already in the skill body and add 80–250 lines each
+- On adoption: check SKILL.md line count; trim those 4 sections if present — reference files (already linked at the bottom) carry the full detail; the skill itself is safe to re-download if needed
 
 ## [llm] · Rule · Python .format() breaks on prompt strings containing literal braces
 > 2026-03-18 · source: gmail-inbox-cleanup
