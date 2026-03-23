@@ -4,6 +4,13 @@
 
 ---
 
+## [data-ingestion] · Rule · Bank export filename ≠ date range — always verify actual span
+> 2026-03-23 · source: finances-ezerpin
+- A Boursorama export named for the date it was pulled (`export-operations-16-03-2026`) contained data from Dec 2023 → Jan 2026 — 722 rows from 2024 + 580 from 2025
+- Banks export the full history available at export time regardless of any date intent; the filename reflects the export date, not the data range
+- Always audit the actual date range after loading: `SELECT MIN(date_op), MAX(date_op), COUNT(*) FROM raw.table`
+- Applies to any bank/financial CSV — never assume the file covers only the expected period
+
 ## [dlt] · Rule · dlt normalizes column names camelCase → snake_case
 > 2026-03-17 · source: finances-ezerpin
 - dlt automatically normalizes column names on load: `dateOp` → `date_op`, `supplierFound` → `supplier_found`, `categoryParent` → `category_parent`

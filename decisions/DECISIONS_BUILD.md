@@ -41,6 +41,12 @@
 - **Date**: 2026-03-18
 - **Status**: active
 
+## [ai-agents] External search enrichment at review time, not in automated pipeline
+- **Decision**: tools like Perplexity/search APIs should be used as one-time batch enrichment at human review time, not as a step in the automated classification pipeline
+- **Rationale**: ~30% of hard classification cases (the ones that matter most) return "unknown" from search anyway; adding per-item search calls to the pipeline adds cost + latency with diminishing returns; the few-shot correction loop is the correct long-term improvement mechanism
+- **Date**: 2026-03-23
+- **Status**: active
+
 ## [data] Semantic layer YAML written for LLMs, not humans
 - **Decision**: in any project combining dbt + NL interface, treat schema.yml column descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
 - **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this

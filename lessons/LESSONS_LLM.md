@@ -51,6 +51,20 @@
 - Corrections = DELETE wrong predictions + re-run; pay only for the corrections, not the full dataset
 - Running a large --sample before the full run means paying twice (sample calls + full run calls) — skip to full run once the prompt is stable
 
+## [llm-pipeline] · Pattern · Use external enrichment (Perplexity/search) at review time, not in automated pipeline
+> 2026-03-23 · source: finances-ezerpin
+- Perplexity descriptions helped identify unknown merchants during a human review batch (~70% useful, ~30% "je ne sais pas")
+- Adding a search call per transaction to the automated pipeline adds cost + latency with diminishing returns — the hard cases are precisely the ones search can't resolve
+- Correct flow: one-time batch enrichment at review time → human decisions → corrections → few-shot examples → improved future runs
+- The few-shot correction loop is the right long-term mechanism; search is a bootstrap aid
+
+## [llm-pipeline] · Pattern · Pre-fill corrections in review files — human validates, doesn't create from scratch
+> 2026-03-23 · source: finances-ezerpin
+- Exporting a review CSV with `corrected_category` + `corrected_sub_category` pre-filled (AI best guess) + free-text comment column is significantly faster than a blank review file
+- Human reviews agreement/disagreement rather than producing corrections from zero — much faster for 1000+ row batches
+- A reconciliation script reads comments and updated columns → generates final corrections file
+- Include any enrichment (Perplexity descriptions, confidence scores) in the review file to reduce decision time on unknown items
+
 ## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
 > 2026-03-13 · source: audio-intelligence-pipeline
 - `mlflow.evaluate()` + `make_metric` logs scores as flat metrics in regular runs — they do NOT appear in the GenAI Evaluation view, Judges tab, or linked to datasets
