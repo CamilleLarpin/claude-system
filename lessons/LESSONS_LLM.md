@@ -65,6 +65,24 @@
 - A reconciliation script reads comments and updated columns → generates final corrections file
 - Include any enrichment (Perplexity descriptions, confidence scores) in the review file to reduce decision time on unknown items
 
+## [llm-pipeline] · Rule · Never add senders to always_trash from a sample — inspect full metadata first
+> 2026-03-23 · source: gmail-inbox-cleanup
+- A 1000-email sample is unrepresentative: personal contacts, financial senders (Boursorama, Revolut), and health senders appeared in a "Subscriptions" category due to misclassification — adding them to always_trash would have permanently deleted critical emails
+- always_trash is a hard override that bypasses all LLM classification — wrong entries cause irreversible data loss
+- Before adding any sender to always_trash: search the full metadata (not just the sample) for that sender's subjects; when in doubt, leave unset and let category logic decide
+
+## [llm-pipeline] · Rule · Multi-address senders need per-address review before trashing
+> 2026-03-23 · source: gmail-inbox-cleanup
+- MiiMOSA (crowdfunding/investment platform) uses investisseurs@ and noreply@ for financial statements and reimbursements, and communication@ / bonjour@ for newsletters — blanket-trashing all MiiMOSA would have deleted tax documents and monthly reimbursement records
+- Platforms mixing transactional and promotional mail use separate sender addresses — always check all sub-addresses before adding any to a trash list
+- Pattern: search full metadata by domain first; only add specific addresses confirmed to be purely promotional
+
+## [llm-pipeline] · Guideline · Bottom-up taxonomy outperforms hardcoded taxonomy for action-homogeneity
+> 2026-03-23 · source: gmail-inbox-cleanup
+- Hardcoded 43-category taxonomy (Claude-designed without seeing the data) produced categories mixing emails with different ideal actions — action assignment was hard and produced ambiguous categories
+- Bottom-up (LLM proposes from actual sample, max count constraint, action-homogeneity requirement in prompt) produced 29 categories mapping cleanly to TRASH/KEEP/REVIEW
+- For any inbox/triage classification pipeline: sample → LLM proposes taxonomy (max 20-30, action-homogeneous) → human assigns actions → LLM classifies full corpus
+
 ## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
 > 2026-03-13 · source: audio-intelligence-pipeline
 - `mlflow.evaluate()` + `make_metric` logs scores as flat metrics in regular runs — they do NOT appear in the GenAI Evaluation view, Judges tab, or linked to datasets
