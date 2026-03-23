@@ -48,6 +48,12 @@
 - IF node connections: always use `branch:"true"` / `branch:"false"` instead of `sourceIndex` — `sourceIndex:0` puts ALL connections on the TRUE branch regardless of intent
 - Switch node connections: always use `case: N` (integer) instead of `sourceIndex` — `case:0` first output, `case:1` second, etc.; omitting puts all on case 0
 
+## [n8n] · Guideline · Use n8n_executions to verify credential-dependent operations
+> 2026-03-23 · source: ghost (Gap A test)
+- n8n credentials are encrypted in the n8n credential store — not readable from the filesystem; calling the same external API directly (e.g. GitHub) requires a separate token you likely don't have at hand
+- Instead: call `n8n_executions(action="get", id=..., mode="filtered", nodeNames=[...])` to inspect the full execution trace including API responses, commit SHAs, and error details — all without needing the credential
+- Pattern: list executions → get latest → filter to relevant nodes → confirm success/output
+
 ## [workflow-build] · Rule · Build n8n workflows incrementally — 3–5 ops per call, validate, then next
 > 2026-03-19 · source: ghost (Gap A build session)
 - Attempting 30+ operations in one call leads to hours of pre-computation, JSON escaping bugs, and wasted tokens — even if the logic is correct, one escaping mistake fails everything
