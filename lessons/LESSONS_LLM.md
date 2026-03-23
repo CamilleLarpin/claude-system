@@ -83,6 +83,15 @@
 - Bottom-up (LLM proposes from actual sample, max count constraint, action-homogeneity requirement in prompt) produced 29 categories mapping cleanly to TRASH/KEEP/REVIEW
 - For any inbox/triage classification pipeline: sample → LLM proposes taxonomy (max 20-30, action-homogeneous) → human assigns actions → LLM classifies full corpus
 
+## [classification] · Rule · For systematic category renames, change the taxonomy — don't rely on few-shot examples
+> 2026-03-23 · source: finances-ezerpin
+- With N corrections in `labeled_corrections` and only 10 few-shot examples injected per prompt, the probability of hitting the right example for a given batch is low
+- Systematic patterns (mass rename of a sub-category) do not propagate reliably via few-shot; LLM reverts to its trained priors
+- For systematic renames: remove the old sub-category from the taxonomy entirely — the LLM cannot predict a category that isn't an option
+- Few-shot examples are effective for isolated merchant-specific corrections, not mass category migrations
+
+---
+
 ## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
 > 2026-03-13 · source: audio-intelligence-pipeline
 - `mlflow.evaluate()` + `make_metric` logs scores as flat metrics in regular runs — they do NOT appear in the GenAI Evaluation view, Judges tab, or linked to datasets
