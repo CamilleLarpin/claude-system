@@ -1,16 +1,37 @@
-# ~/.claude/ — System Overview
-This file is your orientation guide to the ~/.claude/ system.
-Read it when returning after a break, onboarding to a new machine, or when the system feels unclear.
-Claude maintains this file but never loads it.
+# ~/.claude/ — Claude Code Setup
 
-## Structure
+Personal Claude Code configuration for a solo developer building automation with n8n, AI, and self-hosted infrastructure.
+
+---
+
+## What this is
+
+A structured `~/.claude/` system that gives Claude persistent context, behavioral directives, reusable skills, and session commands — without bloating the always-on context window.
+
+The core idea: **context engineering over prompt engineering**. Instead of repeating instructions every session, the system loads the right knowledge at the right time.
+
+---
+
+## Philosophy
+
+- Understand before building — know the system before adding to it
+- Know why before how — validate the pain before designing the solution
+- Low maintenance — every choice must minimize future burden (solo developer constraint)
+- Specificity beats volume — one precise constraint beats three vague ones
+- Prune ruthlessly, archive don't delete — stale content dilutes active content
+
+---
+
+## Directory Structure
+
+```
 ~/.claude/
-├── CLAUDE.md
-├── CONTEXT_GLOBAL.md
-├── DECISIONS_GLOBAL.md
-├── DECISIONS_GLOBAL_ARCHIVE.md
-├── LESSONS_GLOBAL.md          ← index only, points to lessons/
-├── lessons/                   ← category files (split at 150 lines each)
+├── CLAUDE.md                    # Always-on: behavior directives, defaults, conventions
+├── CONTEXT_GLOBAL.md            # On-demand: stack, architecture, philosophy
+├── DECISIONS_GLOBAL.md          # On-demand: cross-project decisions index
+├── DECISIONS_GLOBAL_ARCHIVE.md  # Archive: superseded decisions (never deleted)
+├── LESSONS_GLOBAL.md            # On-demand: lessons index → points to lessons/
+├── lessons/                     # Category files (split at 150 lines each)
 │   ├── LESSONS_N8N_RUNTIME.md
 │   ├── LESSONS_N8N_MCP.md
 │   ├── LESSONS_SLACK.md
@@ -18,61 +39,104 @@ Claude maintains this file but never loads it.
 │   ├── LESSONS_NOTION.md
 │   ├── LESSONS_CLAUDE.md
 │   └── LESSONS_ARCHITECTURE.md
-├── PROJECT_TRACKER.md
-├── README.md
-├── templates/
-└── skills/
+├── projects-tracking/
+│   ├── PROJECT_TRACKER.md       # Active project registry
+│   └── BACKLOG.md               # Project pipeline
+├── agents/                      # Global sub-agents
+├── commands/                    # Slash command definitions
+├── skills/                      # On-demand domain knowledge
+├── templates/                   # Project file templates
+└── README.md                    # This file — human only, never auto-loaded
+```
 
-## Reader Map
-| File | Read by | When |
-|------|---------|------|
-| CLAUDE.md | Claude | Every session |
-| CONTEXT_GLOBAL.md | Claude | On demand — new projects, architectural or cross-project decisions |
-| DECISIONS_GLOBAL.md | Claude | On demand — architectural or cross-project decisions |
-| LESSONS_GLOBAL.md | Claude | On demand — debugging, starting a build (index → loads category file) |
-| PROJECT_TRACKER.md | Claude | On demand — cross-project relevance check |
-| skills/ | Claude | On demand — before any scoped task |
-| README.md | Human | Never auto-loaded |
+---
 
-## Maintenance Triggers
-| File | Update when |
-|------|-------------|
-| CLAUDE.md | Behavior directives, process, or instructions change |
-| CONTEXT_GLOBAL.md | Philosophy, stack, architecture principles, or project system conventions change |
-| DECISIONS_GLOBAL.md | New cross-project decision made; archive at 100 lines → DECISIONS_GLOBAL_ARCHIVE.md |
-| LESSONS_GLOBAL.md | New lesson promoted (update index + add to correct category file in lessons/) |
-| lessons/ | Category file hits 150 lines → split; new category added |
-| PROJECT_TRACKER.md | Creating a project; changing project scope, stack, or status |
-| templates/ | Any structural change to .claude/ file conventions |
-| skills/ | Domain added, removed, or boundary shifted |
-| README.md | High-level structure or system principles change |
+## How It Works
 
-## Promotion Rules
-Project → Global when a lesson or decision is:
-- Applicable to 2+ projects, or likely to recur
-- Represents a corrected mistake worth preventing globally
+### Three-tier context hierarchy
 
-Claude flags: `→ PROMOTE: [file] — [reason]`. Camille decides.
-Claude runs promotion check at end of every session — no exceptions.
+| Tier | Files | When loaded |
+|------|-------|-------------|
+| Always-on | `CLAUDE.md` | Every session — kept minimal |
+| On-demand | `CONTEXT_GLOBAL.md`, `DECISIONS_GLOBAL.md`, `LESSONS_GLOBAL.md`, `skills/` | Read when trigger applies |
+| Never | Archives | Not loaded — kept for human reference |
 
-## Skills Contract
-Each skill owns one exclusive domain.
-If two skills can answer the same question, one is wrong.
-When adding a skill: check for overlap first — consolidate or sharpen boundary before creating.
+### Skills
 
-## System Principles
+Loaded on demand before any scoped task. Each skill owns one exclusive domain — no overlap.
 
-### Context Engineering
-- **Three-tier hierarchy**: always-on (CLAUDE.md) → on-demand (skills, globals) → never (archives). Keep always-on tiny.
-- **Specificity beats volume**: one precise constraint beats three vague ones. Vague instructions dilute each other.
-- **Recency bias**: Claude weights tokens near end of context more heavily. Put critical constraints last.
-- **Negative space**: "what I don't want" sections are often more effective than positive instructions.
-- **Prune ruthlessly, archive don't delete**: stale content dilutes active content. Archived → never loaded.
-- **Structure for skipping**: headers and tags save attention, not tokens.
-- **Test your context**: periodically ask Claude to reflect back what it understands — gaps reveal what's missing or buried.
+```
+skills/
+├── n8n-node-configuration/    # Operation-aware node config guidance
+├── n8n-code-javascript/       # JS in n8n Code nodes ($input, $json, $helpers)
+├── n8n-code-python/           # Python in n8n Code nodes
+├── n8n-expression-syntax/     # n8n {{ }} expression syntax and common mistakes
+├── n8n-workflow-patterns/     # Proven architectural patterns for n8n workflows
+├── n8n-validation-expert/     # Interpreting validation errors and fixing them
+├── n8n-mcp-tools-expert/      # Using n8n-mcp MCP tools effectively
+├── project-init/              # Bootstrapping new projects
+└── review-setup/              # Auditing ~/.claude/ for staleness and redundancy
+```
 
-### System Maintenance
-- Hard Rules exist to force behaviors that directives alone don't enforce. Use sparingly.
-- When a rule feels important enough to repeat, escalate it to CLAUDE.md.
-- Templates diverge from usage silently — update templates immediately when conventions change.
-- Be consistent: never vary terminology or format unless the difference is intentional and explicit.
+### Agents
+
+Sub-Claude instances with isolated context — intentionally bias-free. Live in `~/.claude/agents/` (global) or `.claude/agents/` (per-project). Invoked via paired slash command.
+
+| Agent | Command | Role |
+|-------|---------|------|
+| `reviewer.md` | `/review` | Zero-context code review — correctness, security, over-engineering |
+
+### Commands
+
+Slash commands that invoke skills or agents. Defined in `commands/`.
+
+| Command | Purpose |
+|---------|---------|
+| `/start` | Load project context, give focused briefing |
+| `/overview` | Day of week, active projects by priority, blockers |
+| `/commit-push` | Commit and push dirty `.claude/` files with logical grouping |
+| `/end-of-session` | Post-milestone checks — update docs, promote lessons, flag complexity |
+| `/align` | Strategic review — re-validate end vision, surface misordering |
+| `/review` | Zero-context code review via reviewer agent |
+| `/prioritize` | Review and prioritize all projects and tasks |
+| `/add-to-backlog` | Add a new project or task to the backlog |
+| `/compact` | Show correct `/compact` command with preservation instructions |
+| `/digest` | Flag session as rich learning session — add to learning log |
+
+---
+
+## Project System
+
+Every project lives in `~/projects/<slug>/` with a `.claude/` folder containing:
+
+```
+.claude/
+├── CONTEXT.md     # What is true now for this project
+├── DECISIONS.md   # Project-specific decisions (never deleted — archive when superseded)
+├── LESSONS.md     # Project-specific lessons
+├── DESIGN.md      # Architecture and design notes
+└── TODOS.md       # Tasks and backlog
+```
+
+Project CLAUDE.md imports `@~/.claude/CLAUDE.md` — never duplicates global directives.
+
+Templates for all project files live in `templates/`.
+
+---
+
+## Key Behaviors
+
+- **Execution gate**: tasks with >2 steps or touching an external system require a numbered plan and explicit approval before proceeding
+- **Build discipline**: Plan → clarify → validate → build one thing → test — never build ahead of validation
+- **Lessons promotion**: project lessons applicable to 2+ projects get promoted to `LESSONS_GLOBAL.md`
+- **Archive, never delete**: superseded decisions → `DECISIONS_ARCHIVE.md`; stale content dilutes active content
+
+---
+
+## Stack
+
+- **Automation**: self-hosted n8n
+- **AI**: Claude (Sonnet default, Opus for architecture), Anthropic/OpenAI/Groq APIs
+- **Data**: DuckDB · dbt · MariaDB
+- **Infra**: Hetzner server, Docker, nginx reverse proxy
+- **Version control**: Git — source of truth for all project and task management
