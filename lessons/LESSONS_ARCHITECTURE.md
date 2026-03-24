@@ -77,24 +77,11 @@
 - Affects all commands (python, curl, git, etc.), not just long curl calls
 - Always write copy-paste commands as one unbroken line; if very long, note it in prose but do not split with `\`
 
-## [data-engineering] · Guideline · Source table naming — system/source first, not owner/entity first
-> 2026-03-16 · source: finances-ezerpin
-- When raw tables represent data from external systems (banks, APIs, SaaS tools), name them `<system>_<scope>` not `<owner>_<system>` — e.g. `boursorama_joint`, not `joint_boursorama`
-- The primary differentiator at the raw layer is the source system (it determines schema, pipeline, freshness) — ownership is an attribute inside the data, not a table name prefix
-- In a DB explorer, tables sort alphabetically — system-first groups related sources together (`boursorama_joint`, `boursorama_perso`); owner-first scatters them (`camille_boursorama`, `camille_revolut`, `joint_boursorama`)
-
 ## [integrations] · Rule · Telegram delivers the same webhook update multiple times simultaneously
 > 2026-03-03 · source: family-content-manager
 - Telegram sometimes sends the same update 2-3× within milliseconds → multiple simultaneous n8n executions triggered by one user action
 - Sequential duplicate protection (checking if a file was already moved) doesn't help — all instances start before any finishes; causes MOVE race conditions and 423 Locked on concurrent file writes
 - True fix: deduplicate at the trigger level — store processed `message_id` values (e.g. in workflow static data) and skip execution if already seen; or make all operations fully idempotent
-
-## [data-engineering] · Rule · French bank amounts use space as thousands separator
-> 2026-03-17 · source: finances-ezerpin
-- French bank CSV exports (Boursorama, Crédit Mutuel) use space (or `\u00a0`) as thousands separator: `-1 179.63`, `-1 875,00`
-- `float(value.replace(",", "."))` fails with `ValueError` on these — silent until a transaction > 999€ appears
-- Fix: `value.strip().replace("\u00a0", "").replace(" ", "").replace(",", ".")` before `float()`
-- Always test amount parser on values > 999 when integrating any French bank data source
 
 ## [shell] · Guideline · Ghostty has no OSC title blocking — use a background reset loop
 > 2026-03-17 · source: dotfiles session
@@ -118,24 +105,6 @@
 - The config setting alone is insufficient when `shell-integration = zsh` is active
 - Fix: add `cd ~` at the end of `~/.zshrc` — every new shell always starts in `~/` regardless of what Ghostty inherits via OSC 7
 
-## [data-engineering] · Guideline · LLM beats sklearn for transaction categorization under ~5k rows/month
-> 2026-03-18 · source: finances-ezerpin
-- At ~750 transactions/month, Claude Haiku costs ~$0.04/month — sklearn adds training pipeline, model artifacts, and retraining overhead for no cost saving
-- sklearn also has a cold-start problem: zero-shot on new categories; LLM handles them immediately
-- LLM improves via few-shot examples from stored corrections (no retraining); sklearn requires explicit retraining cycle
-- Reassess if volume exceeds ~5k transactions/month (cost becomes non-trivial)
-
-## [data-engineering] · Note · dbt Fusion → dbt Core migration is a binary swap only
-> 2026-03-18 · source: finances-ezerpin
-- dbt Fusion installs as a standalone binary (not pip) — `pip uninstall dbt-fusion` finds nothing; remove with `rm ~/.local/bin/dbt`
-- All SQL models, YAML, tests, seeds, macros are 100% compatible — no file changes needed
-- Fusion's `arguments:` syntax for tests is Fusion-specific; Core 1.x uses standard dbt syntax
-
-## [duckdb] · Rule · `UPDATE ... RETURNING *` conflicts with primary key in DuckDB
-> 2026-03-19 · source: ai-networking-system
-- `UPDATE table SET x=? WHERE id=? RETURNING *` throws `ConstraintException: Duplicate key ... violates primary key constraint` — DuckDB's RETURNING implementation re-evaluates the PK constraint after update
-- Fix: split into two statements: `UPDATE ... SET ... WHERE id=?` then `SELECT * ... WHERE id=?`
-
 ## [git] · Rule · Pull `projects-tracking` before pushing — Ghost writes via GitHub API
 > 2026-03-24 · source: ghost / ~/.claude setup
 - `projects-tracking/` is a separate private git repo; Ghost writes to it via GitHub API (creates commits directly on `main`)
@@ -143,15 +112,20 @@
 - Fix applied: `/start` now runs `cd ~/.claude/projects-tracking && git pull --rebase` before loading context
 - Pattern: any workflow writing to a git repo via API creates a divergence risk — always pull before push in that repo
 
-## [dbt] · Rule · Never join externally-written tables inside a dbt incremental model
-> 2026-03-24 · source: finances-ezerpin
-- Incremental models write each row once (at insert time) — a LEFT JOIN on an external table (written by a pipeline, not dbt) produces NULL for that row permanently, even after the external table is updated
-- Pattern that fails: `stg_transactions` (incremental) joins `raw.category_predictions` (written by Python pipeline after staging runs)
-- Fix: move the join to the first non-incremental downstream model (view or table) — it rebuilds fully each run and always sees fresh data
-- Rule: if a table is written by an external process on a different schedule, join it in a non-incremental model
-
 ## [integrations] · Rule · Read tool documentation before proposing config key names
 > 2026-03-18 · source: openclaw-setup
 - Proposing OpenClaw config keys from memory led to two consecutive wrong guesses (`heartbeat: {enabled: false}`, `channels.telegram.allowedUsers`) — both rejected; required reading docs to fix
 - Wrong keys fail silently, cause boot failure, or get stripped by doctor — hard to trace without knowing the root cause
 - Pattern applies to any tool with a config schema (OpenClaw, n8n nodes, etc.): always `cat tool/docs/relevant.md` before proposing a config key; never guess
+
+## [architecture] · Guideline · Distinguish quality gates from hard prerequisites in dependency documentation
+> 2026-03-24 · source: meeting-note-taker / ai-networking-system
+- A quality gate ("validate quality before building on top") is not the same as a hard prerequisite ("this cannot run without X")
+- Pattern that fails: Meeting Note Taker listed audio-intelligence-pipeline Phase 3b (MLflow evaluation) as a hard dependency — it was a quality gate; the pipeline already worked and could be called immediately
+- Before adding a `Depends on:` entry, ask: "does this technically block execution, or is it a validation we'd prefer to do first?" — document the difference explicitly; quality gates can be bypassed with risk acknowledgement, hard prerequisites cannot
+
+## [architecture] · Guideline · Define concrete use cases before automation architecture
+> 2026-03-24 · source: meeting-note-taker / ai-networking-system
+- Abstract dependency maps between projects obscure what to build first and what value each step delivers
+- Start from concrete scenarios: actor, trigger, input, expected output — then derive build sequence from value delivered per step
+- Pattern: "Meeting Note Taker depends on audio-intelligence-pipeline" hid that UC-B (in-person capture) only needed Telegram + existing FastAPI + CRM deploy — no new pipeline work required

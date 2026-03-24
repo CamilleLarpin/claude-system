@@ -115,6 +115,12 @@
 - **Date**: 2026-03-24
 - **Status**: active
 
+## [conventions] When two backlog items describe the same build, consolidate into one
+- **Decision**: if a backlog project and a use case in an active project describe the same build (same trigger flow, same output, same team), they are one entry — tracked in BACKLOG.md with a clear `IS [UC-X] in [Project]` note; the active project TODOS.md references the backlog item as its dependency
+- **Rationale**: tracking the same build in two places (Meeting Note Taker in BACKLOG + UC5 in AI Networking System TODOS) creates drift — dependency chains reference different names for the same work, priority signals diverge, and it's unclear where the authoritative spec lives
+- **Date**: 2026-03-24
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
