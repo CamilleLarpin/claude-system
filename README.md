@@ -1,4 +1,4 @@
-# ~/.claude/ — Claude Code Setup
+# Claude Code Setup - ~/.claude/
 
 Personal Claude Code configuration for a solo developer building automation with n8n, AI, and self-hosted infrastructure.
 
