@@ -103,6 +103,12 @@
 - **Date**: 2026-03-24
 - **Status**: active
 
+## [conventions] Draft files for deferred work — `report/draft-*.md`
+- **Decision**: deferred work with configuration details (pending trigger config, agent prompts, etc.) is saved as `~/.claude/report/draft-<name>.md`; the backlog task description includes the path inline
+- **Rationale**: decisions made mid-session about how to build something shouldn't be lost when execution is deferred; draft is the context handoff to future self; path in task ensures discoverability at pickup
+- **Date**: 2026-03-24
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
