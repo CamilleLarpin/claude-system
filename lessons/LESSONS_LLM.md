@@ -83,6 +83,13 @@
 - Bottom-up (LLM proposes from actual sample, max count constraint, action-homogeneity requirement in prompt) produced 29 categories mapping cleanly to TRASH/KEEP/REVIEW
 - For any inbox/triage classification pipeline: sample → LLM proposes taxonomy (max 20-30, action-homogeneous) → human assigns actions → LLM classifies full corpus
 
+## [llm-pipeline] · Pattern · 2-round agent for credit/debit matching — identify credits first, find debits second
+> 2026-03-24 · source: finances-ezerpin
+- When matching paired transactions (credit + debit), expose only the credit leg to the LLM in Round 1 — isolating the signal prevents confusion with unrelated debits
+- Round 2 takes the confirmed credits and searches for matching debits (same amount, ±N days) — deterministic, no LLM needed
+- Applies to: reimbursement detection, inter-account transfer matching, refund pairing
+- Anti-pattern: asking the LLM to identify both legs simultaneously — it will apply the category to unrelated transactions that happen to look similar
+
 ## [classification] · Rule · For systematic category renames, change the taxonomy — don't rely on few-shot examples
 > 2026-03-23 · source: finances-ezerpin
 - With N corrections in `labeled_corrections` and only 10 few-shot examples injected per prompt, the probability of hitting the right example for a given batch is low
