@@ -90,6 +90,12 @@
 - Applies to: reimbursement detection, inter-account transfer matching, refund pairing
 - Anti-pattern: asking the LLM to identify both legs simultaneously — it will apply the category to unrelated transactions that happen to look similar
 
+## [prompt] · Rule · LLM returns full "Parent > Sub" path in structured output when taxonomy uses that format
+> 2026-03-24 · source: finances-ezerpin
+- When the taxonomy is displayed as `"Kids > Gardes"` and the expected JSON has `{"category": "...", "sub_category": "..."}`, the LLM may return the full path in `category` (e.g. `"Kids > Gardes"`) instead of just the parent (`"Kids"`)
+- Two fixes required: (1) explicit prompt instruction: `"category" must be the parent name only (e.g. "Kids"), never the full path`; (2) defensive post-processing: if `" > "` in `pred["category"]`, split and keep first part
+- DB fix for already-stored dirty rows: `UPDATE table SET category = string_split(category, ' > ')[1] WHERE category LIKE '% > %'`
+
 ## [classification] · Rule · For systematic category renames, change the taxonomy — don't rely on few-shot examples
 > 2026-03-23 · source: finances-ezerpin
 - With N corrections in `labeled_corrections` and only 10 few-shot examples injected per prompt, the probability of hitting the right example for a given batch is low
