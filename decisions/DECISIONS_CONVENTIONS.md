@@ -109,6 +109,12 @@
 - **Date**: 2026-03-24
 - **Status**: active
 
+## [conventions] /prioritize scoring model — Impact + Effort + Alignment, max 9
+- **Decision**: `/prioritize` scores every Now/Next/Later item on 3 dimensions (1–3 each): Impact (value + what it unblocks), Effort (inverse: 3=hours, 1=weeks), Alignment (fit with current phase/goals). Score = sum, max 9. Mismatches flagged: score ≥ 7 in Later/Next = undervalued; score ≤ 4 in Now/Next = overvalued. Someday excluded from scoring.
+- **Rationale**: vibe-based prioritization drifts; scores make trade-offs auditable and surface mismatches between where items sit and how much they're worth; mismatch flags drive the conversation rather than just showing a sorted list
+- **Date**: 2026-03-24
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
