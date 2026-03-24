@@ -136,6 +136,13 @@
 - `UPDATE table SET x=? WHERE id=? RETURNING *` throws `ConstraintException: Duplicate key ... violates primary key constraint` — DuckDB's RETURNING implementation re-evaluates the PK constraint after update
 - Fix: split into two statements: `UPDATE ... SET ... WHERE id=?` then `SELECT * ... WHERE id=?`
 
+## [git] · Rule · Pull `projects-tracking` before pushing — Ghost writes via GitHub API
+> 2026-03-24 · source: ghost / ~/.claude setup
+- `projects-tracking/` is a separate private git repo; Ghost writes to it via GitHub API (creates commits directly on `main`)
+- Claude Code sessions that push to `projects-tracking` without first pulling will silently overwrite Ghost's commits — confirmed lost 2026-03-23 (items "Add Git Pull to Session Start" + "Create /document Command")
+- Fix applied: `/start` now runs `cd ~/.claude/projects-tracking && git pull --rebase` before loading context
+- Pattern: any workflow writing to a git repo via API creates a divergence risk — always pull before push in that repo
+
 ## [integrations] · Rule · Read tool documentation before proposing config key names
 > 2026-03-18 · source: openclaw-setup
 - Proposing OpenClaw config keys from memory led to two consecutive wrong guesses (`heartbeat: {enabled: false}`, `channels.telegram.allowedUsers`) — both rejected; required reading docs to fix
