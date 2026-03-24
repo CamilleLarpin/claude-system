@@ -13,7 +13,8 @@
 - `~/.claude/lessons/LESSONS_SLACK.md` — Slack integration
 - `~/.claude/lessons/LESSONS_TELEGRAM.md` — Telegram integration
 - `~/.claude/lessons/LESSONS_NOTION.md` — Notion integration
-- `~/.claude/lessons/LESSONS_CLAUDE.md` — skills authoring, Claude behavior
+- `~/.claude/lessons/LESSONS_CLAUDE.md` — skills authoring, Claude behavior, prompting, setup file conventions
+- `~/.claude/lessons/LESSONS_CLAUDE_CODE.md` — Claude Code tool: context management, MCPs, agents, commands, /schedule, CLAUDE.md
 - `~/.claude/lessons/LESSONS_ARCHITECTURE.md` — git, ai-agents, architecture, integrations, infra, bash, shell, data-engineering
 - `~/.claude/lessons/LESSONS_LLM.md` — LLM APIs, prompting, model behavior, evaluation (mlflow, Groq, token limits)
 - `~/.claude/lessons/LESSONS_DLT.md` — dlt pipeline behavior, column normalization, schema
