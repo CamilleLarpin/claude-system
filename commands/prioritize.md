@@ -6,10 +6,16 @@ description: Review and prioritize all projects and tasks across PROJECT_TRACKER
 
 @~/.claude/decisions/DECISIONS_CONVENTIONS.md
 
-### 1. Load files
+### 1. Pull latest tracking state
+
+```bash
+cd ~/.claude/projects-tracking && git pull --rebase
+```
+
+### 2. Load files
 Read `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`.
 
-### 2. Display current state
+### 3. Display current state
 Show all projects and tasks in 4 blocks: Now, Next, Later, Someday.
 
 Within each block:
@@ -41,20 +47,20 @@ Format:
 ...
 ```
 
-### 3. Ask
+### 4. Ask
 "What needs to change?"
 
-### 4. Apply changes
+### 5. Apply changes
 For each priority change:
 - Update the Priority field on the entry
 - Append: `  - YYYY-MM-DD [Old] → [New]: [reason]`
 - If 3 log entries exist, drop the oldest
 
-### 5. Redisplay → repeat from step 3
+### 6. Redisplay → repeat from step 4
 Continue until user says done or confirms no more changes.
 
-### 6. Someday sweep
+### 7. Someday sweep
 Ask: "Any Someday items that no longer resonate? Drop them now or they'll stay forever."
 
-### 7. Write files
+### 8. Write files
 Update `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`. Update `**Last updated**` date in both.

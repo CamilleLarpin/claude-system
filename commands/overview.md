@@ -10,7 +10,13 @@ description: Daily overview — day of week, active projects by priority, blocke
 date "+%A %Y-%m-%d"
 ```
 
-### 2. Load files
+### 2. Pull latest tracking state
+
+```bash
+cd ~/.claude/projects-tracking && git pull --rebase
+```
+
+### 3. Load files
 
 Read `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tracking/BACKLOG.md`.
 
