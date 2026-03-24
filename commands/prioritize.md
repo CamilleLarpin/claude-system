@@ -59,28 +59,21 @@ Score every project and task from those three tiers on 3 dimensions (1–3 each)
 
 **Score = Impact + Effort + Alignment** (max 9)
 
-Output as a ranked table:
+Output as a single table, sorted by score descending. Include a **Signal** column that fuses score and tier into one verdict — no separate mismatch section needed:
 
 ```
-| Rank | Item | Tier | Impact | Effort | Align | Score |
-|------|------|------|--------|--------|-------|-------|
-| 1    | ...  | Now  | 3      | 2      | 3     | 8     |
-| 2    | ...  | Next | 3      | 3      | 2     | 8     |
-...
+| Item | Tier | I | E | A | Score | Signal |
+|------|------|---|---|---|-------|--------|
+| ...  | Now  | 3 | 2 | 3 | 8     | ✅     |
+| ...  | Next | 3 | 3 | 2 | 8     | ✅     |
+| ...  | Later| 3 | 2 | 2 | 7     | ↑ promote |
+| ...  | Now  | 1 | 2 | 1 | 4     | ↓ demote  |
 ```
 
-After the table, flag mismatches — items where score and tier diverge meaningfully:
-- **Undervalued**: score ≥ 7 but sitting in Later/Next → candidate to promote
-- **Overvalued**: score ≤ 4 but sitting in Now/Next → candidate to demote or drop
-
-Format flags as:
-```
-Mismatches to review:
-- [Item] — score 8 but in Later (undervalued)
-- [Item] — score 3 but in Now (overvalued)
-```
-
-If no mismatches, say "No score/tier mismatches."
+Signal rules:
+- `✅` — score and tier are aligned (no action needed)
+- `↑ promote` — score ≥ 7 but in Later → candidate to move up
+- `↓ demote` — score ≤ 4 but in Now/Next → candidate to move down or drop
 
 ### 4. Ask
 "What needs to change?"
