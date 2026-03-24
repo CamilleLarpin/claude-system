@@ -151,6 +151,12 @@
 - These sections are retrieval-tier content at the wrong load tier; they restate what's already in the skill body and add 80–250 lines each
 - On adoption: check SKILL.md line count; trim those 4 sections if present — reference files (already linked at the bottom) carry the full detail; the skill itself is safe to re-download if needed
 
+## [claude-setup] · Rule · When adding a pull step to one command, audit all sibling commands for the same gap
+> 2026-03-24 · source: ~/.claude/ setup session
+- Added `git pull --rebase` to `/start` in a prior session; this session discovered `/overview` and `/prioritize` read the same shared repo (`projects-tracking`) without pulling — stale reads were silently possible
+- Pattern: a fix applied to one command often reveals the same gap in all commands with the same input source
+- When adding a pull/sync step to any command: grep for all other commands reading the same source; apply consistently before closing the task
+
 ## [llm] · Rule · Python .format() breaks on prompt strings containing literal braces
 > 2026-03-18 · source: gmail-inbox-cleanup
 - Prompt strings with JSON examples like `{"key": "value"}` cause `KeyError` when passed to `.format()` — Python interprets `{key}` as a format placeholder
