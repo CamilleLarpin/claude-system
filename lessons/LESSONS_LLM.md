@@ -96,6 +96,8 @@
 - Systematic patterns (mass rename of a sub-category) do not propagate reliably via few-shot; LLM reverts to its trained priors
 - For systematic renames: remove the old sub-category from the taxonomy entirely — the LLM cannot predict a category that isn't an option
 - Few-shot examples are effective for isolated merchant-specific corrections, not mass category migrations
+- Even for merchant-specific corrections, few-shot fails if: (1) selection window doesn't include that example (10 from 170 batch = arbitrary), AND (2) the model has a strong prior (e.g. "Lovys" → Kids, "AREA NFC" → Restaurants)
+- For merchants with counter-intuitive categories, the only robust fix is an explicit merchant rule in the system prompt — few-shot cannot override a strong LLM prior reliably
 
 ---
 

@@ -143,6 +143,13 @@
 - Fix applied: `/start` now runs `cd ~/.claude/projects-tracking && git pull --rebase` before loading context
 - Pattern: any workflow writing to a git repo via API creates a divergence risk — always pull before push in that repo
 
+## [dbt] · Rule · Never join externally-written tables inside a dbt incremental model
+> 2026-03-24 · source: finances-ezerpin
+- Incremental models write each row once (at insert time) — a LEFT JOIN on an external table (written by a pipeline, not dbt) produces NULL for that row permanently, even after the external table is updated
+- Pattern that fails: `stg_transactions` (incremental) joins `raw.category_predictions` (written by Python pipeline after staging runs)
+- Fix: move the join to the first non-incremental downstream model (view or table) — it rebuilds fully each run and always sees fresh data
+- Rule: if a table is written by an external process on a different schedule, join it in a non-incremental model
+
 ## [integrations] · Rule · Read tool documentation before proposing config key names
 > 2026-03-18 · source: openclaw-setup
 - Proposing OpenClaw config keys from memory led to two consecutive wrong guesses (`heartbeat: {enabled: false}`, `channels.telegram.allowedUsers`) — both rejected; required reading docs to fix
