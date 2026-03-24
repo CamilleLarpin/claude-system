@@ -10,17 +10,23 @@ description: Start a work session — load project context and give a focused br
 date +%Y-%m-%d
 ```
 
-### 2. Identify project
+### 2. Pull latest tracking state
+
+```bash
+cd ~/.claude/projects-tracking && git pull --rebase
+```
+
+### 3. Identify project
 
 Detect from `pwd`. If not inside `~/projects/<slug>/`, ask: "Which project are we working on today?"
 
-### 3. Load context
+### 4. Load context
 
 - `~/.claude/projects-tracking/PROJECT_TRACKER.md`
 - `.claude/CONTEXT.md`
 - `.claude/TODOS.md`
 
-### 4. Briefing
+### 5. Briefing
 
 Output in this format:
 - **Project**: name · status · stack
