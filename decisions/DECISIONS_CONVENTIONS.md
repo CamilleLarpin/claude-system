@@ -97,6 +97,12 @@
 - **Date**: 2026-03-20
 - **Status**: active
 
+## [conventions] /document command — lightweight mid-session project doc save
+- **Decision**: `/document` updates only the current project's `.claude/` files (CONTEXT, TODOS, DECISIONS, LESSONS, DESIGN if exists); infers all changes from the conversation; no commit, no push, no global scope. Distinct from `/end-of-session` (no promotion, no threshold checks, no tracker update).
+- **Rationale**: end-of-session is too heavy when dropping a session quickly; a lightweight save prevents context loss without the full ritual; inferring from conversation avoids interrupting the user
+- **Date**: 2026-03-24
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
