@@ -110,8 +110,8 @@
 - **Status**: active
 
 ## [conventions] /prioritize scoring model — Impact + Effort + Alignment, max 9
-- **Decision**: `/prioritize` scores every Now/Next/Later item on 3 dimensions (1–3 each): Impact (value + what it unblocks), Effort (inverse: 3=hours, 1=weeks), Alignment (fit with current phase/goals). Score = sum, max 9. Mismatches flagged: score ≥ 7 in Later/Next = undervalued; score ≤ 4 in Now/Next = overvalued. Someday excluded from scoring.
-- **Rationale**: vibe-based prioritization drifts; scores make trade-offs auditable and surface mismatches between where items sit and how much they're worth; mismatch flags drive the conversation rather than just showing a sorted list
+- **Decision**: `/prioritize` scores every Now/Next/Later item on 3 dimensions (1–3 each): Impact (value + what it unblocks), Effort (inverse: 3=hours, 1=weeks), Alignment (fit with current phase/goals). Score = sum, max 9. Output as a single table sorted by score descending with a Signal column (`✅` aligned · `↑ promote` score ≥ 7 in Later · `↓ demote` score ≤ 4 in Now/Next) — no separate mismatch section. Someday excluded from scoring.
+- **Rationale**: vibe-based prioritization drifts; scores make trade-offs auditable; consolidating score + mismatch into one Signal column is faster to scan than a ranked table + separate flags section
 - **Date**: 2026-03-24
 - **Status**: active
 
