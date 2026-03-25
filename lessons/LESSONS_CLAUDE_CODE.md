@@ -68,6 +68,13 @@
 - Agents run as isolated sub-processes with blank context — no history, no bias; good for quality gates (e.g. code reviewer must not see implementation reasoning), parallel tasks, checks that should be objective
 - Invoke via paired slash command (e.g. `/review`) — not by asking Claude to "use the reviewer agent" (that tries subagent_type which fails for custom agents)
 
+## [claude-code] · Guideline · Cache folders accumulate indefinitely — safe to ignore, cheap to bulk-delete
+> 2026-03-25 · source: ~/.claude/ housekeeping session
+- Claude Code never auto-cleans: `debug/` (session logs), `file-history/` (pre-edit snapshots), `paste-cache/` (pasted content), `telemetry/` (failed analytics events), `shell-snapshots/` (terminal state), `tasks/`, `todos/`, `plans/`, `sessions/` — all stale after the session ends
+- Also: `report/` and `reports/` can easily diverge into duplicates — merge into one on sight
+- `history.jsonl` grows indefinitely; only worth archiving if startup lag is observed (currently ~1MB = no impact)
+- At ~50MB total accumulation these have zero runtime cost; bulk-delete between sessions with no risk; avoid cleaning during an active session (`file-history/` is the only live safety net mid-session)
+
 ## [claude-code] · Rule · /schedule creates remote agents — incompatible with interactive skills
 > 2026-03-24 · source: ~/.claude/ setup session
 - Remote triggers (CCR) spawn fully isolated cloud sessions — no user present, no back-and-forth possible; attempting to run an interactive skill produces a headless monologue with no value
