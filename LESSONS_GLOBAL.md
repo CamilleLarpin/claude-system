@@ -19,6 +19,7 @@
 - `~/.claude/lessons/LESSONS_DATA_ENGINEERING.md` — data pipelines, dbt models, DuckDB, bank transaction processing, categorization pipelines
 - `~/.claude/lessons/LESSONS_LLM.md` — LLM APIs, prompting, model behavior, evaluation (mlflow, Groq, token limits)
 - `~/.claude/lessons/LESSONS_DLT.md` — dlt pipeline behavior, column normalization, schema
+- `~/.claude/lessons/LESSONS_INFRA.md` — server security, backups, credential storage, Nextcloud rsync
 
 
 ---

@@ -43,6 +43,20 @@
 - **Date**: 2026-03-19 (corrected 2026-03-19)
 - **Status**: active
 
+## [backup] Hetzner backup strategy — Mac relay to WD NAS
+- **Decision**: daily rsync from Hetzner → Mac (`~/backups/hetzner/`) → WD My Cloud Home (SMB). Script at `~/scripts/backup_hetzner.sh`. Mac cron at 02:00. WD NAS sync skipped gracefully if not mounted.
+- **Rationale**: WD NAS is behind home NAT — Hetzner can't push to it directly. Mac is reliably on at home. Zero extra cost. Cloud storage alternatives (Hetzner Object Storage, Backblaze, R2) rejected — correlated failure risk or unnecessary cost at this scale.
+- **Scope**: covers all Hetzner projects — currently finances-ezerpin (DuckDB) + family-content-manager (Nextcloud files). Add new projects to the script as needed.
+- **Nextcloud exclusions**: `appdata_oc8odmpvrrzm/` · `admin/files_trashbin/` · `admin/files_versions/` · `admin/files/Trash/`
+- **Date**: 2026-03-25
+- **Status**: active
+
+## [security] No disk encryption on Hetzner Docker volumes — risk accepted
+- **Decision**: no LUKS or volume encryption on Hetzner Docker volumes. Risk documented and accepted.
+- **Rationale**: LUKS requires OS reinstall — too disruptive. Realistic threat (unauthorized Hetzner staff access) is low probability. SSH key-only auth is the main protection. Encryption at rest does not protect against the primary threat vector (SSH compromise). Personal/family data — sensitive but not critical.
+- **Date**: 2026-03-25
+- **Status**: active
+
 ## [infra] One GitHub PAT per Hetzner server, not per project
 - **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
 - **Rationale**: per-project PATs create maintenance overhead; blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder
