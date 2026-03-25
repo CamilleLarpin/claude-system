@@ -65,6 +65,18 @@
 - A reconciliation script reads comments and updated columns → generates final corrections file
 - Include any enrichment (Perplexity descriptions, confidence scores) in the review file to reduce decision time on unknown items
 
+## [llm-pipeline] · Rule · Confidence gate downgrade must go to REVIEW queue, not KEEP
+> 2026-03-25 · source: gmail-inbox-cleanup
+- Initial confidence gate downgraded low-confidence TRASH → KEEP; this silently buried borderline trash in the inbox with no recovery path
+- KEEP means "I want this" — it must never be used as a fallback for uncertain destructive actions; that defeats the purpose of having a review queue
+- Correct pattern: low-confidence TRASH → TRASH_REVIEW (or equivalent review bucket); KEEP is only assigned when the category action is genuinely KEEP
+
+## [llm-pipeline] · Rule · Protect self-sent / system emails via hard rule before LLM sees them
+> 2026-03-25 · source: gmail-inbox-cleanup
+- Self-sent emails (voice memos, self-notes, forwarded docs) have no consistent signal — the LLM classifies them based on subject/snippet and routinely misassigns them to wrong categories (e.g. "Real Estate - Alerts") → marked TRASH
+- Hard rule pre-classification (exact sender match before LLM) is the only reliable protection; LLM context cannot be trusted for this
+- Always add the user's own address(es) and known system senders to a hard-rule allowlist that runs before LLM classification
+
 ## [llm-pipeline] · Rule · Never add senders to always_trash from a sample — inspect full metadata first
 > 2026-03-23 · source: gmail-inbox-cleanup
 - A 1000-email sample is unrepresentative: personal contacts, financial senders (Boursorama, Revolut), and health senders appeared in a "Subscriptions" category due to misclassification — adding them to always_trash would have permanently deleted critical emails
