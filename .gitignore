@@ -4,6 +4,7 @@ plugins/
 # Private tracking repo — separate git repo, not part of this public repo
 projects-tracking/
 analysis/
+report/
 reports/
 
 # macOS metadata
