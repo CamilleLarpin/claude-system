@@ -124,6 +124,18 @@
 - Pattern that fails: Meeting Note Taker listed audio-intelligence-pipeline Phase 3b (MLflow evaluation) as a hard dependency — it was a quality gate; the pipeline already worked and could be called immediately
 - Before adding a `Depends on:` entry, ask: "does this technically block execution, or is it a validation we'd prefer to do first?" — document the difference explicitly; quality gates can be bypassed with risk acknowledgement, hard prerequisites cannot
 
+## [infra] · Rule · Check DNS propagation before running certbot
+> 2026-03-25 · source: ai-networking-system
+- certbot fails if the subdomain A record doesn't resolve yet — HTTP challenge cannot complete
+- Run `dig <subdomain> +short` on the server first — must return the server IP; DNS changes take minutes, not seconds
+- Always verify all `-d` domains resolve before running certbot
+
+## [infra] · Rule · GitHub dropped HTTPS password auth — use SSH on servers
+> 2026-03-25 · source: ai-networking-system
+- `git clone https://github.com/...` fails with "Password authentication is not supported" — GitHub removed this in 2021
+- Fix: `ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""` on server → add pubkey to GitHub Settings → SSH keys → clone via `git@github.com:...`
+- Do this on every new server before any `git clone`
+
 ## [architecture] · Guideline · Define concrete use cases before automation architecture
 > 2026-03-24 · source: meeting-note-taker / ai-networking-system
 - Abstract dependency maps between projects obscure what to build first and what value each step delivers

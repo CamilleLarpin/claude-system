@@ -22,8 +22,9 @@
   - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
   - `/opt/nextcloud/`: Nextcloud + its own MariaDB 10.11 instance (`nextcloud-db`)
   - `/opt/api/`: audio-intelligence-pipeline FastAPI (port 8000)
-  - **Reverse proxy**: nginx 1.18 on host (not Docker) — TLS termination for all domains; n8n.helmcome.com → 5678, cloud.helmcome.com → 8080
-  - **Hetzner Firewall**: `firewall-server` — inbound TCP: 22, 80, 443, 5678, 8080, 8000, 5000 (IPv4+IPv6 restricted)
+  - `/opt/ai-networking-system/`: CRM FastAPI (port 8001, docker compose)
+  - **Reverse proxy**: nginx 1.18 on host — TLS via certbot · n8n→5678 · cloud→8080 · crm-api→8001 · audio-api→8000 · mlflow→5000
+  - **Hetzner Firewall** (`firewall-server`): inbound open — 22, 80, 443, 5678, 8080, 8000, 5000 · ufw (OS): allow 22/80/443, deny 8000/8001/5000
   - **SSH**: key-only auth (`~/.ssh/id_ed25519`), password auth disabled
 - **Version control**: Git
 - **Shared infrastructure across projects**:
