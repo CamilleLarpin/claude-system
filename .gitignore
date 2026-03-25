@@ -5,7 +5,6 @@ plugins/
 projects-tracking/
 analysis/
 reports/
-decisions/
 
 # macOS metadata
 .DS_Store
