@@ -69,6 +69,13 @@ state[userId] = newValue;             // write
 - Fix: use operator `notEquals` with `rightValue: ""` instead of `isNotEmpty`; also upgrade typeVersion to 2.3
 - `={{ String($json.field ?? '') }}` + `notEquals ""` is the reliable pattern for non-empty string checks
 
+## [n8n] · Rule · HTTP Request JSON array response — use responseFormat:text to guarantee 1 item
+> 2026-03-25 · source: ai-networking-system (P0b CRM search)
+- n8n HTTP Request may split a JSON array response into multiple items (one per element) — empty array → 0 items → downstream nodes never execute
+- Safeguard: set `options.response.response.responseFormat: "text"` — always outputs exactly 1 item; body is in `$json.data`
+- Downstream Code node pattern: `const raw = $input.first().json.data || ''; let arr = []; try { arr = JSON.parse(raw); if (!Array.isArray(arr)) arr = []; } catch(e) {}`
+- Verify field name (`$json.data`) on first real execution — may differ by n8n version
+
 ## [n8n] · Rule · `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
 > 2026-03-04 · source: ghost (Format Response node)
 - `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"

@@ -19,6 +19,16 @@
 
 ---
 
+## 2026-03-25 — Never paste secrets in chat — rotate immediately if exposed
+
+**Context**: CRM bearer token pasted in full into a Claude Code session while building a test curl command.
+
+**Lesson**: Any secret pasted in a chat session should be treated as compromised — conversation logs may persist the value. Rotate immediately: generate new token, update `.env` on server, restart container, update n8n credential.
+
+**Prevention**: use shell substitution to inject secrets without exposing them: `$(grep TOKEN .env | cut -d= -f2)` or `$(ssh server "grep TOKEN file | cut -d= -f2")`.
+
+---
+
 ## 2026-03-25 — Rsync Nextcloud: exclude cache and internal folders
 
 **Context**: first rsync of `/opt/nextcloud/files/` pulled Nextcloud app cache (preview thumbnails, theming) and internal trash/version history — massively inflating backup size with non-essential data.
