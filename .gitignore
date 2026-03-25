@@ -3,6 +3,9 @@ plugins/
 
 # Private tracking repo — separate git repo, not part of this public repo
 projects-tracking/
+analysis/
+reports/
+decisions/
 
 # macOS metadata
 .DS_Store
