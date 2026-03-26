@@ -75,6 +75,14 @@
 
 ---
 
+## infra · Rule · Terraform modules must declare required_providers explicitly
+> 2026-03-26 · source: hetzner-infra
+- Terraform cannot infer provider namespace inside a module — defaults to `hashicorp/<name>` instead of e.g. `hetznercloud/hcloud`
+- `terraform init` installs two conflicting providers and fails with "provider not found in registry"
+- Fix: add `terraform { required_providers { hcloud = { source = "hetznercloud/hcloud" } } }` block in every module that uses a non-hashicorp provider
+
+---
+
 ## 2026-03-25 — Rsync Nextcloud: exclude cache and internal folders
 
 **Context**: first rsync of `/opt/nextcloud/files/` pulled Nextcloud app cache (preview thumbnails, theming) and internal trash/version history — massively inflating backup size with non-essential data.
