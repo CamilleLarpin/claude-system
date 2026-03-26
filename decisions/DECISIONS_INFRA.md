@@ -57,6 +57,13 @@
 - **Date**: 2026-03-25
 - **Status**: active
 
+## [iac] Terraform for Hetzner infra — hcloud provider, DR blueprint first
+- **Decision**: use Terraform (`hetznercloud/hcloud` provider) to codify Hetzner infra; adopt as DR blueprint before managing live state; import firewall only as Phase 2; provision new servers via Terraform from day 1 (no import needed)
+- **Rationale**: single server doesn't justify full IaC overhead, but restore value + firewall-as-code justifies it; DR blueprint approach removes import risk on live server; `prevent_destroy = true` on all server resources as hard guard against accidental destroy; local state sufficient for solo dev
+- **Scope**: Hetzner layer only (server, SSH key, firewall, volumes) — docker/nginx/certbot stay out of scope
+- **Date**: 2026-03-26
+- **Status**: active
+
 ## [infra] One GitHub PAT per Hetzner server, not per project
 - **Decision**: use a single fine-grained GitHub PAT scoped to all Hetzner repos; stored in `.git/config` on server; rotate annually
 - **Rationale**: per-project PATs create maintenance overhead; blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder
