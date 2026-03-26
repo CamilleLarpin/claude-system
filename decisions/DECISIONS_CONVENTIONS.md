@@ -121,6 +121,12 @@
 - **Date**: 2026-03-24
 - **Status**: active
 
+## [conventions] Git workflow — always branch before changes; pull before start and before push
+- **Decision**: before making any changes in a git repo: (1) `git pull --rebase`; (2) create a feature branch — never commit directly to main. `git pull --rebase` again before pushing. Claude Code handles commits and push.
+- **Rationale**: parallel Claude sessions (multiple terminals) can conflict on the same branch; branching isolates each session's working tree. Pull before starting ensures the branch forks from up-to-date main. Rule is unconditional — Claude cannot detect parallel sessions, so "always branch" is the only reliable form.
+- **Date**: 2026-03-25
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
