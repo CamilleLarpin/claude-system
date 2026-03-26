@@ -91,7 +91,11 @@
       "Bash(python3 -m json.tool)",
       "Bash(mv ~/.claude/report/* ~/.claude/reports/)",
       "Bash(rmdir ~/.claude/report)",
-      "Bash(rm ~/.claude/plans/abundant-watching-sketch.md ~/.claude/plans/modular-coalescing-bentley.md ~/.claude/plans/twinkling-bubbling-raven.md)"
+      "Bash(rm ~/.claude/plans/abundant-watching-sketch.md ~/.claude/plans/modular-coalescing-bentley.md ~/.claude/plans/twinkling-bubbling-raven.md)",
+      "Bash(find ~/projects -name *.tf -o -name Dockerfile)",
+      "Bash(bash ~/.claude/skills/project-init/scripts/init-structure.sh hetzner-infra private)",
+      "Bash(bash ~/.claude/skills/project-init/scripts/trigger-notion.sh \"hetzner-infra\" \"hetzner-infra\" \"Terraform · hetznercloud/hcloud\")",
+      "Bash(grep:*)"
     ]
   }
 }

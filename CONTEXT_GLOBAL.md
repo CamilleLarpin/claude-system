@@ -16,13 +16,13 @@
 ## Technical Stack
 - **Automation**: self-hosted n8n — https://n8n.helmcome.com
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), Anthropic/OpenAI/Groq APIs where needed
-- **Data**: DuckDB · dbt · MariaDB (Nextcloud)
+- **Data**: DuckDB (CRM on Hetzner — `crm_data` Docker volume → `/opt/crm/crm.db` inside container · queried via CRM FastAPI) · DuckDB (finances-ezerpin, local) · dbt (finances-ezerpin, local) · MariaDB (Nextcloud on Hetzner)
 - **Storage**: file-based (JSON/MD). **Git is the source of truth** including for all project and task management (`~/.claude/projects-tracking/`, project `TODOS.md`).
 - **Infra**: Hetzner server `n8n-server` (138.199.205.72), Docker 29.1.5 — independent stacks:
   - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
   - `/opt/nextcloud/`: Nextcloud + its own MariaDB 10.11 instance (`nextcloud-db`)
   - `/opt/api/`: audio-intelligence-pipeline FastAPI (port 8000)
-  - `/opt/ai-networking-system/`: CRM FastAPI (port 8001, docker compose)
+  - `/opt/ai-networking-system/`: CRM FastAPI (port 8001, docker compose) + DuckDB file (`crm_data` volume → `/opt/crm/crm.db`)
   - **Reverse proxy**: nginx 1.18 on host — TLS via certbot · n8n→5678 · cloud→8080 · crm-api→8001 · audio-api→8000 · mlflow→5000
   - **Hetzner Firewall** (`firewall-server`): inbound open — 22, 80, 443, 5678, 8080, 8000, 5000 · ufw (OS): allow 22/80/443, deny 8000/8001/5000
   - **SSH**: key-only auth (`~/.ssh/id_ed25519`), password auth disabled
