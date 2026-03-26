@@ -79,6 +79,8 @@ Phase N — [What the user can do or see after this phase that they couldn't bef
 
 Phase names must describe **added value for the user** — not technical themes or internal milestones. A good name passes this test: "After this phase, I can [X]" where X is something concrete and meaningful to the user. Bad: "Data layer complete." Good: "Get to 1st draft monthly report."
 
+When proposing a resequenced roadmap, also rename all phases in DESIGN.md and TODOS.md to match the new names — never leave stale phase names in the docs after alignment.
+
 State which option from Step 4 you're recommending and why.
 
 Then ask: *"Does this sequencing feel right? What would you change?"*
