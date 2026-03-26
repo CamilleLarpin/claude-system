@@ -75,6 +75,17 @@
 - `history.jsonl` grows indefinitely; only worth archiving if startup lag is observed (currently ~1MB = no impact)
 - At ~50MB total accumulation these have zero runtime cost; bulk-delete between sessions with no risk; avoid cleaning during an active session (`file-history/` is the only live safety net mid-session)
 
+## [claude-code] · Rule · CLAUDE.md directives must be unconditional when Claude cannot observe system state
+> 2026-03-25 · source: git worktrees session
+- Claude cannot detect parallel sessions, other terminals, or external system state — conditional rules ("if there are multiple sessions, do X") are never triggered because the condition is unobservable
+- Pattern: write the rule as an unconditional default ("always branch before making changes") so it applies regardless of context; rely on it being occasionally unnecessary rather than occasionally missing
+- Also applies to: "if another process is running", "if a teammate is working on this", "if this is a shared file" — all unobservable; all must be unconditional to be reliable
+
+## [claude-code] · Rule · Reference docs in ~/.claude/references/ are not auto-loaded — add to CLAUDE.md to influence behavior
+> 2026-03-25 · source: git worktrees session
+- Creating a reference doc does NOT change Claude behavior; the file is never read unless explicitly retrieved via Read tool or referenced from a loaded file
+- If the intent is for Claude to follow a pattern by default: add a directive to CLAUDE.md (always-loaded); use ~/.claude/references/ only for look-up docs the user or Claude retrieves on demand
+
 ## [claude-code] · Rule · /schedule creates remote agents — incompatible with interactive skills
 > 2026-03-24 · source: ~/.claude/ setup session
 - Remote triggers (CCR) spawn fully isolated cloud sessions — no user present, no back-and-forth possible; attempting to run an interactive skill produces a headless monologue with no value
