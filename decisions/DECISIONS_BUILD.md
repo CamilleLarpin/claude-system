@@ -47,6 +47,12 @@
 - **Date**: 2026-03-23
 - **Status**: active
 
+## [ai-agents] ML classifier as primary + LLM fallback for low-confidence / new inputs
+- **Decision**: when labeled training data exists, use a local ML classifier (TF-IDF + LR or equivalent) as the primary inference layer; route only low-confidence predictions and unseen input types to an LLM fallback (Groq)
+- **Rationale**: LLM inference on every item is expensive and slow when a trained classifier can handle the majority of cases at zero marginal cost; labeled data from a prior LLM pass is a ready-made training set — no new labeling effort required; ML model is personalized to the domain; Groq fallback ensures no edge case is silently dropped; high confidence threshold keeps auto-action conservative
+- **Date**: 2026-03-26
+- **Status**: active
+
 ## [data] Semantic layer YAML written for LLMs, not humans
 - **Decision**: in any project combining dbt + NL interface, treat schema.yml column descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
 - **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this
