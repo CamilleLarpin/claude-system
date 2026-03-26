@@ -75,6 +75,14 @@
 
 ---
 
+## infra · Rule · After `terraform import`, review every "to add" in plan before any apply
+> 2026-03-26 · source: hetzner-infra Phase 2
+- `terraform import` adds one resource to state — all other resources in `.tf` code but not in state still appear as "to add" in the next plan
+- After a partial import, plan will show N resources to add — this is expected but NOT safe to apply blindly
+- Inspect every "to add" entry: new resource (safe) vs existing resource not yet imported (would create a duplicate on the provider)
+
+---
+
 ## infra · Rule · Terraform modules must declare required_providers explicitly
 > 2026-03-26 · source: hetzner-infra
 - Terraform cannot infer provider namespace inside a module — defaults to `hashicorp/<name>` instead of e.g. `hetznercloud/hcloud`
