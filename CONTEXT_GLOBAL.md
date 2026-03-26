@@ -26,6 +26,7 @@
   - **Reverse proxy**: nginx 1.18 on host — TLS via certbot · n8n→5678 · cloud→8080 · crm-api→8001 · audio-api→8000 · mlflow→5000
   - **Hetzner Firewall** (`firewall-server`): inbound open — 22, 80, 443, 5678, 8080, 8000, 5000 · ufw (OS): allow 22/80/443, deny 8000/8001/5000
   - **SSH**: key-only auth (`~/.ssh/id_ed25519`), password auth disabled
+  - **IaC**: Terraform + `hetznercloud/hcloud` provider — DR blueprint in progress (`hetzner-infra` project); manages Hetzner layer only (server, SSH key, firewall)
 - **Version control**: Git
 - **Shared infrastructure across projects**:
   - n8n instance: https://n8n.helmcome.com — used by all automation projects · shared error alerting: [Alert] Error Notifier workflow (n8n ID: S3JtzMtNJlNl4SOQ)
