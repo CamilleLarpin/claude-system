@@ -63,6 +63,18 @@
 
 ---
 
+## 2026-03-26 — docker-compose up -d without --build uses cached image
+
+**Context**: added new FastAPI endpoint, pushed code, ran `git pull` on server + `docker-compose up -d` — new route not visible. API still served old image.
+
+**Lesson**: `docker-compose up -d` alone never rebuilds the image — it reuses whatever image was last built. New code is NOT picked up.
+
+**Fix**: `docker-compose build --no-cache && docker-compose stop && docker-compose rm -f && docker-compose up -d`
+- `--build` flag on `up` triggers an interactive "Continue?" prompt via SSH — blocks non-interactive execution; use the split form above
+- `--no-cache` forces layer invalidation when Docker incorrectly caches `COPY api/` step
+
+---
+
 ## 2026-03-25 — Rsync Nextcloud: exclude cache and internal folders
 
 **Context**: first rsync of `/opt/nextcloud/files/` pulled Nextcloud app cache (preview thumbnails, theming) and internal trash/version history — massively inflating backup size with non-essential data.

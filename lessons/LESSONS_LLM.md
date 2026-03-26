@@ -89,6 +89,12 @@
 - Platforms mixing transactional and promotional mail use separate sender addresses — always check all sub-addresses before adding any to a trash list
 - Pattern: search full metadata by domain first; only add specific addresses confirmed to be purely promotional
 
+## [llm-pipeline] · Guideline · Domain-only filters too blunt for mixed senders — use content classification
+> 2026-03-26 · source: gmail-inbox-cleanup
+- First instinct for email filtering: extract trash sender domains → apply domain-level rules; fails because the same domain sends both TRASH (marketing) and KEEP (booking confirmation) e.g. Ryanair, Amazon, any bank
+- Domain-only rules are safe only for senders where 100% of historical emails are trash (pure-trash domains); for anything mixed, subject+snippet classification is required
+- Architecture: ML classifier (subject+snippet → category) as primary; LLM fallback for low confidence / new senders; domain rules alone are insufficient for real-world filtering
+
 ## [llm-pipeline] · Guideline · Bottom-up taxonomy outperforms hardcoded taxonomy for action-homogeneity
 > 2026-03-23 · source: gmail-inbox-cleanup
 - Hardcoded 43-category taxonomy (Claude-designed without seeing the data) produced categories mixing emails with different ideal actions — action assignment was hard and produced ambiguous categories
