@@ -44,6 +44,18 @@
 - Fix: move the join to the first non-incremental downstream model (view or table) — it rebuilds fully each run and always sees fresh data
 - Rule: if a table is written by an external process on a different schedule, join it in a non-incremental model
 
+## [duckdb] · Rule · `strftime` argument order is (format, value) — opposite of SQLite
+> 2026-03-26 · source: finances-ezerpin
+- `strftime('%Y-%m', column)` is correct in DuckDB — format string first, value second
+- `strftime(column, '%Y-%m')` may compile without error but returns wrong results or null
+- Opposite of SQLite's `strftime(format, time, ...)` — easy to get wrong when porting SQL across dialects
+
+## [duckdb] · Rule · Query raw source tables to filter intra-month; bypass aggregated marts
+> 2026-03-26 · source: finances-ezerpin
+- `fct_depenses_mensuelles` (or any mart aggregated by full month) can't be filtered to day N within a month
+- For MoM comparison with same-day cutoff (e.g. March 1-26 vs Feb 1-26): query `stg_transactions` directly with `day(date_op) <= ?`
+- Pattern: `get_cutoff_day()` = `day(max(date_op))` for the reported month → pass as parameter to both CTEs (current + previous)
+
 ## [dbt] · Rule · Surrogate keys on bank transactions need `date_val` + `row_number` tiebreaker
 > 2026-03-24 · source: finances-ezerpin
 - `generate_surrogate_key(['date_op', 'label', 'amount', 'account'])` produces collisions when: (1) same `date_op` but different `date_val` (SNCF pattern), (2) genuine duplicate transactions same day (LEA GIRAUD -168€ ×2)
