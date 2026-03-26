@@ -29,6 +29,40 @@
 
 ---
 
+## infra · Rule · Use launchd instead of cron for scheduled scripts on macOS
+> 2026-03-26 · source: finances-ezerpin
+- `cron` on macOS **skips jobs entirely** if the machine is asleep at the scheduled time — no catch-up
+- `launchd` runs the job as soon as the machine wakes up after a missed window — correct behavior for daily backups
+- Create a `.plist` in `~/Library/LaunchAgents/` and load with `launchctl bootstrap gui/$(id -u) <plist>` (macOS Ventura+ — `launchctl load` is deprecated)
+- Verify registration: `launchctl list | grep <label>` — `-` PID means registered but not running (expected)
+
+---
+
+## infra · Rule · Docker Compose v5: --env-file flag not supported on run
+> 2026-03-26 · source: finances-ezerpin
+- `docker compose run --env-file <file>` fails with `unknown flag: --env-file` on Compose v5
+- Use shell substitution instead: `-e KEY=$(grep KEY .env | cut -d= -f2)`
+- Works for single keys; for multiple keys, repeat `-e` flags
+
+---
+
+## infra · Rule · docker compose run does not mount project data dir by default
+> 2026-03-26 · source: finances-ezerpin
+- `docker compose run` only mounts volumes defined in `docker-compose.yml` — project host directories are not mounted
+- If scripts need access to files in `data/`, `data/reference/`, etc., add explicit `-v /host/path:/container/path` flag
+- Example: `docker compose run --rm -v /opt/project/data:/app/data pipeline python script.py`
+
+---
+
+## infra · Rule · Server repo never auto-updates — always git pull before running pipeline
+> 2026-03-26 · source: finances-ezerpin
+- A server cloning a GitHub repo does NOT auto-update when you push — it stays on whatever commit it was at when you last SSH'd in and pulled
+- Any `git push` from Mac → GitHub → must be followed by `git pull` on server before running pipelines
+- Failure to pull = running stale code against prod data (silent divergence)
+- Add `git pull` as the first step in any prod deployment runbook
+
+---
+
 ## 2026-03-25 — Rsync Nextcloud: exclude cache and internal folders
 
 **Context**: first rsync of `/opt/nextcloud/files/` pulled Nextcloud app cache (preview thumbnails, theming) and internal trash/version history — massively inflating backup size with non-essential data.
