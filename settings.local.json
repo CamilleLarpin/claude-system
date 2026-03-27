@@ -95,7 +95,32 @@
       "Bash(find ~/projects -name *.tf -o -name Dockerfile)",
       "Bash(bash ~/.claude/skills/project-init/scripts/init-structure.sh hetzner-infra private)",
       "Bash(bash ~/.claude/skills/project-init/scripts/trigger-notion.sh \"hetzner-infra\" \"hetzner-infra\" \"Terraform · hetznercloud/hcloud\")",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Read(//private/tmp/**)",
+      "Bash(python3 -c \"import yfinance, requests, feedparser, pandas; print\\(''All packages available''\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(python3 test_sources.py)",
+      "Bash(curl -s \"https://info-financiere.gouv.fr/api/v2/swagger.json\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); paths=list\\(d.get\\(''''paths'''',{}\\).keys\\(\\)\\)[:20]; print\\(''''\\\\n''''.join\\(paths\\)\\)\")",
+      "Bash(curl -s \"https://info-financiere.gouv.fr/api/v2/catalog/datasets?where=Voyageurs+du+Monde&limit=3\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2, ensure_ascii=False\\)[:1000]\\)\")",
+      "Bash(curl -s \"https://info-financiere.gouv.fr/api/v2/catalog/datasets?search=Voyageurs+du+Monde&limit=3\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2, ensure_ascii=False\\)[:2000]\\)\")",
+      "Bash(curl -s \"https://info-financiere.gouv.fr/api/v2/catalog/datasets?limit=3\")",
+      "Bash(curl -s \"https://info-financiere.gouv.fr/api/v2/catalog/datasets/flux-amf-new-prod/records?limit=2\")",
+      "Bash(curl -s \"https://www.amf-france.org/fr/espace-epargnants/prevenir-les-risques/les-donnees-ouvertes-open-data\")",
+      "Bash(python3:*)",
+      "WebSearch",
+      "WebFetch(domain:www.amf-france.org)",
+      "WebFetch(domain:www.data.gouv.fr)",
+      "WebFetch(domain:lestransactions.fr)",
+      "WebFetch(domain:echanges.dila.gouv.fr)",
+      "WebFetch(domain:bdif.amf-france.org)",
+      "WebFetch(domain:transactions-amf.swaoo.com)",
+      "Bash(curl:*)",
+      "WebFetch(domain:webstat.banque-france.fr)",
+      "WebFetch(domain:data.ecb.europa.eu)",
+      "WebFetch(domain:fgeerolf.com)"
     ]
   }
 }
