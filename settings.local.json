@@ -120,7 +120,8 @@
       "Bash(curl:*)",
       "WebFetch(domain:webstat.banque-france.fr)",
       "WebFetch(domain:data.ecb.europa.eu)",
-      "WebFetch(domain:fgeerolf.com)"
+      "WebFetch(domain:fgeerolf.com)",
+      "Bash(gh repo:*)"
     ]
   }
 }
