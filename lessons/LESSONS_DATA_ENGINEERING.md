@@ -15,6 +15,19 @@
 
 ---
 
+## [data-engineering] · Guideline · RSS feeds require User-Agent header — direct feedparser call returns 403
+> 2026-03-30 · source: pea-pme-pulse
+- `feedparser.parse(url)` called directly returns HTTP 403 on ABCBourse (and likely other financial RSS feeds)
+- Always wrap with `requests.get(url, headers={"User-Agent": "Mozilla/5.0 ..."})` then `feedparser.parse(r.text)`
+- Yahoo Finance FR RSS does not require User-Agent — ABCBourse does
+
+## [data-engineering] · Guideline · Boursorama HTML scraping — ISIN lives in `<h2 class="c-faceplate__isin">`
+> 2026-03-30 · source: pea-pme-pulse
+- ISIN is not in the listing page — must scrape each ticker's detail page `/cours/{ticker}/`
+- Target: `soup.find(class_="c-faceplate__isin").text.strip().split()[0]` (tag contains "FR0004040608 ABCA")
+- Regex on full page text misses it on some tickers — class-targeted lookup is reliable across all 5 tested
+- 0.5s delay between requests · User-Agent required
+
 ## [data-engineering] · Guideline · Source table naming — system/source first, not owner/entity first
 > 2026-03-16 · source: finances-ezerpin
 - When raw tables represent data from external systems (banks, APIs, SaaS tools), name them `<system>_<scope>` not `<owner>_<system>` — e.g. `boursorama_joint`, not `joint_boursorama`
