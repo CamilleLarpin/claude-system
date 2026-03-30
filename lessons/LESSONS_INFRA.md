@@ -91,6 +91,17 @@
 
 ---
 
+## infra · Rule · `crontab -e` fails with ghostty terminal over SSH — use pipe instead
+> 2026-03-27 · source: finances-ezerpin
+- `crontab -e` over SSH from a ghostty terminal fails with `Error opening terminal: xterm-ghostty` — the editor can't open because the remote server doesn't have the ghostty terminfo entry
+- Fix: pipe the cron line directly without opening an editor:
+  `echo '<cron line>' | ssh server 'crontab -'`
+  or locally: `echo '<cron line>' | ssh server 'EDITOR=true crontab -'`
+- Verify with: `ssh server 'crontab -l'`
+- General pattern: any `crontab -e` (or other TUI editor) over SSH from an unusual terminal emulator will fail if the server lacks the terminfo entry
+
+---
+
 ## 2026-03-25 — Rsync Nextcloud: exclude cache and internal folders
 
 **Context**: first rsync of `/opt/nextcloud/files/` pulled Nextcloud app cache (preview thumbnails, theming) and internal trash/version history — massively inflating backup size with non-essential data.

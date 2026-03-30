@@ -6,6 +6,15 @@
 
 ---
 
+## [dbt] · Rule · `dbt seed` is not included in `dbt run` — must be run separately
+> 2026-03-27 · source: finances-ezerpin
+- `dbt run` executes SQL models only — it does NOT load seeds
+- After adding or modifying a seed file (and deploying to prod), always run `dbt seed --select <seed_name>` explicitly
+- Failure to do so causes downstream models referencing the seed to fail with `Table with name <seed> does not exist`
+- Seeds = stable reference data (categories, budgets, revenues) — intentionally excluded from the monthly cron run; load manually after each schema change
+
+---
+
 ## [data-engineering] · Guideline · Source table naming — system/source first, not owner/entity first
 > 2026-03-16 · source: finances-ezerpin
 - When raw tables represent data from external systems (banks, APIs, SaaS tools), name them `<system>_<scope>` not `<owner>_<system>` — e.g. `boursorama_joint`, not `joint_boursorama`
