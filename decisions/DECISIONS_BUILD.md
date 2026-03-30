@@ -53,6 +53,12 @@
 - **Date**: 2026-03-26
 - **Status**: active
 
+## [data] ISIN as universal pivot key for French financial data pipelines
+- **Decision**: use ISIN as the central join key across all French market data sources (AMF, yfinance, scraping) — build a master referential that maps ISIN → all other identifiers (ticker_bourso, nom, ticker_yahoo)
+- **Rationale**: ISIN is the only identifier natively present in AMF and accepted directly by `yf.Ticker(isin)`. Boursorama tickers are internal and non-standard. RSS feeds have no identifier at all — fuzzy match on company name is the only option, with ISIN resolved via the master referential.
+- **Date**: 2026-03-30
+- **Status**: active
+
 ## [data] Semantic layer YAML written for LLMs, not humans
 - **Decision**: in any project combining dbt + NL interface, treat schema.yml column descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
 - **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this
