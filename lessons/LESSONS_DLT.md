@@ -11,6 +11,15 @@
 - Always audit the actual date range after loading: `SELECT MIN(date_op), MAX(date_op), COUNT(*) FROM raw.table`
 - Applies to any bank/financial CSV — never assume the file covers only the expected period
 
+## [dlt] · Rule · dlt caches pipeline destination by pipeline_name — clear before first prod run
+> 2026-03-31 · source: finances-ezerpin
+- dlt stores pipeline state (including the destination DB path) in `~/.dlt/pipelines/<pipeline_name>/`
+- If a pipeline was run locally with `--db data/dev.duckdb`, the cached destination persists and will be reused on the server even if you pass `--db /data/finances.duckdb`
+- Always verify the line `The duckdb destination used duckdb://...` in dlt output — it shows the actual destination, not the argument
+- Fix: `rm -rf ~/.dlt/pipelines/<pipeline_name>/` on the server before the first prod run, or use a distinct `pipeline_name` per environment
+
+---
+
 ## [dlt] · Rule · dlt normalizes column names camelCase → snake_case
 > 2026-03-17 · source: finances-ezerpin
 - dlt automatically normalizes column names on load: `dateOp` → `date_op`, `supplierFound` → `supplier_found`, `categoryParent` → `category_parent`

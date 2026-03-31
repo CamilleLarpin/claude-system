@@ -78,6 +78,20 @@
 - For MoM comparison with same-day cutoff (e.g. March 1-26 vs Feb 1-26): query `stg_transactions` directly with `day(date_op) <= ?`
 - Pattern: `get_cutoff_day()` = `day(max(date_op))` for the reported month → pass as parameter to both CTEs (current + previous)
 
+## [data-engineering] · Rule · RSS feeds are ephemeral — GCS dump must happen before any filtering
+> 2026-03-31 · source: pea-pme-pulse
+- RSS feeds have no history — if raw feed is not stored at fetch time, it's gone forever
+- GCS dump must precede all matching/filtering logic
+- Contrast: AMF (full history via API, GCS for auditability) · yfinance (always re-fetchable, no GCS needed)
+- Pattern: fetch → dump to GCS → filter/match → load to BQ Bronze (matched only)
+
+## [data-engineering] · Rule · Fuzzy matching at scale — adaptive scorer by name length
+> 2026-03-31 · source: pea-pme-pulse
+- `partial_ratio` on short names (<=6 chars) produces false positives at scale — short strings appear as substrings anywhere
+- Use `token_set_ratio` for short names (requires whole-token match), `partial_ratio` for longer names
+- `fuzz.ratio` also fails for short names: length mismatch between query and name causes low scores even on exact hits
+- Threshold: `len(name) <= 6` as cutoff — adjust per domain
+
 ## [dbt] · Rule · Surrogate keys on bank transactions need `date_val` + `row_number` tiebreaker
 > 2026-03-24 · source: finances-ezerpin
 - `generate_surrogate_key(['date_op', 'label', 'amount', 'account'])` produces collisions when: (1) same `date_op` but different `date_val` (SNCF pattern), (2) genuine duplicate transactions same day (LEA GIRAUD -168€ ×2)
