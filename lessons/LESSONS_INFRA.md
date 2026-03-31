@@ -114,6 +114,16 @@
 
 ---
 
+## infra · Rule · Run multi-command server scripts via scp + ssh, not interactive paste
+> 2026-03-31 · source: finances-ezerpin
+- Pasting multi-line commands into an SSH terminal is unreliable: line breaks are interpreted as command separators, leading spaces break heredocs, and complex commands get split
+- Reliable pattern: write the script locally, scp it, execute remotely
+  `scp /tmp/script.sh server:/tmp/script.sh && ssh server bash /tmp/script.sh`
+- Or pipe directly: `ssh server 'bash -s' < local_script.sh`
+- Always add `cd /path/to/project` as first line — `ssh server bash script.sh` runs from `$HOME`
+
+---
+
 ## 2026-03-25 — Rsync Nextcloud: exclude cache and internal folders
 
 **Context**: first rsync of `/opt/nextcloud/files/` pulled Nextcloud app cache (preview thumbnails, theming) and internal trash/version history — massively inflating backup size with non-essential data.
