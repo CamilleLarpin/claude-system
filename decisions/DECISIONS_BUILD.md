@@ -59,6 +59,13 @@
 - **Date**: 2026-03-30
 - **Status**: active
 
+## [ai-agents] Strip markdown fences in code when Claude must return raw JSON
+- **Decision**: when a template instructs Claude to output raw JSON, always strip ` ```json ``` ` fences in code before saving or parsing — in addition to tightening the prompt
+- **Rationale**: Claude adds fences even when explicitly told not to, especially when the content looks like code; `json.loads()` fails on fence-wrapped output; prompt-only enforcement is unreliable; stripping in code is a zero-cost safety net that makes downstream consumers robust
+- **How**: `if s.startswith("```"): s = s.split("\n",1)[1].rsplit("```",1)[0].strip()`
+- **Date**: 2026-03-31
+- **Status**: active
+
 ## [data] Semantic layer YAML written for LLMs, not humans
 - **Decision**: in any project combining dbt + NL interface, treat schema.yml column descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
 - **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this
