@@ -136,6 +136,13 @@
 - Fix: `ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""` on server → add pubkey to GitHub Settings → SSH keys → clone via `git@github.com:...`
 - Do this on every new server before any `git clone`
 
+## [python-packaging] · Rule · `src/` layout requires explicit setuptools config + __init__.py
+> 2026-04-01 · source: pea-pme-pulse
+- `pip install -e .` does NOT find packages under `src/` automatically — requires `[tool.setuptools.packages.find] where = ["src"]` in `pyproject.toml`
+- Without `src/bronze/__init__.py`, the directory is not a package regardless of setuptools config
+- Prefect (and other subprocess-based runners) lose any `sys.path` manipulation done in the parent script — packages must be properly installed via pip to be importable in subflows/subprocesses
+- Checklist for `ModuleNotFoundError` after `pip install -e .`: (1) `__init__.py` present? (2) `[tool.setuptools.packages.find]` in pyproject.toml? (3) reinstalled after adding them?
+
 ## [architecture] · Guideline · Define concrete use cases before automation architecture
 > 2026-03-24 · source: meeting-note-taker / ai-networking-system
 - Abstract dependency maps between projects obscure what to build first and what value each step delivers
