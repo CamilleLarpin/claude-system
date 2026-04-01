@@ -127,6 +127,12 @@
 - **Date**: 2026-03-25
 - **Status**: active
 
+## [conventions] loguru as standard logging library for Python pipeline modules
+- **Decision**: use `loguru` in all Python pipeline modules (`src/`) — no `print()` in pipeline code
+- **Rationale**: `print()` produces plain text with no timestamp or level — unusable for observability in production (Prefect, cron, GCP). `loguru` gives structured logs (INFO/WARNING/ERROR + timestamp) with zero configuration. Consistent across all Bronze/Silver/Gold modules.
+- **Date**: 2026-04-01
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
