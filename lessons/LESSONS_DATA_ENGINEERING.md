@@ -101,6 +101,12 @@
 - Apply in sequence: `clean_title()` → blocklist check → fuzzy score → word boundary validation
 - Validated: reduces false positives from 3/10 to 0/20 on Google News FR financial feeds
 
+## [data-engineering] · Rule · Team PRs — check test import style against shared pythonpath setting
+> 2026-04-01 · source: pea-pme-pulse
+- `pythonpath = ["src"]` in pyproject.toml means `import src.bronze.xxx` breaks in tests — Python is already inside `src/`, can't find a folder named `src` there
+- All branches must use `from bronze.xxx import` when `pythonpath = ["src"]` is set
+- When reviewing a team PR: verify test import style is consistent with the project's `pythonpath` setting, especially when two branches both touch `pyproject.toml`
+
 ## [dbt] · Rule · Surrogate keys on bank transactions need `date_val` + `row_number` tiebreaker
 > 2026-03-24 · source: finances-ezerpin
 - `generate_surrogate_key(['date_op', 'label', 'amount', 'account'])` produces collisions when: (1) same `date_op` but different `date_val` (SNCF pattern), (2) genuine duplicate transactions same day (LEA GIRAUD -168€ ×2)
