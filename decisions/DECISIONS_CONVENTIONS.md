@@ -133,6 +133,12 @@
 - **Date**: 2026-04-01
 - **Status**: active
 
+## [conventions] CONTEXT.md = reality snapshot — fixed section structure
+- **Decision**: every project's CONTEXT.md answers one question: "what does this system look like right now?" Fixed sections: Purpose (1 sentence) · Architecture (components + deploy status: ✅/🔵/⚫) · Functionalities (what works end-to-end ✅ / partial 🔵 / not built ⚫) · Entry Points (commands, URLs, webhooks, cron) · Data (what exists, where — omit if not data-heavy) · Known Gaps (2–3 bullets delta vs DESIGN.md). Goals → DESIGN.md · Decisions → DECISIONS.md · Next actions → TODOS.md. Updated at every `/end-of-session`. Template: `~/.claude/templates/CONTEXT.template.md`
+- **Rationale**: CONTEXT.md had become a catch-all mixing goals, design, stack decisions, and state — making it unreliable for answering "what's live right now." Strict section contract forces separation of concerns; Architecture (structural) and Functionalities (behavioral) are distinct axes that together answer the "what's built" question without ambiguity.
+- **Date**: 2026-04-01
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
