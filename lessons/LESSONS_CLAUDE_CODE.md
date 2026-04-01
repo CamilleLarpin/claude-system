@@ -86,6 +86,12 @@
 - Creating a reference doc does NOT change Claude behavior; the file is never read unless explicitly retrieved via Read tool or referenced from a loaded file
 - If the intent is for Claude to follow a pattern by default: add a directive to CLAUDE.md (always-loaded); use ~/.claude/references/ only for look-up docs the user or Claude retrieves on demand
 
+## [claude-code] · Rule · Load tier declaration must be self-referential
+> 2026-04-01 · source: ~/.claude/ setup session
+- A directive like "check load tier before adding" in CLAUDE.md cannot govern CLAUDE.md itself unless CLAUDE.md declares its own tier
+- Without a self-declared tier, the rule is unenforceable on the file that carries it — content creep goes unchecked
+- Every file including CLAUDE.md should have an explicit `> Load tier: [hot/warm/cold]` header; for CLAUDE.md: hot = only what is needed on every session goes here
+
 ## [claude-code] · Rule · /schedule creates remote agents — incompatible with interactive skills
 > 2026-03-24 · source: ~/.claude/ setup session
 - Remote triggers (CCR) spawn fully isolated cloud sessions — no user present, no back-and-forth possible; attempting to run an interactive skill produces a headless monologue with no value
