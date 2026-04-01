@@ -71,3 +71,9 @@
 - **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this
 - **Date**: 2026-03-17
 - **Status**: active
+
+## [data-pipeline] Three-guard pattern for fuzzy matching on free-text titles
+- **Decision**: when fuzzy-matching entity names against free-text, apply three guards in sequence: (1) `clean_title()` — strip source attribution suffix (`- source.tld`), (2) blocklist — skip generic names that are common words, (3) `valid_match()` — post-match word-boundary regex validation
+- **Rationale**: fuzzy scoring alone allows three distinct false positive patterns — substring in longer word, generic name coincidence, URL domain suffix. Each guard targets one pattern. Validated: 0 false positives on 20 live Google News entries.
+- **Date**: 2026-04-01
+- **Status**: active

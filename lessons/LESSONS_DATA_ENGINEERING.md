@@ -92,6 +92,15 @@
 - `fuzz.ratio` also fails for short names: length mismatch between query and name causes low scores even on exact hits
 - Threshold: `len(name) <= 6` as cutoff — adjust per domain
 
+## [data-engineering] · Rule · Fuzzy match on free-text titles — three false positive guards required
+> 2026-04-01 · source: pea-pme-pulse
+- When fuzzy-matching company names against news article titles, three distinct patterns cause false positives:
+  1. **Substring in long word**: short name appears inside a common word (e.g. "NEURONES" in "Euronext") — fix: word-boundary regex post-match
+  2. **Generic name**: company name is a common word ("OPTION", "CAPITAL") — fix: blocklist checked before fuzzy scoring
+  3. **Source attribution suffix**: Google News appends `- source.com` to titles — fix: strip trailing `- word.tld` before matching
+- Apply in sequence: `clean_title()` → blocklist check → fuzzy score → word boundary validation
+- Validated: reduces false positives from 3/10 to 0/20 on Google News FR financial feeds
+
 ## [dbt] · Rule · Surrogate keys on bank transactions need `date_val` + `row_number` tiebreaker
 > 2026-03-24 · source: finances-ezerpin
 - `generate_surrogate_key(['date_op', 'label', 'amount', 'account'])` produces collisions when: (1) same `date_op` but different `date_val` (SNCF pattern), (2) genuine duplicate transactions same day (LEA GIRAUD -168€ ×2)
