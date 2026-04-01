@@ -1,37 +1,27 @@
-# Context — [PROJECT NAME]
+# Context — [project-name]
 
-> CONTAINS: current state, architecture overview, file structure, key dependencies.
-> NOT HERE: decisions with rationale (→ DECISIONS.md), todos (→ TODOS.md), solution design (→ DESIGN.md).
-> Update this file when architecture changes or a milestone completes.
-> Load tier: warm
+> Load at session start · One job: what does this system look like *right now*?
+> Updated at every `/end-of-session`
+> NOT HERE: goals (→ DESIGN.md) · decisions (→ DECISIONS.md) · next actions (→ TODOS.md)
 
 ---
 
-## Current State
-**As of**: [YYYY-MM-DD]
-[2-3 sentences: where the project stands right now, what is working, what is not]
+## Purpose
+[1 sentence — user-facing outcome]
 
 ## Architecture
-[Diagram or description of how components connect. Be specific about data flow.]
+[components + status: ✅ live · 🔵 built/not deployed · ⚫ not built]
+[how they connect — structural, not aspirational]
 
-```
-[e.g. Webhook → n8n → Claude API → GitHub → response]
-```
+## Functionalities
+[what a user/operator can do today]
+[✅ works end-to-end · 🔵 partial · ⚫ not built]
 
-## File Structure
-```
-[project-slug]/
-  .claude/          # context files
-  [src or main folder]/
-  [other key folders]
-```
+## Entry Points
+[how to trigger/run: commands, URLs, webhooks, cron]
 
-## Key Dependencies
-| Dependency | Version/URL | Purpose |
-|---|---|---|
-| [e.g. n8n] | [self-hosted] | [orchestration] |
+## Data
+[what exists, where, in what state — omit if not data-heavy]
 
-## Environment
-- **Dev**: [how to run locally]
-- **Prod**: [where it runs]
-- **Credentials**: [pointer only — e.g. "n8n credentials: OpenAI_Prod"]
+## Known Gaps
+[delta vs DESIGN.md — 2–3 bullets max; link to DESIGN for detail]

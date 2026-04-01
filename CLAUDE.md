@@ -1,5 +1,7 @@
 # Global Claude Context — Camille Larpin
 
+> Load tier: hot — auto-loaded every session · add only what is needed in every session · everything else belongs in a warm/cold file
+
 ## Who I Am
 Solo developer, Mac. All code and docs in English. User-facing UI copy: language defined per project.
 
@@ -26,7 +28,7 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - Transparency: when applying a principle to a decision, name it explicitly.
 
 ## Global Knowledge — load on demand (read file when trigger applies, do not auto-load)
-- `@~/.claude/CONTEXT_GLOBAL.md` — what is true now: stack, architecture, philosophy · load when: planning · deciding · starting new work
+- `@~/.claude/CONTEXT_GLOBAL.md` — what is true now: stack, live services, architecture, philosophy · load when: planning · deciding · starting new work
 - `~/.claude/DECISIONS_GLOBAL.md` — cross-project decisions index · load when: starting a build · touching server/infra · backlog or project-setup work · architectural decision
 - `~/.claude/LESSONS_GLOBAL.md` — lessons index · load alongside project LESSONS.md + only relevant category files · load when: debugging or starting a build 
 - `~/.claude/projects-tracking/PROJECT_TRACKER.md` (alias: **project-tracker**) — project registry · load when: active project status · cross-project dependency

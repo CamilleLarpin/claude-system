@@ -6,7 +6,9 @@ description: Run post-milestone checks — update docs, promote lessons, flag co
 
 Work through each step in order. Perform the action, don't just list it.
 
-**1. Update project `.claude/` files** — reflect work done this session in `DECISIONS.md`, `LESSONS.md`, `DESIGN.md`, `TODOS.md`.
+**1. Update project `.claude/` files** — reflect work done this session:
+- `CONTEXT.md` — update Architecture, Functionalities, Entry Points, Data, Known Gaps to match current reality; do not add goals or plans
+- `DECISIONS.md`, `LESSONS.md`, `DESIGN.md`, `TODOS.md` — as usual
 
 **2. Promote lessons** — if any lesson applies beyond this project, add it to the correct `~/.claude/lessons/LESSONS_*.md` and output: `PROMOTE: LESSONS_GLOBAL.md — [reason]`
 
@@ -27,7 +29,7 @@ Work through each step in order. Perform the action, don't just list it.
 - `~/.claude/projects-tracking/PROJECT_TRACKER.md`: 200 lines → move done projects to Archive section
 - `~/.claude/projects-tracking/BACKLOG.md`: 200 lines → remove completed tasks, archive done projects
 
-**6. Global context** — if philosophy, stack, or architecture changed, update `~/.claude/CONTEXT_GLOBAL.md`.
+**6. Global context** — if philosophy, stack, live services, or cross-project architecture changed, update `~/.claude/CONTEXT_GLOBAL.md` (Technical Stack · Live Services · Architecture Principles as relevant).
 
 **7. PROJECT_TRACKER.md** — for the project(s) worked on this session, update Status, Milestone, Next, Blocker if changed in `~/.claude/projects-tracking/PROJECT_TRACKER.md`; update Load tier on any `.claude/` file header if changed.
 
