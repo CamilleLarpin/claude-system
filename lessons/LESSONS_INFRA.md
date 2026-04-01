@@ -140,6 +140,15 @@
 
 ---
 
+## [github] · Rule · Fine-grained PAT scoped to specific repos → 404 on unlisted private repos
+> 2026-04-01 · source: Ghost n8n debug session
+- GitHub returns 404 (not 403) for private repos not in the PAT's allowed list — designed to avoid leaking repo existence
+- A PAT configured for "selected repos" silently excludes any new repos you create later
+- If a service (e.g. n8n workflow) needs to read/write across multiple private repos: scope the PAT to "All repositories" or explicitly add each new repo when created
+- Diagnosis: 404 from `GET /repos/{owner}/{repo}/contents/...` with a valid PAT = repo not in PAT scope (or doesn't exist)
+
+---
+
 ## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
 > 2026-03-31 · source: gmail-inbox-cleanup phase 1
 - Gmail API `q="after:{unix_seconds}"` treats the timestamp as a date boundary — all emails from the current calendar date are returned regardless of exact time
