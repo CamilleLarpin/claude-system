@@ -16,7 +16,8 @@
 ## Technical Stack
 - **Automation**: self-hosted n8n — https://n8n.helmcome.com
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), Anthropic/OpenAI/Groq APIs where needed
-- **Data**: DuckDB (CRM on Hetzner — `crm_data` Docker volume → `/opt/crm/crm.db` inside container · queried via CRM FastAPI) · DuckDB (finances-ezerpin, local) · dbt (finances-ezerpin, local) · MariaDB (Nextcloud on Hetzner)
+- **Data**: DuckDB (CRM on Hetzner — `crm_data` Docker volume → `/opt/crm/crm.db` inside container · queried via CRM FastAPI) · DuckDB (finances-ezerpin, local) · dbt Core (finances-ezerpin local · pea-pme-pulse GCP) · BigQuery + GCS (pea-pme-pulse team project) · MariaDB (Nextcloud on Hetzner)
+- **Logging** (Python pipelines): `loguru` — standard across all `src/` pipeline modules; no `print()` in pipeline code
 - **Storage**: file-based (JSON/MD); **Git is the source of truth** including for all project and task management (`~/.claude/projects-tracking/`, project `TODOS.md`)
 - **Infra**: Hetzner server `n8n-server` (138.199.205.72), Docker 29.1.5 — independent stacks:
   - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
@@ -30,6 +31,18 @@
 - **Shared infrastructure across projects**:
   - n8n instance: https://n8n.helmcome.com — used by all automation projects · shared error alerting: [Alert] Error Notifier workflow (n8n ID: S3JtzMtNJlNl4SOQ)
   - Nextcloud (cloud.helmcome.com): shared document storage — `family-content-manager` (photo filing) + `gmail-inbox-cleanup` Phase 2 (email document routing)
+
+## Live Services
+Cross-project shared capabilities — updated at `/end-of-session` when anything changes.
+
+| Service | URL / endpoint | Status | Used by |
+|---|---|---|---|
+| n8n | https://n8n.helmcome.com | ✅ live | all automation projects |
+| Nextcloud | https://cloud.helmcome.com | ✅ live | family-content-manager · gmail-inbox-cleanup (Ph2) |
+| CRM FastAPI | port 8001 (nginx → crm-api) | ✅ live | ai-networking-system |
+| Audio Intelligence API | port 8000 (nginx → audio-api) | ✅ live | audio-intelligence-pipeline |
+| MLflow | port 5000 (nginx → mlflow) | ✅ live | experimental |
+| Error Alerting (n8n) | workflow ID: S3JtzMtNJlNl4SOQ | ✅ live | all n8n workflows |
 
 ## Experimental Stack
 - **OpenClaw**: open-source AI assistant running locally, automating tasks through messaging apps
