@@ -72,6 +72,12 @@
 - **Date**: 2026-03-17
 - **Status**: active
 
+## [data-pipeline] Extract shared matching/scoring logic into a single module when multiple sources use the same pattern
+- **Decision**: when ≥2 pipeline sources share the same matching or scoring logic, extract it into a dedicated module (e.g. `fuzzy_match.py`) rather than duplicating per-source; each source imports and calls the shared function
+- **Rationale**: logic diverges silently across sources when duplicated — one source gets a guard fix, others don't; tests need to be written once not per-source; new sources just import the module
+- **Date**: 2026-04-01
+- **Status**: active
+
 ## [data-pipeline] Three-guard pattern for fuzzy matching on free-text titles
 - **Decision**: when fuzzy-matching entity names against free-text, apply three guards in sequence: (1) `clean_title()` — strip source attribution suffix (`- source.tld`), (2) blocklist — skip generic names that are common words, (3) `valid_match()` — post-match word-boundary regex validation
 - **Rationale**: fuzzy scoring alone allows three distinct false positive patterns — substring in longer word, generic name coincidence, URL domain suffix. Each guard targets one pattern. Validated: 0 false positives on 20 live Google News entries.
