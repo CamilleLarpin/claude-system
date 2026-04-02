@@ -70,8 +70,9 @@
 - **Date**: 2026-03-13
 - **Status**: active
 
-## [orchestration] Prefect Cloud + Docker worker on GCP e2-small for Bronze pipelines
-- **Decision**: Prefect 3 + Prefect Cloud (free tier) as orchestrator · Docker worker on GCP e2-small · 1 flow per source · `prefect deploy --all` from repo
-- **Rationale**: team project — Prefect Cloud gives shared UI for all team members to monitor runs. Docker on e2-small = reproducible environment, no dependency drift. 1 flow per source = each dev owns their deployment independently.
+## [orchestration] Prefect Cloud + Prefect Managed work pool for Bronze pipelines
+- **Decision**: Prefect 3 + Prefect Cloud free tier · work pool type `prefect:managed` (Prefect hosts the runner) · 1 flow per source · `prefect deploy --all` from repo
+- **Rationale**: free tier doesn't support hybrid/Docker work pools — `prefect:managed` avoids managing a VM worker entirely. Prefect Cloud = shared UI for team. 1 flow per source = each dev owns their deployment independently.
+- **Credentials**: GCP SA key stored as Prefect Secret → `GOOGLE_APPLICATION_CREDENTIALS_JSON` env var in `job_variables` → written to tempfile at flow module load (pull steps and flow run are separate processes)
 - **Date**: 2026-04-02
-- **Status**: active — local test validated · GCP deploy pending
+- **Status**: active — ✅ validated end-to-end (GCS + BQ) 2026-04-02
