@@ -69,3 +69,9 @@
 - **Rationale**: per-project PATs create maintenance overhead; blast radius difference is negligible on a single-tenant server — a server compromise already exposes all repos; one token = one rotation reminder
 - **Date**: 2026-03-13
 - **Status**: active
+
+## [orchestration] Prefect Cloud + Docker worker on GCP e2-small for Bronze pipelines
+- **Decision**: Prefect 3 + Prefect Cloud (free tier) as orchestrator · Docker worker on GCP e2-small · 1 flow per source · `prefect deploy --all` from repo
+- **Rationale**: team project — Prefect Cloud gives shared UI for all team members to monitor runs. Docker on e2-small = reproducible environment, no dependency drift. 1 flow per source = each dev owns their deployment independently.
+- **Date**: 2026-04-02
+- **Status**: active — local test validated · GCP deploy pending
