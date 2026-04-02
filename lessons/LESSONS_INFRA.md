@@ -106,21 +106,9 @@
 > 2026-03-31 · source: finances-ezerpin
 - Pasting multi-line commands into an SSH terminal is unreliable: line breaks are interpreted as command separators, leading lines are stripped, and heredocs fail if indented
 - Reliable pattern: write the script locally, scp it, execute remotely
-  ```
-  scp /tmp/script.sh server:/tmp/script.sh && ssh server bash /tmp/script.sh
-  ```
+  `scp /tmp/script.sh server:/tmp/script.sh && ssh server bash /tmp/script.sh`
 - Or pipe directly without creating a file on the server: `ssh server 'bash -s' < local_script.sh`
 - Always add `cd /path/to/project` as first line of any server script — `ssh server bash script.sh` runs from `$HOME`, not the project dir
-
----
-
-## infra · Rule · Run multi-command server scripts via scp + ssh, not interactive paste
-> 2026-03-31 · source: finances-ezerpin
-- Pasting multi-line commands into an SSH terminal is unreliable: line breaks are interpreted as command separators, leading spaces break heredocs, and complex commands get split
-- Reliable pattern: write the script locally, scp it, execute remotely
-  `scp /tmp/script.sh server:/tmp/script.sh && ssh server bash /tmp/script.sh`
-- Or pipe directly: `ssh server 'bash -s' < local_script.sh`
-- Always add `cd /path/to/project` as first line — `ssh server bash script.sh` runs from `$HOME`
 
 ---
 

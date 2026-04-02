@@ -125,3 +125,19 @@
 - `sys.path.insert()` in the parent flow file has no effect in Prefect subflow subprocess context
 - Fix: `pip install -e .` with `[tool.setuptools.packages.find] where = ["src"]` in pyproject.toml
 - Checklist: (1) `__init__.py` in `src/<package>/`? (2) `packages.find where = ["src"]` in pyproject.toml? (3) reinstalled after changes?
+
+## [git] · Rule · Rebase team PR branches before merging — resolves conflicts one commit at a time
+> 2026-04-02 · source: pea-pme-pulse
+- When multiple branches diverge from main, each branch accumulates conflicts with main as other PRs merge
+- Resolving with a merge commit buries conflicts in a single messy commit — hard to review and audit
+- Fix: `git fetch origin main && git rebase origin/main` — replays each commit individually, surfaces conflicts per-commit, produces clean linear history
+- In rebase conflict: `--ours` = main (the branch you're rebasing onto), `--theirs` = the commit being replayed
+- For files that already exist in their final state on main (via earlier merged PRs), accept `--ours`; for changes unique to your branch, resolve manually or accept `--theirs`
+- After rebase: `git push --force-with-lease` (safer than `--force` — fails if remote was updated since your last fetch)
+
+## [docker] · Rule · Validate Docker image end-to-end locally before declaring a PR ready
+> 2026-04-02 · source: pea-pme-pulse
+- `docker build` passing proves the image builds — it does NOT prove the application runs inside it
+- Full validation: `docker run --env-file .env -v /path/to/gcp_creds.json:/tmp/gcp_adc.json:ro <image> python src/flows/<flow>.py`
+- Common failure mode: credentials masked by `prefect config view` (outputs `'********'`) — read API key directly from `~/.prefect/profiles.toml`
+- `.env` must be gitignored; `GOOGLE_CLOUD_PROJECT` must be set explicitly or GCP SDK emits a warning and some APIs fail silently
