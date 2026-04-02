@@ -113,3 +113,15 @@
 - Fix: add `date_val` to the key (resolves case 1) + `row_number() OVER (PARTITION BY date_op, date_val, label, amount, account ORDER BY _loaded_at)` cast as varchar (resolves case 2)
 - Key change orphans all downstream predictions — budget for a full re-run of any LLM pipeline that joins on transaction_id; `labeled_corrections` few-shot survives intact
 - Add `date_val` + tiebreaker from the start on any bank transaction surrogate key
+
+## [prefect] · Rule · Keep source modules Prefect-free — task wrappers in flow file only
+> 2026-04-02 · source: pea-pme-pulse
+- Adding `@task` to functions in source modules creates a Prefect dependency — breaks unit tests and couples business logic to the orchestrator
+- Fix: write thin `@task` wrappers in `src/flows/` that call source module functions; source modules stay pure Python
+- Benefit: source modules independently testable; swapping orchestrators only requires changes in `src/flows/`
+
+## [prefect] · Rule · `pip install -e .` required for Prefect subflow context — sys.path hack won't work
+> 2026-04-02 · source: pea-pme-pulse
+- `sys.path.insert()` in the parent flow file has no effect in Prefect subflow subprocess context
+- Fix: `pip install -e .` with `[tool.setuptools.packages.find] where = ["src"]` in pyproject.toml
+- Checklist: (1) `__init__.py` in `src/<package>/`? (2) `packages.find where = ["src"]` in pyproject.toml? (3) reinstalled after changes?

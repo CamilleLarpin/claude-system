@@ -148,3 +148,9 @@
 - Abstract dependency maps between projects obscure what to build first and what value each step delivers
 - Start from concrete scenarios: actor, trigger, input, expected output — then derive build sequence from value delivered per step
 - Pattern: "Meeting Note Taker depends on audio-intelligence-pipeline" hid that UC-B (in-person capture) only needed Telegram + existing FastAPI + CRM deploy — no new pipeline work required
+
+## [pytest] · Rule · `tests/<pkg>/__init__.py` shadows `src/<pkg>/` — delete it
+> 2026-04-02 · source: pea-pme-pulse
+- When `tests/bronze/__init__.py` exists, pytest resolves `from bronze.x import` to `tests/bronze/` (not `src/bronze/`) → ModuleNotFoundError
+- Fix: delete `__init__.py` from test subdirectories when using `pythonpath = ["src"]` in pyproject.toml
+- Rule: test directories should not have `__init__.py` with a `src/` layout
