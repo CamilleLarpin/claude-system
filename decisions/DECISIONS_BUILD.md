@@ -90,6 +90,19 @@
 - **Date**: 2026-04-02
 - **Status**: active
 
+## [data-pipeline] dbt incremental merge on surrogate key for append-only sources
+- **Decision**: for RSS/event sources that append rows, use `materialized='incremental'` + `unique_key='row_id'` + `incremental_strategy='merge'` + `fetched_at` watermark filter; surrogate key = `md5(lower(natural_key_1) || '|' || natural_key_2)`
+- **Rationale**: full rebuild scans all source data each run — cost grows linearly with Bronze table size. Incremental processes only new rows. Surrogate key is stable across sources and preserves dedup semantics. Still need `QUALIFY` dedup within the incoming batch (two sources may return the same row in the same run).
+- **Test**: run `dbt run` with no new data → must produce `MERGE (0.0 rows)` to confirm watermark works
+- **Date**: 2026-04-02
+- **Status**: active
+
+## [data-pipeline] Prefect orchestrator: parent flow → subflows → dbt task
+- **Decision**: one orchestrator flow calls upstream flows as sequential subflows, then runs dbt as a `@task` via subprocess; downstream layer only runs if all upstream flows succeed
+- **Rationale**: subflow call propagates failure automatically — no explicit error checking needed. subprocess dbt = no `prefect-dbt` dependency; runtime `profiles.yml` in `tempfile.TemporaryDirectory` handles managed infra vs local dev (env var check).
+- **Date**: 2026-04-02
+- **Status**: active
+
 ## [data-pipeline] dbt Silver/Gold layer separation — clean vs enrich
 - **Decision**: Bronze→Silver = cleaning only (dedup, type cast, timestamp parse, union) · Silver→Gold = all enrichment and scoring (aggregations, LLM outputs, normalized scores) · no business logic in Silver
 - **Rationale**: Silver models that contain scoring logic become hard to reuse and test independently; the separation makes each layer's responsibility unambiguous for team members building their own models.
