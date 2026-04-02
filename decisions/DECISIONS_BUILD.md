@@ -83,3 +83,15 @@
 - **Rationale**: fuzzy scoring alone allows three distinct false positive patterns — substring in longer word, generic name coincidence, URL domain suffix. Each guard targets one pattern. Validated: 0 false positives on 20 live Google News entries.
 - **Date**: 2026-04-01
 - **Status**: active
+
+## [data-pipeline] dbt orchestration — CLI + Prefect, no dbt Cloud for team projects
+- **Decision**: open-source dbt CLI for local dev · Prefect triggers `dbt run` in prod after upstream flows succeed · no dbt Cloud
+- **Rationale**: dbt Cloud free tier = 1 seat, incompatible with team use. Prefect already live; conditioning Silver on Bronze success (not a blind cron) is only possible via Prefect. Dev local = SQL runs in BQ directly from laptop, no server needed.
+- **Date**: 2026-04-02
+- **Status**: active
+
+## [data-pipeline] dbt Silver/Gold layer separation — clean vs enrich
+- **Decision**: Bronze→Silver = cleaning only (dedup, type cast, timestamp parse, union) · Silver→Gold = all enrichment and scoring (aggregations, LLM outputs, normalized scores) · no business logic in Silver
+- **Rationale**: Silver models that contain scoring logic become hard to reuse and test independently; the separation makes each layer's responsibility unambiguous for team members building their own models.
+- **Date**: 2026-04-02
+- **Status**: active
