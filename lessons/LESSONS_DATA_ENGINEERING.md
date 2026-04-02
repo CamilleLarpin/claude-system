@@ -107,6 +107,20 @@
 - All branches must use `from bronze.xxx import` when `pythonpath = ["src"]` is set
 - When reviewing a team PR: verify test import style is consistent with the project's `pythonpath` setting, especially when two branches both touch `pyproject.toml`
 
+## [dbt] · Rule · BigQuery PARSE_TIMESTAMP — use %Z for timezone names, %z for numeric offsets
+> 2026-04-02 · source: pea-pme-pulse
+- RFC 2822 strings from RSS feeds end in `GMT` (timezone name), not `+0000` (numeric offset)
+- `%z` silently returns NULL on `GMT` — no error, just missing data
+- Fix: `SAFE.PARSE_TIMESTAMP('%a, %d %b %Y %H:%M:%S %Z', col)` — `%Z` handles `GMT`, `UTC`, named zones
+- `SAFE.` prefix is always correct here: returns NULL on parse failure instead of crashing the query
+
+## [dbt] · Rule · dbt default schema generates double-prefix — override with generate_schema_name macro
+> 2026-04-02 · source: pea-pme-pulse
+- `+schema: silver` in `dbt_project.yml` + `dataset: silver` in `profiles.yml` → BQ creates `silver_silver`
+- Fix: `macros/generate_schema_name.sql` returning `custom_schema_name` directly when set
+- Standard pattern for projects with explicit dataset names (not environment-prefixed)
+- Macro: `{%- if custom_schema_name is none -%}{{ target.schema }}{%- else -%}{{ custom_schema_name | trim }}{%- endif -%}`
+
 ## [dbt] · Rule · Surrogate keys on bank transactions need `date_val` + `row_number` tiebreaker
 > 2026-03-24 · source: finances-ezerpin
 - `generate_surrogate_key(['date_op', 'label', 'amount', 'account'])` produces collisions when: (1) same `date_op` but different `date_val` (SNCF pattern), (2) genuine duplicate transactions same day (LEA GIRAUD -168€ ×2)
