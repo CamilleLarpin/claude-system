@@ -85,6 +85,14 @@
 - All branches must use `from bronze.xxx import` when `pythonpath = ["src"]` is set
 - When reviewing a team PR: verify test import style is consistent with the project's `pythonpath` setting, especially when two branches both touch `pyproject.toml`
 
+## [git] · Rule · Conflict markers committed to a data file cause silent production KeyError
+> 2026-04-03 · source: pea-pme-pulse
+- Merging a PR with unresolved conflict markers in a CSV file breaks all downstream consumers silently — pandas reads `<<<<<<< HEAD` as the header row, so expected columns don't exist → `KeyError` on every run
+- GitHub does not block merging a branch with conflict markers in binary/text data files — it only warns on code files in some contexts
+- Detection: `git show origin/main:<file> | head -3` to check for markers in prod · `grep -n "^<<<<" <file>` locally
+- Fix: hotfix branch → clean file → fast PR → merge; trigger manual flow run to confirm
+- Prevention: CI pre-commit hook grepping `^<<<<<<<` in CSV/JSON files in the repo
+
 ## [git] · Rule · Rebase team PR branches before merging — resolves conflicts one commit at a time
 > 2026-04-02 · source: pea-pme-pulse
 - When multiple branches diverge from main, each branch accumulates conflicts with main as other PRs merge
