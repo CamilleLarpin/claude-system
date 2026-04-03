@@ -54,6 +54,13 @@
 - Surrogate key: `to_hex(md5(concat(lower(title), '|', isin)))` — stable across sources, matches prior dedup semantics
 - Test the NO-OP path: run `dbt run` with no new Bronze data → expect `MERGE (0.0 rows)` in output
 
+## [dbt] · Rule · on_schema_change='fail' blocks runs when a new column is added to an incremental model
+> 2026-04-03 · source: pea-pme-pulse
+- Adding a column to an incremental model SQL while the BQ table was created before that column → dbt raises `Compilation Error: source and target schemas out of sync`
+- `on_schema_change='fail'` is the dbt default — always override with `'append_new_columns'` on incremental models
+- If the new column is the `unique_key` (e.g. `row_id`): NULL values on old rows break merge dedup → run `dbt run --full-refresh --select <model>` once to rebuild cleanly
+- Local full-refresh works with oauth dev profile: `cd dbt && dbt run --full-refresh --select <model>`
+
 ## [dbt] · Rule · Generate dbt service-account profile at runtime — never commit keyfile path
 > 2026-04-02 · source: pea-pme-pulse
 - On managed infra (Prefect, CI), no `gcloud auth` — build `profiles.yml` at task runtime using `GOOGLE_APPLICATION_CREDENTIALS` (tempfile path of SA key JSON)
