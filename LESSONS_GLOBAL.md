@@ -16,7 +16,8 @@
 - `~/.claude/lessons/LESSONS_CLAUDE.md` — skills authoring, Claude behavior, prompting, setup file conventions
 - `~/.claude/lessons/LESSONS_CLAUDE_CODE.md` — Claude Code tool: context management, MCPs, agents, commands, /schedule, CLAUDE.md
 - `~/.claude/lessons/LESSONS_ARCHITECTURE.md` — git, ai-agents, architecture, integrations, infra, bash, shell
-- `~/.claude/lessons/LESSONS_DATA_ENGINEERING.md` — data pipelines, dbt models, DuckDB, bank transaction processing, categorization pipelines
+- `~/.claude/lessons/LESSONS_DATA_ENGINEERING.md` — data pipelines, DuckDB, fuzzy matching, RSS, bank transaction processing
+- `~/.claude/lessons/LESSONS_DBT.md` — dbt models, materialization strategies, BigQuery adapter, surrogate keys, incremental patterns
 - `~/.claude/lessons/LESSONS_LLM.md` — LLM APIs, prompting, model behavior, evaluation (mlflow, Groq, token limits)
 - `~/.claude/lessons/LESSONS_DLT.md` — dlt pipeline behavior, column normalization, schema
 - `~/.claude/lessons/LESSONS_INFRA.md` — server ops, Docker, Terraform, Prefect Managed, cron, SSH, Nextcloud rsync

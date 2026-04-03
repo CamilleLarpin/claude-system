@@ -1,17 +1,8 @@
-# Lessons — data engineering, dbt, DuckDB
+# Lessons — data engineering, DuckDB
 
-> Scope: data pipelines, dbt models, DuckDB, transaction processing, categorization pipelines.
-> Load when: working on finances-ezerpin · data pipeline projects · dbt/DuckDB debugging.
-> General architecture lessons → LESSONS_ARCHITECTURE.md · dlt-specific → LESSONS_DLT.md
-
----
-
-## [dbt] · Rule · `dbt seed` is not included in `dbt run` — must be run separately
-> 2026-03-27 · source: finances-ezerpin
-- `dbt run` executes SQL models only — it does NOT load seeds
-- After adding or modifying a seed file (and deploying to prod), always run `dbt seed --select <seed_name>` explicitly
-- Failure to do so causes downstream models referencing the seed to fail with `Table with name <seed> does not exist`
-- Seeds = stable reference data (categories, budgets, revenues) — intentionally excluded from the monthly cron run; load manually after each schema change
+> Scope: data pipelines, DuckDB, transaction processing, fuzzy matching, RSS, bank data.
+> Load when: working on finances-ezerpin · pea-pme-pulse · any data pipeline project.
+> dbt-specific → LESSONS_DBT.md · dlt-specific → LESSONS_DLT.md · architecture → LESSONS_ARCHITECTURE.md
 
 ---
 
@@ -32,7 +23,7 @@
 > 2026-03-16 · source: finances-ezerpin
 - When raw tables represent data from external systems (banks, APIs, SaaS tools), name them `<system>_<scope>` not `<owner>_<system>` — e.g. `boursorama_joint`, not `joint_boursorama`
 - The primary differentiator at the raw layer is the source system (it determines schema, pipeline, freshness) — ownership is an attribute inside the data, not a table name prefix
-- In a DB explorer, tables sort alphabetically — system-first groups related sources together (`boursorama_joint`, `boursorama_perso`); owner-first scatters them (`camille_boursorama`, `camille_revolut`, `joint_boursorama`)
+- In a DB explorer, tables sort alphabetically — system-first groups related sources together (`boursorama_joint`, `boursorama_perso`); owner-first scatters them
 
 ## [data-engineering] · Rule · French bank amounts use space as thousands separator
 > 2026-03-17 · source: finances-ezerpin
@@ -48,23 +39,10 @@
 - LLM improves via few-shot examples from stored corrections (no retraining); sklearn requires explicit retraining cycle
 - Reassess if volume exceeds ~5k transactions/month (cost becomes non-trivial)
 
-## [data-engineering] · Note · dbt Fusion → dbt Core migration is a binary swap only
-> 2026-03-18 · source: finances-ezerpin
-- dbt Fusion installs as a standalone binary (not pip) — `pip uninstall dbt-fusion` finds nothing; remove with `rm ~/.local/bin/dbt`
-- All SQL models, YAML, tests, seeds, macros are 100% compatible — no file changes needed
-- Fusion's `arguments:` syntax for tests is Fusion-specific; Core 1.x uses standard dbt syntax
-
 ## [duckdb] · Rule · `UPDATE ... RETURNING *` conflicts with primary key in DuckDB
 > 2026-03-19 · source: ai-networking-system
 - `UPDATE table SET x=? WHERE id=? RETURNING *` throws `ConstraintException: Duplicate key ... violates primary key constraint` — DuckDB's RETURNING implementation re-evaluates the PK constraint after update
 - Fix: split into two statements: `UPDATE ... SET ... WHERE id=?` then `SELECT * ... WHERE id=?`
-
-## [dbt] · Rule · Never join externally-written tables inside a dbt incremental model
-> 2026-03-24 · source: finances-ezerpin
-- Incremental models write each row once (at insert time) — a LEFT JOIN on an external table (written by a pipeline, not dbt) produces NULL for that row permanently, even after the external table is updated
-- Pattern that fails: `stg_transactions` (incremental) joins `raw.category_predictions` (written by Python pipeline after staging runs)
-- Fix: move the join to the first non-incremental downstream model (view or table) — it rebuilds fully each run and always sees fresh data
-- Rule: if a table is written by an external process on a different schedule, join it in a non-incremental model
 
 ## [duckdb] · Rule · `strftime` argument order is (format, value) — opposite of SQLite
 > 2026-03-26 · source: finances-ezerpin
@@ -107,46 +85,11 @@
 - All branches must use `from bronze.xxx import` when `pythonpath = ["src"]` is set
 - When reviewing a team PR: verify test import style is consistent with the project's `pythonpath` setting, especially when two branches both touch `pyproject.toml`
 
-## [dbt] · Rule · BigQuery PARSE_TIMESTAMP — use %Z for timezone names, %z for numeric offsets
-> 2026-04-02 · source: pea-pme-pulse
-- RFC 2822 strings from RSS feeds end in `GMT` (timezone name), not `+0000` (numeric offset)
-- `%z` silently returns NULL on `GMT` — no error, just missing data
-- Fix: `SAFE.PARSE_TIMESTAMP('%a, %d %b %Y %H:%M:%S %Z', col)` — `%Z` handles `GMT`, `UTC`, named zones
-- `SAFE.` prefix is always correct here: returns NULL on parse failure instead of crashing the query
-
-## [dbt] · Rule · dbt default schema generates double-prefix — override with generate_schema_name macro
-> 2026-04-02 · source: pea-pme-pulse
-- `+schema: silver` in `dbt_project.yml` + `dataset: silver` in `profiles.yml` → BQ creates `silver_silver`
-- Fix: `macros/generate_schema_name.sql` returning `custom_schema_name` directly when set
-- Standard pattern for projects with explicit dataset names (not environment-prefixed)
-- Macro: `{%- if custom_schema_name is none -%}{{ target.schema }}{%- else -%}{{ custom_schema_name | trim }}{%- endif -%}`
-
-## [dbt] · Rule · Surrogate keys on bank transactions need `date_val` + `row_number` tiebreaker
-> 2026-03-24 · source: finances-ezerpin
-- `generate_surrogate_key(['date_op', 'label', 'amount', 'account'])` produces collisions when: (1) same `date_op` but different `date_val` (SNCF pattern), (2) genuine duplicate transactions same day (LEA GIRAUD -168€ ×2)
-- Fix: add `date_val` to the key (resolves case 1) + `row_number() OVER (PARTITION BY date_op, date_val, label, amount, account ORDER BY _loaded_at)` cast as varchar (resolves case 2)
-- Key change orphans all downstream predictions — budget for a full re-run of any LLM pipeline that joins on transaction_id; `labeled_corrections` few-shot survives intact
-- Add `date_val` + tiebreaker from the start on any bank transaction surrogate key
-
-## [prefect] · Rule · Keep source modules Prefect-free — task wrappers in flow file only
-> 2026-04-02 · source: pea-pme-pulse
-- Adding `@task` to functions in source modules creates a Prefect dependency — breaks unit tests and couples business logic to the orchestrator
-- Fix: write thin `@task` wrappers in `src/flows/` that call source module functions; source modules stay pure Python
-- Benefit: source modules independently testable; swapping orchestrators only requires changes in `src/flows/`
-
-## [prefect] · Rule · `pip install -e .` required for Prefect subflow context — sys.path hack won't work
-> 2026-04-02 · source: pea-pme-pulse
-- `sys.path.insert()` in the parent flow file has no effect in Prefect subflow subprocess context
-- Fix: `pip install -e .` with `[tool.setuptools.packages.find] where = ["src"]` in pyproject.toml
-- Checklist: (1) `__init__.py` in `src/<package>/`? (2) `packages.find where = ["src"]` in pyproject.toml? (3) reinstalled after changes?
-
 ## [git] · Rule · Rebase team PR branches before merging — resolves conflicts one commit at a time
 > 2026-04-02 · source: pea-pme-pulse
 - When multiple branches diverge from main, each branch accumulates conflicts with main as other PRs merge
-- Resolving with a merge commit buries conflicts in a single messy commit — hard to review and audit
 - Fix: `git fetch origin main && git rebase origin/main` — replays each commit individually, surfaces conflicts per-commit, produces clean linear history
-- In rebase conflict: `--ours` = main (the branch you're rebasing onto), `--theirs` = the commit being replayed
-- For files that already exist in their final state on main (via earlier merged PRs), accept `--ours`; for changes unique to your branch, resolve manually or accept `--theirs`
+- In rebase conflict: `--ours` = main (the branch rebasing onto), `--theirs` = the commit being replayed
 - After rebase: `git push --force-with-lease` (safer than `--force` — fails if remote was updated since your last fetch)
 
 ## [docker] · Rule · Validate Docker image end-to-end locally before declaring a PR ready
