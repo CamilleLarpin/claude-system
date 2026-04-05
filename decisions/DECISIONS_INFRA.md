@@ -70,6 +70,12 @@
 - **Date**: 2026-03-13
 - **Status**: active
 
+## [infra] n8n Variables not available on Community plan — use Docker env vars
+- **Decision**: inject secrets into n8n workflows via Docker Compose environment block (`/opt/n8n/docker-compose.yml`); access in workflows via `$env.VAR_NAME`
+- **Rationale**: n8n Variables (`$vars.VAR_NAME`) requires a paid license — throws "Plan lacks license for this feature" on Community plan. Docker env vars are free, already supported by n8n, and live in the same compose file as the n8n service.
+- **Date**: 2026-04-03
+- **Status**: active
+
 ## [orchestration] Prefect Cloud + Prefect Managed work pool for Bronze pipelines
 - **Decision**: Prefect 3 + Prefect Cloud free tier · work pool type `prefect:managed` (Prefect hosts the runner) · 1 flow per source · `prefect deploy --all` from repo
 - **Rationale**: free tier doesn't support hybrid/Docker work pools — `prefect:managed` avoids managing a VM worker entirely. Prefect Cloud = shared UI for team. 1 flow per source = each dev owns their deployment independently.

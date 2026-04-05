@@ -76,6 +76,13 @@ state[userId] = newValue;             // write
 - Downstream Code node pattern: `const raw = $input.first().json.data || ''; let arr = []; try { arr = JSON.parse(raw); if (!Array.isArray(arr)) arr = []; } catch(e) {}`
 - Verify field name (`$json.data`) on first real execution — may differ by n8n version
 
+## [n8n] · Rule · Cron polling window must account for external service timing variability
+> 2026-04-03 · source: ai-networking-system (RandomCoffee Part A)
+- Schedule ran 09:00–10:45; external bot posted at 11:46 — all 8 executions returned `messages: []` with `ok: true`; no error, silent miss
+- Debugging path: compare message URL timestamp (`p<unix_ts>`) against `oldest` param in execution logs — reveals exact timing mismatch
+- Fix: single noon run + 6h lookback covers any posting time while eliminating unnecessary executions
+- Add a no-match alert (Telegram/Slack) on the false branch so misses surface immediately rather than silently
+
 ## [n8n] · Rule · `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
 > 2026-03-04 · source: ghost (Format Response node)
 - `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"
