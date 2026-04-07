@@ -67,3 +67,12 @@
 - Pattern: `with tempfile.TemporaryDirectory() as d: write profiles.yml → dbt run --profiles-dir d --project-dir <dbt/>`
 - Local dev fallback: if `GOOGLE_APPLICATION_CREDENTIALS` not set → omit `--profiles-dir` → dbt uses `~/.dbt/profiles.yml` (oauth)
 - Never commit a `profiles.yml` with `method: service-account` — keyfile path is process-local and ephemeral
+
+## [dbt] · Rule · dbt documentation for LLM agents — single definition, four-file structure
+> 2026-04-07 · source: pea-pme-pulse · inspired by Photoroom/Juliette Duizabo talk
+- Semantic layer YAML is consumed by LLMs — ambiguity causes misinterpretation; write it for machines, not humans
+- Four-file structure with strict single ownership: `definitions.md` (concepts) · `sources.yml` (external sources + column docs) · layer `schema.yml` (model docs + business context) · agent context file (routing keywords + examples only)
+- `definitions.md` = central glossary; all schema files reference via `{{ doc('term') }}` — never define a concept inline
+- Agent context file adds only what schema.yml structurally can't: routing keywords, example questions, SQL patterns — not column descriptions or business context
+- 100% column coverage is non-negotiable — undocumented columns break LLM routing and undermine trust in the semantic layer
+- `sources.yml` owns external table declarations (tables dbt reads but doesn't build); column docs for sources belong here too
