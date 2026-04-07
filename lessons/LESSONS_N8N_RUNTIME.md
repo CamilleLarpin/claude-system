@@ -76,6 +76,12 @@ state[userId] = newValue;             // write
 - Downstream Code node pattern: `const raw = $input.first().json.data || ''; let arr = []; try { arr = JSON.parse(raw); if (!Array.isArray(arr)) arr = []; } catch(e) {}`
 - Verify field name (`$json.data`) on first real execution — may differ by n8n version
 
+## [n8n] · Rule · GENERIC_TIMEZONE must be set and correctly indented in docker-compose.yml
+> 2026-04-07 · source: family-content-manager
+- Schedule trigger fired at wrong hours — n8n defaulted to the Docker container's system timezone (America/New_York) instead of the intended Europe/Paris. `GENERIC_TIMEZONE=Europe/Paris` was in the compose file but mis-indented under another env var, so YAML parsed it as part of that value.
+- Diagnosis: check the `Timezone` field in any Schedule Trigger execution output — it shows the timezone n8n is actually using.
+- Fix: verify `- GENERIC_TIMEZONE=Europe/Paris` is at the same indentation level as all other env vars (6 spaces for typical compose files). Restart n8n after fixing. Any cron expression using hour ranges is silently wrong until this is set.
+
 ## [n8n] · Rule · Cron polling window must account for external service timing variability
 > 2026-04-03 · source: ai-networking-system (RandomCoffee Part A)
 - Schedule ran 09:00–10:45; external bot posted at 11:46 — all 8 executions returned `messages: []` with `ok: true`; no error, silent miss
