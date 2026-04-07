@@ -66,10 +66,10 @@
 - **Date**: 2026-03-31
 - **Status**: active
 
-## [data] Semantic layer YAML written for LLMs, not humans
-- **Decision**: in any project combining dbt + NL interface, treat schema.yml column descriptions as AI documentation — precise, unambiguous, one definition per concept; enforced via a central `definitions.md` glossary; 100% column coverage required before connecting NL layer
-- **Rationale**: NL interfaces consume the semantic layer at query time — vague descriptions cause the LLM to misinterpret queries silently; one concept = one name = one definition eliminates this
-- **Date**: 2026-03-17
+## [data] Semantic layer YAML written for LLMs — four-file structure, single definition rule
+- **Decision**: in any project combining dbt + NL interface, treat YAML as AI documentation. Four-file ownership: `definitions.md` (concepts, referenced via `{{ doc('term') }}`) · `sources.yml` (external table declarations + column docs) · layer `schema.yml` (model docs + business context incl. when-to-use/when-not-to-use) · agent context file (routing keywords + example questions + query patterns only). 100% column coverage required. No concept defined in two places.
+- **Rationale**: NL interfaces consume the semantic layer at query time — ambiguity causes silent misinterpretation. `sources.yml` vs `schema.yml` split follows dbt convention (external vs dbt-built tables). Agent context file adds only what schema.yml structurally can't express (machine-readable routing). Validated in pea-pme-pulse 2026-04-07 (Photoroom pattern).
+- **Date**: 2026-04-07 (refined from 2026-03-17)
 - **Status**: active
 
 ## [data-pipeline] Extract shared matching/scoring logic into a single module when multiple sources use the same pattern
