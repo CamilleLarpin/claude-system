@@ -105,36 +105,19 @@
 
 ---
 
-## [prefect] · Rule · Keep source modules Prefect-free — task wrappers in flow file only
-> 2026-04-02 · source: pea-pme-pulse
-- Adding `@task` to functions in source modules creates a Prefect dependency — breaks unit tests and couples business logic to the orchestrator
-- Fix: write thin `@task` wrappers in `src/flows/` that call source module functions; source modules stay pure Python
-- Benefit: source modules independently testable; swapping orchestrators only requires changes in `src/flows/`
-
-## [prefect] · Rule · `pip install -e .` required for Prefect subflow context — sys.path hack won't work
-> 2026-04-02 · source: pea-pme-pulse
-- `sys.path.insert()` in the parent flow file has no effect in Prefect subflow subprocess context
-- Fix: `pip install -e .` with `[tool.setuptools.packages.find] where = ["src"]` in pyproject.toml
-- Checklist: (1) `__init__.py` in `src/<package>/`? (2) `packages.find where = ["src"]` in pyproject.toml? (3) reinstalled after changes?
-
-## [prefect-managed] · Rule · Pull steps and flow run are separate processes — /tmp/ not shared
-> 2026-04-02 · source: pea-pme-pulse
-- In Prefect Managed work pools, the `pull` step and the flow run in separate processes — files written to `/tmp/` in pull steps are NOT accessible during flow execution
-- Pass credentials/files via `job_variables.env` (env vars persist across the boundary)
-- Pattern for GCP: Prefect Secret → `GOOGLE_APPLICATION_CREDENTIALS_JSON` env var in `job_variables` → write to `tempfile.NamedTemporaryFile` at flow module load time → set `os.environ["GOOGLE_APPLICATION_CREDENTIALS"]`
-
-## [prefect-managed] · Rule · Block placeholder must be the sole value in its YAML field
-> 2026-04-02 · source: pea-pme-pulse
-- `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text
-- Mixing it in a multiline `script:` raises: `ValueError: Only a single block placeholder is allowed in a string`
-- Fix: pass secret as standalone value in `env:` field of `run_shell_script`, use `$MY_SECRET` shell var in the script body
-
 ## [shell] · Rule · `source .env` does not export variables to child processes — use `set -a`
 > 2026-04-07 · source: pea-pme-pulse
 - `source .env` sets variables in the current shell but does NOT export them — child processes (Python, subprocess, etc.) don't inherit them
 - `echo $VAR` prints the value (same shell process) but `python -c "import os; print(os.environ['VAR'])"` raises KeyError
 - Fix: `set -a && source .env && set +a` — `set -a` auto-exports every variable until `set +a`
 - Alternative: `export $(grep -v '^#' .env | xargs)` — breaks on values containing spaces
+
+## [infra] · Rule · Nextcloud behind nginx: config.php overwrite settings required for mobile OAuth
+> 2026-04-07 · source: family-content-manager
+- Nextcloud mobile app login hung indefinitely at the OAuth grant screen — no error shown
+- Nextcloud was running in Docker on HTTP:8080 with nginx terminating HTTPS; without `overwriteprotocol`, Nextcloud generates `http://` redirect URLs — the mobile app rejects or loops on them
+- Fix: three entries in `config.php`: `'overwrite.cli.url' => 'https://your-domain.com'` (was `http://localhost`) · `'overwriteprotocol' => 'https'` · `'overwritehost' => 'your-domain.com'`
+- nginx proxy headers (`X-Forwarded-Proto`, `X-Real-IP`, `X-Forwarded-For`) are necessary but not sufficient on their own
 
 ## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
 > 2026-03-31 · source: gmail-inbox-cleanup phase 1

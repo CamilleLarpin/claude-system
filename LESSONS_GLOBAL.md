@@ -20,7 +20,8 @@
 - `~/.claude/lessons/LESSONS_DBT.md` — dbt models, materialization strategies, BigQuery adapter, surrogate keys, incremental patterns
 - `~/.claude/lessons/LESSONS_LLM.md` — LLM APIs, prompting, model behavior, evaluation (mlflow, Groq, token limits)
 - `~/.claude/lessons/LESSONS_DLT.md` — dlt pipeline behavior, column normalization, schema
-- `~/.claude/lessons/LESSONS_INFRA.md` — server ops, Docker, Terraform, Prefect Managed, cron, SSH, Nextcloud rsync
+- `~/.claude/lessons/LESSONS_INFRA.md` — server ops, Docker, Terraform, cron, SSH, Nextcloud rsync, nginx reverse proxy
+- `~/.claude/lessons/LESSONS_PREFECT.md` — Prefect orchestration: task wrappers, subflow context, Managed work pools, YAML config
 - `~/.claude/lessons/LESSONS_SECURITY.md` — secrets storage, credential handling, PAT scoping, chat exposure
 - `~/.claude/lessons/LESSONS_ML.md` — email classification, TF-IDF features, sklearn training patterns, model deployment
 
