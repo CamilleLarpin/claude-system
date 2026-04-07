@@ -4,6 +4,15 @@
 
 ---
 
+## [groq] · Rule · Don't use response_format=json_object — parse robustly client-side instead
+> 2026-04-07 · source: pea-pme-pulse
+- Groq's `json_validate_failed` rejects its own malformed output before returning it — triggered by non-ASCII chars (French apostrophes) or minor formatting issues in generated text
+- `response_format={"type": "json_object"}` makes it worse: Groq refuses to return anything at all instead of returning something we can sanitize
+- Fix: omit `response_format`, let Groq return free text, sanitize client-side:
+  1. Strip markdown fences: `re.sub(r"```(?:json)?\s*|\s*```", "", raw).strip()`
+  2. Extract first JSON block: `re.search(r"\{.*\}", cleaned, re.DOTALL).group()`
+  3. Then `json.loads()`
+
 ## [llm] · Rule · Groq free tier limits are per-model and separate — 70b exhausts fast
 > 2026-03-12 · source: claude-one-digest
 - `llama-3.3-70b-versatile`: 6000 TPM + 100k TPD — exhausted in one heavy dev session

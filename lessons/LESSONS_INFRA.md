@@ -129,6 +129,13 @@
 - Mixing it in a multiline `script:` raises: `ValueError: Only a single block placeholder is allowed in a string`
 - Fix: pass secret as standalone value in `env:` field of `run_shell_script`, use `$MY_SECRET` shell var in the script body
 
+## [shell] · Rule · `source .env` does not export variables to child processes — use `set -a`
+> 2026-04-07 · source: pea-pme-pulse
+- `source .env` sets variables in the current shell but does NOT export them — child processes (Python, subprocess, etc.) don't inherit them
+- `echo $VAR` prints the value (same shell process) but `python -c "import os; print(os.environ['VAR'])"` raises KeyError
+- Fix: `set -a && source .env && set +a` — `set -a` auto-exports every variable until `set +a`
+- Alternative: `export $(grep -v '^#' .env | xargs)` — breaks on values containing spaces
+
 ## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
 > 2026-03-31 · source: gmail-inbox-cleanup phase 1
 - Gmail API `q="after:{unix_seconds}"` treats the timestamp as a date boundary — all emails from the current calendar date are returned regardless of exact time
