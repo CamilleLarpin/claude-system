@@ -154,3 +154,10 @@
 - When `tests/bronze/__init__.py` exists, pytest resolves `from bronze.x import` to `tests/bronze/` (not `src/bronze/`) → ModuleNotFoundError
 - Fix: delete `__init__.py` from test subdirectories when using `pythonpath = ["src"]` in pyproject.toml
 - Rule: test directories should not have `__init__.py` with a `src/` layout
+
+## [git] · Rule · Same file can conflict multiple times during a rebase — resolve per commit
+> 2026-04-07 · source: pea-pme-pulse
+- If multiple commits in a branch all touch the same file, `git rebase` will pause for each one — the same file can conflict 3+ times in a single rebase
+- Each conflict reflects a different divergence point; the resolution is cumulative — each pass must preserve all prior resolutions plus the new change
+- Pattern: resolve → `git add <file>` → `git rebase --continue` → repeat until "Successfully rebased"
+- Common trap: resolving early conflicts correctly but dropping a block in a later round — always re-read the full file after each resolution before continuing
