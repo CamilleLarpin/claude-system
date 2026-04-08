@@ -68,6 +68,13 @@
 - Local dev fallback: if `GOOGLE_APPLICATION_CREDENTIALS` not set → omit `--profiles-dir` → dbt uses `~/.dbt/profiles.yml` (oauth)
 - Never commit a `profiles.yml` with `method: service-account` — keyfile path is process-local and ephemeral
 
+## [dbt] · Rule · Normalize upstream schema differences in Silver CTEs — not in Bronze source code
+> 2026-04-08 · source: pea-pme-pulse
+- When a Bronze source uses different field names than the Silver data contract (`description` vs `summary`, `ingested_at` vs `fetched_at`), alias in the Silver CTE — don't patch the Bronze source
+- Patching Bronze breaks backward compatibility: existing BQ rows already have the old column names; new rows would use new names → mixed schema
+- Also handle BQ `autodetect=True` type surprises: ISO datetime strings may land as TIMESTAMP, not STRING — test union column type compatibility before assuming homogeneous types
+- Watermark comparisons across mixed types require explicit casts: `cast(ingested_at as string) > (select max(fetched_at) from {{ this }})`
+
 ## [dbt] · Rule · dbt documentation for LLM agents — single definition, four-file structure
 > 2026-04-07 · source: pea-pme-pulse · inspired by Photoroom/Juliette Duizabo talk
 - Semantic layer YAML is consumed by LLMs — ambiguity causes misinterpretation; write it for machines, not humans
