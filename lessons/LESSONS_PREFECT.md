@@ -23,6 +23,28 @@
 - Pass credentials/files via `job_variables.env` (env vars persist across the boundary)
 - Pattern for GCP: Prefect Secret → `GOOGLE_APPLICATION_CREDENTIALS_JSON` env var in `job_variables` → write to `tempfile.NamedTemporaryFile` at flow module load time → set `os.environ["GOOGLE_APPLICATION_CREDENTIALS"]`
 
+## [prefect] · Rule · Self-hosted Prefect: stale job_variables persist in SQLite DB after deploy
+> 2026-04-08 · source: pea-pme-pulse
+- `prefect deploy --all` does NOT clear existing `job_variables` from the DB — it merges/updates only fields present in the new config
+- Removing a key from `prefect.yaml` does NOT remove it from the deployed config in the DB
+- Fix: PATCH the API: `requests.patch('http://<host>/api/deployments/filter', ...)` to get IDs then PATCH each with `{'job_variables': {}}`
+- Or nuclear reset: `docker compose down -v && docker compose up -d` (wipes SQLite DB) → redeploy
+- Always verify with `prefect deployment inspect '<name>'` after deploy to confirm job_variables are clean
+
+## [prefect] · Rule · Prefect Secret blocks store Python dict repr when migrating from Cloud — always use json.dumps()
+> 2026-04-08 · source: pea-pme-pulse
+- `Secret.load('key').get()` on Prefect Cloud returns a Python dict if the secret was originally stored as JSON — not a JSON string
+- Saving that dict to a self-hosted server via `Secret(value=val).save()` stores Python repr (`{'key': 'val'}` with single quotes) — not valid JSON
+- Fix: `json.dumps(val) if isinstance(val, dict) else val` before saving to ensure valid JSON string
+- Verify the stored value: `repr(b.get()[:100])` — look for `{"` (valid) vs `{'` (broken)
+
+## [gcp] · Rule · Attach SA to GCP VM for ADC — eliminates JSON key management entirely
+> 2026-04-08 · source: pea-pme-pulse
+- Instead of passing GCP SA JSON via env var/secret, attach the SA to the VM: `gcloud compute instances set-service-account <vm> --service-account=<sa> --scopes=cloud-platform`
+- VM must be stopped first: `gcloud compute instances stop <vm>`; then restart; ADC works automatically in all subprocesses
+- dbt: use `method: oauth` in profiles.yml (not `service-account`) — no keyfile line needed
+- Eliminates the entire "JSON key → Secret block → env var → tempfile" chain
+
 ## [prefect-managed] · Rule · Block placeholder must be the sole value in its YAML field
 > 2026-04-02 · source: pea-pme-pulse
 - `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text

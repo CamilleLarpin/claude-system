@@ -76,9 +76,10 @@
 - **Date**: 2026-04-03
 - **Status**: active
 
-## [orchestration] Prefect Cloud + Prefect Managed work pool for Bronze pipelines
-- **Decision**: Prefect 3 + Prefect Cloud free tier · work pool type `prefect:managed` (Prefect hosts the runner) · 1 flow per source · `prefect deploy --all` from repo
-- **Rationale**: free tier doesn't support hybrid/Docker work pools — `prefect:managed` avoids managing a VM worker entirely. Prefect Cloud = shared UI for team. 1 flow per source = each dev owns their deployment independently.
-- **Credentials**: GCP SA key stored as Prefect Secret → `GOOGLE_APPLICATION_CREDENTIALS_JSON` env var in `job_variables` → written to tempfile at flow module load (pull steps and flow run are separate processes)
-- **Date**: 2026-04-02
-- **Status**: active — ✅ validated end-to-end (GCS + BQ) 2026-04-02
+## [orchestration] Self-hosted Prefect Server on GCP VM for team projects with >5 flows
+- **Decision**: Prefect 3 self-hosted · Docker Compose (prefect-server + prefect-worker + nginx) · Process work pool · GCP VM with SA attached for ADC · nginx basic auth on port 80
+- **Rationale**: Prefect Cloud free tier = 5 deployment hard limit; team projects exceed this quickly. Self-hosted removes limit, same CLI/API/prefect.yaml. GCP VM chosen for shared team projects (easy shutdown); personal projects → Hetzner (same docker-compose, swap IP).
+- **GCP auth pattern**: attach SA to VM → ADC handles auth in all subprocesses; no JSON key, no secret block, no env var chain. dbt uses `method: oauth` profile.
+- **Static IP**: always reserve a static IP before assigning to VM — ephemeral IPs change on restart
+- **Date**: 2026-04-08
+- **Status**: active — ✅ validated on pea-pme-pulse
