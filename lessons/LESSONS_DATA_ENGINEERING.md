@@ -93,6 +93,13 @@
 - Fix: hotfix branch → clean file → fast PR → merge; trigger manual flow run to confirm
 - Prevention: CI pre-commit hook grepping `^<<<<<<<` in CSV/JSON files in the repo
 
+## [bigquery] · Rule · Verify BQ column type per-table before applying a type-cast fix
+> 2026-04-08 · source: pea-pme-pulse
+- Applied the same `match_score.astype(str)` fix to two Bronze tables — correct for `yahoo_rss` (STRING column) but caused `ArrowInvalid` on `google_news_rss` (FLOAT column)
+- Tables in the same dataset and pipeline can have divergent schemas — never assume same column type across tables
+- Diagnosis command: `bq show --schema <project>:<dataset>.<table>` · filter with `jq` or python
+- Fix: cast to whatever type the BQ column actually declares, not a uniform type across tables
+
 ## [git] · Rule · Rebase team PR branches before merging — resolves conflicts one commit at a time
 > 2026-04-02 · source: pea-pme-pulse
 - When multiple branches diverge from main, each branch accumulates conflicts with main as other PRs merge
