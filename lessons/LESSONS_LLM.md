@@ -132,6 +132,12 @@
 - Even for merchant-specific corrections, few-shot fails if: (1) selection window doesn't include that example (10 from 170 batch = arbitrary), AND (2) the model has a strong prior (e.g. "Lovys" → Kids, "AREA NFC" → Restaurants)
 - For merchants with counter-intuitive categories, the only robust fix is an explicit merchant rule in the system prompt — few-shot cannot override a strong LLM prior reliably
 
+## [llm-pipeline] · Rule · Never use LLM-suggested filename extension for the filed path — preserve original
+> 2026-04-08 · source: family-content-manager
+- Paper Processor used Claude's `suggested_filename` (always `.pdf`) as the MOVE destination for any file type. JPG phone scans were stored as JPEG data with a `.pdf` extension — they appeared as 0-page blank PDFs. 15 files affected in one batch.
+- LLMs suggest names for humans to read, not for filesystems — they have no awareness of the source file's binary format
+- Always extract the original file's extension from the source path and substitute it into the destination path; log the LLM suggestion separately. Pattern: `origExt = sourceName.split('.')[-1].lower(); filedName = suggestedBase + '.' + origExt`
+
 ---
 
 ## [mlflow] · Rule · mlflow.evaluate() + make_metric is the old ML API — use mlflow.genai for LLM evaluation
