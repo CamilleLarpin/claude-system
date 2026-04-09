@@ -45,6 +45,13 @@
 - dbt: use `method: oauth` in profiles.yml (not `service-account`) — no keyfile line needed
 - Eliminates the entire "JSON key → Secret block → env var → tempfile" chain
 
+## [prefect+gcp] · Rule · Before rotating GCP SA keys, audit all Prefect Secret blocks referencing them
+> 2026-04-09 · source: pea-pme-pulse
+- Revoking a SA key breaks any deployment still using `GOOGLE_APPLICATION_CREDENTIALS_JSON` via a Secret block — fails at runtime, not at deploy time; no warning
+- `prefect deploy --all` does NOT validate that Secret block values are still valid credentials
+- Audit before rotating: `grep -r "gcp-sa-key\|CREDENTIALS_JSON" prefect.yaml` — any hit = update that flow to ADC (`method: oauth`) before revoking
+- After migration to VM ADC, flows written pre-migration must be manually updated — they don't inherit ADC automatically
+
 ## [prefect-managed] · Rule · Block placeholder must be the sole value in its YAML field
 > 2026-04-02 · source: pea-pme-pulse
 - `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text
