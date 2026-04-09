@@ -76,6 +76,13 @@
 - **Date**: 2026-04-03
 - **Status**: active
 
+## [infra] Separate Docker Compose file per independent service on shared VM
+- **Decision**: each logically independent service gets its own `docker-compose.<service>.yml` on a shared VM; only shared services (nginx, DB) go in the main `docker-compose.yml`
+- **Rationale**: single compose file creates tight lifecycle coupling — restarting one service requires `down/up` of all others, risking disruption to production services; separate files allow independent `up/down/build` per service with zero blast radius on neighbors
+- **Pattern**: `~/prefect/docker-compose.yml` (Prefect + nginx) · `~/nao/docker-compose.nao.yml` (nao only) — each in its own directory with its own config files
+- **Date**: 2026-04-09
+- **Status**: active — validated on pea-pme-pulse (nao + Prefect on same GCP VM)
+
 ## [orchestration] Self-hosted Prefect Server on GCP VM for team projects with >5 flows
 - **Decision**: Prefect 3 self-hosted · Docker Compose (prefect-server + prefect-worker + nginx) · Process work pool · GCP VM with SA attached for ADC · nginx basic auth on port 80
 - **Rationale**: Prefect Cloud free tier = 5 deployment hard limit; team projects exceed this quickly. Self-hosted removes limit, same CLI/API/prefect.yaml. GCP VM chosen for shared team projects (easy shutdown); personal projects → Hetzner (same docker-compose, swap IP).
