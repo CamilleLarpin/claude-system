@@ -113,6 +113,13 @@
 - In rebase conflict: `--ours` = main (the branch rebasing onto), `--theirs` = the commit being replayed
 - After rebase: `git push --force-with-lease` (safer than `--force` — fails if remote was updated since your last fetch)
 
+## [data-engineering] · Rule · SQL and Python dual implementations diverge on division-by-zero edge cases
+> 2026-04-09 · source: pea-pme-pulse
+- SQL `nullif(BB_upper - BB_lower, 0)` returns NULL when band width = 0 → falls through to `else 1.0` (neutral)
+- Python `pct_b = (Close - BB_lower) / band_width` with `band_width = 0` → pandas float division returns `inf` (not NaN) → downstream comparisons (`inf > 0.8`) produce wrong signal (bearish instead of neutral)
+- Pattern: whenever you maintain a dual SQL + Python implementation of the same scoring/transformation logic, explicitly test the `NULL` / `NaN` / zero-denominator path in both — the languages handle silent errors differently
+- Fix for Python: `band_width = band_width.replace(0, float("nan"))` before dividing; NaN propagates cleanly through comparisons like SQL NULL
+
 ## [docker] · Rule · Validate Docker image end-to-end locally before declaring a PR ready
 > 2026-04-02 · source: pea-pme-pulse
 - `docker build` passing proves the image builds — it does NOT prove the application runs inside it
