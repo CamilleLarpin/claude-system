@@ -52,6 +52,27 @@
 - Audit before rotating: `grep -r "gcp-sa-key\|CREDENTIALS_JSON" prefect.yaml` — any hit = update that flow to ADC (`method: oauth`) before revoking
 - After migration to VM ADC, flows written pre-migration must be manually updated — they don't inherit ADC automatically
 
+## [prefect] · Rule · Use non-editable install in prefect.yaml pull step
+> 2026-04-09 · source: pea-pme-pulse
+- `pip install -e .` writes `__editable__.<pkg>.pth` into container site-packages; `git_clone` wipes source dir each run but leaves the `.pth` — next run crashes with `OSError: [Errno 2] No such file or directory`
+- Fix: `pip install ".[dev]"` — no `.pth` file, each run installs cleanly
+
+## [prefect] · Rule · Crash-recovery loops nest clone directory — wipe manually to recover
+> 2026-04-09 · source: pea-pme-pulse
+- Prefect re-runs pull steps when loading `on_crashed` hooks with cwd already inside the cloned repo → `git_clone` nests: `repo/repo/repo/...`; after enough retries path exceeds OS limits and git clone itself starts failing
+- Root fix: fix the crash (PR with the actual bug fix); VM fix: `rm -rf /opt/prefect/<repo-name>`
+
+## [prefect] · Rule · Module-level env var reads crash at flow import time — must be in job_variables
+> 2026-04-09 · source: pea-pme-pulse
+- `os.environ.get("VAR")` / `os.environ["VAR"]` at module level runs when Prefect imports the flow file to check for hooks — before the flow function runs; missing var → `TypeError` or `KeyError` at import time, before any retry logic
+- Fix: inject via `job_variables.env` in `prefect.yaml`, OR move reads inside the flow/task function
+- Audit pattern: `grep -n "os.environ" src/flows/*.py` then check if any match is at module level (not inside a function/class)
+
+## [gcs] · Rule · Use get_bucket before create_bucket — least-privilege SAs lack storage.buckets.create
+> 2026-04-09 · source: pea-pme-pulse
+- `create_bucket()` requires `storage.buckets.create` — a Storage Object Admin SA gets `Forbidden 403`; pattern that only catches `Conflict` (409) silently breaks when bucket exists and SA can't create
+- Fix: `get_bucket()` first (only needs `storage.buckets.get`); `create_bucket()` only on `NotFound`
+
 ## [prefect-managed] · Rule · Block placeholder must be the sole value in its YAML field
 > 2026-04-02 · source: pea-pme-pulse
 - `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text
