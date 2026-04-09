@@ -105,6 +105,13 @@
 
 ---
 
+## [infra] · Rule · ngrok v3 config format: `version: "3"` + `agent.authtoken`
+> 2026-04-09 · source: pea-pme-pulse
+- ngrok v3 (3.4+) uses `version: "3"` with authtoken nested under `agent:` — top-level `authtoken` causes `field authtoken not found in type config.v3yamlConfig`
+- Old v2 config (`version: '2'` + top-level `authtoken`) causes TLS cert errors on v3 binary: `failed to send authentication request: x509: certificate signed by unknown authority`
+- Correct format: `version: "3"\nagent:\n  authtoken: <token>`
+- Verify config: `ngrok config check` · diagnose connectivity: `ngrok diagnose`
+
 ## [shell] · Rule · `source .env` does not export variables to child processes — use `set -a`
 > 2026-04-07 · source: pea-pme-pulse
 - `source .env` sets variables in the current shell but does NOT export them — child processes (Python, subprocess, etc.) don't inherit them
