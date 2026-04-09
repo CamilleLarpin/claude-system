@@ -83,3 +83,10 @@
 - Agent context file adds only what schema.yml structurally can't: routing keywords, example questions, SQL patterns — not column descriptions or business context
 - 100% column coverage is non-negotiable — undocumented columns break LLM routing and undermine trust in the semantic layer
 - `sources.yml` owns external table declarations (tables dbt reads but doesn't build); column docs for sources belong here too
+
+## [dbt] · Rule · dbt model names are global — two models in different schema dirs cannot share a name
+> 2026-04-09 · source: pea-pme-pulse
+- `silver/companies.sql` and `gold/companies.sql` both resolve to model name `companies` — dbt raises "found two models with the name" at compile time
+- dbt resolves `ref('companies')` by name only; there is no `ref('silver.companies')` syntax in standard dbt
+- Fix: use descriptive, layer-qualified names — e.g. `gold/company_scores.sql` instead of `gold/companies.sql`
+- Check for name collisions whenever adding a new model, especially across layers (silver/gold often describe the same concept)

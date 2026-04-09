@@ -100,6 +100,12 @@
 - Diagnosis command: `bq show --schema <project>:<dataset>.<table>` · filter with `jq` or python
 - Fix: cast to whatever type the BQ column actually declares, not a uniform type across tables
 
+## [bigquery] · Rule · BQ external table backed by GCS auto-refreshes on object overwrite
+> 2026-04-09 · source: pea-pme-pulse
+- A BQ external table pointing to a GCS path reads the file at query time — overwriting the GCS object immediately makes the new data available; no DDL or cache invalidation needed
+- The ingestion flow only needs to write to GCS (`blob.upload_from_string()`); no BQ write step required
+- Limitation: no partition filter support, no BQ table history — if history matters, write to a native BQ table instead and reserve external tables for reference data that changes infrequently
+
 ## [git] · Rule · Rebase team PR branches before merging — resolves conflicts one commit at a time
 > 2026-04-02 · source: pea-pme-pulse
 - When multiple branches diverge from main, each branch accumulates conflicts with main as other PRs merge
