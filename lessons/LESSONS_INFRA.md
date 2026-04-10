@@ -151,4 +151,10 @@
 - A cron script using only checkpoint timestamp will re-fetch and re-process all same-day emails on every run → duplicates, double-trashing
 - Fix: maintain a set of processed message IDs (from an audit/decisions log) and filter fetched emails against it before processing; use the timestamp only to prune the API query, not as the sole dedup mechanism
 
+## [deployment] · Rule · Streamlit Cloud ignores pyproject.toml — needs root requirements.txt
+> 2026-04-10 · source: pea-pme-pulse
+- Streamlit Cloud does not parse `pyproject.toml` — only `requirements.txt` at repo root (or `streamlit/requirements.txt`)
+- Keep it minimal: only what the dashboard file imports; don't copy the full project deps
+- `pandas .style.background_gradient()` requires `matplotlib` at runtime even without a direct import — omitting it causes a runtime crash in any styled dataframe rendering
+
 ---
