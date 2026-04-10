@@ -84,6 +84,13 @@
 - 100% column coverage is non-negotiable — undocumented columns break LLM routing and undermine trust in the semantic layer
 - `sources.yml` owns external table declarations (tables dbt reads but doesn't build); column docs for sources belong here too
 
+## [dbt] · Rule · dbt BigQuery timeout is controlled by profiles.yml, not model config
+> 2026-04-09 · source: pea-pme-pulse
+- `job_execution_timeout_seconds` in model `config()` block is deprecated for dbt-bigquery — ignored silently, BQ still uses `timeout_seconds` from `profiles.yml`
+- Default `timeout_seconds: 300` causes any MERGE taking >5 min to fail with BQ 499 "Job execution was cancelled"
+- Fix: raise `timeout_seconds` in `~/.dbt/profiles.yml` (and commit updated `profiles.yml.example` for teammates)
+- Large incremental MERGE tables may still time out at 1800s — if so, investigate query plan / partitioning as a deeper fix
+
 ## [dbt] · Rule · dbt model names are global — two models in different schema dirs cannot share a name
 > 2026-04-09 · source: pea-pme-pulse
 - `silver/companies.sql` and `gold/companies.sql` both resolve to model name `companies` — dbt raises "found two models with the name" at compile time

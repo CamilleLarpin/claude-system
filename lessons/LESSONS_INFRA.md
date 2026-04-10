@@ -139,6 +139,12 @@
 - For team projects with multiple contributors: 5 slots fill quickly; plan ahead
 - Self-hosting Prefect Server (Docker Compose on any VM) removes the limit entirely — same CLI/API, same prefect.yaml, just a different `PREFECT_API_URL`
 
+## [nginx] · Rule · `alias` + `try_files` causes internal redirect loop for static file serving
+> 2026-04-09 · source: pea-pme-pulse
+- `alias /path/` combined with `try_files $uri $uri/ /prefix/index.html` → nginx enters an infinite internal redirect loop (500)
+- Fix: use `alias /path/;` + `index index.html;` only — no `try_files` needed for static single-page apps served at a sub-path
+- Host-side files are invisible to the nginx container — must be volume-mounted into the container via `docker-compose.yml`
+
 ## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
 > 2026-03-31 · source: gmail-inbox-cleanup phase 1
 - Gmail API `q="after:{unix_seconds}"` treats the timestamp as a date boundary — all emails from the current calendar date are returned regardless of exact time
