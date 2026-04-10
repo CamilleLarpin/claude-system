@@ -73,6 +73,24 @@
 - `create_bucket()` requires `storage.buckets.create` — a Storage Object Admin SA gets `Forbidden 403`; pattern that only catches `Conflict` (409) silently breaks when bucket exists and SA can't create
 - Fix: `get_bucket()` first (only needs `storage.buckets.get`); `create_bucket()` only on `NotFound`
 
+## [prefect] · Rule · Add dbt deps as explicit task before every dbt run — packages/ not persisted
+> 2026-04-10 · source: pea-pme-pulse
+- Prefect workers clone the repo fresh on each run; `dbt_packages/` is never persisted between runs
+- Any `dbt run` fails with `Compilation Error: dbt found N package(s)... Run "dbt deps"` unless `dbt deps` runs first
+- Fix: `@task(name="dbt-deps")` calling `subprocess.run(["dbt", "deps", "--project-dir", ...])` — no profiles dir needed; call before first dbt task in every flow
+
+## [prefect] · Rule · Concurrent flows race on pip install — serialize with flock in pull step
+> 2026-04-10 · source: pea-pme-pulse
+- Multiple deployments starting simultaneously run `pip install` concurrently into the same shared container filesystem → `OSError: ...INSTALLERxxxxxx.tmp` (temp file created by one process, deleted by another)
+- Fix: `flock /tmp/pip-install.lock pip install ".[dev]"` in `prefect.yaml` pull step — zero performance cost
+- After changing `prefect.yaml` pull step: must run `prefect deploy --all` — pull step is stored in the deployment record on the server, not re-read from yaml at runtime
+
+## [infra] · Rule · GCP VM resize wipes firewall-dependent routing — verify connectivity after any resize
+> 2026-04-10 · source: pea-pme-pulse
+- Resizing a GCP VM (stop → change machine type → start) does NOT affect GCP firewall rules — but nginx and other reverse proxies that were started manually (not via systemd) won't restart; also any firewall rule that was previously deleted but not noticed becomes obvious only after the restart
+- After any VM resize: verify each exposed port (`curl http://<ip>/api/health`, `curl http://<ip>:<port>`) before declaring the VM healthy
+- All Docker containers with `restart: unless-stopped` + Docker enabled on boot will restart correctly — only bare processes (non-systemd nginx, manual scripts) won't
+
 ## [prefect-managed] · Rule · Block placeholder must be the sole value in its YAML field
 > 2026-04-02 · source: pea-pme-pulse
 - `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text
