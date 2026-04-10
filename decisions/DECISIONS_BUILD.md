@@ -97,11 +97,12 @@
 - **Date**: 2026-04-02
 - **Status**: active
 
-## [data-pipeline] Prefect orchestrator: parent flow → subflows → dbt task
-- **Decision**: one orchestrator flow calls upstream flows as sequential subflows, then runs dbt as a `@task` via subprocess; downstream layer only runs if all upstream flows succeed
-- **Rationale**: subflow call propagates failure automatically — no explicit error checking needed. subprocess dbt = no `prefect-dbt` dependency; runtime `profiles.yml` in `tempfile.TemporaryDirectory` handles managed infra vs local dev (env var check).
-- **Date**: 2026-04-02
+## [data-pipeline] Prefect: one orchestrator per domain, direct subflow calls — never run_deployment for same-pool chaining
+- **Decision**: each data domain has one Prefect deployment with a schedule; all downstream steps (bronze, silver, gold) are called as direct subflows or tasks — never via `run_deployment()` on the same work pool
+- **Rationale**: `run_deployment(timeout=0)` = fire-and-forget; parent appears "Completed" even if downstream crashes silently. Direct subflow call = parent fails red immediately if any step fails, 1 run covers the full pipeline. `run_deployment` only justified for cross-pool flows (different resource requirements).
+- **Date**: 2026-04-10
 - **Status**: active
+
 
 ## [data-pipeline] dbt Silver/Gold layer separation — clean vs enrich
 - **Decision**: Bronze→Silver = cleaning only (dedup, type cast, timestamp parse, union) · Silver→Gold = all enrichment and scoring (aggregations, LLM outputs, normalized scores) · no business logic in Silver

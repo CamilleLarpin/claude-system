@@ -91,6 +91,12 @@
 - After any VM resize: verify each exposed port (`curl http://<ip>/api/health`, `curl http://<ip>:<port>`) before declaring the VM healthy
 - All Docker containers with `restart: unless-stopped` + Docker enabled on boot will restart correctly — only bare processes (non-systemd nginx, manual scripts) won't
 
+## [prefect] · Rule · `run_deployment(timeout=0)` hides downstream failures — use direct subflow call instead
+> 2026-04-10 · source: pea-pme-pulse
+- `run_deployment(..., timeout=0)` = fire-and-forget: parent completes immediately; if downstream crashes, parent stays "Completed" — silent failure
+- Direct subflow call (`flow_fn()`) = parent waits, parent fails red if subflow fails — 1 run in the UI covers the full pipeline
+- Use `run_deployment` only when flows run on **different work pools** (resource isolation need); for same-pool chaining, always use direct subflow calls
+
 ## [prefect-managed] · Rule · Block placeholder must be the sole value in its YAML field
 > 2026-04-02 · source: pea-pme-pulse
 - `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text
