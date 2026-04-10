@@ -96,3 +96,16 @@
 - `{{ prefect.blocks.secret.xxx }}` is only valid when it is the entire string value in a `prefect.yaml` field — no surrounding text
 - Mixing it in a multiline `script:` raises: `ValueError: Only a single block placeholder is allowed in a string`
 - Fix: pass secret as standalone value in `env:` field of `run_shell_script`, use `$MY_SECRET` shell var in the script body
+
+## [prefect-managed] · Rule · sys.path.insert must precede all project imports in Prefect managed env
+> 2026-04-07 · source: pea-pme-pulse
+- Prefect loads flow scripts via `load_script_as_module` — runs the file top-to-bottom in a fresh Python process; pip editable-install .pth files are NOT retroactively loaded
+- `sys.path.insert` placed after project imports → `ModuleNotFoundError` even though `pip install -e .` ran successfully in the pull step
+- Fix: move `sys.path.insert(0, src_path)` to the very top of any flow file that imports from sibling packages
+- Also: `prefect deploy --all` YAML parse errors silently fall back to interactive mode (no hard failure) — validate YAML separately with `python -c "import yaml; yaml.safe_load(open('prefect.yaml'))"` if deploy behaves unexpectedly
+
+## [prefect-cloud] · Rule · Prefect Cloud free tier: 5 deployment hard limit per workspace
+> 2026-04-07 · source: pea-pme-pulse
+- Exceeding 5 deployments → HTTP 403 `ObjectLimitReached` — no warning before the limit is hit
+- For team projects with multiple contributors: 5 slots fill quickly; plan ahead
+- Self-hosting Prefect Server (Docker Compose on any VM) removes the limit entirely — same CLI/API, same prefect.yaml, just a different `PREFECT_API_URL`

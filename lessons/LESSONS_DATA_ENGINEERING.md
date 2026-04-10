@@ -126,3 +126,9 @@
 - Full validation: `docker run --env-file .env -v /path/to/gcp_creds.json:/tmp/gcp_adc.json:ro <image> python src/flows/<flow>.py`
 - Common failure mode: credentials masked by `prefect config view` (outputs `'********'`) — read API key directly from `~/.prefect/profiles.toml`
 - `.env` must be gitignored; `GOOGLE_CLOUD_PROJECT` must be set explicitly or GCP SDK emits a warning and some APIs fail silently
+
+## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
+> 2026-03-31 · source: gmail-inbox-cleanup phase 1
+- Gmail API `q="after:{unix_seconds}"` treats the timestamp as a date boundary — all emails from the current calendar date are returned regardless of exact time
+- A cron script using only checkpoint timestamp will re-fetch and re-process all same-day emails on every run → duplicates, double-trashing
+- Fix: maintain a set of processed message IDs (from an audit/decisions log) and filter fetched emails against it before processing; use the timestamp only to prune the API query, not as the sole dedup mechanism

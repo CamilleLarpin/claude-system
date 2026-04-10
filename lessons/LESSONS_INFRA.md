@@ -126,35 +126,23 @@
 - Fix: three entries in `config.php`: `'overwrite.cli.url' => 'https://your-domain.com'` (was `http://localhost`) · `'overwriteprotocol' => 'https'` · `'overwritehost' => 'your-domain.com'`
 - nginx proxy headers (`X-Forwarded-Proto`, `X-Real-IP`, `X-Forwarded-For`) are necessary but not sufficient on their own
 
-## [prefect-managed] · Rule · sys.path.insert must precede all project imports in Prefect managed env
-> 2026-04-07 · source: pea-pme-pulse
-- Prefect loads flow scripts via `load_script_as_module` — runs the file top-to-bottom in a fresh Python process; pip editable-install .pth files are NOT retroactively loaded
-- `sys.path.insert` placed after project imports → `ModuleNotFoundError` even though `pip install -e .` ran successfully in the pull step
-- Fix: move `sys.path.insert(0, src_path)` to the very top of any flow file that imports from sibling packages
-- Also: `prefect deploy --all` YAML parse errors silently fall back to interactive mode (no hard failure) — validate YAML separately with `python -c "import yaml; yaml.safe_load(open('prefect.yaml'))"` if deploy behaves unexpectedly
-
-## [prefect-cloud] · Rule · Prefect Cloud free tier: 5 deployment hard limit per workspace
-> 2026-04-07 · source: pea-pme-pulse
-- Exceeding 5 deployments → HTTP 403 `ObjectLimitReached` — no warning before the limit is hit
-- For team projects with multiple contributors: 5 slots fill quickly; plan ahead
-- Self-hosting Prefect Server (Docker Compose on any VM) removes the limit entirely — same CLI/API, same prefect.yaml, just a different `PREFECT_API_URL`
-
 ## [nginx] · Rule · `alias` + `try_files` causes internal redirect loop for static file serving
 > 2026-04-09 · source: pea-pme-pulse
 - `alias /path/` combined with `try_files $uri $uri/ /prefix/index.html` → nginx enters an infinite internal redirect loop (500)
 - Fix: use `alias /path/;` + `index index.html;` only — no `try_files` needed for static single-page apps served at a sub-path
 - Host-side files are invisible to the nginx container — must be volume-mounted into the container via `docker-compose.yml`
 
-## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
-> 2026-03-31 · source: gmail-inbox-cleanup phase 1
-- Gmail API `q="after:{unix_seconds}"` treats the timestamp as a date boundary — all emails from the current calendar date are returned regardless of exact time
-- A cron script using only checkpoint timestamp will re-fetch and re-process all same-day emails on every run → duplicates, double-trashing
-- Fix: maintain a set of processed message IDs (from an audit/decisions log) and filter fetched emails against it before processing; use the timestamp only to prune the API query, not as the sole dedup mechanism
-
 ## [deployment] · Rule · Streamlit Cloud ignores pyproject.toml — needs root requirements.txt
 > 2026-04-10 · source: pea-pme-pulse
 - Streamlit Cloud does not parse `pyproject.toml` — only `requirements.txt` at repo root (or `streamlit/requirements.txt`)
 - Keep it minimal: only what the dashboard file imports; don't copy the full project deps
 - `pandas .style.background_gradient()` requires `matplotlib` at runtime even without a direct import — omitting it causes a runtime crash in any styled dataframe rendering
+
+## [deployment] · Rule · Merging a frontend without deploying its backend = broken app in prod
+> 2026-04-10 · source: pea-pme-pulse
+- Streamlit dashboard was deployed to Streamlit Cloud calling `http://35.241.252.5:8000` — FastAPI code was merged but never added to docker-compose → nothing listening → dashboard never served real data since launch
+- "Done" for a frontend + backend feature = the frontend successfully calls the backend in production — not just "both files exist in the repo"
+- Teammate's "works for me" = tested locally with `localhost:8000`; production was never verified
+- Fix checklist: after merging any frontend, immediately run `curl <prod-backend-url>/<endpoint>` and verify a real response before closing the PR
 
 ---
