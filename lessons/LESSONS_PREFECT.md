@@ -110,6 +110,12 @@
 - Fix: move `sys.path.insert(0, src_path)` to the very top of any flow file that imports from sibling packages
 - Also: `prefect deploy --all` YAML parse errors silently fall back to interactive mode (no hard failure) — validate YAML separately with `python -c "import yaml; yaml.safe_load(open('prefect.yaml'))"` if deploy behaves unexpectedly
 
+## [prefect] · Rule · Multiple work pools on a single VM = silent stuck runs
+> 2026-04-11 · source: pea-pme-pulse
+- A deployment pointing to a pool with no registered worker parks all runs as `Scheduled` forever — no error, no timeout
+- Multiple pools (`bronze-pool`, `silver-pool`, `gold-pool`) on one VM with one worker only serve one pool at a time — others stall silently
+- Fix: one pool per VM; use tags for layer filtering in the UI; start the worker with `--pool <single-pool-name>`
+
 ## [prefect-cloud] · Rule · Prefect Cloud free tier: 5 deployment hard limit per workspace
 > 2026-04-07 · source: pea-pme-pulse
 - Exceeding 5 deployments → HTTP 403 `ObjectLimitReached` — no warning before the limit is hit

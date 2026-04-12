@@ -138,6 +138,13 @@
 - Keep it minimal: only what the dashboard file imports; don't copy the full project deps
 - `pandas .style.background_gradient()` requires `matplotlib` at runtime even without a direct import — omitting it causes a runtime crash in any styled dataframe rendering
 
+## [infra] · Rule · Check for existing systemd services before dockerizing a process
+> 2026-04-11 · source: pea-pme-pulse
+- Docker container crashes with `[Errno 98] address already in use` in a loop — systemd restarts the process after every kill (new PID each time)
+- Detect: `sudo systemctl list-units --type=service --state=running | grep <keyword>` before assuming a port is free
+- If systemd service is already robust (`Restart=always`), use it — no need to dockerize; avoids race conditions and duplicate processes
+- Kill won't work permanently: must `sudo systemctl stop <service>` to free the port
+
 ## [deployment] · Rule · Merging a frontend without deploying its backend = broken app in prod
 > 2026-04-10 · source: pea-pme-pulse
 - Streamlit dashboard was deployed to Streamlit Cloud calling `http://35.241.252.5:8000` — FastAPI code was merged but never added to docker-compose → nothing listening → dashboard never served real data since launch
