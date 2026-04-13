@@ -116,6 +116,19 @@
 - Multiple pools (`bronze-pool`, `silver-pool`, `gold-pool`) on one VM with one worker only serve one pool at a time — others stall silently
 - Fix: one pool per VM; use tags for layer filtering in the UI; start the worker with `--pool <single-pool-name>`
 
+## [infra] · Rule · Check for existing systemd services before dockerizing a process on a VM
+> 2026-04-11 · source: pea-pme-pulse
+- A systemd service already running on a port will cause a Docker container binding that same port to crash with `[Errno 98] address already in use` — kill attempts fail because systemd auto-restarts (new PID each time)
+- Detect first: `sudo systemctl list-units --type=service --state=running | grep <keyword>`
+- If systemd service is already robust (`restart=always` equivalent), prefer it — no need to dockerize
+- Applies to any process you intend to containerize on a VM with existing services
+
+## [infra] · Rule · nginx /var/www/ is root-owned — scp to home dir first, then sudo mv
+> 2026-04-13 · source: pea-pme-pulse
+- `gcloud compute scp` (or any scp) directly to `/var/www/` fails with "Permission denied" — nginx static dirs are root-owned
+- Fix: `gcloud compute scp <files> <vm>:~` → `gcloud compute ssh <vm> --command="sudo mv ~/<files> /var/www/<dir>/"`
+- No nginx restart needed — static files are served on-read; only the directory ownership matters
+
 ## [prefect-cloud] · Rule · Prefect Cloud free tier: 5 deployment hard limit per workspace
 > 2026-04-07 · source: pea-pme-pulse
 - Exceeding 5 deployments → HTTP 403 `ObjectLimitReached` — no warning before the limit is hit
