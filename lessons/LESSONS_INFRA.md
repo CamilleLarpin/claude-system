@@ -152,4 +152,10 @@
 - Teammate's "works for me" = tested locally with `localhost:8000`; production was never verified
 - Fix checklist: after merging any frontend, immediately run `curl <prod-backend-url>/<endpoint>` and verify a real response before closing the PR
 
+## [infra] · Rule · nginx /var/www/ is root-owned — scp to home first, then sudo mv
+> 2026-04-13 · source: pea-pme-pulse
+- `gcloud compute scp` directly to `/var/www/` fails with "Permission denied" even as the VM's SSH user
+- Two-step fix: `gcloud compute scp files prefect-server:~` → then `gcloud compute ssh --command="sudo mv ~/files /var/www/target/"`
+- No service restart needed for static files — nginx serves them on-read
+
 ---
