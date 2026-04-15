@@ -89,6 +89,12 @@ state[userId] = newValue;             // write
 - Fix: single noon run + 6h lookback covers any posting time while eliminating unnecessary executions
 - Add a no-match alert (Telegram/Slack) on the false branch so misses surface immediately rather than silently
 
+## [n8n] · Rule · HTTP Header Auth for Bearer token — must include `Bearer ` prefix in value
+> 2026-04-15 · source: ai-networking-system (CRM API)
+- httpHeaderAuth credential with Name: `Authorization`, Value: `<token>` → FastAPI returns `403 Not authenticated`
+- n8n does NOT add the `Bearer ` prefix automatically — value must be `Bearer <token>` (with space)
+- Diagnostic: execution error shows `403 - {"detail":"Not authenticated"}` with `Authorization: **hidden**` header present — credential exists but value format wrong
+
 ## [n8n] · Rule · `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
 > 2026-03-04 · source: ghost (Format Response node)
 - `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"
