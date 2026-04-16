@@ -159,3 +159,17 @@
 - No service restart needed for static files — nginx serves them on-read
 
 ---
+
+## [infra] · Rule · nginx compose volume path is relative to compose file location, not cwd
+> 2026-04-16 · source: pea-pme-pulse
+- `./nginx.conf` in `infra/docker-compose.yml` resolves to `infra/nginx.conf` — NOT the cwd `nginx.conf`
+- If the VM runs compose from a flat dir (`~/prefect/`), live nginx.conf is `~/prefect/nginx.conf`, separate from `infra/nginx.conf` in the repo
+- After merging nginx changes: `cp /opt/<repo>/infra/nginx.conf ~/prefect/nginx.conf && docker compose restart nginx`
+
+## [infra] · Rule · Use host.docker.internal instead of hardcoded IPs in nginx proxy_pass
+> 2026-04-16 · source: pea-pme-pulse
+- `172.17.0.1` and internal VM IPs break on VM rebuild or network change
+- Add `extra_hosts: host.docker.internal:host-gateway` to the nginx service in docker-compose
+- Then use `proxy_pass http://host.docker.internal:<port>` for any host service (systemd, separate compose stacks)
+
+---
