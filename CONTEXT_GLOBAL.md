@@ -43,7 +43,8 @@ Cross-project shared capabilities — updated at `/end-of-session` when anything
 | Audio Intelligence API | port 8000 (nginx → audio-api) | ✅ live | audio-intelligence-pipeline |
 | MLflow | port 5000 (nginx → mlflow) | ✅ live | experimental |
 | Error Alerting (n8n) | workflow ID: S3JtzMtNJlNl4SOQ | ✅ live | all n8n workflows |
-| nao Talk To My Data | http://35.241.252.5:5005 | ✅ live | pea-pme-pulse · BQ gold · Gemini 2.5 Flash |
+| nao Talk To My Data | http://35.241.252.5/nao/ | ✅ live | pea-pme-pulse · BQ gold · Gemini 2.5 Flash |
+| pea-pme FastAPI | http://35.241.252.5/docs | ✅ live | pea-pme-pulse · BQ gold · X-API-Key auth |
 
 ## Experimental Stack
 - **OpenClaw**: open-source AI assistant running locally, automating tasks through messaging apps
