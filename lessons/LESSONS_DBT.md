@@ -26,6 +26,16 @@
 - All SQL models, YAML, tests, seeds, macros are 100% compatible — no file changes needed
 - Fusion's `arguments:` syntax for tests is Fusion-specific; Core 1.x uses standard dbt syntax
 
+## [dbt] · Rule · dbt tests in schema.yml never run automatically — must be wired into orchestration
+> 2026-04-17 · source: pea-pme-pulse
+- Tests declared in `schema.yml` (not_null, unique, accepted_values…) are never triggered by `dbt run` or any other automatic mechanism
+- They only execute when `dbt test` is called explicitly — in a Prefect task, CI step, or manually
+- Common mistake: rapport/docs claim "un test en échec bloque la chaîne" when `dbt test` is not actually called anywhere
+- Fix: add a `dbt test --select <model>` task in the orchestration flow after `dbt run`, before downstream models that depend on clean data
+- Alternative: replace `dbt run` + `dbt test` with `dbt build` — runs models and tests interleaved per DAG order, stopping downstream builds on test failure
+
+---
+
 ## [dbt] · Rule · BigQuery PARSE_TIMESTAMP — use %Z for timezone names, %z for numeric offsets
 > 2026-04-02 · source: pea-pme-pulse
 - RFC 2822 strings from RSS feeds end in `GMT` (timezone name), not `+0000` (numeric offset)
