@@ -92,6 +92,13 @@
 - Without a self-declared tier, the rule is unenforceable on the file that carries it — content creep goes unchecked
 - Every file including CLAUDE.md should have an explicit `> Load tier: [hot/warm/cold]` header; for CLAUDE.md: hot = only what is needed on every session goes here
 
+## [docs] · Guideline · Technical reports for certification: split jury-facing from personal deep-dive
+> 2026-04-17 · source: pea-pme-pulse BC01 rapport
+- A jury-facing report needs to prove technical competence at the right level of detail — code examples and architecture decisions yes, definitions of standard concepts (what is ADC, what is nginx) no
+- The personal deep-dive answers all follow-up questions the author might have while reading the main report — organised in the same section structure so it's easy to navigate between the two
+- Pattern: `rapport.md` (jury/client-facing: what was built, how it works, key design decisions + code) · `rapport_technique.md` (personal reference: pedagogical explanations, concept definitions, alternative approaches, why X not Y)
+- Cross-reference: each section in the technique doc opens with `*Correspond à rapport.md § X.Y*` so the reader can jump back immediately
+
 ## [claude-code] · Rule · /schedule creates remote agents — incompatible with interactive skills
 > 2026-03-24 · source: ~/.claude/ setup session
 - Remote triggers (CCR) spawn fully isolated cloud sessions — no user present, no back-and-forth possible; attempting to run an interactive skill produces a headless monologue with no value
