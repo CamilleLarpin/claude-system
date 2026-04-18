@@ -121,7 +121,14 @@
       "WebFetch(domain:webstat.banque-france.fr)",
       "WebFetch(domain:data.ecb.europa.eu)",
       "WebFetch(domain:fgeerolf.com)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Bash(lsof -iTCP -sTCP:LISTEN -n -P)",
+      "Bash(nao --help)",
+      "Bash(nao chat:*)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(lsof -iTCP:5005 -sTCP:LISTEN -n -P)",
+      "Bash(nao debug:*)",
+      "Bash(nao sync:*)"
     ]
   }
 }
