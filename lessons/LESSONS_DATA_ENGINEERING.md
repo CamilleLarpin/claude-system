@@ -127,6 +127,13 @@
 - Common failure mode: credentials masked by `prefect config view` (outputs `'********'`) — read API key directly from `~/.prefect/profiles.toml`
 - `.env` must be gitignored; `GOOGLE_CLOUD_PROJECT` must be set explicitly or GCP SDK emits a warning and some APIs fail silently
 
+## [python-tts] · Rule · gTTS rate-limits on rapid consecutive large-text requests (429)
+> 2026-04-18 · source: pea-pme-pulse
+- Google TTS API returns 429 after 2–3 large requests (20k+ chars each) fired in rapid succession from the same IP
+- First two requests succeed; third fails mid-stream if fired immediately after
+- Fix: wait 60–120 seconds between large TTS jobs, or generate sequentially with a sleep — not in parallel
+- pyenv python3 may differ from system python3: `which python3` vs `~/.pyenv/versions/x.y.z/bin/python3` — check `pip show <package> | grep Location` to find which interpreter has the package installed
+
 ## [cron] · Rule · Gmail after: filters by date not time — ID dedup required for cron scripts
 > 2026-03-31 · source: gmail-inbox-cleanup phase 1
 - Gmail API `q="after:{unix_seconds}"` treats the timestamp as a date boundary — all emails from the current calendar date are returned regardless of exact time
