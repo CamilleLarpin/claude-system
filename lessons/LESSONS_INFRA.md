@@ -172,4 +172,12 @@
 - Add `extra_hosts: host.docker.internal:host-gateway` to the nginx service in docker-compose
 - Then use `proxy_pass http://host.docker.internal:<port>` for any host service (systemd, separate compose stacks)
 
+## infra · Rule · Next.js SPA cannot be reverse-proxied at a sub-path without recompilation
+> 2026-04-18 · source: pea-pme-pulse
+- nginx `proxy_pass http://host:port/;` strips the sub-path prefix → server responds 200
+- But the SPA client-side router initialises with the browser URL (e.g. `/nao/`), finds no route, renders 404
+- Root cause: Next.js bakes `basePath` into compiled JS at build time — not overridable via env var at runtime
+- Fix: modify `next.config.js` (`basePath: '/sub-path'`) + rebuild · or serve at root on a dedicated port
+- For third-party/bonus apps: expose on their own port rather than recompiling
+
 ---
