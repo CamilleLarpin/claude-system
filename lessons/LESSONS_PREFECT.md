@@ -129,6 +129,13 @@
 - Fix: `gcloud compute scp <files> <vm>:~` → `gcloud compute ssh <vm> --command="sudo mv ~/<files> /var/www/<dir>/"`
 - No nginx restart needed — static files are served on-read; only the directory ownership matters
 
+## [prefect] · Rule · The entry-point orchestrator owns the schedule — not the final downstream step
+> 2026-04-20 · source: pea-pme-pulse
+- The deployment with a cron schedule should be the root of the DAG (the one that kicks everything else off), not the last step in the chain
+- Downstream subflows (Bronze ingestors, Gold scorers) should have no schedule — they run as direct subflow calls inside the orchestrator
+- Adding a schedule to a subflow that is already called by the orchestrator = it runs twice per cycle (once from the orchestrator, once from its own cron) → duplicate writes, wasted API calls
+- Exception: give a downstream deployment a schedule only if it must run independently on a different cadence (e.g. weekly cleanup vs hourly ingest)
+
 ## [prefect-cloud] · Rule · Prefect Cloud free tier: 5 deployment hard limit per workspace
 > 2026-04-07 · source: pea-pme-pulse
 - Exceeding 5 deployments → HTTP 403 `ObjectLimitReached` — no warning before the limit is hit
