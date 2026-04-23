@@ -128,7 +128,10 @@
       "Bash(echo \"PID: $!\")",
       "Bash(lsof -iTCP:5005 -sTCP:LISTEN -n -P)",
       "Bash(nao debug:*)",
-      "Bash(nao sync:*)"
+      "Bash(nao sync:*)",
+      "WebFetch(domain:www.media.thiga.co)",
+      "WebFetch(domain:github.com)",
+      "Bash(bash *)"
     ]
   }
 }
