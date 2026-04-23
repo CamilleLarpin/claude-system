@@ -90,3 +90,10 @@
 - **Static IP**: always reserve a static IP before assigning to VM — ephemeral IPs change on restart
 - **Date**: 2026-04-08
 - **Status**: active — ✅ validated on pea-pme-pulse
+
+## [bank-ingestion] GoCardless (PSD2) over Playwright scraper for bank transaction ingestion
+- **Decision**: use GoCardless open banking API (PSD2-regulated) via n8n workflow instead of Playwright scraper for automatic bank transaction ingestion
+- **Rationale**: Playwright = brittle (session expiry, 2FA, bank UI changes); GoCardless = stable regulated API, read-only access, covers most European banks. The manual CSV export pattern breaks adoption — people forget to export, pipeline runs stale. GoCardless removes that friction permanently.
+- **Fallback**: CSV manual export for banks not supported by GoCardless (cooperative banks like Crédit Mutuel — validate before committing)
+- **Security**: GoCardless is PSD2-regulated (FCA/ACPR) — deliberate trust decision; credentials in `.env`, never in code
+- **Date**: 2026-04-23 · **Status**: active — first validated in finances-ezerpin (M8)

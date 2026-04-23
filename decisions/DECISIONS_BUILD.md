@@ -109,3 +109,9 @@
 - **Rationale**: Silver models that contain scoring logic become hard to reuse and test independently; the separation makes each layer's responsibility unambiguous for team members building their own models.
 - **Date**: 2026-04-02
 - **Status**: active
+
+## [privacy] Local LLM (Ollama) evaluation before committing to external API for sensitive data
+- **Decision**: before finalising an external LLM API for any pipeline processing sensitive data (financial, medical, personal), run a local model evaluation first (Ollama on Hetzner — Llama 3.1 8B or Qwen 2.5 7B). Use external API only if local quality < 85% accuracy threshold.
+- **Rationale**: Anthropic API does not train on API inputs (contractual), but data transits their servers — a trust dependency. For financial transaction data, local LLM removes that dependency at zero marginal cost (server already running). Modern 8B models match Haiku quality on classification tasks.
+- **How to apply**: when building a categorization / classification step on sensitive data, default to local eval first; document the accuracy comparison before deciding
+- **Date**: 2026-04-23 · **Status**: active — first applied in finances-ezerpin (D33)
