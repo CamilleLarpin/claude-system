@@ -91,6 +91,12 @@
 - **Date**: 2026-04-08
 - **Status**: active — ✅ validated on pea-pme-pulse
 
+## [security] Self-host credential vaults when handling personal communication data
+- **Decision**: never use a cloud-hosted credential vault for services that handle personal email, messaging, or communication content; self-host the vault on own infra (e.g. OneCLI on Hetzner)
+- **Rationale**: cloud vaults proxy requests — personal email body, subjects, and contacts transit third-party infrastructure; even with AES-256 at rest, data is decrypted at request time on a server you don't control; self-hosted vault = same security model with zero third-party exposure; OneCLI is MIT open-source and runs cleanly on Docker
+- **Applies to**: any agent or automation that reads Gmail, WhatsApp, Telegram, or similar personal comms via a credential vault layer
+- **Date**: 2026-04-23 · **Status**: active — first applied in chief-of-staff-ia (D3)
+
 ## [bank-ingestion] GoCardless (PSD2) over Playwright scraper for bank transaction ingestion
 - **Decision**: use GoCardless open banking API (PSD2-regulated) via n8n workflow instead of Playwright scraper for automatic bank transaction ingestion
 - **Rationale**: Playwright = brittle (session expiry, 2FA, bank UI changes); GoCardless = stable regulated API, read-only access, covers most European banks. The manual CSV export pattern breaks adoption — people forget to export, pipeline runs stale. GoCardless removes that friction permanently.

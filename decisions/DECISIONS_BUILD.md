@@ -110,6 +110,18 @@
 - **Date**: 2026-04-02
 - **Status**: active
 
+## [ai-agents] Provider-agnostic architecture for AI agent systems — LiteLLM abstraction over framework lock-in
+- **Decision**: build AI agent systems with a model abstraction layer (LiteLLM or equivalent); never use the orchestration framework's native model client directly; provider swap must require no code change
+- **Rationale**: AI provider pricing changes frequently (Anthropic price increases observed 2026); orchestration frameworks (Claude Code, NanoClaw) that hardwire model clients create rebuild risk when costs or availability shift; abstraction layer decouples orchestration from model; local models (Ollama) available as zero-cost fallback for classification tasks
+- **How to apply**: when starting any AI agent project, verify the framework supports provider abstraction (e.g. NanoClaw `/add-ollama-provider`, LiteLLM proxy); if not, add an abstraction layer before building skills
+- **Date**: 2026-04-23 · **Status**: active — first applied in chief-of-staff-ia (D1)
+
+## [ai-agents] No MCP for scheduled / non-interactive sessions
+- **Decision**: never use MCPs (Gmail MCP, Calendar MCP, etc.) for tasks that run in cron or non-interactive sessions; use native connectors, purpose-built CLIs, or direct API calls instead
+- **Rationale**: MCPs require an interactive Claude Code session to function — they break silently in cron/daemon contexts; purpose-built CLIs (e.g. OneCLI connector, custom `gws`-style CLI) are lightweight, testable independently, and reliable in any execution context
+- **How to apply**: if a scheduled job needs to call an external service, always reach for the service's API or a native connector — never an MCP; MCPs are UI-layer tools, not automation tools
+- **Date**: 2026-04-23 · **Status**: active — first applied in chief-of-staff-ia (D4)
+
 ## [privacy] Local LLM (Ollama) evaluation before committing to external API for sensitive data
 - **Decision**: before finalising an external LLM API for any pipeline processing sensitive data (financial, medical, personal), run a local model evaluation first (Ollama on Hetzner — Llama 3.1 8B or Qwen 2.5 7B). Use external API only if local quality < 85% accuracy threshold.
 - **Rationale**: Anthropic API does not train on API inputs (contractual), but data transits their servers — a trust dependency. For financial transaction data, local LLM removes that dependency at zero marginal cost (server already running). Modern 8B models match Haiku quality on classification tasks.

@@ -47,7 +47,8 @@ Cross-project shared capabilities — updated at `/end-of-session` when anything
 | pea-pme FastAPI | http://35.241.252.5/docs | ✅ live | pea-pme-pulse · BQ gold · X-API-Key auth |
 
 ## Experimental Stack
-- **OpenClaw**: open-source AI assistant running locally, automating tasks through messaging apps
+- **NanoClaw**: lightweight AI agent framework (Docker per session, Gmail + scheduling native, per-agent-group provider config) — in validation for chief-of-staff-ia; supersedes OpenClaw experiment
+- **OneCLI**: self-hosted credential vault for AI agents (Hetzner) — credentials never leave own infra; used by NanoClaw for Gmail + Telegram access
 - **MLflow**: experiment tracking — running on `/opt/api/` (port 5000)
 
 ## Architecture Principles
