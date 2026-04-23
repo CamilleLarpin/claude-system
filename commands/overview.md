@@ -40,10 +40,12 @@ Read `~/.claude/projects-tracking/PROJECT_TRACKER.md` and `~/.claude/projects-tr
 Rules:
 - Group by Priority: Now → Next. Later, Someday hidden — not shown unless user asks.
 - Omit a section entirely if empty.
-- Within each priority group: projects first (Blocked 🔴 first, then Building/Testing/Running/Paused/Scoping), then backlog projects, then tasks — with a blank line separating each group.
-- PROJECT_TRACKER projects: `**[Project Name]** · [status emoji]` header + milestone + optional blocker
-- BACKLOG projects: `**[Project Name]** ·  [status]` — [Why field] (one line, no sub-bullet)
-- Tasks: `· [description]` — only `- [ ]` tasks; skip `- [x]` (done)
+- Within each priority group: all projects first (TRACKER then BACKLOG, Blocked 🔴 first within each), then tasks under a `**Tasks**` sub-header — blank line between projects and tasks block.
+- All projects use the same format regardless of source:
+  `**[Project Name]** · [status emoji if TRACKER | status label if BACKLOG]`
+  `→ [Milestone if TRACKER | Why field if BACKLOG]`
+  `⚠️ Blocker: [Blocker field]` (omit if none)
+- BACKLOG projects with no status emoji: use their status label (idea · scoping · ready-to-start)
+- Tasks: listed under `**Tasks**` as `· [description]` — only `- [ ]` tasks; skip `- [x]` (done)
 - Keep each project to 2–3 lines max — no stack details
-- Omit ⚠️ Blocker line if blocker is "none"
 - If no blockers exist anywhere, omit all ⚠️ lines
