@@ -97,6 +97,12 @@
 - **Applies to**: any agent or automation that reads Gmail, WhatsApp, Telegram, or similar personal comms via a credential vault layer
 - **Date**: 2026-04-23 · **Status**: active — first applied in chief-of-staff-ia (D3)
 
+## [infra] Hetzner as persistent Claude Code compute — single environment, any device
+- **Decision**: Claude Code runs on Hetzner (n8n-server), not on Mac; Mac and phone both SSH in — no local Claude Code for dev work
+- **Rationale**: Mac is not always on; phone has no viable terminal IDE; Hetzner is always on with a stable IP; single environment eliminates state drift between devices by design; git is the sync layer for projects (GitHub) and Claude setup (claude-system repo)
+- **Operational rule**: one active Claude Code session at a time — never run sessions on Mac and Hetzner simultaneously; commit + push everything before switching devices; git pull --rebase before starting any session
+- **Date**: 2026-04-23 · **Status**: active — scoped in remote-dev-from-phone (not yet deployed)
+
 ## [bank-ingestion] GoCardless (PSD2) over Playwright scraper for bank transaction ingestion
 - **Decision**: use GoCardless open banking API (PSD2-regulated) via n8n workflow instead of Playwright scraper for automatic bank transaction ingestion
 - **Rationale**: Playwright = brittle (session expiry, 2FA, bank UI changes); GoCardless = stable regulated API, read-only access, covers most European banks. The manual CSV export pattern breaks adoption — people forget to export, pipeline runs stale. GoCardless removes that friction permanently.
