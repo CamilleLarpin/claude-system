@@ -139,6 +139,12 @@
 - **Date**: 2026-04-01
 - **Status**: active
 
+## [conventions] ~/.claude/plans/ — temporal implementation plans
+- **Decision**: implementation plans too detailed for a backlog task but not permanent enough to be a skill or decision live in `~/.claude/plans/plan-<name>.md`; delete the file once the plan is executed; path referenced inline in the backlog task
+- **Rationale**: draft files (`report/draft-*.md`) are for deferred config/prompts; decisions files are permanent; plans are temporary working docs that should be discoverable until executed then discarded; a dedicated folder with clear naming keeps them findable without polluting permanent files
+- **Date**: 2026-04-28
+- **Status**: active
+
 ## [backlog] Backlog management philosophy
 - **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
 - **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason

@@ -67,3 +67,4 @@ Cross-project shared capabilities — updated at `/end-of-session` when anything
 - Project registry: `~/.claude/projects-tracking/PROJECT_TRACKER.md`
 - Project decisions: archive when superseded → DECISIONS_ARCHIVE.md; never delete LESSONS OR DECISIONS entries
 - Archive done project: move entry to `## Archive` in PROJECT_TRACKER.md + folder to `~/projects/archived/<slug>/`
+- Temporal plans: `~/.claude/plans/plan-<name>.md` — implementation plans; delete once executed; path referenced in backlog task
