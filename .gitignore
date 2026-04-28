@@ -19,7 +19,6 @@ history.jsonl
 ide/
 mcp-needs-auth-cache.json
 paste-cache/
-plans/
 projects/
 session-env/
 shell-snapshots/
