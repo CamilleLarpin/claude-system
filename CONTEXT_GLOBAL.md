@@ -1,6 +1,6 @@
 # Global Context — Camille Larpin
 
-> Load when: planning · deciding · starting new work
+> Load tier: always · auto-loaded via @ in CLAUDE.md · keep minimal — every line costs every session
 > NOT HERE: cross-project decisions with rationale (→ DECISIONS_GLOBAL.md), lessons (→ LESSONS_GLOBAL.md)
 
 ---
