@@ -16,6 +16,17 @@
 - Regex matching `\[id:...\]` silently fails; same issue as underscores
 - Fix: use HTML parse_mode (brackets and underscores both preserved); make regexes bracket-tolerant: `\[?id:([A-Z0-9]+)\]?`
 
+## [telegram] · Rule · One webhook per bot token — last activated n8n workflow wins
+> 2026-04-28 · source: ai-networking-system (UC5 test)
+- n8n registers one webhook with Telegram per bot token. Activating a second workflow using the same bot token silently overwrites the first — it stops receiving messages with no error surfaced.
+- Fix: Dispatcher pattern — one workflow owns the Telegram Trigger for the bot; all other workflows use executeWorkflowTrigger (sub-workflows never register a webhook). Route by message type (Switch node) to the appropriate sub-workflow.
+
+## [telegram] · Rule · Telegram file download requires token in URL path — use Telegram node, not HTTP Request
+> 2026-04-28 · source: ai-networking-system (UC5 test)
+- Downloading a file requires two calls: `getFile` (returns file_path) then `/file/bot{TOKEN}/{file_path}` (binary). Both embed the token in the URL path — incompatible with header-based n8n credentials and `$env` if `N8N_BLOCK_ENV_ACCESS_IN_NODE` is set.
+- Fix: use the Telegram node (resource: file, operation: get, fileId: ..., download: true) — one node, uses stored telegramApi credential, returns binary with `data` key.
+- Read binary with `this.helpers.getBinaryDataBuffer(0, 'data')` in a downstream Code node.
+
 ## [telegram] · Rule · Telegram bots are public by default — always add chat_id allowlist
 > 2026-03-11 · source: session
 - Any Telegram user who finds your bot can send it messages; n8n workflows will process them without restriction

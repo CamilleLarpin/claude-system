@@ -95,6 +95,22 @@ state[userId] = newValue;             // write
 - n8n does NOT add the `Bearer ` prefix automatically — value must be `Bearer <token>` (with space)
 - Diagnostic: execution error shows `403 - {"detail":"Not authenticated"}` with `Authorization: **hidden**` header present — credential exists but value format wrong
 
+## [n8n] · Rule · Merge node (chooseBranch) deadlocks in sub-workflows when one input branch is empty
+> 2026-04-28 · source: ai-networking-system (UC5 test)
+- In a sub-workflow (executeWorkflowTrigger), a Merge node with mode=chooseBranch stops execution silently when one of its two input branches produces no items. No error, status = success, pipeline just stops.
+- Fix: remove the Merge node — connect both paths directly to the shared downstream node. n8n fires the downstream node when any connected upstream provides items. Safe when only one branch can run per execution (IF/Switch split).
+
+## [n8n] · Rule · `N8N_BLOCK_ENV_ACCESS_IN_NODE` blocks ALL node types — use credentials instead
+> 2026-04-28 · source: ai-networking-system (UC5 test)
+- If `N8N_BLOCK_ENV_ACCESS_IN_NODE` is set in docker-compose, `$env.VAR` is denied in every node: Code (jsCode), Set (assignments), HTTP Request (URL expressions). Error: "access to env vars denied".
+- Only n8n credentials (stored via credential system) are exempt — injected by n8n's resolver, not via `$env`.
+- Fix: use n8n credentials for all secrets. For Telegram file download (token in URL path), use the Telegram node (resource=file, operation=get, download=true) instead of HTTP Request + `$env` token.
+
+## [n8n] · Rule · n8n binary data stored as filesystem-v2 reference — use getBinaryDataBuffer() to read
+> 2026-04-28 · source: ai-networking-system (UC5 test)
+- When a node stores binary data, the `binary[key].data` field contains the string `"filesystem-v2"` (a reference ID), not base64 content. `Buffer.from(binaryData[key].data, 'base64')` decodes garbage.
+- Fix: in Code nodes, use `const buffer = await this.helpers.getBinaryDataBuffer(itemIndex, 'propertyName'); const text = buffer.toString('utf-8');` to get actual file content.
+
 ## [n8n] · Rule · `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
 > 2026-03-04 · source: ghost (Format Response node)
 - `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"
