@@ -6,17 +6,6 @@
 
 ---
 
-## Format
-```
-## [category] Decision title
-- **Decision**: what was chosen
-- **Rationale**: why — include alternatives considered
-- **Date**: YYYY-MM-DD
-- **Status**: active | superseded by [title] | archived
-```
-
----
-
 ## [security] Server security model — n8n-server
 - **Decision**: ports 80/443 open to all IPs; SSH key-only auth; app-level login as the real access gate
 - **Rationale**: 80/443 must be open for any browser to reach the services — IP restriction is impractical for a personal server accessed from multiple locations; security relies on HTTPS encryption (nginx + Let's Encrypt) + app login screens, not firewall IP filtering; SSH locked to key-only since password brute-force is automated and constant on any public VPS
