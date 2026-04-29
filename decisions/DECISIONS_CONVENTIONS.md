@@ -1,7 +1,7 @@
 # Decisions — Conventions
 
-> Load when: commands · backlog work · project setup · session rituals.
-> NOT HERE: build decisions (→ DECISIONS_BUILD.md), infra decisions (→ DECISIONS_INFRA.md).
+> Load when: commands · backlog work · project setup · session rituals
+> NOT HERE: build decisions (→ DECISIONS_BUILD.md), infra decisions (→ DECISIONS_INFRA.md)
 > Archive at 100 lines → DECISIONS_CONVENTIONS_ARCHIVE.md
 
 ---
@@ -17,39 +17,9 @@
 
 ---
 
-## [conventions] Project vs task distinction
-- **Decision**: a **task** completes in one session, has a binary outcome (done/not done), needs no context to resume, and has no repo. A **project** is multi-session, has phases, accumulates decisions, and needs `.claude/` context to pick back up.
-- **Rationale**: without a clear rule, the boundary drifts — tasks get over-engineered into projects (wasted setup) or projects get under-documented (lost context). The one-session rule is the clearest practical gate.
-- **Date**: 2026-03-18
-- **Status**: active
-
-## [conventions] Priority vocabulary — Now / Next / Later / Someday
-- **Decision**: all projects and tasks in PROJECT_TRACKER and BACKLOG use a shared 4-level priority vocabulary: Now (active attention), Next (starts when a slot opens), Later (important, not urgent), Someday (nice-to-have, no commitment). Each entry carries an inline priority log (max 2 entries, oldest dropped when a third is added): `  - YYYY-MM-DD [Old] → [New]: [reason]`. /overview shows Now + Next only; Later and Someday hidden by default.
-- **Rationale**: time-based vocabulary (This Month/This Quarter) conflates planning with importance; unified vocabulary across both files enables direct comparison between active (TRACKER) and pre-active (BACKLOG) items; priority log provides lightweight history without a separate file; /overview limited to Now + Next keeps daily view actionable
-- **Date**: 2026-03-18
-- **Status**: active
-
-## [backlog] Done tasks archived to TASKS_DONE.md, not kept in BACKLOG.md
-- **Decision**: completed tasks are moved to `~/.claude/projects-tracking/TASKS_DONE.md` and removed from BACKLOG.md entirely — not kept as `[x]` entries
-- **Rationale**: done tasks in BACKLOG.md consume tokens on every load for zero value; a separate file is never loaded unless explicitly needed, same principle as project Archive
-- **Date**: 2026-03-18
-- **Status**: active
-
 ## [conventions] `@path` in CLAUDE.md auto-loads — use plain paths for on-demand files
 - **Decision**: use plain paths (`` `~/.claude/file.md` ``) in CLAUDE.md and index files (LESSONS_GLOBAL, DECISIONS_GLOBAL) for files that should load on demand. Reserve `@path` only for files that must always be loaded (e.g. project CLAUDE.md → `@~/.claude/CLAUDE.md`).
 - **Rationale**: `@path` syntax in Claude Code auto-includes the file immediately — it does not mean "available if needed". Using `@` in index files cascaded into loading all 9 lesson files and 3 decision files on every command, regardless of relevance. Plain paths let Claude read them via Read tool when actually needed.
-- **Date**: 2026-03-19
-- **Status**: active
-
-## [conventions] /prioritize display format — 4 blocks, projects + tasks differentiated
-- **Decision**: `/prioritize` displays in 4 blocks (Now/Next/Later/Someday); within each block: projects bold with the reason they're at that priority; tasks italic at the end with the pain point they solve; blocked projects stay in their priority block with ⚠️ inline — no separate Blocked section
-- **Rationale**: separating blocked into its own section hid priority; mixing tasks and projects with equal weight obscured what matters; showing "why" next to each item makes prioritization decisions auditable at a glance
-- **Date**: 2026-03-19
-- **Status**: active
-
-## [conventions] Agent files — ~/.claude/agents/ global, .claude/agents/ per-project; invoked via paired slash command
-- **Decision**: global agents live in `~/.claude/agents/`, project agents in `.claude/agents/`; all new projects scaffold an empty `.claude/agents/` via project-init. Custom agents are NOT registered as subagent_type — invoke via a paired `~/.claude/commands/<name>.md` slash command that spawns a general-purpose agent with the agent's prompt embedded.
-- **Rationale**: subagent_type only accepts built-in types (tested 2026-03-19 — "Agent type not found"); slash command pattern is reliable and one-step; agent `.md` file = source of truth for instructions, command file = invocation layer
 - **Date**: 2026-03-19
 - **Status**: active
 
@@ -59,12 +29,6 @@
   - **Shared infrastructure/tool**: lives in `CONTEXT_GLOBAL.md` only — not in PROJECT_TRACKER, not in individual project CONTEXT.md. Shared infra is an architectural fact about the stack, not a project coordination concern.
 - **Rationale**: blocking dependencies affect whether a project can proceed and how to prioritize it — relevant on both sides. Shared infrastructure doesn't affect project execution or priority — it belongs in the global stack description, not duplicated across project files.
 - **Date**: 2026-03-19
-- **Status**: active
-
-## [conventions] Experimental Stack section in CONTEXT_GLOBAL — separate from Technical Stack
-- **Decision**: CONTEXT_GLOBAL.md has two stack sections: `## Technical Stack` (stable, changes only when real pain justifies it) and `## Experimental Stack` (tools under time-boxed evaluation — binary verdict: promote to Technical Stack or drop)
-- **Rationale**: mixing stable and experimental tools in one list obscured which tools were committed vs. under evaluation; separation makes the two-zone stack principle concrete and visible; current experimental: OpenClaw, MLflow
-- **Date**: 2026-03-20
 - **Status**: active
 
 ## [conventions] Writing convention — punctuation as semantic operators in setup files
@@ -77,48 +41,18 @@
 - **Decision**: CONTEXT_GLOBAL.md loads when: planning · deciding · starting new work. Not on every session start. "Starting new work" = no approved plan to execute yet.
 - **Rationale**: "starting a session" = auto-load, violates on-demand principle; real failure mode (decisions without stack knowledge) is covered by "planning · deciding"; executing an approved plan does not need CONTEXT_GLOBAL
 - **Date**: 2026-03-20
-- **Status**: active
+- **Status**: superseded by [conventions] CONTEXT_GLOBAL always-loaded via @
 
-## [conventions] PROJECT_TRACKER vs BACKLOG — distinct load triggers
-- **Decision**: PROJECT_TRACKER loads when: active project status · cross-project dependency. BACKLOG loads when: new project idea · next project selection · cross-project dependency. Both load for cross-project dependency.
-- **Rationale**: both had identical triggers ("assessing cross-project relevance") — unclear when to load one vs the other; TRACKER = active projects, BACKLOG = future/candidate projects; distinct contexts
-- **Date**: 2026-03-20
-- **Status**: active
-
-## [conventions] Commands section in CLAUDE.md — slash command → skill/agent mapping
-- **Decision**: CLAUDE.md has a Commands section documenting the pattern: `/command` → Skill tool → `skills/<name>/SKILL.md` or `agents/<name>.md`
-- **Rationale**: three "on demand" mechanisms (context reading, skill invocation, agent invocation) were conflated; Commands section makes the distinction explicit and answers "what is a command vs a skill vs a file to load"
-- **Date**: 2026-03-20
+## [conventions] CONTEXT_GLOBAL always-loaded via @
+- **Decision**: CONTEXT_GLOBAL.md is auto-loaded every session via `@~/.claude/CONTEXT_GLOBAL.md` in CLAUDE.md — same tier as CLAUDE.md itself. Must be kept minimal — every line costs every session.
+- **Rationale**: any build or architecture decision risks cross-project incoherence without global stack visibility — not just planning sessions but any session involving a significant decision. The "load when planning" trigger was too narrow. File must stay tight: no operational detail (→ INFRA.md), no project-specific state (→ project CONTEXT.md).
+- **Date**: 2026-04-28
 - **Status**: active
 
 ## [conventions] File split/rename discipline — update callers, no index-of-indexes
 - **Decision**: before renaming or splitting any file: grep for its name across `~/.claude/`; update all `@`-references and plain-path references in commands and skills. When splitting a file: update callers to point to the new files directly — never leave a thin index at the old path as a redirect.
 - **Rationale**: `@`-references break silently on rename (no error, missing context at runtime); an index-of-indexes adds an indirection layer with no load-tier benefit and makes the dependency harder to trace
 - **Date**: 2026-03-20
-- **Status**: active
-
-## [conventions] /document command — lightweight mid-session project doc save
-- **Decision**: `/document` updates only the current project's `.claude/` files (CONTEXT, TODOS, DECISIONS, LESSONS, DESIGN if exists); infers all changes from the conversation; no commit, no push, no global scope. Distinct from `/end-of-session` (no promotion, no threshold checks, no tracker update).
-- **Rationale**: end-of-session is too heavy when dropping a session quickly; a lightweight save prevents context loss without the full ritual; inferring from conversation avoids interrupting the user
-- **Date**: 2026-03-24
-- **Status**: active
-
-## [conventions] Draft files for deferred work — `report/draft-*.md`
-- **Decision**: deferred work with configuration details (pending trigger config, agent prompts, etc.) is saved as `~/.claude/report/draft-<name>.md`; the backlog task description includes the path inline
-- **Rationale**: decisions made mid-session about how to build something shouldn't be lost when execution is deferred; draft is the context handoff to future self; path in task ensures discoverability at pickup
-- **Date**: 2026-03-24
-- **Status**: active
-
-## [conventions] /prioritize scoring model — Impact + Effort + Alignment, max 9
-- **Decision**: `/prioritize` scores every Now/Next/Later item on 3 dimensions (1–3 each): Impact (value + what it unblocks), Effort (inverse: 3=hours, 1=weeks), Alignment (fit with current phase/goals). Score = sum, max 9. Output as a single table sorted by score descending with a Signal column (`✅` aligned · `↑ promote` score ≥ 7 in Later · `↓ demote` score ≤ 4 in Now/Next) — no separate mismatch section. Someday excluded from scoring.
-- **Rationale**: vibe-based prioritization drifts; scores make trade-offs auditable; consolidating score + mismatch into one Signal column is faster to scan than a ranked table + separate flags section
-- **Date**: 2026-03-24
-- **Status**: active
-
-## [conventions] When two backlog items describe the same build, consolidate into one
-- **Decision**: if a backlog project and a use case in an active project describe the same build (same trigger flow, same output, same team), they are one entry — tracked in BACKLOG.md with a clear `IS [UC-X] in [Project]` note; the active project TODOS.md references the backlog item as its dependency
-- **Rationale**: tracking the same build in two places (Meeting Note Taker in BACKLOG + UC5 in AI Networking System TODOS) creates drift — dependency chains reference different names for the same work, priority signals diverge, and it's unclear where the authoritative spec lives
-- **Date**: 2026-03-24
 - **Status**: active
 
 ## [conventions] Git workflow — always branch before changes; pull before start and before push
@@ -145,8 +79,8 @@
 - **Date**: 2026-04-28
 - **Status**: active
 
-## [backlog] Backlog management philosophy
-- **Decision**: every item must have a documented "why"; Now ≤ 5 active (blocked don't count), Next ≤ 5; Someday is a parking lot swept at each /prioritize; dependencies documented inline on any item that can't start until another is done
-- **Rationale**: without "why", prioritization is guesswork and stale items accumulate invisibly; caps prevent overcommitment; Someday without a sweep grows unbounded; undocumented dependencies cause blocked starts with no clear reason
-- **Date**: 2026-03-18
+## [conventions] references/ folder — on-demand lookup for tools, concepts, and patterns
+- **Decision**: `~/.claude/references/` stores deep reference docs on specific tools, concepts, and patterns — one file per subject, retrieved by name when needed. Generic name retained intentionally: accommodates both tools (NanoClaw, OneCLI) and concepts/patterns (git worktrees). Registered in CLAUDE.md Global Knowledge with load condition: `load when: working with or evaluating a specific tool — retrieve the relevant file by name`.
+- **Rationale**: CONTEXT_GLOBAL.md carries summary-level stack info; references/ provides depth without polluting always-loaded context. Not a catch-all — each file must be a distinct, retrievable subject. Reports (analysis outputs, research) live in reports/ instead.
+- **Date**: 2026-04-28
 - **Status**: active
