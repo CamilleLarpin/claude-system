@@ -1,11 +1,13 @@
 {
-  "language": "english",
   "permissions": {
     "defaultMode": "default"
   },
-  "showThinkingSummaries": true,
   "statusLine": {
     "type": "command",
     "command": "sh /Users/camillelarpin/.claude/statusline-command.sh"
-  }
+  },
+  "language": "english",
+  "showThinkingSummaries": true,
+  "theme": "light-daltonized",
+  "remoteControlAtStartup": false
 }

@@ -32,6 +32,9 @@ Solo developer, Mac. All code and docs in English. User-facing UI copy: language
 - `~/.claude/LESSONS_GLOBAL.md` — lessons index · load alongside project LESSONS.md + only relevant category files · load when: debugging or starting a build
 - `~/.claude/projects-tracking/PROJECT_TRACKER.md` (alias: **project-tracker**) — project registry · load when: active project status · cross-project dependency
 - `~/.claude/projects-tracking/BACKLOG.md` (alias: **backlog**) — project pipeline and tasks · load when: new project idea · next project selection · cross-project dependency
+- `~/.claude/INFRA.md` — server operational spec: Docker stacks, ports, firewall, nginx routing · load when: working on server · deploying · configuring ports or services · infra debugging
+- `~/.claude/references/` — deep reference docs on specific tools and concepts · load when: working with or evaluating a specific tool — retrieve the relevant file by name
+- `~/.claude/reports/` — analysis outputs and research docs · load when: a topic may have been previously researched or analyzed
 
 ## Skills — load on demand
 `~/.claude/skills/` — load relevant skill before starting any scoped task
