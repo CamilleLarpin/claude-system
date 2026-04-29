@@ -16,18 +16,10 @@
 ## Technical Stack
 - **Automation**: self-hosted n8n — https://n8n.helmcome.com
 - **AI**: Claude (Sonnet default, Opus for architecture/complex reasoning), Anthropic/OpenAI/Groq APIs where needed
-- **Data**: DuckDB (CRM on Hetzner — `crm_data` Docker volume → `/opt/crm/crm.db` inside container · queried via CRM FastAPI) · DuckDB (finances-ezerpin, local) · dbt Core (finances-ezerpin local · pea-pme-pulse GCP) · BigQuery + GCS (pea-pme-pulse team project) · MariaDB (Nextcloud on Hetzner)
+- **Data**: DuckDB (CRM on Hetzner · queried via CRM FastAPI) · DuckDB (finances-ezerpin, local) · dbt Core (finances-ezerpin local · pea-pme-pulse GCP) · BigQuery + GCS (pea-pme-pulse team project) · MariaDB (Nextcloud on Hetzner)
 - **Logging** (Python pipelines): `loguru` — standard across all `src/` pipeline modules; no `print()` in pipeline code
 - **Storage**: file-based (JSON/MD); **Git is the source of truth** including for all project and task management (`~/.claude/projects-tracking/`, project `TODOS.md`)
-- **Infra**: Hetzner server `n8n-server` (138.199.205.72), Docker 29.1.5 — independent stacks:
-  - `/opt/n8n/`: n8n (SQLite via `n8n_data` volume, no external DB)
-  - `/opt/nextcloud/`: Nextcloud + its own MariaDB 10.11 instance (`nextcloud-db`)
-  - `/opt/api/`: audio-intelligence-pipeline FastAPI (port 8000)
-  - `/opt/ai-networking-system/`: CRM FastAPI (port 8001, docker compose) + DuckDB file (`crm_data` volume → `/opt/crm/crm.db`)
-  - **Reverse proxy**: nginx 1.18 on host — TLS via certbot · n8n→5678 · cloud→8080 · crm-api→8001 · audio-api→8000 · mlflow→5000
-  - **Hetzner Firewall** (`firewall-server`): inbound open — 22, 80, 443, 5678, 8080, 8000, 5000 · ufw (OS): allow 22/80/443, deny 8000/8001/5000
-  - **SSH**: key-only auth (`~/.ssh/id_ed25519`), password auth disabled
-  - **IaC**: Terraform + `hetznercloud/hcloud` provider — DR blueprint in progress (`hetzner-infra` project); manages Hetzner layer only (server, SSH key, firewall)
+- **Infra**: Hetzner `n8n-server` (138.199.205.72) · Docker — 4 independent stacks: n8n · Nextcloud + MariaDB · Audio API · CRM API + DuckDB · reverse proxy: nginx + TLS · SSH: key-only · IaC: Terraform + hcloud → `~/.claude/INFRA.md`
 - **Shared infrastructure across projects**:
   - n8n instance: https://n8n.helmcome.com — used by all automation projects · shared error alerting: [Alert] Error Notifier workflow (n8n ID: S3JtzMtNJlNl4SOQ)
   - Nextcloud (cloud.helmcome.com): shared document storage — `family-content-manager` (photo filing) + `gmail-inbox-cleanup` Phase 2 (email document routing)
@@ -47,9 +39,9 @@ Cross-project shared capabilities — updated at `/end-of-session` when anything
 | pea-pme FastAPI | http://35.241.252.5/docs | ✅ live | pea-pme-pulse · BQ gold · X-API-Key auth |
 
 ## Experimental Stack
-- **NanoClaw**: lightweight AI agent framework (Docker per session, Gmail + scheduling native, per-agent-group provider config) — in validation for chief-of-staff-ia; supersedes OpenClaw experiment
-- **OneCLI**: self-hosted credential vault for AI agents (Hetzner) — credentials never leave own infra; used by NanoClaw for Gmail + Telegram access
-- **MLflow**: experiment tracking — running on `/opt/api/` (port 5000)
+- **NanoClaw**: open-source AI agent framework (Claude Agent SDK) — use before building custom agent infra; native Telegram, Gmail, Slack + scheduling; per-group Docker isolation and config
+- **OneCLI**: open-source HTTPS proxy + credential vault — agents never hold raw API keys; real credentials injected at request time; zero code change (HTTPS_PROXY-based); default credential layer for NanoClaw
+- **MLflow**: experiment tracking
 
 ## Architecture Principles
 - **Modularity**: small, composable units over monoliths; each component owns one responsibility
@@ -65,6 +57,6 @@ Cross-project shared capabilities — updated at `/end-of-session` when anything
 - Every project has `.claude/`: CONTEXT.md, DECISIONS.md, LESSONS.md, DESIGN.md, TODOS.md
 - Every project CLAUDE.md imports `@~/.claude/CLAUDE.md`
 - Project registry: `~/.claude/projects-tracking/PROJECT_TRACKER.md`
-- Project decisions: archive when superseded → DECISIONS_ARCHIVE.md; never delete LESSONS OR DECISIONS entries
+- Project decisions: archive when superseded → DECISIONS_ARCHIVE.md; never delete LESSONS or DECISIONS entries
 - Archive done project: move entry to `## Archive` in PROJECT_TRACKER.md + folder to `~/projects/archived/<slug>/`
 - Temporal plans: `~/.claude/plans/plan-<name>.md` — implementation plans; delete once executed; path referenced in backlog task
