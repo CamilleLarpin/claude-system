@@ -111,6 +111,13 @@ state[userId] = newValue;             // write
 - When a node stores binary data, the `binary[key].data` field contains the string `"filesystem-v2"` (a reference ID), not base64 content. `Buffer.from(binaryData[key].data, 'base64')` decodes garbage.
 - Fix: in Code nodes, use `const buffer = await this.helpers.getBinaryDataBuffer(itemIndex, 'propertyName'); const text = buffer.toString('utf-8');` to get actual file content.
 
+## [n8n] · Rule · IF node AND with contradictory boolean conditions always routes to false branch
+> 2026-04-29 · source: ai-networking-system (UC5 test)
+- IF node with combinator AND + two conditions on the same field (e.g. `x == true AND x == false`) can never evaluate true — the true branch never fires; all items silently go to the false branch
+- Symptom: silent misrouting — no error, execution shows success, wrong branch fires every time
+- Fix: use a single condition per IF node. For `Contact Exists?` pattern: one condition `needs_create == false` → true = existing contact; false = new contact
+- Applies to any IF node where AND logic on the same variable creates a logical contradiction
+
 ## [n8n] · Rule · `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
 > 2026-03-04 · source: ghost (Format Response node)
 - `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"

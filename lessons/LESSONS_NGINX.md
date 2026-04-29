@@ -29,6 +29,12 @@
 - Add `extra_hosts: host.docker.internal:host-gateway` to the nginx service in docker-compose
 - Then use `proxy_pass http://host.docker.internal:<port>` for any host service (systemd, separate compose stacks)
 
+## [nginx] · Rule · Set `client_max_body_size` for services that receive large JSON payloads
+> 2026-04-29 · source: ai-networking-system (UC5 test)
+- nginx default `client_max_body_size` is 1MB — long transcripts or rich JSON bodies exceed this silently from the client's perspective; n8n reports `413 Request Entity Too Large`
+- Fix: add `client_max_body_size 50m;` inside the `server {}` block for any service receiving transcripts, file uploads, or large API payloads
+- `sed -i 's|server_name HOST;|server_name HOST;\n    client_max_body_size 50m;|' /etc/nginx/sites-available/FILE && nginx -t && systemctl reload nginx`
+
 ## [nginx] · Rule · Next.js SPA cannot be reverse-proxied at a sub-path without recompilation
 > 2026-04-18 · source: pea-pme-pulse
 - nginx `proxy_pass http://host:port/;` strips the sub-path prefix → server responds 200

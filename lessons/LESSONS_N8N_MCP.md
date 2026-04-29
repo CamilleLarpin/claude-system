@@ -54,6 +54,12 @@
 - Instead: call `n8n_executions(action="get", id=..., mode="filtered", nodeNames=[...])` to inspect the full execution trace including API responses, commit SHAs, and error details — all without needing the credential
 - Pattern: list executions → get latest → filter to relevant nodes → confirm success/output
 
+## [n8n-mcp] · Rule · n8n_update_partial_workflow — correct parameter names
+> 2026-04-29 · source: ai-networking-system (UC5 test)
+- `removeNode` → `nodeName` field (not `name`) · `updateNode` → `nodeName` + `updates` dict with dot-notation keys (`"parameters.body"`, not a `parameters` block) · `addConnection` for IF nodes → `branch: "true"/"false"` (not `sourceOutput: 0/1`)
+- Wrong key for removeNode produces misleading error: `"Node not found for removeNode: ''"` — looks like empty string, not a hint about the key name
+- Always include `intent` string in every call for better response quality
+
 ## [workflow-build] · Rule · Build n8n workflows incrementally — 3–5 ops per call, validate, then next
 > 2026-03-19 · source: ghost (Gap A build session)
 - Attempting 30+ operations in one call leads to hours of pre-computation, JSON escaping bugs, and wasted tokens — even if the logic is correct, one escaping mistake fails everything
