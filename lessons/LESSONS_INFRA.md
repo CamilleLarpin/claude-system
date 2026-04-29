@@ -15,40 +15,12 @@
 
 ---
 
-## infra · Rule · Docker Compose v5: --env-file flag not supported on run
-> 2026-03-26 · source: finances-ezerpin
-- `docker compose run --env-file <file>` fails with `unknown flag: --env-file` on Compose v5
-- Use shell substitution instead: `-e KEY=$(grep KEY .env | cut -d= -f2)`
-- Works for single keys; for multiple keys, repeat `-e` flags
-
----
-
-## infra · Rule · docker compose run does not mount project data dir by default
-> 2026-03-26 · source: finances-ezerpin
-- `docker compose run` only mounts volumes defined in `docker-compose.yml` — project host directories are not mounted
-- If scripts need access to files in `data/`, `data/reference/`, etc., add explicit `-v /host/path:/container/path` flag
-- Example: `docker compose run --rm -v /opt/project/data:/app/data pipeline python script.py`
-
----
-
 ## infra · Rule · Server repo never auto-updates — always git pull before running pipeline
 > 2026-03-26 · source: finances-ezerpin
 - A server cloning a GitHub repo does NOT auto-update when you push — it stays on whatever commit it was at when you last SSH'd in and pulled
 - Any `git push` from Mac → GitHub → must be followed by `git pull` on server before running pipelines
 - Failure to pull = running stale code against prod data (silent divergence)
 - Add `git pull` as the first step in any prod deployment runbook
-
----
-
-## 2026-03-26 — docker-compose up -d without --build uses cached image
-
-**Context**: added new FastAPI endpoint, pushed code, ran `git pull` on server + `docker-compose up -d` — new route not visible. API still served old image.
-
-**Lesson**: `docker-compose up -d` alone never rebuilds the image — it reuses whatever image was last built. New code is NOT picked up.
-
-**Fix**: `docker-compose build --no-cache && docker-compose stop && docker-compose rm -f && docker-compose up -d`
-- `--build` flag on `up` triggers an interactive "Continue?" prompt via SSH — blocks non-interactive execution; use the split form above
-- `--no-cache` forces layer invalidation when Docker incorrectly caches `COPY api/` step
 
 ---
 
@@ -132,22 +104,10 @@
 - Keep it minimal: only what the dashboard file imports; don't copy the full project deps
 - `pandas .style.background_gradient()` requires `matplotlib` at runtime even without a direct import — omitting it causes a runtime crash in any styled dataframe rendering
 
-## [infra] · Rule · Check for existing systemd services before dockerizing a process
-> 2026-04-11 · source: pea-pme-pulse
-- Docker container crashes with `[Errno 98] address already in use` in a loop — systemd restarts the process after every kill (new PID each time)
-- Detect: `sudo systemctl list-units --type=service --state=running | grep <keyword>` before assuming a port is free
-- If systemd service is already robust (`Restart=always`), use it — no need to dockerize; avoids race conditions and duplicate processes
-- Kill won't work permanently: must `sudo systemctl stop <service>` to free the port
-
 ## [deployment] · Rule · Merging a frontend without deploying its backend = broken app in prod
 > 2026-04-10 · source: pea-pme-pulse
 - Streamlit dashboard was deployed to Streamlit Cloud calling `http://35.241.252.5:8000` — FastAPI code was merged but never added to docker-compose → nothing listening → dashboard never served real data since launch
 - "Done" for a frontend + backend feature = the frontend successfully calls the backend in production — not just "both files exist in the repo"
 - Teammate's "works for me" = tested locally with `localhost:8000`; production was never verified
 - Fix checklist: after merging any frontend, immediately run `curl <prod-backend-url>/<endpoint>` and verify a real response before closing the PR
-## [docker] · Rule · docker cp into a running container updates files without rebuild or restart
-> 2026-04-29 · source: audio-intelligence-pipeline
-- Adding or updating non-code artifacts (templates, config files, static assets) in a running container: `docker cp <local_file> <container>:<path>` — file is immediately available, no restart needed
-- Restart IS needed if the app loads the file once at startup (e.g. parsed config); not needed for files read on every request (e.g. prompt templates)
-- Zero-downtime and zero-rebuild: faster than image rebuild for one-off file updates on live servers
-→ nginx-specific lessons: LESSONS_NGINX.md · GCP-specific lessons: LESSONS_GCP.md
+→ Docker-specific lessons: LESSONS_DOCKER.md · nginx-specific lessons: LESSONS_NGINX.md · GCP-specific lessons: LESSONS_GCP.md
