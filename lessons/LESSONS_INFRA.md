@@ -145,4 +145,9 @@
 - "Done" for a frontend + backend feature = the frontend successfully calls the backend in production — not just "both files exist in the repo"
 - Teammate's "works for me" = tested locally with `localhost:8000`; production was never verified
 - Fix checklist: after merging any frontend, immediately run `curl <prod-backend-url>/<endpoint>` and verify a real response before closing the PR
+## [docker] · Rule · docker cp into a running container updates files without rebuild or restart
+> 2026-04-29 · source: audio-intelligence-pipeline
+- Adding or updating non-code artifacts (templates, config files, static assets) in a running container: `docker cp <local_file> <container>:<path>` — file is immediately available, no restart needed
+- Restart IS needed if the app loads the file once at startup (e.g. parsed config); not needed for files read on every request (e.g. prompt templates)
+- Zero-downtime and zero-rebuild: faster than image rebuild for one-off file updates on live servers
 → nginx-specific lessons: LESSONS_NGINX.md · GCP-specific lessons: LESSONS_GCP.md

@@ -1,8 +1,8 @@
 # Global Lessons Library
 
-> Load when: alongside project LESSONS.md + only relevant category files · when debugging or starting a build.
-> This file is the index — load the relevant category file for the actual lessons.
-> NOT HERE: cross-project decisions with rationale (→ DECISIONS_GLOBAL.md).
+> Load when: alongside project LESSONS.md + only relevant category files · when debugging or starting a build
+> This file is the index — load the relevant category file for the actual lessons
+> NOT HERE: cross-project decisions with rationale (→ DECISIONS_GLOBAL.md)
 
 ---
 
@@ -24,7 +24,6 @@
 - `~/.claude/lessons/LESSONS_PREFECT.md` — Prefect orchestration: task wrappers, subflow context, Managed work pools, YAML config
 - `~/.claude/lessons/LESSONS_SECURITY.md` — secrets storage, credential handling, PAT scoping, chat exposure
 - `~/.claude/lessons/LESSONS_ML.md` — email classification, TF-IDF features, sklearn training patterns, model deployment
-
 
 ---
 
