@@ -92,6 +92,12 @@
 - **Operational rule**: one active Claude Code session at a time — never run sessions on Mac and Hetzner simultaneously; commit + push everything before switching devices; git pull --rebase before starting any session
 - **Date**: 2026-04-23 · **Status**: active — scoped in remote-dev-from-phone (not yet deployed)
 
+## [nginx] Set `client_max_body_size 50m` on any service receiving large payloads
+- **Decision**: all nginx server blocks proxying to services that receive transcripts, file uploads, or rich JSON bodies must include `client_max_body_size 50m;`
+- **Rationale**: nginx default is 1MB; long meeting transcripts (20–60 min audio) easily exceed this; the error (`413 Request Entity Too Large`) surfaces only at runtime and is cryptic. 50m covers any realistic single-meeting transcript.
+- **Applies to**: audio-api.helmcome.com (set 2026-04-29) · any future ingestion endpoint
+- **Date**: 2026-04-29 · **Status**: active
+
 ## [bank-ingestion] GoCardless (PSD2) over Playwright scraper for bank transaction ingestion
 - **Decision**: use GoCardless open banking API (PSD2-regulated) via n8n workflow instead of Playwright scraper for automatic bank transaction ingestion
 - **Rationale**: Playwright = brittle (session expiry, 2FA, bank UI changes); GoCardless = stable regulated API, read-only access, covers most European banks. The manual CSV export pattern breaks adoption — people forget to export, pipeline runs stale. GoCardless removes that friction permanently.
