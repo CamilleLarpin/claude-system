@@ -118,6 +118,12 @@ state[userId] = newValue;             // write
 - Fix: use a single condition per IF node. For `Contact Exists?` pattern: one condition `needs_create == false` → true = existing contact; false = new contact
 - Applies to any IF node where AND logic on the same variable creates a logical contradiction
 
+## [n8n] · Rule · One webhook per bot token — only last-activated workflow receives messages
+> 2026-04-28 · source: ai-networking-system (Dispatcher pattern)
+- n8n registers one webhook with Telegram per bot token — activating a second workflow with the same token silently overwrites the first; the first stops receiving messages with no error
+- Dispatcher pattern: one workflow owns the Telegram Trigger; all others use executeWorkflowTrigger (sub-workflow) — sub-workflows never register a webhook
+- Applies to any messaging platform (Slack, WhatsApp, etc.) that allows only one webhook endpoint per bot token
+
 ## [n8n] · Rule · `\n` in Set node expression strings causes "invalid syntax" — use String.fromCharCode(10)
 > 2026-03-04 · source: ghost (Format Response node)
 - `'\n'` inside a Set node expression (e.g. `'\n→ '`) is stored as a literal newline in the workflow JSON; n8n's expression evaluator sees an unterminated string literal and throws "invalid syntax"

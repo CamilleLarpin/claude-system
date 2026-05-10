@@ -130,4 +130,10 @@
 - Fix: delete `__init__.py` from test subdirectories when using `pythonpath = ["src"]` in pyproject.toml
 - Rule: test directories should not have `__init__.py` with a `src/` layout
 
+## [duckdb] · Rule · `UPDATE ... RETURNING *` violates primary key constraint — split into UPDATE + SELECT
+> 2026-03-19 · source: ai-networking-system (FastAPI CRM wrapper)
+- `UPDATE contacts SET x=? WHERE id=? RETURNING *` throws `ConstraintException: Duplicate key ... violates primary key constraint` — DuckDB's RETURNING re-evaluates the PK constraint after update
+- Fix: split into two statements: `UPDATE ... SET ... WHERE id=?` then `SELECT * ... WHERE id=?`
+- Applies to any DuckDB-backed FastAPI or data pipeline using UPDATE ... RETURNING
+
 → git-specific lessons: LESSONS_GIT.md
